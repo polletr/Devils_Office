@@ -1,5 +1,5 @@
 {
-    "name": "Input",
+    "name": "PlayerInput",
     "maps": [
         {
             "name": "Player",
@@ -45,6 +45,15 @@
                     "name": "Kill",
                     "type": "Button",
                     "id": "2383145c-b0f9-4a60-aaed-3b91a60e0f6b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ViewTask",
+                    "type": "Button",
+                    "id": "13e2db7d-9cb2-4c73-b780-a2a3d988fc16",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -104,6 +113,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Kill",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f1b25ac3-3985-4d77-bcdc-3693435813aa",
+                    "path": "<Keyboard>/l",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ViewTask",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
