@@ -4,7 +4,7 @@ public class InputManager : MonoBehaviour
 {
 
     PlayerInput action;
-    PlayerController player;
+    PlayerController player { get; set; }
     Vector2 _movement;
     public Vector2 Movement
     {
@@ -18,9 +18,10 @@ public class InputManager : MonoBehaviour
         }
     }
 
-    void Awake()
+    void Start()
     {
-        //player = GetComponent<PlayerContoller>();
+        player = GetComponent<PlayerController>();
+        action = new PlayerInput();
     }
 
     private void Update()
@@ -45,22 +46,33 @@ public class InputManager : MonoBehaviour
     private void OnEnable()
     {
 
-        action.Player.Move.performed += (val) => Movement = player.HandleMovement();
+        action.Player.Move.performed += (val) => player.HandleMovement();
         action.Player.TurnRight.performed += (val) => Movement = new Vector2(1, 0);
         action.Player.TurnLeft.performed += (val) => Movement = new Vector2(-1, 0);
 
-/*        action.Player.Kill.performed += (val) => player.HandleKill();
+        action.Player.Kill.performed += (val) => player.HandleKill();
 
         action.Player.Interact.performed += (val) => player.HandleInteract();
         action.Player.Interact.canceled += (val) => player.HandleInteract();
 
         action.Player.ViewTask.performed += (val) => player.HandleViewTask();
-*/
+
         action.Enable();
     }
 
     private void OnDisable()
     {
+        action.Player.Move.performed -= (val) => player.HandleMovement();
+        action.Player.TurnRight.performed -= (val) => Movement = new Vector2(1, 0);
+        action.Player.TurnLeft.performed -= (val) => Movement = new Vector2(-1, 0);
+
+        action.Player.Kill.performed += (val) => player.HandleKill();
+
+        action.Player.Interact.performed += (val) => player.HandleInteract();
+        action.Player.Interact.canceled += (val) => player.HandleInteract();
+
+        action.Player.ViewTask.performed += (val) => player.HandleViewTask();
+
 
         action.Disable();
     }

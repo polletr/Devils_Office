@@ -7,55 +7,68 @@ using UnityEngine.Playables;
 [RequireComponent(typeof(InputManager))]
 public class PlayerController : MonoBehaviour
 {
-        public BaseState currentState;
+    public BaseState currentState;
 
-        public Vector2Int gridLocation;
+    public Vector2Int gridLocation;
 
-        public Vector3 Position => transform.position;
+    public Vector3 Position => transform.position;
 
-        [HideInInspector]
-        public Animator anim;
-    
+    [HideInInspector]
+    public Animator anim;
 
 
-        private void Awake()
-        {
 
-            ChangeState(new IdleState());
-        }
-        private void Update()
-        {
-            currentState?.StateUpdate();
-        }
-        private void FixedUpdate()
-        {
-            currentState?.StateFixedUpdate();
-        }
+    private void Awake()
+    {
+        ChangeState(new IdleState());
+    }
+    private void Update()
+    {
+        currentState?.StateUpdate();
+    }
+    private void FixedUpdate()
+    {
+        currentState?.StateFixedUpdate();
+    }
 
-        public void ChangeState(BaseState newState)
-        {
-            StartCoroutine(WaitFixedFrame(newState));
-        }
+    public void ChangeState(BaseState newState)
+    {
+        StartCoroutine(WaitFixedFrame(newState));
+    }
 
-        private IEnumerator WaitFixedFrame(BaseState newState)
-        {
+    private IEnumerator WaitFixedFrame(BaseState newState)
+    {
 
-            yield return new WaitForFixedUpdate();
-            currentState?.ExitState();
-            currentState = newState;
-            currentState.player = this;
-            currentState.EnterState();
+        yield return new WaitForFixedUpdate();
+        currentState?.ExitState();
+        currentState = newState;
+        currentState.player = this;
+        currentState.EnterState();
 
-        }
+    }
 
-        #region Player Actions
-        public void HandleMovement()
-        {
-            currentState?.HandleMovement();
-        }
+    #region Player Actions
+    public void HandleMovement()
+    {
+        currentState?.HandleMovement();
+        Debug.Log("Press");
 
-        
+    }
+    public void HandleKill()
+    {
+        Debug.Log("Killed");
 
-        #endregion
+    }
+    public void HandleInteract()
+    {
+
+    }
+    public void HandleViewTask()
+    {
+
+    }
+
+
+    #endregion
 
 }

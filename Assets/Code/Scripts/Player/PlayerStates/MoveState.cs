@@ -15,6 +15,7 @@ public class MoveState : BaseState
         //Play Animation
         moveDirection = new Vector2Int(0,1);
         isMoving = true;
+        Debug.Log("Enter Move State");
     }
 
     public override void ExitState()

@@ -7,6 +7,7 @@ public class IdleState : BaseState
     public override void EnterState()
     {
         //Play animation
+        Debug.Log("Enter Idle");
         base.EnterState();
     }
 
@@ -29,6 +30,8 @@ public class IdleState : BaseState
 
     public override void HandleMovement()
     {
+        Debug.Log("Move bitch");
+
         player.ChangeState(new MoveState());
     }
 
