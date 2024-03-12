@@ -417,6 +417,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridLocation: {x: 0, y: 0}
   anim: {fileID: 0}
+  moveDuration: 0.1
 --- !u!114 &1169427308
 MonoBehaviour:
   m_ObjectHideFlags: 0

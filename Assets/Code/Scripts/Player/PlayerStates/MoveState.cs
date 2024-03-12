@@ -8,14 +8,14 @@ public class MoveState : BaseState
     private bool isMoving;
     private Vector2Int moveDirection;
 
-    public float blendValue = .01f;
+    private float transitionTimer;
 
     public override void EnterState()
     {
         //Play Animation
         moveDirection = new Vector2Int(0,1);
         isMoving = true;
-        Debug.Log("Enter Move State");
+        transitionTimer = 0f;
     }
 
     public override void ExitState()
@@ -26,15 +26,27 @@ public class MoveState : BaseState
 
     public override void StateFixedUpdate()
     {
+        Debug.Log("Move");
+        Debug.Log(GridController.Instance.CanMove(player.gridLocation));
+
         if (GridController.Instance.CanMove(player.gridLocation + moveDirection) && isMoving)
         {
             Vector3 currentLocation = player.transform.position;
             player.gridLocation += moveDirection;
             Vector3 nextLocation = GridController.Instance.GetGridLocation(player.gridLocation);
 
-            if (player.transform.position != nextLocation)
+            Debug.Log(nextLocation);
+
+            float t = Mathf.Clamp01(transitionTimer / player.moveDuration);
+            transitionTimer += Time.fixedDeltaTime;
+
+            if (t < 1.0f)
             {
-                player.transform.position = Vector2.Lerp(currentLocation, nextLocation, 2f);
+
+                Vector3 newPos = Vector3.Lerp(currentLocation, nextLocation, t);
+
+                player.transform.position = newPos;
+
             }
             else
             {
@@ -42,6 +54,11 @@ public class MoveState : BaseState
                 isMoving = false;
                 player.ChangeState(new IdleState());
             }
+        }
+        else
+        {
+            isMoving = false;
+            player.ChangeState(new IdleState());
         }
     }
 
