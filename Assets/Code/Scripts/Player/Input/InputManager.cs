@@ -18,7 +18,7 @@ public class InputManager : MonoBehaviour
         }
     }
 
-    void Start()
+    void Awake()
     {
         player = GetComponent<PlayerController>();
         action = new PlayerInput();
@@ -46,7 +46,7 @@ public class InputManager : MonoBehaviour
     private void OnEnable()
     {
 
-        action.Player.Move.performed += (val) => player.HandleMovement();
+        action.Player.Move.performed += (val) => player.HandleMove();
         action.Player.TurnRight.performed += (val) => Movement = new Vector2(1, 0);
         action.Player.TurnLeft.performed += (val) => Movement = new Vector2(-1, 0);
 
@@ -62,7 +62,7 @@ public class InputManager : MonoBehaviour
 
     private void OnDisable()
     {
-        action.Player.Move.performed -= (val) => player.HandleMovement();
+        action.Player.Move.performed -= (val) => player.HandleMove();
         action.Player.TurnRight.performed -= (val) => Movement = new Vector2(1, 0);
         action.Player.TurnLeft.performed -= (val) => Movement = new Vector2(-1, 0);
 

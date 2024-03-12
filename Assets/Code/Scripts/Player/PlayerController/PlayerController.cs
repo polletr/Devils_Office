@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
     }
 
     #region Player Actions
-    public void HandleMovement()
+    public void HandleMove()
     {
         currentState?.HandleMovement();
         Debug.Log("Press");
