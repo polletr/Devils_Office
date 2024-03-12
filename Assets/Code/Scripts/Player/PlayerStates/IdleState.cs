@@ -19,6 +19,7 @@ public class IdleState : BaseState
     public override void StateFixedUpdate()
     {
         base.StateFixedUpdate();
+        
     }
 
     public override void StateUpdate()
@@ -26,9 +27,9 @@ public class IdleState : BaseState
         base.StateUpdate();
     }
 
-    public override void HandleMovement(Vector2 move)
+    public override void HandleMovement()
     {
-        base.HandleMovement(move);
+        player.ChangeState(new MoveState());
     }
 
 

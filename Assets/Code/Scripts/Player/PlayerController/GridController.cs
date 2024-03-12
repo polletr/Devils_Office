@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GridController : MonoBehaviour
+public class GridController : Singleton<GridController>
 {
     [SerializeField]
     Vector3 startLocation;
@@ -21,6 +21,7 @@ public class GridController : MonoBehaviour
     {
         
     }
+
     public bool CanMove(Vector2Int nextPosition)
     {
         if (nextPosition.x <= gridLocations.GetLength(0) && nextPosition.y <= gridLocations.GetLength(1) && nextPosition.x >= 0 && nextPosition.y >= 0)

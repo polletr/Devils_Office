@@ -16,11 +16,6 @@ public class TankController : MonoBehaviour
     [SerializeField]
     Vector2Int gridLocation;
     bool isMoving = false;
-    // Start is called before the first frame update
-    void Start()
-    {
-        moveDirection = new Vector2Int(0, 1);
-    }
 
     // Update is called once per frame
     void Update()
@@ -31,7 +26,6 @@ public class TankController : MonoBehaviour
         {
             isMoving = true;
             StartCoroutine(RotatePlayer(-90));
-          
             
         }
         else if (Input.GetAxis("Horizontal") > 0)

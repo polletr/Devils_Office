@@ -1,33 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.Playables;
 
-//[RequireComponent(typeof(Rigidbody2D), typeof(Collider2D), typeof(InputManager))]
+[RequireComponent(typeof(InputManager))]
 public class PlayerController : MonoBehaviour
 {
-        /*public PlayerState State { get; private set; }
-        public PlayerStateType StateType;
-
-        private Dictionary<PlayerStateType, PlayerState> playerStates;*/
         public BaseState currentState;
 
-        //private InputManager inputManager;
-
-        private Vector2 _moveInput;
+        public Vector2Int gridLocation;
 
         public Vector3 Position => transform.position;
 
-        public Rigidbody2D _rb;
-        private Collider2D _collider;
-
         [HideInInspector]
         public Animator anim;
+    
+
 
         private void Awake()
         {
-            ChangeState(new IdleState());
 
+            ChangeState(new IdleState());
         }
         private void Update()
         {
@@ -50,17 +44,16 @@ public class PlayerController : MonoBehaviour
             currentState?.ExitState();
             currentState = newState;
             currentState.player = this;
-            //currentState.inputManager = inputManager;
             currentState.EnterState();
 
         }
 
         #region Player Actions
-/*        public void HandleJump()
+        public void HandleMovement()
         {
-            currentState?.HandleJump();
+            currentState?.HandleMovement();
         }
-*/
+
         
 
         #endregion

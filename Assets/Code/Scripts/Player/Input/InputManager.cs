@@ -45,7 +45,7 @@ public class InputManager : MonoBehaviour
     private void OnEnable()
     {
 
-        action.Player.Move.performed += (val) => Movement = val.ReadValue<Vector2>();
+        action.Player.Move.performed += (val) => Movement = player.HandleMovement();
         action.Player.TurnRight.performed += (val) => Movement = new Vector2(1, 0);
         action.Player.TurnLeft.performed += (val) => Movement = new Vector2(-1, 0);
 
