@@ -5,17 +5,25 @@ using UnityEngine.EventSystems;
 
 public class MoveState : BaseState
 {
-    private bool isMoving;
     private Vector2Int moveDirection;
-
-    private float transitionTimer;
+    Vector3 nextLocation;
 
     public override void EnterState()
     {
         //Play Animation
         moveDirection = new Vector2Int(0,1);
-        isMoving = true;
-        transitionTimer = 0f;
+
+        if (GridController.Instance.CanMove(player.gridLocation + moveDirection))
+        {
+            player.gridLocation += moveDirection;
+            nextLocation = GridController.Instance.GetGridLocation(player.gridLocation);
+        }
+        else
+        {
+            player.ChangeState(new IdleState());
+        }
+
+
     }
 
     public override void ExitState()
@@ -29,35 +37,15 @@ public class MoveState : BaseState
         Debug.Log("Move");
         Debug.Log(GridController.Instance.CanMove(player.gridLocation));
 
-        if (GridController.Instance.CanMove(player.gridLocation + moveDirection) && isMoving)
+        if (Vector3.Distance(player.transform.position, nextLocation) > 0.01f)
         {
-            Vector3 currentLocation = player.transform.position;
-            player.gridLocation += moveDirection;
-            Vector3 nextLocation = GridController.Instance.GetGridLocation(player.gridLocation);
+            float step = player.moveSpeed * Time.fixedDeltaTime;
 
-            Debug.Log(nextLocation);
-
-            float t = Mathf.Clamp01(transitionTimer / player.moveDuration);
-            transitionTimer += Time.fixedDeltaTime;
-
-            if (t < 1.0f)
-            {
-
-                Vector3 newPos = Vector3.Lerp(currentLocation, nextLocation, t);
-
-                player.transform.position = newPos;
-
-            }
-            else
-            {
-                player.transform.position = nextLocation;
-                isMoving = false;
-                player.ChangeState(new IdleState());
-            }
+            player.transform.position = Vector3.MoveTowards(player.transform.position, nextLocation, step);
         }
         else
         {
-            isMoving = false;
+            player.transform.position = nextLocation;
             player.ChangeState(new IdleState());
         }
     }

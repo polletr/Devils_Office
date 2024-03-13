@@ -16,8 +16,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public Animator anim;
 
-    public float moveDuration = 1f;
-
+    public float moveSpeed = 1f;
 
     private void Awake()
     {
