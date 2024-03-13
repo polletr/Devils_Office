@@ -3,15 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-enum Direction
-{
-    North, East, South, West
-}
 public class TankController : MonoBehaviour
 {
     [SerializeField]
     GridController gridController;
-    Direction direction = Direction.North;
     public Vector2Int moveDirection;
     [SerializeField]
     Vector2Int gridLocation;
@@ -82,19 +77,15 @@ public class TankController : MonoBehaviour
         switch (directionAngle)
         {
             case 0:
-                direction = Direction.North;
                 moveDirection = new Vector2Int(0, 1);
                 break;
             case 270:
-                direction = Direction.West;
                 moveDirection = new Vector2Int(-1, 0);
                 break;
             case 90:
-                direction = Direction.East;
                 moveDirection = new Vector2Int(1, 0);
                 break;
             case 180:
-                direction = Direction.South;
                 moveDirection = new Vector2Int(0, -1);
                 break;
         }

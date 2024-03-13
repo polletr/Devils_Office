@@ -2,8 +2,11 @@ using UnityEngine;
 
     public abstract class BaseState
     {
+
+        protected float nextDirection;
+
         public PlayerController player { get; set; }
-        //public InputManager inputManager { get; set; }
+        public InputManager inputManager { get; set; }
 
         protected BaseState currentState;
 
@@ -12,5 +15,6 @@ using UnityEngine;
         public virtual void StateFixedUpdate() { }
         public virtual void StateUpdate() { }
         public virtual void HandleMovement() { }
+        public virtual void HandleRotation(float rotateAngle) { }
 
     }

@@ -5,24 +5,24 @@ using UnityEngine.EventSystems;
 
 public class MoveState : BaseState
 {
-    private Vector2Int moveDirection;
     Vector3 nextLocation;
+    bool canMove;
 
     public override void EnterState()
     {
         //Play Animation
-        moveDirection = new Vector2Int(0,1);
 
-        if (GridController.Instance.CanMove(player.gridLocation + moveDirection))
+        if (GridController.Instance.CanMove(player.gridLocation + player.moveDirection))
         {
-            player.gridLocation += moveDirection;
+            canMove = true;
+            player.gridLocation += player.moveDirection;
             nextLocation = GridController.Instance.GetGridLocation(player.gridLocation);
         }
         else
         {
+            canMove = false;
             player.ChangeState(new IdleState());
         }
-
 
     }
 
@@ -34,16 +34,13 @@ public class MoveState : BaseState
 
     public override void StateFixedUpdate()
     {
-        Debug.Log("Move");
-        Debug.Log(GridController.Instance.CanMove(player.gridLocation));
-
-        if (Vector3.Distance(player.transform.position, nextLocation) > 0.01f)
+        if (Vector3.Distance(player.transform.position, nextLocation) > 0.01f && canMove)
         {
             float step = player.moveSpeed * Time.fixedDeltaTime;
 
             player.transform.position = Vector3.MoveTowards(player.transform.position, nextLocation, step);
         }
-        else
+        else if(canMove)
         {
             player.transform.position = nextLocation;
             player.ChangeState(new IdleState());

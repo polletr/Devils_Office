@@ -33,5 +33,21 @@ public class IdleState : BaseState
         player.ChangeState(new MoveState());
     }
 
+    public override void HandleRotation(float rotateAngle)
+    {
+
+        if (rotateAngle < 0)
+        {
+            player.ChangeState(new RotateLeftState());
+        }
+        else
+        {
+            player.ChangeState(new RotateRightState());
+        }
+
+
+    }
+
+
 
 }

@@ -4,22 +4,29 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Playables;
 
+
+
 [RequireComponent(typeof(InputManager))]
 public class PlayerController : MonoBehaviour
 {
+    [HideInInspector]
+    public Vector2Int moveDirection;
+
     public BaseState currentState;
-
+    [HideInInspector]
     public Vector2Int gridLocation;
-
     public Vector3 Position => transform.position;
 
     [HideInInspector]
     public Animator anim;
 
     public float moveSpeed = 1f;
+    public float rotateSpeed = 1f;
 
     private void Awake()
     {
+        moveDirection = new Vector2Int(0, 1);
+
         ChangeState(new IdleState());
     }
     private void Update()
@@ -51,12 +58,14 @@ public class PlayerController : MonoBehaviour
     public void HandleMove()
     {
         currentState?.HandleMovement();
-        Debug.Log("Press");
 
+    }
+    public void HandleRotate(float rotateAngle)
+    {
+        currentState?.HandleRotation(rotateAngle);
     }
     public void HandleKill()
     {
-        Debug.Log("Killed");
 
     }
     public void HandleInteract()

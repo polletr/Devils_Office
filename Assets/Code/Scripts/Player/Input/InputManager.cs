@@ -5,16 +5,16 @@ public class InputManager : MonoBehaviour
 
     PlayerInput action;
     PlayerController player { get; set; }
-    Vector2 _movement;
-    public Vector2 Movement
+    Vector2 _rotate;
+    public Vector2 Rotate
     {
         get
         {
-            return _movement;
+            return _rotate;
         }
         private set
         {
-            _movement = value;
+            _rotate = value;
         }
     }
 
@@ -47,8 +47,8 @@ public class InputManager : MonoBehaviour
     {
 
         action.Player.Move.performed += (val) => player.HandleMove();
-        action.Player.TurnRight.performed += (val) => Movement = new Vector2(1, 0);
-        action.Player.TurnLeft.performed += (val) => Movement = new Vector2(-1, 0);
+        action.Player.TurnRight.performed += (val) => player.HandleRotate(90);
+        action.Player.TurnLeft.performed += (val) => player.HandleRotate(-90);
 
         action.Player.Kill.performed += (val) => player.HandleKill();
 
@@ -63,8 +63,8 @@ public class InputManager : MonoBehaviour
     private void OnDisable()
     {
         action.Player.Move.performed -= (val) => player.HandleMove();
-        action.Player.TurnRight.performed -= (val) => Movement = new Vector2(1, 0);
-        action.Player.TurnLeft.performed -= (val) => Movement = new Vector2(-1, 0);
+        action.Player.TurnRight.performed -= (val) => player.HandleRotate(90);
+        action.Player.TurnLeft.performed -= (val) => player.HandleRotate(-90);
 
         action.Player.Kill.performed += (val) => player.HandleKill();
 
