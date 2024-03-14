@@ -50,7 +50,7 @@ public class InputManager : MonoBehaviour
         action.Player.TurnRight.performed += (val) => player.HandleRotate(90);
         action.Player.TurnLeft.performed += (val) => player.HandleRotate(-90);
 
-        action.Player.Kill.performed += (val) => player.HandleKill();
+        action.Player.Kill.performed += (val) => player.HandleAttack();
 
         action.Player.Interact.performed += (val) => player.HandleInteract();
         action.Player.Interact.canceled += (val) => player.HandleInteract();
@@ -66,7 +66,7 @@ public class InputManager : MonoBehaviour
         action.Player.TurnRight.performed -= (val) => player.HandleRotate(90);
         action.Player.TurnLeft.performed -= (val) => player.HandleRotate(-90);
 
-        action.Player.Kill.performed += (val) => player.HandleKill();
+        action.Player.Kill.performed += (val) => player.HandleAttack();
 
         action.Player.Interact.performed += (val) => player.HandleInteract();
         action.Player.Interact.canceled += (val) => player.HandleInteract();

@@ -2,17 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InteractState : MonoBehaviour
+public class InteractState : BaseState
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void EnterState()
     {
-        
-    }
+        //Play Animation
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (GridController.Instance.CanInteract(player.gridLocation + player.fwdDirection))
+        {
+
+        }
+        else
+        {
+            player.ChangeState(new IdleState());
+        }
+
     }
 }

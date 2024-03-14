@@ -4,13 +4,11 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Playables;
 
-
-
 [RequireComponent(typeof(InputManager))]
-public class PlayerController : MonoBehaviour
+public class PlayerController : BaseObject
 {
     [HideInInspector]
-    public Vector2Int moveDirection;
+    public Vector2Int fwdDirection;
 
     public BaseState currentState;
     [HideInInspector]
@@ -25,7 +23,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        moveDirection = new Vector2Int(0, 1);
+        fwdDirection = new Vector2Int(0, 1);
 
         ChangeState(new IdleState());
     }
@@ -64,9 +62,9 @@ public class PlayerController : MonoBehaviour
     {
         currentState?.HandleRotation(rotateAngle);
     }
-    public void HandleKill()
+    public void HandleAttack()
     {
-
+        ChangeState(new AttackState());
     }
     public void HandleInteract()
     {

@@ -58,16 +58,16 @@ public class RotateLeftState : BaseState
         switch (directionAngle)
         {
             case 0:
-                player.moveDirection = new Vector2Int(0, 1);
+                player.fwdDirection = new Vector2Int(0, 1);
                 break;
             case 270:
-                player.moveDirection = new Vector2Int(-1, 0);
+                player.fwdDirection = new Vector2Int(-1, 0);
                 break;
             case 90:
-                player.moveDirection = new Vector2Int(1, 0);
+                player.fwdDirection = new Vector2Int(1, 0);
                 break;
             case 180:
-                player.moveDirection = new Vector2Int(0, -1);
+                player.fwdDirection = new Vector2Int(0, -1);
                 break;
         }
     }

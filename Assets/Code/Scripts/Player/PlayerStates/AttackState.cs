@@ -1,18 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class AttackState : MonoBehaviour
+public class AttackState : BaseState
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void EnterState()
     {
-        
+        //Play Animation
+
+        if (GridController.Instance.CanAttack(player.gridLocation + player.fwdDirection))
+        {
+            
+        }
+        else
+        {
+            player.ChangeState(new IdleState());
+        }
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

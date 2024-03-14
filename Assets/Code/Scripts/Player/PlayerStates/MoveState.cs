@@ -10,12 +10,13 @@ public class MoveState : BaseState
 
     public override void EnterState()
     {
-        //Play Animation
 
-        if (GridController.Instance.CanMove(player.gridLocation + player.moveDirection))
+        if (GridController.Instance.CanMove(player.gridLocation + player.fwdDirection))
         {
             canMove = true;
-            player.gridLocation += player.moveDirection;
+            //Play Animation
+
+            player.gridLocation += player.fwdDirection;
             nextLocation = GridController.Instance.GetGridLocation(player.gridLocation);
         }
         else

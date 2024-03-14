@@ -7,7 +7,7 @@ public class TankController : MonoBehaviour
 {
     [SerializeField]
     GridController gridController;
-    public Vector2Int moveDirection;
+    public Vector2Int fwdDirection;
     [SerializeField]
     Vector2Int gridLocation;
     bool isMoving = false;
@@ -52,10 +52,10 @@ public class TankController : MonoBehaviour
     }
     IEnumerator MovePlayer()
     {
-        if(gridController.CanMove(gridLocation + moveDirection))
+        if(gridController.CanMove(gridLocation + fwdDirection))
         {
             Vector3 currentLocation = transform.position;
-            gridLocation += moveDirection;
+            gridLocation += fwdDirection;
             float blendValue = .01f;
             Vector3 nextLocation = gridController.GetGridLocation(gridLocation);
             
@@ -77,16 +77,16 @@ public class TankController : MonoBehaviour
         switch (directionAngle)
         {
             case 0:
-                moveDirection = new Vector2Int(0, 1);
+                fwdDirection = new Vector2Int(0, 1);
                 break;
             case 270:
-                moveDirection = new Vector2Int(-1, 0);
+                fwdDirection = new Vector2Int(-1, 0);
                 break;
             case 90:
-                moveDirection = new Vector2Int(1, 0);
+                fwdDirection = new Vector2Int(1, 0);
                 break;
             case 180:
-                moveDirection = new Vector2Int(0, -1);
+                fwdDirection = new Vector2Int(0, -1);
                 break;
         }
     }
