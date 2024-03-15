@@ -5,4 +5,5 @@ using UnityEngine;
 public class InteractableObj : BaseObject
 {
     public float waitTime;
+
 }

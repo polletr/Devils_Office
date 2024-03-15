@@ -5,11 +5,8 @@ using UnityEngine.EventSystems;
 using UnityEngine.Playables;
 
 [RequireComponent(typeof(InputManager))]
-public class PlayerController : BaseObject
+public class PlayerController : CharacterClass
 {
-    [HideInInspector]
-    public Vector2Int fwdDirection;
-
     public BaseState currentState;
     [HideInInspector]
     public Vector2Int gridLocation;
@@ -21,10 +18,9 @@ public class PlayerController : BaseObject
     public float moveSpeed = 1f;
     public float rotateSpeed = 1f;
 
-    private void Awake()
+    protected override void Awake()
     {
-        fwdDirection = new Vector2Int(0, 1);
-
+        base.Awake();
         ChangeState(new IdleState());
     }
     private void Update()
@@ -72,7 +68,6 @@ public class PlayerController : BaseObject
         {
             ChangeState(new InteractState());
         }
-
     }
 
     public void HandleStopInteract()
@@ -82,7 +77,7 @@ public class PlayerController : BaseObject
 
     public void HandleViewTask()
     {
-
+        //Define if we want the player to move or not
     }
 
 

@@ -1,7 +1,9 @@
 using UnityEditor;
 using UnityEngine;
 using System.IO;
-//using Unity.Plastic.Newtonsoft.Json;
+using UnityEngine.TextCore.Text;
+using UnityEngine.UI;
+
 public class LevelEditor : EditorWindow
 {
 
@@ -13,6 +15,7 @@ public class LevelEditor : EditorWindow
     float gridPadding = 2;
 
     int currentOption = 1;
+    int currentDirection = 0;
 
     Color[] options =
     {
@@ -22,16 +25,23 @@ public class LevelEditor : EditorWindow
             Color.green,
             Color.blue,
             Color.cyan,
-        };
+    };
+    char[] orientations =
+    {
+        'U', 'D', 'L', 'R'
+    };
+    string[] directions =
+    {
+        "Up", "Down", "Left", "Right"
+    };
 
     string[] names =
     {
-        "Pill",
+        "Floor",
         "Wall",
-        "PacBear",
-        "Pill",
-        "Ghost",
-        "Spawn"
+        "Interactable",
+        "Player",
+        "NPCs"
     };
 
     private LevelData myData;
@@ -70,8 +80,9 @@ public class LevelEditor : EditorWindow
             if (EditorUtility.DisplayDialog("Reset", "This will clear your level. Are you sure?!", "Yes", "No"))
             {
                 myData.grid = new int[myData.levelWidth, myData.levelHeight];
+                myData.directions = new char[myData.levelWidth, myData.levelHeight];
             }
-        }
+        } 
 
         Event e = Event.current;
 
@@ -95,6 +106,7 @@ public class LevelEditor : EditorWindow
                 if (e.type == EventType.MouseDown && e.button == 0)
                 {
                     currentOption = i;
+                    currentDirection = -1;
                 }
 
                 if (currentOption == i)
@@ -104,6 +116,33 @@ public class LevelEditor : EditorWindow
             }
             EditorGUI.DrawRect(r, options[i]);
         }
+            for (int i = 0; i < orientations.Length; i++)
+            {
+                Rect r = new Rect(leftPadding + i * (gridSize + gridPadding), 180, gridSize, gridSize);
+
+                if (r.Contains(e.mousePosition))
+                {
+                    GUILayout.Label(directions[i]);
+
+                    if (e.type == EventType.MouseDown && e.button == 0)
+                    {
+                        currentDirection = i;
+                        currentOption = -1;
+                    }
+
+                    if (currentDirection == i)
+                    {
+                        //EditorGUI.DrawRect(, Color.red);
+                        Rect clickRect = new Rect(r.x - 1, r.y - 1, r.width + 2, r.height + 2);
+                        EditorGUI.TextField(clickRect, "" + orientations[i]);
+                       
+                        //EditorGUI.TextField(r, "" + orientations[i]);
+                    }
+                }
+            //EditorGUI.DrawRect(r, options[i]);
+
+                EditorGUI.TextField(r, "" + orientations[i]);
+            }
 
         for (int i = 0; i < myData.grid.GetLength(0); i++)
         {
@@ -116,13 +155,22 @@ public class LevelEditor : EditorWindow
 
                 if (mouseDown && r.Contains(e.mousePosition))
                 {
-                    myData.grid[i, j] = currentOption;
+                    if(currentOption != -1)
+                     myData.grid[i, j] = currentOption;
+                    if(currentDirection != -1)
+                        myData.directions[i, j] = orientations[currentDirection];
                    // string myDataString = JsonConvert.SerializeObject(myData);
                    // File.WriteAllText("Assets/Level.txt", myDataString);
                 }
 
                 int objectType = myData.grid[i, j];
+                char directionType = myData.directions[i, j];
+                GUIStyle style = new GUIStyle();
+                //style.font.material.color = options[objectType];
                 EditorGUI.DrawRect(r, options[objectType]);
+                EditorGUI.TextArea(r, "" + directionType, style);
+                
+
             }
         }
 

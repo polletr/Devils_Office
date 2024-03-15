@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 public class MoveState : BaseState
 {
     Vector3 nextLocation;
+    Vector2Int oldLocation;
     bool canMove;
 
     public override void EnterState()
@@ -16,7 +17,9 @@ public class MoveState : BaseState
             canMove = true;
             //Play Animation
 
+            oldLocation = player.gridLocation;
             player.gridLocation += player.fwdDirection;
+
             nextLocation = GridController.Instance.GetGridLocation(player.gridLocation);
         }
         else
@@ -43,6 +46,8 @@ public class MoveState : BaseState
         }
         else if(canMove)
         {
+            GridController.Instance.objLocations[oldLocation.x, oldLocation.y] = null;
+            GridController.Instance.objLocations[(int)nextLocation.x, (int)nextLocation.y] = player;
             player.transform.position = nextLocation;
             player.ChangeState(new IdleState());
         }
