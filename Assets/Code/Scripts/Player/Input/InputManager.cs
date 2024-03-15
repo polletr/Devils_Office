@@ -53,7 +53,7 @@ public class InputManager : MonoBehaviour
         action.Player.Kill.performed += (val) => player.HandleAttack();
 
         action.Player.Interact.performed += (val) => player.HandleInteract();
-        action.Player.Interact.canceled += (val) => player.HandleInteract();
+        action.Player.Interact.canceled += (val) => player.HandleStopInteract();
 
         action.Player.ViewTask.performed += (val) => player.HandleViewTask();
 
@@ -69,7 +69,7 @@ public class InputManager : MonoBehaviour
         action.Player.Kill.performed += (val) => player.HandleAttack();
 
         action.Player.Interact.performed += (val) => player.HandleInteract();
-        action.Player.Interact.canceled += (val) => player.HandleInteract();
+        action.Player.Interact.canceled += (val) => player.HandleStopInteract();
 
         action.Player.ViewTask.performed += (val) => player.HandleViewTask();
 

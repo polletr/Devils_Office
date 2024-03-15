@@ -56,8 +56,8 @@ public class PlayerController : BaseObject
     public void HandleMove()
     {
         currentState?.HandleMovement();
-
     }
+
     public void HandleRotate(float rotateAngle)
     {
         currentState?.HandleRotation(rotateAngle);
@@ -68,8 +68,18 @@ public class PlayerController : BaseObject
     }
     public void HandleInteract()
     {
+        if (GridController.Instance.CanInteract(gridLocation + fwdDirection))
+        {
+            ChangeState(new InteractState());
+        }
 
     }
+
+    public void HandleStopInteract()
+    {
+        currentState?.StopInteract();
+    }
+
     public void HandleViewTask()
     {
 

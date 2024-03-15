@@ -26,11 +26,14 @@ public class GridController : Singleton<GridController>
         { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 }
     };
 
+    public BaseObject[,] objLocations; 
+
     // Start is called before the first frame update
     void Awake()
     {
         int gridSizeX = gridLocations.GetLength(0);
         int gridSizeY = gridLocations.GetLength(1);
+        objLocations = new BaseObject[gridSizeX, gridSizeY];
 
         for (int i = 0; i < gridSizeX; i++)
         {
@@ -40,9 +43,17 @@ public class GridController : Singleton<GridController>
                 BaseObject objectClone = Instantiate(objectPrefabs[gridValue]);
                 objectClone.transform.localPosition = new Vector3(i, 0, j);
                 objectClone.posInGrid = new Vector2Int(i, j);
+                objLocations[i, j] = objectClone;
                 if(gridValue == 3)
                 {
                     objectClone.GetComponent<PlayerController>().gridLocation = new Vector2Int((int)objectClone.transform.position.x, (int)objectClone.transform.position.z);
+                    gridLocations[i, j] = 0;
+                    gridValue = gridLocations[i, j];
+                    BaseObject floorClone = Instantiate(objectPrefabs[gridValue]);
+                    floorClone.transform.localPosition = new Vector3(i, 0, j);
+                    floorClone.posInGrid = new Vector2Int(i, j);
+                    objLocations[i, j] = floorClone;
+
                 }
             }
         }
@@ -71,7 +82,7 @@ public class GridController : Singleton<GridController>
     {
         //Check if the object in front of us can be interected with
 
-        if (CheckMapBoundary(fwdPosition) && gridLocations[fwdPosition.x, fwdPosition.y] == 2)
+        if (CheckMapBoundary(fwdPosition) && objLocations[fwdPosition.x, fwdPosition.y].gameObject.GetComponent<InteractableObj>())
         {
             return true;
         }
