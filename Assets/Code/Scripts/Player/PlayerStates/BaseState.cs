@@ -8,6 +8,8 @@ using UnityEngine;
         public PlayerController player { get; set; }
         public InputManager inputManager { get; set; }
 
+    public AIController AI { get; set; }
+
         protected BaseState currentState;
 
         public virtual void EnterState() { }

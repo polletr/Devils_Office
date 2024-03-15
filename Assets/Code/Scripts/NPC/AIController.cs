@@ -2,10 +2,67 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class AIController : MonoBehaviour
+public class AIController : BaseObject
 {
+    [HideInInspector]
+    public Vector2Int fwdDirection;
 
-    Vector2 currentDirection;
+    public BaseState currentState;
+
+    [HideInInspector]
+    public Vector2Int gridLocation;
+    public Vector3 Position => transform.position;
+    [HideInInspector]
+    public Animator anim;
+
+    public float moveSpeed = 1f;
+    public float rotateSpeed = 1f;
+
+    private void Awake()
+    {
+        fwdDirection = new Vector2Int(0, 1);
+                SetState(State.Idle);
+
+    }
+    private void Update()
+    {
+        currentState?.StateUpdate();
+    }
+    private void FixedUpdate()
+    {
+        currentState?.StateFixedUpdate();
+    }
+
+    public void ChangeState(BaseState newState)
+    {
+        StartCoroutine(WaitFixedFrame(newState));
+    }
+
+    private IEnumerator WaitFixedFrame(BaseState newState)
+    {
+        yield return new WaitForFixedUpdate();
+        currentState?.ExitState();
+        currentState = newState;
+        currentState.AI = this;
+        currentState.EnterState();
+    }
+
+    #region AI Actions
+    public void HandleMove()
+    {
+        currentState?.HandleMovement();
+    }
+    public void HandleRotate(float rotateAngle)
+    {
+        currentState?.HandleRotation(rotateAngle);
+    }
+    public void HandleInteract()
+    {
+
+    }
+
+
+    #endregion
 
     Vector2 currentPos;
     Vector2 targetPos;
@@ -22,19 +79,14 @@ public class AIController : MonoBehaviour
         Died,
         Cremated
     }
-    private State currentState;
-
-    private void Start()
-    {
-        SetState(State.Idle);
-    }
+    private State currentAction;
 
     private void SetState(State newState)
     {
-        currentState = newState;
+        currentAction = newState;
         StopAllCoroutines();
 
-        switch (currentState)
+        switch (currentAction)
         {
             case State.Idle:
                 OnIdle();
@@ -68,46 +120,48 @@ public class AIController : MonoBehaviour
 
     public void OnIdle()
     {
-        //PickAction();
+        ChangeState(new IdleState());
+        //Process Next Action to do 
     }
     private IEnumerator OnMoving()
     {
-        while (currentState == State.Moving)
+        while(currentAction == State.Moving)
         {
+            ChangeState(new MoveState());
             yield return null;
         }
     }
     private IEnumerator OnTurning()
     {
-        while (currentState == State.Turning)
+        while (currentAction == State.Turning)
         {
             yield return null;
         }
     }
     private IEnumerator OnCremated()
     {
-        while (currentState == State.Turning)
+        while (currentAction == State.Turning)
         {
             yield return null;
         }
     }
     private IEnumerator OnDied()
     {
-        while (currentState == State.Turning)
+        while (currentAction == State.Turning)
         {
             yield return null;
         }
     }
     private IEnumerator OnStare()
     {
-        while (currentState == State.Stare)
+        while (currentAction == State.Stare)
         {
             yield return null;
         }
     }
     private IEnumerator OnDoTasks()
     {
-        while (currentState == State.DoTasks)
+        while (currentAction == State.DoTasks)
         {
             yield return null;
         }
