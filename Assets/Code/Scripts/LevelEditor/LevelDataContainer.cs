@@ -7,7 +7,7 @@ using UnityEngine;
 [CreateAssetMenu]
 public class LevelDataContainer : ScriptableObject
 {
-    public LevelData levelData = new LevelData();
+    public LevelData levelData;
 
 #if UNITY_EDITOR
     private void OnValidate()

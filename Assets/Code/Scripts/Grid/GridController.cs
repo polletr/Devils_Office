@@ -1,6 +1,9 @@
+using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
+
 
 public class GridController : Singleton<GridController>
 {
@@ -8,31 +11,25 @@ public class GridController : Singleton<GridController>
     Vector3 startLocation;
     public BaseObject[] objectPrefabs;
 
+    private LevelData levelData;
+
+
+    public TextAsset[] levels;
+
     //int[,] gridLocations = new int[10, 10];
     [SerializeField]
     float tileWidth = 1f, tileHeight = 1f;
 
 
 
-    public int[,] gridLocations = new int[,]
-    {
-        { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
-        { 1, 0, 0, 0, 0, 2, 0, 0, 0, 0, 1 },
-        { 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1 },
-        { 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1 },
-        { 1, 0, 2, 0, 0, 0, 0, 0, 1, 0, 1 },
-        { 1, 0, 0, 0, 0, 3, 0, 2, 0, 0, 1 },
-        { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
-        { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
-        { 1, 2, 0, 0, 0, 0, 0, 0, 0, 2, 1 },
-        { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 }
-    };
-
+    public int[,] gridLocations = new int[,] { };
     public BaseObject[,] objLocations;
 
     // Start is called before the first frame update
     void Awake()
     {
+        LoadLevel();
+        gridLocations = levelData.grid;
         int gridSizeX = gridLocations.GetLength(0);
         int gridSizeY = gridLocations.GetLength(1);
         objLocations = new BaseObject[gridSizeX, gridSizeY];
@@ -59,6 +56,13 @@ public class GridController : Singleton<GridController>
                 }
             }
         }
+    }
+
+    private void LoadLevel()
+    {
+        string myDataString = levels[Random.Range(0, levels.Length)].text;
+        levelData = JsonConvert.DeserializeObject<LevelData>(myDataString);
+
     }
 
     //0 = floor, 1 = wall, 2 = interact
