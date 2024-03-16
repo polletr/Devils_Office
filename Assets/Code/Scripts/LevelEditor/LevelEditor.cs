@@ -24,7 +24,8 @@ public class LevelEditor : EditorWindow
             Color.white,
             Color.yellow,
             Color.green,
-            Color.blue
+            Color.gray,
+            Color.red,
     };
     char[] orientations =
     {
@@ -41,7 +42,8 @@ public class LevelEditor : EditorWindow
         "Wall",
         "Interactable",
         "Player",
-        "NPCs"
+        "Coffee Machine",
+        "Table"
     };
 
     public LevelData myData;
