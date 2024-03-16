@@ -12,6 +12,8 @@ public class GridController : Singleton<GridController>
     [SerializeField]
     float tileWidth = 1f, tileHeight = 1f;
 
+
+
     public int[,] gridLocations = new int[,]
     {
         { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
@@ -26,7 +28,7 @@ public class GridController : Singleton<GridController>
         { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 }
     };
 
-    public BaseObject[,] objLocations; 
+    public BaseObject[,] objLocations;
 
     // Start is called before the first frame update
     void Awake()

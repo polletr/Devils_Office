@@ -23,8 +23,7 @@ public class LevelEditor : EditorWindow
             Color.white,
             Color.yellow,
             Color.green,
-            Color.blue,
-            Color.cyan,
+            Color.blue
     };
     char[] orientations =
     {
@@ -44,8 +43,9 @@ public class LevelEditor : EditorWindow
         "NPCs"
     };
 
-    private LevelData myData;
+    public LevelDataContainer myData;
 
+    public Object levelSource;
 
     // Add menu item named "My Window" to the Window menu
     [MenuItem("Window/Level Editor")]
@@ -59,30 +59,64 @@ public class LevelEditor : EditorWindow
     {
         GUILayout.Label("Level Editor", EditorStyles.boldLabel);
 
-        if (myData == null)
+        levelSource = EditorGUILayout.ObjectField("Save File", levelSource, typeof(LevelDataContainer), false);
+
+        if (levelSource == null)
         {
-            if (File.Exists("Assets/Level/Level.txt"))
-            {
-                string myDataString = File.ReadAllText("Assets/Level/Level.txt");
-                //myData = JsonConvert.DeserializeObject<LevelData>(myDataString);
-            }
-            else
-            {
-                myData = new LevelData();
-            }
+            
+            myData = ScriptableObject.CreateInstance<LevelDataContainer>();
+            myData.levelData = new LevelData();
         }
 
-        myData.levelWidth = EditorGUILayout.IntField(myData.levelWidth);
-        myData.levelHeight = EditorGUILayout.IntField(myData.levelHeight);
+            myData.levelData.levelWidth = EditorGUILayout.IntField(myData.levelData.levelWidth);
+            myData.levelData.levelHeight = EditorGUILayout.IntField(myData.levelData.levelHeight);
+
+
+        // myData.grid = new int[myData.levelWidth, myData.levelHeight];
+        // myData.directions = new char[myData.levelWidth, myData.levelHeight];
+
+        if (GUILayout.Button("Load"))
+        {
+            if (levelSource != null)
+            {
+                Debug.Log("Load");
+                myData = (LevelDataContainer)levelSource;
+                Debug.Log(myData.levelData.grid);
+
+                myData.levelData.levelWidth = EditorGUILayout.IntField(myData.levelData.levelWidth);
+                myData.levelData.levelHeight = EditorGUILayout.IntField(myData.levelData.levelHeight);
+
+
+                for (int i = 0; i < myData.levelData.grid.GetLength(0); i++)
+                {
+                    for (int j = 0; j < myData.levelData.grid.GetLength(1); j++)
+                    {
+                        Rect r = new Rect(leftPadding + i * (gridSize + gridPadding), 180 + (myData.levelData.grid.GetLength(1) - j) * (gridSize + gridPadding), gridSize, gridSize);
+
+                        int objectType = myData.levelData.grid[i, j];
+                        char directionType = myData.levelData.directions[i, j];
+                        GUIStyle style = new GUIStyle();
+                        //style.font.material.color = options[objectType];
+                        EditorGUI.DrawRect(r, options[objectType]);
+                        EditorGUI.TextArea(r, "" + directionType, style);
+
+
+                    }
+                }
+            }
+
+        }
+
 
         if (GUILayout.Button("Reset"))
         {
             if (EditorUtility.DisplayDialog("Reset", "This will clear your level. Are you sure?!", "Yes", "No"))
             {
-                myData.grid = new int[myData.levelWidth, myData.levelHeight];
-                myData.directions = new char[myData.levelWidth, myData.levelHeight];
+                myData.levelData.grid = new int[myData.levelData.levelWidth, myData.levelData.levelHeight];
+                myData.levelData.directions = new char[myData.levelData.levelWidth, myData.levelData.levelHeight];
             }
-        } 
+        }
+
 
         Event e = Event.current;
 
@@ -144,35 +178,34 @@ public class LevelEditor : EditorWindow
                 EditorGUI.TextField(r, "" + orientations[i]);
             }
 
-        for (int i = 0; i < myData.grid.GetLength(0); i++)
+        for (int i = 0; i < myData.levelData.grid.GetLength(0); i++)
         {
             //GetLength(1) will give me the length of the second dimension (=columns)
-            for (int j = 0; j < myData.grid.GetLength(1); j++)
+            for (int j = 0; j < myData.levelData.grid.GetLength(1); j++)
             {
                 //I can get each individual element of the array, by using both i and j
 
-                Rect r = new Rect(leftPadding + i * (gridSize + gridPadding), 180 + (myData.grid.GetLength(1) - j) * (gridSize + gridPadding), gridSize, gridSize);
+                Rect r = new Rect(leftPadding + i * (gridSize + gridPadding), 180 + (myData.levelData.grid.GetLength(1) - j) * (gridSize + gridPadding), gridSize, gridSize);
 
                 if (mouseDown && r.Contains(e.mousePosition))
                 {
                     if(currentOption != -1)
-                     myData.grid[i, j] = currentOption;
+                     myData.levelData.grid[i, j] = currentOption;
                     if(currentDirection != -1)
-                        myData.directions[i, j] = orientations[currentDirection];
-                   // string myDataString = JsonConvert.SerializeObject(myData);
-                   // File.WriteAllText("Assets/Level.txt", myDataString);
+                        myData.levelData.directions[i, j] = orientations[currentDirection];
                 }
 
-                int objectType = myData.grid[i, j];
-                char directionType = myData.directions[i, j];
+                int objectType = myData.levelData.grid[i, j];
+                char directionType = myData.levelData.directions[i, j];
                 GUIStyle style = new GUIStyle();
                 //style.font.material.color = options[objectType];
                 EditorGUI.DrawRect(r, options[objectType]);
                 EditorGUI.TextArea(r, "" + directionType, style);
-                
 
             }
         }
+
+
 
     }
 
