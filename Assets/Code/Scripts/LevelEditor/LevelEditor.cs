@@ -63,14 +63,17 @@ public class LevelEditor : EditorWindow
 
         if (levelSource == null)
         {
-            
+            return;
             myData = ScriptableObject.CreateInstance<LevelDataContainer>();
             myData.levelData = new LevelData();
+        }
+        else
+        {
+            myData = (LevelDataContainer)levelSource;
         }
 
             myData.levelData.levelWidth = EditorGUILayout.IntField(myData.levelData.levelWidth);
             myData.levelData.levelHeight = EditorGUILayout.IntField(myData.levelData.levelHeight);
-
 
         // myData.grid = new int[myData.levelWidth, myData.levelHeight];
         // myData.directions = new char[myData.levelWidth, myData.levelHeight];
@@ -80,8 +83,6 @@ public class LevelEditor : EditorWindow
             if (levelSource != null)
             {
                 Debug.Log("Load");
-                myData = (LevelDataContainer)levelSource;
-                Debug.Log(myData.levelData.grid);
 
                 myData.levelData.levelWidth = EditorGUILayout.IntField(myData.levelData.levelWidth);
                 myData.levelData.levelHeight = EditorGUILayout.IntField(myData.levelData.levelHeight);
