@@ -3,7 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
-
+using UnityEngine.Assertions.Must;
+using System;
+using Unity.VisualScripting;
 
 public class GridController : Singleton<GridController>
 {
@@ -20,47 +22,64 @@ public class GridController : Singleton<GridController>
     [SerializeField]
     float tileWidth = 1f, tileHeight = 1f;
 
-
-
     public int[,] gridLocations = new int[,] { };
+    public char[,] gridRotations = new char[,] { };
+
+
     public BaseObject[,] objLocations;
+    public BaseObject[,] objLocationsStart;
+
 
     // Start is called before the first frame update
     void Awake()
     {
         LoadLevel();
         gridLocations = levelData.grid;
+        gridRotations = levelData.directions;
+
         int gridSizeX = gridLocations.GetLength(0);
         int gridSizeY = gridLocations.GetLength(1);
-        objLocations = new BaseObject[gridSizeX, gridSizeY];
+        objLocationsStart = new BaseObject[gridSizeX, gridSizeY];
 
         for (int i = 0; i < gridSizeX; i++)
         {
             for (int j = 0; j < gridSizeY; j++)
             {
                 int gridValue = gridLocations[i, j];
+                char gridRotation = gridRotations[i, j];
+                
+                Debug.Log(gridRotation);
                 BaseObject objectClone = Instantiate(objectPrefabs[gridValue]);
+                if (gridRotation.ToString() != "")
+                {
+                    RotateObject(objectClone, gridRotation);
+                }
                 objectClone.transform.localPosition = new Vector3(i, 0, j);
                 objectClone.posInGrid = new Vector2Int(i, j);
-                objLocations[i, j] = objectClone;
-                if(gridValue == 3)
+                objLocationsStart[i, j] = objectClone;
+
+                if(objectClone.GetComponent<CharacterClass>())
                 {
-                    objectClone.GetComponent<PlayerController>().gridLocation = new Vector2Int((int)objectClone.transform.position.x, (int)objectClone.transform.position.z);
+                    objectClone.GetComponent<CharacterClass>().gridLocation = new Vector2Int((int)objectClone.transform.position.x, (int)objectClone.transform.position.z);
                     gridLocations[i, j] = 0;
                     gridValue = gridLocations[i, j];
                     BaseObject floorClone = Instantiate(objectPrefabs[gridValue]);
                     floorClone.transform.localPosition = new Vector3(i, 0, j);
                     floorClone.posInGrid = new Vector2Int(i, j);
-                    objLocations[i, j] = floorClone;
+                    objLocationsStart[i, j] = floorClone;
 
                 }
             }
         }
+
+        objLocations = objLocationsStart;
+
+
     }
 
     private void LoadLevel()
     {
-        string myDataString = levels[Random.Range(0, levels.Length)].text;
+        string myDataString = levels[UnityEngine.Random.Range(0, levels.Length)].text;
         levelData = JsonConvert.DeserializeObject<LevelData>(myDataString);
 
     }
@@ -69,7 +88,7 @@ public class GridController : Singleton<GridController>
     public bool CanMove(Vector2Int nextPosition)
     {
         Debug.Log(nextPosition);
-        if (CheckMapBoundary(nextPosition) && gridLocations[nextPosition.x, nextPosition.y] == 0)
+        if (CheckMapBoundary(nextPosition) && gridLocations[nextPosition.x, nextPosition.y] == 0 && objLocations[nextPosition.x, nextPosition.y].gameObject.GetComponent<CharacterClass>() == null)
         {
             return true;
         }
@@ -106,4 +125,24 @@ public class GridController : Singleton<GridController>
     {
         return gridPosition.x <= gridLocations.GetLength(0) && gridPosition.y <= gridLocations.GetLength(1) && gridPosition.x >= 0 && gridPosition.y >= 0;
     }
+
+    void RotateObject(BaseObject instantiatedObj, char characterRotation)
+    {
+        switch (characterRotation)
+        {
+            case 'R':
+                instantiatedObj.transform.eulerAngles = new Vector3 (0, 90f, 0);
+                break;
+            case 'L':
+                instantiatedObj.transform.eulerAngles = new Vector3(0, 270f, 0);
+                break;
+            case 'U':
+                instantiatedObj.transform.eulerAngles = new Vector3(0, 0f, 0);
+                break;
+            case 'D':
+                instantiatedObj.transform.eulerAngles = new Vector3(0, 180f, 1);
+                break;
+        }
+    }
+
 }

@@ -7,6 +7,9 @@ public class CharacterClass : BaseObject
 {
     [HideInInspector]
     public Vector2Int fwdDirection;
+    [HideInInspector]
+    public Vector2Int gridLocation;
+
 
     // Start is called before the first frame update
     protected virtual void Awake()

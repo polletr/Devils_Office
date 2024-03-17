@@ -8,8 +8,6 @@ using UnityEngine.Playables;
 public class PlayerController : CharacterClass
 {
     public BaseState currentState;
-    [HideInInspector]
-    public Vector2Int gridLocation;
     public Vector3 Position => transform.position;
 
     [HideInInspector]

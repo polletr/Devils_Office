@@ -38,18 +38,21 @@ public class MoveState : BaseState
 
     public override void StateFixedUpdate()
     {
-        if (Vector3.Distance(player.transform.position, nextLocation) > 0.01f && canMove)
+        if (canMove)
         {
-            float step = player.moveSpeed * Time.fixedDeltaTime;
+            if (Vector3.Distance(player.transform.position, nextLocation) > 0.01f)
+            {
+                float step = player.moveSpeed * Time.fixedDeltaTime;
 
-            player.transform.position = Vector3.MoveTowards(player.transform.position, nextLocation, step);
-        }
-        else if(canMove)
-        {
-            GridController.Instance.objLocations[oldLocation.x, oldLocation.y] = null;
-            GridController.Instance.objLocations[(int)nextLocation.x, (int)nextLocation.y] = player;
-            player.transform.position = nextLocation;
-            player.ChangeState(new IdleState());
+                player.transform.position = Vector3.MoveTowards(player.transform.position, nextLocation, step);
+            }
+            else
+            {
+                GridController.Instance.objLocations[oldLocation.x, oldLocation.y] = GridController.Instance.objLocationsStart[oldLocation.x, oldLocation.y];
+                GridController.Instance.objLocations[(int)nextLocation.x, (int)nextLocation.y] = player;
+                player.transform.position = nextLocation;
+                player.ChangeState(new IdleState());
+            }
         }
     }
 
