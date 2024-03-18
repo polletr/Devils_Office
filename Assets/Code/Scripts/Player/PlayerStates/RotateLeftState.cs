@@ -11,7 +11,7 @@ public class RotateLeftState : BaseState
     {
         //Play Animation
 
-        float currentDirection = player.transform.eulerAngles.y;
+        float currentDirection = character.transform.eulerAngles.y;
         nextDirection = currentDirection - 90;
         if (nextDirection >= 360)
         {
@@ -32,17 +32,17 @@ public class RotateLeftState : BaseState
 
     public override void StateFixedUpdate()
     {
-        if (player.transform.eulerAngles != new Vector3(0, nextDirection, 0))
+        if (character.transform.eulerAngles != new Vector3(0, nextDirection, 0))
         {
-            float step = player.rotateSpeed * Time.fixedDeltaTime;
-            player.transform.rotation = Quaternion.RotateTowards(player.transform.rotation, Quaternion.Euler(new Vector3(0, nextDirection, 0)), step);
+            float step = character.rotateSpeed * Time.fixedDeltaTime;
+            character.transform.rotation = Quaternion.RotateTowards(character.transform.rotation, Quaternion.Euler(new Vector3(0, nextDirection, 0)), step);
         }
         else
         {
-            player.transform.eulerAngles = new Vector3(0, nextDirection, 0);
+            character.transform.eulerAngles = new Vector3(0, nextDirection, 0);
             ChangeDirection();
 
-            player.ChangeState(new IdleState());
+            character.ChangeState(new IdleState());
         }
 
     }
@@ -54,20 +54,20 @@ public class RotateLeftState : BaseState
 
     void ChangeDirection()
     {
-        int directionAngle = (int)Math.Round(player.transform.eulerAngles.y);
+        int directionAngle = (int)Math.Round(character.transform.eulerAngles.y);
         switch (directionAngle)
         {
             case 0:
-                player.fwdDirection = new Vector2Int(0, 1);
+                character.fwdDirection = new Vector2Int(0, 1);
                 break;
             case 270:
-                player.fwdDirection = new Vector2Int(-1, 0);
+                character.fwdDirection = new Vector2Int(-1, 0);
                 break;
             case 90:
-                player.fwdDirection = new Vector2Int(1, 0);
+                character.fwdDirection = new Vector2Int(1, 0);
                 break;
             case 180:
-                player.fwdDirection = new Vector2Int(0, -1);
+                character.fwdDirection = new Vector2Int(0, -1);
                 break;
         }
     }

@@ -5,23 +5,41 @@ using UnityEngine;
 
 public class CharacterClass : BaseObject
 {
+    public float moveSpeed = 1f;
+    public float rotateSpeed = 1f;
+
+
     [HideInInspector]
     public Vector2Int fwdDirection;
     [HideInInspector]
     public Vector2Int gridLocation;
 
+    [HideInInspector]
+    public Animator anim;
 
-    // Start is called before the first frame update
+    public BaseState currentState;
+
     protected virtual void Awake()
     {
         transform.eulerAngles = new Vector3(0f, UnityEngine.Random.Range(0,3) * 90f, 0f);
         ChangeDirection();
+        ChangeState(new IdleState());
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ChangeState(BaseState newState)
     {
-        
+        StartCoroutine(WaitFixedFrame(newState));
+    }
+
+    private IEnumerator WaitFixedFrame(BaseState newState)
+    {
+
+        yield return new WaitForFixedUpdate();
+        currentState?.ExitState();
+        currentState = newState;
+        currentState.character = this;
+        currentState.EnterState();
+
     }
 
     void ChangeDirection()

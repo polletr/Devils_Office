@@ -12,7 +12,7 @@ public class InteractState : BaseState
         //Play Animation
         //Enable UI
 
-        interactTimer = GridController.Instance.objLocations[player.gridLocation.x + player.fwdDirection.x, player.gridLocation.y + player.fwdDirection.y].GetComponent<InteractableObj>().waitTime;
+        interactTimer = GridController.Instance.objLocations[character.gridLocation.x + character.fwdDirection.x, character.gridLocation.y + character.fwdDirection.y].GetComponent<InteractableObj>().waitTime;
         timer = 0f;
 
     }
@@ -24,7 +24,7 @@ public class InteractState : BaseState
         if (timer > interactTimer)
         {
             //Disable UI
-            player.ChangeState(new IdleState());
+            character.ChangeState(new IdleState());
         }
     }
 
@@ -32,7 +32,7 @@ public class InteractState : BaseState
     {
         //Disable UI
 
-        player.ChangeState(new IdleState());
+        character.ChangeState(new IdleState());
         
     }
 

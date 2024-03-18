@@ -13,10 +13,6 @@ namespace Tarodev_Pathfinding._Scripts {
     /// Also, setting colors and text on each hex affects performance, so removing that will also improve it marginally.
     /// </summary>
     public static class Pathfinding {
-        private static readonly Color PathColor = new Color(0.65f, 0.35f, 0.35f);
-        private static readonly Color OpenColor = new Color(.4f, .6f, .4f);
-        private static readonly Color ClosedColor = new Color(0.35f, 0.4f, 0.5f);
-        
         public static List<NodeBase> FindPath(NodeBase startNode, NodeBase targetNode) {
             var toSearch = new List<NodeBase>() { startNode };
             var processed = new List<NodeBase>();
@@ -29,7 +25,6 @@ namespace Tarodev_Pathfinding._Scripts {
                 processed.Add(current);
                 toSearch.Remove(current);
                 
-                current.SetColor(ClosedColor);
 
                 if (current == targetNode) {
                     var currentPathTile = targetNode;
@@ -42,10 +37,6 @@ namespace Tarodev_Pathfinding._Scripts {
                         if (count < 0) throw new Exception();
                         Debug.Log("sdfsdf");
                     }
-                    
-                    foreach (var tile in path) tile.SetColor(PathColor);
-                    startNode.SetColor(PathColor);
-                    Debug.Log(path.Count);
                     return path;
                 }
 
@@ -61,7 +52,6 @@ namespace Tarodev_Pathfinding._Scripts {
                         if (!inSearch) {
                             neighbor.SetH(neighbor.GetDistance(targetNode));
                             toSearch.Add(neighbor);
-                            neighbor.SetColor(OpenColor);
                         }
                     }
                 }

@@ -5,10 +5,8 @@ using UnityEngine;
 
         protected float nextDirection;
 
-        public PlayerController player { get; set; }
+        public CharacterClass character { get; set; }
         public InputManager inputManager { get; set; }
-
-    public AIController AI { get; set; }
 
         protected BaseState currentState;
 

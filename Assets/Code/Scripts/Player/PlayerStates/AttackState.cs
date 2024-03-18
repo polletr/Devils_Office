@@ -9,13 +9,13 @@ public class AttackState : BaseState
     {
         //Play Animation
 
-        if (GridController.Instance.CanAttack(player.gridLocation + player.fwdDirection))
+        if (GridController.Instance.CanAttack(character.gridLocation + character.fwdDirection))
         {
             
         }
         else
         {
-            player.ChangeState(new IdleState());
+            character.ChangeState(new IdleState());
         }
 
     }

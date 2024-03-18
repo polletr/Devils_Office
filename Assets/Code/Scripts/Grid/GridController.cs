@@ -1,11 +1,7 @@
 using Newtonsoft.Json;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using System.IO;
-using UnityEngine.Assertions.Must;
-using System;
 using Unity.VisualScripting;
+using UnityEngine;
 
 public class GridController : Singleton<GridController>
 {
@@ -26,8 +22,9 @@ public class GridController : Singleton<GridController>
     public char[,] gridRotations = new char[,] { };
 
 
-    public BaseObject[,] objLocations;
-    public BaseObject[,] objLocationsStart;
+    public BaseObject[,] objLocations;     //all objects in the grid at all times
+    public BaseObject[,] objLocationsStart;//all objects in the grid that dont move
+    public List <BaseObject> interactableObjs = new();
 
 
     // Start is called before the first frame update
@@ -47,7 +44,7 @@ public class GridController : Singleton<GridController>
             {
                 int gridValue = gridLocations[i, j];
                 char gridRotation = gridRotations[i, j];
-                
+
                 Debug.Log(gridRotation);
                 BaseObject objectClone = Instantiate(objectPrefabs[gridValue]);
                 if (gridRotation.ToString() != "")
@@ -58,7 +55,7 @@ public class GridController : Singleton<GridController>
                 objectClone.posInGrid = new Vector2Int(i, j);
                 objLocationsStart[i, j] = objectClone;
 
-                if(objectClone.GetComponent<CharacterClass>())
+                if (objectClone.GetComponent<CharacterClass>())
                 {
                     objectClone.GetComponent<CharacterClass>().gridLocation = new Vector2Int((int)objectClone.transform.position.x, (int)objectClone.transform.position.z);
                     gridLocations[i, j] = 0;
@@ -69,11 +66,17 @@ public class GridController : Singleton<GridController>
                     objLocationsStart[i, j] = floorClone;
 
                 }
+
+                if(objectClone.GetComponent<InteractableObj>())
+                {
+                    interactableObjs.Add(objectClone);
+                }
             }
         }
 
         objLocations = objLocationsStart;
 
+       // PathFinder.Instance.SetGrid(gridLocations);
 
     }
 
@@ -97,7 +100,7 @@ public class GridController : Singleton<GridController>
     }
     public bool CanAttack(Vector2Int fwdPosition)
     {
-        //Check if character in front of player can be attacked
+        //Check if character in front of character can be attacked
 
 
         return true;
@@ -118,7 +121,7 @@ public class GridController : Singleton<GridController>
 
     public Vector3 GetGridLocation(Vector2Int gridPosition)
     {
-        return startLocation + new Vector3(gridPosition.x * tileWidth,0f, gridPosition.y * tileHeight);
+        return startLocation + new Vector3(gridPosition.x * tileWidth, 0f, gridPosition.y * tileHeight);
     }
 
     private bool CheckMapBoundary(Vector2Int gridPosition)
@@ -131,7 +134,7 @@ public class GridController : Singleton<GridController>
         switch (characterRotation)
         {
             case 'R':
-                instantiatedObj.transform.eulerAngles = new Vector3 (0, 90f, 0);
+                instantiatedObj.transform.eulerAngles = new Vector3(0, 90f, 0);
                 break;
             case 'L':
                 instantiatedObj.transform.eulerAngles = new Vector3(0, 270f, 0);

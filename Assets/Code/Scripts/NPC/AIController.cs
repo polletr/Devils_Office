@@ -1,27 +1,21 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
-public class AIController : BaseObject
+public class AIController : CharacterClass
 {
-    [HideInInspector]
-    public Vector2Int fwdDirection;
+    Vector2 currentPos;
+    Vector2 targetPos;
 
-    public BaseState currentState;
+    bool _iskilled;
 
-    [HideInInspector]
-    public Vector2Int gridLocation;
-    public Vector3 Position => transform.position;
-    [HideInInspector]
-    public Animator anim;
 
-    public float moveSpeed = 1f;
-    public float rotateSpeed = 1f;
-
-    private void Awake()
+    protected override void Awake()
     {
-        fwdDirection = new Vector2Int(0, 1);
-                SetState(State.Idle);
+        base.Awake();
+        SetBrain(AITasks.Think);
+        // GridController.Instance.objLocations[(int)transform.position.x, (int)transform.position.z] = ;
 
     }
     private void Update()
@@ -31,20 +25,6 @@ public class AIController : BaseObject
     private void FixedUpdate()
     {
         currentState?.StateFixedUpdate();
-    }
-
-    public void ChangeState(BaseState newState)
-    {
-        StartCoroutine(WaitFixedFrame(newState));
-    }
-
-    private IEnumerator WaitFixedFrame(BaseState newState)
-    {
-        yield return new WaitForFixedUpdate();
-        currentState?.ExitState();
-        currentState = newState;
-        currentState.AI = this;
-        currentState.EnterState();
     }
 
     #region AI Actions
@@ -64,173 +44,71 @@ public class AIController : BaseObject
 
     #endregion
 
-    Vector2 currentPos;
-    Vector2 targetPos;
+    private AITasks currentAction;
 
-    bool _iskilled;
-
-    public enum State
-    {
-        Idle,
-        Moving,
-        Turning,
-        DoTasks,
-        Stare,
-        Died,
-        Cremated
-    }
-    private State currentAction;
-
-    private void SetState(State newState)
+    private void SetBrain(AITasks newState)
     {
         currentAction = newState;
         StopAllCoroutines();
 
         switch (currentAction)
         {
-            case State.Idle:
-                OnIdle();
+            case AITasks.Think:
+                OnThinking();
                 break;
-            case State.Moving:
-                StartCoroutine(OnMoving());
+            case AITasks.Roam:
+                StartCoroutine(OnRoaming());
                 break;
-            case State.Turning:
-                StartCoroutine(OnTurning());
-                break;
-            case State.DoTasks:
+            case AITasks.DoTask:
                 StartCoroutine(OnDoTasks());
-                break;
-            case State.Stare:
-                StartCoroutine(OnStare());
-                break;
-            case State.Died:
-                StartCoroutine(OnDied());
-                break;
-            case State.Cremated:
-                StartCoroutine(OnCremated());
                 break;
             default:
                 break;
         }
-
-
     }
 
     #region AI States
 
-    public void OnIdle()
+    public void OnThinking()
     {
-        ChangeState(new IdleState());
-        //Process Next Action to do 
+        SetBrain((AITasks)Random.Range(1, Enum.GetValues(typeof(AITasks)).Length));
     }
-    private IEnumerator OnMoving()
+    private IEnumerator OnRoaming()
     {
-        while(currentAction == State.Moving)
+        while (currentAction == AITasks.Roam)
         {
             ChangeState(new MoveState());
-            yield return null;
-        }
-    }
-    private IEnumerator OnTurning()
-    {
-        while (currentAction == State.Turning)
-        {
-            yield return null;
-        }
-    }
-    private IEnumerator OnCremated()
-    {
-        while (currentAction == State.Turning)
-        {
-            yield return null;
-        }
-    }
-    private IEnumerator OnDied()
-    {
-        while (currentAction == State.Turning)
-        {
-            yield return null;
-        }
-    }
-    private IEnumerator OnStare()
-    {
-        while (currentAction == State.Stare)
-        {
-            yield return null;
+            int randomNumber = Random.Range(0, 2);
+            if (randomNumber == 0)
+            {
+                ChangeState(new RotateLeftState());
+            }
+            else
+            {
+                ChangeState(new RotateRightState());
+            }
+            yield return new WaitForSeconds(Random.Range(30,60));
         }
     }
     private IEnumerator OnDoTasks()
     {
-        while (currentAction == State.DoTasks)
+        while (currentAction == AITasks.DoTask)
         {
             yield return null;
         }
     }
 
-    #endregion
 
-    #region AI Checks
-    enum MoveTo
-    {
-        MoveToTask,
-        MoveToPlayer,
-        MoveToRandomPos,
-    }
-
-    private void PickAction()
-    {
-        SetState((State)UnityEngine.Random.Range(0, Enum.GetValues(typeof(State)).Length));
-    }
-
-    private void MoveAITo(MoveTo moveTo)
-    {
-        switch (moveTo)
-        {
-            case MoveTo.MoveToTask:
-                targetPos = RandomTask();
-                break;
-            case MoveTo.MoveToPlayer:
-                targetPos = ClosePlayer();
-                break;
-            case MoveTo.MoveToRandomPos:
-                targetPos = new Vector2(UnityEngine.Random.Range(0, 2), UnityEngine.Random.Range(0, 2));
-                break;
-            default:
-                break;
-        }
-    }
-
-    private Vector2 ClosePlayer()
-    {
-        Collider[] colliders = Physics.OverlapSphere(this.transform.position, 10f);
-        foreach (Collider collider in colliders)
-        {
-            if (collider.CompareTag("Player"))
-            {
-                return targetPos = collider.transform.position;
-            }
-        }
-        return this.transform.position;
-    }
-    private Vector2 RandomTask()
-    {
-        /*        Collider[] colliders = Physics.OverlapSphere(this.transform.position, 10f);
-                foreach (Collider collider in colliders)
-                {
-                    if (collider.CompareTag("Player"))
-                    {
-                        return targetPos = collider.transform.position;
-                    }
-                }
-             */
-        return this.transform.position;
-    }
-
-    public void KilledByPlayer()
-    {
-        SetState(State.Died);
-    }
 
     #endregion
+
+    public enum AITasks
+    {
+        Think,
+        Roam,
+        DoTask
+    }
+
+
 
 }

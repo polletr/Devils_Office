@@ -37,8 +37,6 @@ namespace Tarodev_Pathfinding._Scripts.Grid {
             _goalNodeBase = nodeBase;
             _spawnedGoal.transform.position = _goalNodeBase.Coords.Pos;
 
-            foreach (var t in Tiles.Values) t.RevertTile();
-
             var path = Pathfinding.FindPath(_playerNodeBase, _goalNodeBase);
         }
 

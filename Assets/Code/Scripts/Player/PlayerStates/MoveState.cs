@@ -12,20 +12,20 @@ public class MoveState : BaseState
     public override void EnterState()
     {
 
-        if (GridController.Instance.CanMove(player.gridLocation + player.fwdDirection))
+        if (GridController.Instance.CanMove(character.gridLocation + character.fwdDirection))
         {
             canMove = true;
             //Play Animation
 
-            oldLocation = player.gridLocation;
-            player.gridLocation += player.fwdDirection;
+            oldLocation = character.gridLocation;
+            character.gridLocation += character.fwdDirection;
 
-            nextLocation = GridController.Instance.GetGridLocation(player.gridLocation);
+            nextLocation = GridController.Instance.GetGridLocation(character.gridLocation);
         }
         else
         {
             canMove = false;
-            player.ChangeState(new IdleState());
+            character.ChangeState(new IdleState());
         }
 
     }
@@ -40,19 +40,23 @@ public class MoveState : BaseState
     {
         if (canMove)
         {
-            if (Vector3.Distance(player.transform.position, nextLocation) > 0.01f)
+            if (Vector3.Distance(character.transform.position, nextLocation) > 0.01f)
             {
-                float step = player.moveSpeed * Time.fixedDeltaTime;
+                float step = character.moveSpeed * Time.fixedDeltaTime;
 
-                player.transform.position = Vector3.MoveTowards(player.transform.position, nextLocation, step);
+                character.transform.position = Vector3.MoveTowards(character.transform.position, nextLocation, step);
             }
             else
             {
                 GridController.Instance.objLocations[oldLocation.x, oldLocation.y] = GridController.Instance.objLocationsStart[oldLocation.x, oldLocation.y];
-                GridController.Instance.objLocations[(int)nextLocation.x, (int)nextLocation.y] = player;
-                player.transform.position = nextLocation;
-                player.ChangeState(new IdleState());
+                GridController.Instance.gridLocations[oldLocation.x, oldLocation.y] = 0;
+                GridController.Instance.objLocations[(int)nextLocation.x, (int)nextLocation.y] = character;
+                GridController.Instance.gridLocations[(int)nextLocation.x, (int)nextLocation.y] = 3;
+                character.transform.position = nextLocation;
+                character.ChangeState(new IdleState());
+                PathFinder.Instance.SetGrid(GridController.Instance.gridLocations);
             }
+
         }
     }
 

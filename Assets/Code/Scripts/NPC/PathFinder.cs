@@ -25,7 +25,7 @@ public class PathFinder : Singleton<PathFinder>
                 //Walkable if not a wall
 
                 //1 = wall, 6 = cone
-                t.isWalkable = grid[i, j] != 1;
+                t.isWalkable = grid[i, j] == 0;
 
                 tiles[i, j] = t;
             }

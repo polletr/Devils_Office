@@ -30,7 +30,7 @@ public class IdleState : BaseState
 
     public override void HandleMovement()
     {
-        player.ChangeState(new MoveState());
+        character.ChangeState(new MoveState());
     }
 
     public override void HandleRotation(float rotateAngle)
@@ -38,11 +38,11 @@ public class IdleState : BaseState
 
         if (rotateAngle < 0)
         {
-            player.ChangeState(new RotateLeftState());
+            character.ChangeState(new RotateLeftState());
         }
         else
         {
-            player.ChangeState(new RotateRightState());
+            character.ChangeState(new RotateRightState());
         }
 
 
