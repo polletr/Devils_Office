@@ -24,6 +24,7 @@ public class GridController : Singleton<GridController>
 
     public BaseObject[,] objLocations;     //all objects in the grid at all times
     public BaseObject[,] objLocationsStart;//all objects in the grid that dont move
+    [HideInInspector]
     public List <BaseObject> interactableObjs = new();
 
 
@@ -58,25 +59,21 @@ public class GridController : Singleton<GridController>
                 if (objectClone.GetComponent<CharacterClass>())
                 {
                     objectClone.GetComponent<CharacterClass>().gridLocation = new Vector2Int((int)objectClone.transform.position.x, (int)objectClone.transform.position.z);
-                    gridLocations[i, j] = 0;
-                    gridValue = gridLocations[i, j];
-                    BaseObject floorClone = Instantiate(objectPrefabs[gridValue]);
-                    floorClone.transform.localPosition = new Vector3(i, 0, j);
-                    floorClone.posInGrid = new Vector2Int(i, j);
-                    objLocationsStart[i, j] = floorClone;
-
                 }
 
                 if(objectClone.GetComponent<InteractableObj>())
                 {
                     interactableObjs.Add(objectClone);
+                    Debug.Log(interactableObjs.Count);
                 }
             }
         }
 
+
+
         objLocations = objLocationsStart;
 
-       // PathFinder.Instance.SetGrid(gridLocations);
+        PathFinder.Instance.SetGrid(gridLocations);
 
     }
 
@@ -90,8 +87,7 @@ public class GridController : Singleton<GridController>
     //0 = floor, 1 = wall, 2 = interact
     public bool CanMove(Vector2Int nextPosition)
     {
-        Debug.Log(nextPosition);
-        if (CheckMapBoundary(nextPosition) && gridLocations[nextPosition.x, nextPosition.y] == 0 && objLocations[nextPosition.x, nextPosition.y].gameObject.GetComponent<CharacterClass>() == null)
+        if (CheckMapBoundary(nextPosition) && gridLocations[nextPosition.x, nextPosition.y] == 0 )
         {
             return true;
         }

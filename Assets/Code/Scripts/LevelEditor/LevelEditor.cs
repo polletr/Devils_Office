@@ -40,8 +40,8 @@ public class LevelEditor : EditorWindow
     {
         "Floor",
         "Wall",
-        "Interactable",
         "Player",
+        "NPC",
         "Coffee Machine",
         "Table"
     };

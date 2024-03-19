@@ -8,9 +8,11 @@ using UnityEngine.Playables;
 public class PlayerController : CharacterClass
 {
 
-    protected override void Awake()
+    public override void Awake()
     {
         base.Awake();
+        ChangeState(new IdleState());
+
     }
     private void Update()
     {

@@ -24,7 +24,7 @@ public class PathFinder : Singleton<PathFinder>
                 t.pos = new Vector2Int(i, j);
                 //Walkable if not a wall
 
-                //1 = wall, 6 = cone
+                //0 = floor
                 t.isWalkable = grid[i, j] == 0;
 
                 tiles[i, j] = t;
@@ -100,15 +100,5 @@ public class PathFinder : Singleton<PathFinder>
             new Vector3(nextTile.pos.x, 0.5f, nextTile.pos.y), Color.green, .2f);
 
         frontier.Enqueue(nextTile);
-    }
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

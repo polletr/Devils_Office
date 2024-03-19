@@ -19,11 +19,10 @@ public class CharacterClass : BaseObject
 
     public BaseState currentState;
 
-    protected virtual void Awake()
+    public virtual void Awake()
     {
         transform.eulerAngles = new Vector3(0f, UnityEngine.Random.Range(0,3) * 90f, 0f);
         ChangeDirection();
-        ChangeState(new IdleState());
     }
 
     public void ChangeState(BaseState newState)
