@@ -9,8 +9,9 @@ public class GridController : Singleton<GridController>
     Vector3 startLocation;
     public BaseObject[] objectPrefabs;
 
-    private LevelData levelData;
+    private int playerCount;
 
+    private LevelData levelData;
 
     public TextAsset[] levels;
 
@@ -39,6 +40,8 @@ public class GridController : Singleton<GridController>
         int gridSizeY = gridLocations.GetLength(1);
         objLocationsStart = new BaseObject[gridSizeX, gridSizeY];
 
+        playerCount = -1;
+
         for (int i = 0; i < gridSizeX; i++)
         {
             for (int j = 0; j < gridSizeY; j++)
@@ -58,7 +61,12 @@ public class GridController : Singleton<GridController>
 
                 if (objectClone.GetComponent<CharacterClass>())
                 {
+                    playerCount++;
                     objectClone.GetComponent<CharacterClass>().gridLocation = new Vector2Int((int)objectClone.transform.position.x, (int)objectClone.transform.position.z);
+                    if (objectClone.GetComponent <PlayerController>() )
+                    {
+                        objectClone.GetComponent<PlayerController>().controlScheme = "P" + playerCount;
+                    }
                 }
 
                 if(objectClone.GetComponent<InteractableObj>())

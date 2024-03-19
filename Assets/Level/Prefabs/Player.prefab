@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8447384264379299950}
   - component: {fileID: 2956296818277282820}
-  - component: {fileID: 2595811460790906403}
   - component: {fileID: 2796407554835070419}
+  - component: {fileID: 7998610419913799201}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -49,26 +49,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   posInGrid: {x: 0, y: 0}
+  moveSpeed: 2
+  rotateSpeed: 200
   fwdDirection: {x: 0, y: 0}
   gridLocation: {x: 0, y: 0}
   anim: {fileID: 0}
-  moveSpeed: 2
-  rotateSpeed: 200
---- !u!114 &2595811460790906403
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3858875796262856385}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c95c0141e46035247accef781ce914f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gridController: {fileID: 0}
-  fwdDirection: {x: 0, y: 0}
-  gridLocation: {x: 0, y: 0}
+  controlScheme: 
 --- !u!114 &2796407554835070419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81,6 +67,116 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf2d9e420e4240a478cf0734e065063b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7998610419913799201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3858875796262856385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: caa725ebfab013045a37423465999a6e, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2956296818277282820}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: HandleMove
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: bed8cffc-ff0f-4968-915a-e9c960c9cfc8
+    m_ActionName: Player/Move[/Keyboard/w,/Keyboard/upArrow]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2956296818277282820}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: HandleRotate
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: -90
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: c1a09a7f-21d1-4abf-923a-fa03ecb2b872
+    m_ActionName: Player/TurnLeft[/Keyboard/a,/Keyboard/leftArrow]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2956296818277282820}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: HandleRotate
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 90
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: ed34947f-9e33-41ed-982e-f04accbc0c21
+    m_ActionName: Player/TurnRight[/Keyboard/d,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2956296818277282820}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: HandleInteract
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 8c6f3110-71be-4fc3-9f8d-e8fb52153099
+    m_ActionName: Player/InteractKill[/Keyboard/space,/Keyboard/rightShift]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2956296818277282820}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: HandleViewTask
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 13e2db7d-9cb2-4c73-b780-a2a3d988fc16
+    m_ActionName: Player/ViewTask[/Keyboard/tab,/Keyboard/backslash]
+  m_NeverAutoSwitchControlSchemes: 1
+  m_DefaultControlScheme: P0
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 672750463686308600}
 --- !u!1 &8692113259866504363
 GameObject:
   m_ObjectHideFlags: 0
