@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class InputManager : MonoBehaviour
     void Awake()
     {
         player = GetComponent<PlayerController>();
+        
         action = new PlayerInput();
     }
 
@@ -45,17 +47,55 @@ public class InputManager : MonoBehaviour
     }
     private void OnEnable()
     {
+        if (player.controlScheme == "P0")
+        {
+            action.Player.Move.performed += (val) => player.HandleMove();
+            action.Player.TurnRight.performed += (val) => player.HandleRotate(90);
+            action.Player.TurnLeft.performed += (val) => player.HandleRotate(-90);
 
-        action.Player.Move.performed += (val) => player.HandleMove();
-        action.Player.TurnRight.performed += (val) => player.HandleRotate(90);
-        action.Player.TurnLeft.performed += (val) => player.HandleRotate(-90);
+            action.Player.InteractKill.performed += (val) => player.HandleInteract();
+            action.Player.InteractKill.canceled += (val) => player.HandleStopInteract();
 
-        action.Player.Kill.performed += (val) => player.HandleAttack();
+            action.Player.ViewTask.performed += (val) => player.HandleViewTask();
+        }
+        else if (player.controlScheme == "P1")
+        {
+            action.Player2.Move.performed += (val) => player.HandleMove();
+            action.Player2.TurnRight.performed += (val) => player.HandleRotate(90);
+            action.Player2.TurnLeft.performed += (val) => player.HandleRotate(-90);
 
-        action.Player.Interact.performed += (val) => player.HandleInteract();
-        action.Player.Interact.canceled += (val) => player.HandleStopInteract();
+            action.Player2.InteractKill.performed += (val) => player.HandleInteract();
+            action.Player2.InteractKill.canceled += (val) => player.HandleStopInteract();
 
-        action.Player.ViewTask.performed += (val) => player.HandleViewTask();
+            action.Player2.ViewTask.performed += (val) => player.HandleViewTask();
+        }
+        else if (player.controlScheme == "P2")
+        {
+            action.Player3.Move.performed += (val) => player.HandleMove();
+            action.Player3.TurnRight.performed += (val) => player.HandleRotate(90);
+            action.Player3.TurnLeft.performed += (val) => player.HandleRotate(-90);
+
+            action.Player3.InteractKill.performed += (val) => player.HandleInteract();
+            action.Player3.InteractKill.canceled += (val) => player.HandleStopInteract();
+
+            action.Player3.ViewTask.performed += (val) => player.HandleViewTask();
+        }
+        else if (player.controlScheme == "P3")
+        {
+            action.Player4.Move.performed += (val) => player.HandleMove();
+            action.Player4.TurnRight.performed += (val) => player.HandleRotate(90);
+            action.Player.TurnLeft.performed += (val) => player.HandleRotate(-90);
+
+            action.Player4.InteractKill.performed += (val) => player.HandleInteract();
+            action.Player4.InteractKill.canceled += (val) => player.HandleStopInteract();
+
+            action.Player4.ViewTask.performed += (val) => player.HandleViewTask();
+        }
+
+        else
+        {
+            Invoke("WaitTimer", 0.1f);
+        }
 
         action.Enable();
     }
@@ -66,15 +106,19 @@ public class InputManager : MonoBehaviour
         action.Player.TurnRight.performed -= (val) => player.HandleRotate(90);
         action.Player.TurnLeft.performed -= (val) => player.HandleRotate(-90);
 
-        action.Player.Kill.performed += (val) => player.HandleAttack();
-
-        action.Player.Interact.performed += (val) => player.HandleInteract();
-        action.Player.Interact.canceled += (val) => player.HandleStopInteract();
+        action.Player.InteractKill.performed += (val) => player.HandleInteract();
+        action.Player.InteractKill.canceled += (val) => player.HandleStopInteract();
 
         action.Player.ViewTask.performed += (val) => player.HandleViewTask();
 
 
         action.Disable();
+    }
+
+    private void WaitTimer()
+    {
+        action.Disable();
+        OnEnable();
     }
 
 }

@@ -8,6 +8,8 @@ using UnityEngine.Playables;
 public class PlayerController : CharacterClass
 {
 
+    public string controlScheme;
+
     public override void Awake()
     {
         base.Awake();
@@ -17,6 +19,7 @@ public class PlayerController : CharacterClass
     private void Update()
     {
         currentState?.StateUpdate();
+
     }
     private void FixedUpdate()
     {
@@ -42,6 +45,10 @@ public class PlayerController : CharacterClass
         if (GridController.Instance.CanInteract(gridLocation + fwdDirection))
         {
             ChangeState(new InteractState());
+        }
+        else if (false)//check if can attack
+        {
+            ChangeState(new AttackState());
         }
     }
 
