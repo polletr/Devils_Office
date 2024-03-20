@@ -8,7 +8,7 @@ public class GridController : Singleton<GridController>
     Vector3 startLocation;
     public BaseObject[] objectPrefabs;
 
-    private int playerCount;
+    private int playerCount = 0;
 
     private LevelData levelData;
 
@@ -39,7 +39,7 @@ public class GridController : Singleton<GridController>
         int gridSizeY = gridLocations.GetLength(1);
         objLocationsStart = new BaseObject[gridSizeX, gridSizeY];
 
-        playerCount = -1;
+        playerCount = 0;
 
         for (int i = 0; i < gridSizeX; i++)
         {
