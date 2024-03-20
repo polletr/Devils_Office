@@ -87,14 +87,14 @@ public class AIController : CharacterClass
     public void OnThinking()
     {
         Debug.Log("Thinking");
-       // SetBrain((AITasks)Random.Range(1, Enum.GetValues(typeof(AITasks)).Length));
-        num = (num + 1) % Enum.GetValues(typeof(AITasks)).Length;
+        SetBrain((AITasks)Random.Range(1, Enum.GetValues(typeof(AITasks)).Length));
+/*        num = (num + 1) % Enum.GetValues(typeof(AITasks)).Length;
         if (num == 0)
         {
             num = 1;
         }
         SetBrain((AITasks)num);
-
+*/
         //SetBrain(AITasks.Roam);
         //SetBrain(AITasks.DoTask);
     }
@@ -141,26 +141,30 @@ public class AIController : CharacterClass
         {
             if (GridController.Instance.gridLocations[destination.x, destination.y] != 0 && destination != gridLocation && currentState is IdleState)
             {
-                SetBrain(AITasks.Think);
+                SetBrain(AITasks.Roam);
             }
-            path = pathFinder.GetPath(gridLocation, destination);
-            timer += Time.deltaTime;
-            if (path.Count > 0 && currentState is IdleState && timer > Random.Range(0.7f, 2f))
+            else
             {
-                Vector2Int nextDestination = path.Pop();
-                //  fwdDirection = nextDestination - gridLocation; //get direction to move
-                MoveToLocation(nextDestination);
-                timer = 0f;
-            }
-            else if (path.Count == 0 && currentState is IdleState && !doneInteracting)
-            {
-                CompleteTask(destObj.posInGrid);
-            }
-            else if (currentState is IdleState && doneInteracting)
-            {
-                doneInteracting = false;
-                ChangeState(new RotateLeftState());
-                SetBrain(AITasks.Think);
+                path = pathFinder.GetPath(gridLocation, destination);
+                timer += Time.deltaTime;
+                if (path.Count > 0 && currentState is IdleState && timer > Random.Range(0.7f, 2f))
+                {
+                    Vector2Int nextDestination = path.Pop();
+                    //  fwdDirection = nextDestination - gridLocation; //get direction to move
+                    MoveToLocation(nextDestination);
+                    timer = 0f;
+                }
+                else if (path.Count == 0 && currentState is IdleState && !doneInteracting)
+                {
+                    CompleteTask(destObj.posInGrid);
+                }
+                else if (currentState is IdleState && doneInteracting)
+                {
+                    doneInteracting = false;
+                    ChangeState(new RotateLeftState());
+                    SetBrain(AITasks.Roam);
+                }
+
             }
 
             yield return null;
