@@ -26,7 +26,9 @@ public class LevelEditor : EditorWindow
             Color.green,
             Color.gray,
             Color.red,
-    };
+            new Color(254f / 255f, 153f / 255f, 0f),
+            new Color(169f / 255f, 17f / 255f, 18f / 255f),
+};
     char[] orientations =
     {
         'U', 'D', 'L', 'R'
@@ -43,7 +45,9 @@ public class LevelEditor : EditorWindow
         "Player",
         "NPC",
         "Coffee Machine",
-        "Table"
+        "Table",
+        "Light Switch",
+        "Pitchfork Station"
     };
 
     public LevelData myData;

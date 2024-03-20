@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4835517568901591207}
   - component: {fileID: 8435337788012888245}
   m_Layer: 0
-  m_Name: Coffee_Interactable
+  m_Name: CoffeeStation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
