@@ -22,7 +22,7 @@ public class InteractState : BaseState
         timer += Time.deltaTime;
         if (timer > interactTimer)
         {
-            Debug.Log("Done Coffee");
+            Debug.Log("Coffee" + timer);
             //Disable UI
             character.ChangeState(new IdleState());
         }

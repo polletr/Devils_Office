@@ -10,6 +10,7 @@ public class MoveState : BaseState
     bool canMove;
 
 
+
     public override void EnterState()
     {
 
@@ -25,6 +26,7 @@ public class MoveState : BaseState
             GridController.Instance.objLocations[character.gridLocation.x, character.gridLocation.y] = character;
             GridController.Instance.gridLocations[character.gridLocation.x, character.gridLocation.y] = 3;
 
+            character.gameObject.GetComponent<PathFinder>()?.SetGridFromController();
 
             canMove = true;
             //Play Animation
@@ -58,7 +60,6 @@ public class MoveState : BaseState
             }
             else
             {
-
 
                 character.transform.position = nextLocation;
 

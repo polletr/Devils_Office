@@ -43,6 +43,7 @@ public class PathFinder : MonoBehaviour
 
     public Stack<Vector2Int> GetPath(Vector2Int startPos, Vector2Int destination)
     {
+        Debug.Log("GettingPath");
         //Clearing all tiles
         foreach (Tile t in tiles)
         {
@@ -63,7 +64,7 @@ public class PathFinder : MonoBehaviour
             if (current.pos == destination)
             {
 
-                while (current != startTile && current != null)
+                while (current != startTile && current != null && GridController.Instance.gridLocations[destination.x, destination.y] == 0)
                 {
                     Debug.DrawLine(
                         new Vector3(current.pos.x, 0.5f, current.pos.y),
@@ -71,8 +72,8 @@ public class PathFinder : MonoBehaviour
                     path.Push(current.pos);
 
                     current = current.previousTile;
-
                 }
+                frontier.Clear();
                 return path;
             }
 
@@ -83,7 +84,6 @@ public class PathFinder : MonoBehaviour
     }
     private void AddSurroundingTiles(Tile origin, Vector2Int destination)
     {
-        Debug.Log(destination);
         AddTile(origin, 1, 0);
         AddTile(origin, 0, 1);
         AddTile(origin, 0, -1);
@@ -100,7 +100,6 @@ public class PathFinder : MonoBehaviour
         
         frontier.Enqueue(nextTile);
         surroundingTiles.Clear();
-
 
     }
     private void AddTile(Tile origin, int dirX, int dirY)
