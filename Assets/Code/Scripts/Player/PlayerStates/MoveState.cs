@@ -9,15 +9,21 @@ public class MoveState : BaseState
     Vector2Int oldLocation;
     bool canMove;
 
+
     public override void EnterState()
     {
-        Debug.Log("Moving");
 
         if (GridController.Instance.CanMove(character.gridLocation + character.fwdDirection))
         {
             oldLocation = character.gridLocation;
             character.gridLocation += character.fwdDirection;
             nextLocation = GridController.Instance.GetGridLocation(character.gridLocation);
+
+            GridController.Instance.objLocations[oldLocation.x, oldLocation.y] = GridController.Instance.objLocationsStart[oldLocation.x, oldLocation.y];
+            GridController.Instance.gridLocations[oldLocation.x, oldLocation.y] = 0;
+
+            GridController.Instance.objLocations[character.gridLocation.x, character.gridLocation.y] = character;
+            GridController.Instance.gridLocations[character.gridLocation.x, character.gridLocation.y] = 3;
 
 
             canMove = true;
@@ -53,13 +59,6 @@ public class MoveState : BaseState
             else
             {
 
-                GridController.Instance.objLocations[oldLocation.x, oldLocation.y] = GridController.Instance.objLocationsStart[oldLocation.x, oldLocation.y];
-                GridController.Instance.gridLocations[oldLocation.x, oldLocation.y] = 0;
-
-                GridController.Instance.objLocations[character.gridLocation.x, character.gridLocation.y] = character;
-                GridController.Instance.gridLocations[character.gridLocation.x, character.gridLocation.y] = 3;
-
-                PathFinder.Instance.SetGrid(GridController.Instance.gridLocations);
 
                 character.transform.position = nextLocation;
 

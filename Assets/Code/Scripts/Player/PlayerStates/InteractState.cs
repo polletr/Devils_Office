@@ -20,9 +20,9 @@ public class InteractState : BaseState
     public override void StateUpdate()
     {
         timer += Time.deltaTime;
-        Debug.Log(timer);
         if (timer > interactTimer)
         {
+            Debug.Log("Done Coffee");
             //Disable UI
             character.ChangeState(new IdleState());
         }

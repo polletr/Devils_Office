@@ -1,6 +1,5 @@
 using Newtonsoft.Json;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class GridController : Singleton<GridController>
@@ -26,7 +25,7 @@ public class GridController : Singleton<GridController>
     public BaseObject[,] objLocations;     //all objects in the grid at all times
     public BaseObject[,] objLocationsStart;//all objects in the grid that dont move
     [HideInInspector]
-    public List <BaseObject> interactableObjs = new();
+    public List<InteractableObj> interactableObjs = new();
 
 
     // Start is called before the first frame update
@@ -49,30 +48,35 @@ public class GridController : Singleton<GridController>
                 int gridValue = gridLocations[i, j];
                 char gridRotation = gridRotations[i, j];
 
-                Debug.Log(gridRotation);
                 BaseObject objectClone = Instantiate(objectPrefabs[gridValue]);
-                if (gridRotation.ToString() != "")
+
+                objectClone.transform.localPosition = new Vector3(i, 0, j);
+                objectClone.posInGrid = new Vector2Int(i, j);
+                if (gridRotation.ToString() != "" && objectClone.GetComponent<InteractableObj>())
                 {
                     RotateObject(objectClone, gridRotation);
                 }
-                objectClone.transform.localPosition = new Vector3(i, 0, j);
-                objectClone.posInGrid = new Vector2Int(i, j);
+                else if (objectClone.GetComponent<InteractableObj>())
+                {
+                    Debug.Log(objectClone.GetComponent<InteractableObj>().interactionPos);
+                }
+
                 objLocationsStart[i, j] = objectClone;
 
                 if (objectClone.GetComponent<CharacterClass>())
                 {
-                    playerCount++;
                     objectClone.GetComponent<CharacterClass>().gridLocation = new Vector2Int((int)objectClone.transform.position.x, (int)objectClone.transform.position.z);
-                    if (objectClone.GetComponent <PlayerController>() )
+                    if (objectClone.GetComponent<PlayerController>())
                     {
                         objectClone.GetComponent<PlayerController>().controlScheme = "P" + playerCount;
+                        playerCount++;
+
                     }
                 }
 
-                if(objectClone.GetComponent<InteractableObj>())
+                if (objectClone.GetComponent<InteractableObj>())
                 {
-                    interactableObjs.Add(objectClone);
-                    Debug.Log(interactableObjs.Count);
+                    interactableObjs.Add(objectClone.GetComponent<InteractableObj>());
                 }
             }
         }
@@ -81,8 +85,11 @@ public class GridController : Singleton<GridController>
 
         objLocations = objLocationsStart;
 
-        PathFinder.Instance.SetGrid(gridLocations);
+    }
 
+    public int[,] GetGridData()
+    {
+        return gridLocations;
     }
 
     private void LoadLevel()
@@ -95,7 +102,7 @@ public class GridController : Singleton<GridController>
     //0 = floor, 1 = wall, 2 = interact
     public bool CanMove(Vector2Int nextPosition)
     {
-        if (CheckMapBoundary(nextPosition) && gridLocations[nextPosition.x, nextPosition.y] == 0 )
+        if (CheckMapBoundary(nextPosition) && gridLocations[nextPosition.x, nextPosition.y] == 0)
         {
             return true;
         }
@@ -139,17 +146,25 @@ public class GridController : Singleton<GridController>
         {
             case 'R':
                 instantiatedObj.transform.eulerAngles = new Vector3(0, 90f, 0);
+                instantiatedObj.GetComponent<InteractableObj>().interactionPos = new Vector2Int(1, 0) + instantiatedObj.posInGrid;
                 break;
             case 'L':
                 instantiatedObj.transform.eulerAngles = new Vector3(0, 270f, 0);
+                instantiatedObj.GetComponent<InteractableObj>().interactionPos = new Vector2Int(-1, 0) + instantiatedObj.posInGrid;
                 break;
             case 'U':
                 instantiatedObj.transform.eulerAngles = new Vector3(0, 0f, 0);
+                instantiatedObj.GetComponent<InteractableObj>().interactionPos = new Vector2Int(0, 1) + instantiatedObj.posInGrid;
                 break;
             case 'D':
                 instantiatedObj.transform.eulerAngles = new Vector3(0, 180f, 1);
+                instantiatedObj.GetComponent<InteractableObj>().interactionPos = new Vector2Int(0, -1) + instantiatedObj.posInGrid;
+                break;
+            default:
+                instantiatedObj.GetComponent<InteractableObj>().interactionPos = new Vector2Int(0, 1) + instantiatedObj.posInGrid;
                 break;
         }
+
     }
 
 }

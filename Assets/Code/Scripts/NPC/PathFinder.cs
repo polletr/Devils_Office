@@ -7,12 +7,14 @@ public class Tile
     public Vector2Int pos;
     public Tile previousTile;
 }
-public class PathFinder : Singleton<PathFinder>
+public class PathFinder : MonoBehaviour
 {
     // Start is called before the first frame update
     private Tile[,] tiles;
     private Queue<Tile> frontier;
-    private List<Tile> surroundingTiles;
+    private List<Tile> surroundingTiles = new List<Tile>();
+
+    Tile nextTile; 
     public void SetGrid(int[,] grid)
     {
         tiles = new Tile[grid.GetLength(0), grid.GetLength(1)];
@@ -31,9 +33,16 @@ public class PathFinder : Singleton<PathFinder>
             }
         }
     }
+
+    public void SetGridFromController()
+    {
+        int[,] gridData = GridController.Instance.GetGridData();
+        SetGrid(gridData);
+    }
+
+
     public Stack<Vector2Int> GetPath(Vector2Int startPos, Vector2Int destination)
     {
-        Debug.Log("We are at least here");
         //Clearing all tiles
         foreach (Tile t in tiles)
         {
@@ -50,9 +59,10 @@ public class PathFinder : Singleton<PathFinder>
         while (frontier.Count != 0)
         {
             Tile current = frontier.Dequeue();
-
+            
             if (current.pos == destination)
             {
+
                 while (current != startTile && current != null)
                 {
                     Debug.DrawLine(
@@ -66,18 +76,32 @@ public class PathFinder : Singleton<PathFinder>
                 return path;
             }
 
-            AddSurroundingTiles(current);
+            AddSurroundingTiles(current, destination);
         }
 
-        //No path found!
         return path;
     }
-    private void AddSurroundingTiles(Tile origin)
+    private void AddSurroundingTiles(Tile origin, Vector2Int destination)
     {
+        Debug.Log(destination);
         AddTile(origin, 1, 0);
         AddTile(origin, 0, 1);
         AddTile(origin, 0, -1);
         AddTile(origin, -1, 0);
+        int distance = 10000;
+        foreach (Tile currentTile in surroundingTiles)
+        {
+            if (Vector2Int.Distance(currentTile.pos, destination) < distance)
+            {
+                nextTile = currentTile;
+                distance = (int)Vector2Int.Distance(currentTile.pos, destination);
+            }   
+        }
+        
+        frontier.Enqueue(nextTile);
+        surroundingTiles.Clear();
+
+
     }
     private void AddTile(Tile origin, int dirX, int dirY)
     {
@@ -87,18 +111,18 @@ public class PathFinder : Singleton<PathFinder>
         if (tileX < 0 || tileX >= tiles.GetLength(0) || tileY < 0 || tileY >= tiles.GetLength(1))
             return;
 
-        Tile nextTile = tiles[tileX, tileY];
+        Tile surrTile = tiles[tileX, tileY];
 
         //If the tile has already been searched or it's not walkable
-        if (nextTile.previousTile != null || !nextTile.isWalkable)
+        if (surrTile.previousTile != null || !surrTile.isWalkable)
             return;
 
-        nextTile.previousTile = origin;
+        surrTile.previousTile = origin;
 
         Debug.DrawLine(
             new Vector3(origin.pos.x, 0.5f, origin.pos.y),
-            new Vector3(nextTile.pos.x, 0.5f, nextTile.pos.y), Color.green, .2f);
+            new Vector3(surrTile.pos.x, 0.5f, surrTile.pos.y), Color.green, .2f);
 
-        frontier.Enqueue(nextTile);
+        surroundingTiles.Add(surrTile);
     }
 }

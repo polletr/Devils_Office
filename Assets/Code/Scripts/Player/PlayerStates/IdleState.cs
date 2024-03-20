@@ -7,7 +7,6 @@ public class IdleState : BaseState
     public override void EnterState()
     {
         //Play animation
-        Debug.Log("Enter Idle");
         base.EnterState();
     }
 

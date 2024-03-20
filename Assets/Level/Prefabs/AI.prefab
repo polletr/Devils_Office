@@ -115,6 +115,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8447384264379299950}
   - component: {fileID: 2936206309713876890}
+  - component: {fileID: 7708716574442322096}
   m_Layer: 0
   m_Name: AI
   m_TagString: Untagged
@@ -158,6 +159,18 @@ MonoBehaviour:
   fwdDirection: {x: 0, y: 0}
   gridLocation: {x: 0, y: 0}
   anim: {fileID: 0}
+--- !u!114 &7708716574442322096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3858875796262856385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0583438e394b7c24f9f92f01feab9400, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8692113259866504363
 GameObject:
   m_ObjectHideFlags: 0
