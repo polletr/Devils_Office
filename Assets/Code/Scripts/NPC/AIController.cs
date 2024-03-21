@@ -87,21 +87,19 @@ public class AIController : CharacterClass
 
     public void OnThinking()
     {
-        Debug.Log("Thinking");
         SetBrain((AITasks)Random.Range(1, Enum.GetValues(typeof(AITasks)).Length));
-/*        num = (num + 1) % Enum.GetValues(typeof(AITasks)).Length;
+        num = (num + 1) % Enum.GetValues(typeof(AITasks)).Length;
         if (num == 0)
         {
             num = 1;
         }
         SetBrain((AITasks)num);
-*/
+
         //SetBrain(AITasks.Roam);
         //SetBrain(AITasks.DoTask);
     }
     private IEnumerator OnRoaming()
     {
-        Debug.Log("Roam");
 
         float timer = 0f;
 
@@ -109,24 +107,23 @@ public class AIController : CharacterClass
         {
 
             timer += Time.deltaTime;
-            int randomNumber = Random.Range(0, 6);
+            int randomNumber = Random.Range(0, 4);
             if (currentState is IdleState)
             {
                 if (timer > Random.Range(0.2f, 0.6f))
                 {
                     SetBrain(AITasks.Think);
-                    break;
                 }
 
                 if (randomNumber == 0)
                 {
-                    ChangeState(new RotateLeftState());
+                    RandomRotate();
                 }
-                else if (randomNumber == 1)
+/*                else if (randomNumber == 1)
                 {
                     ChangeState(new RotateRightState());
                 }
-                else
+*/                else
                 {
                     if (GridController.Instance.CanMove(gridLocation + fwdDirection))
                         ChangeState(new MoveState());
@@ -145,48 +142,39 @@ public class AIController : CharacterClass
         InteractableObj destObj = GridController.Instance.interactableObjs[Random.Range(0, GridController.Instance.interactableObjs.Count)];
         Vector2Int destination = destObj.interactionPos;
 
-        Debug.Log("Do Tasks");
+        Debug.Log(destination);
 
         float timer = 0f;
         while (currentAction == AITasks.DoTask && (GridController.Instance.gridLocations[destination.x, destination.y] == 0 || destination == gridLocation))
         {
-/*            if (GridController.Instance.gridLocations[destination.x, destination.y] == 0 || destination == gridLocation)
-            {
-*/                
-                timer += Time.deltaTime;
-                if (destination != gridLocation && currentState is IdleState && timer > Random.Range(0.7f, 2f))
-                {
-                    Debug.Log("MoveToLocation");
-                    path = pathFinder.GetPath(gridLocation, destination);
 
+            timer += Time.deltaTime;
+            if (gridLocation != destination && currentState is IdleState && timer > Random.Range(0.7f, 2f))
+            {
+                path = pathFinder.GetPath(gridLocation, destination);
+            
+                if (path.Count > 0)
+                {
                     Vector2Int nextDestination = path.Pop();
                     //  fwdDirection = nextDestination - gridLocation; //get direction to move
                     MoveToLocation(nextDestination);
-
-                    timer = 0f;
-                }
-                else if (destination == gridLocation && currentState is IdleState && !doneInteracting)
-                {
-                    Debug.Log("COmpleteTask");
-                    CompleteTask(destObj.posInGrid);
-                    //doneInteracting = true;
-
-                }
-                else if (currentState is IdleState && doneInteracting)
-                {
-                    Debug.Log("FinishTask");
-
-                    doneInteracting = false;
-                    RandomRotate();
-                    SetBrain(AITasks.Roam);
                 }
 
-/*            }
-*//*            else if(GridController.Instance.gridLocations[destination.x, destination.y] != 0 && destination != gridLocation)
-            {
-                break;
+                timer = 0f;
             }
-*/
+            else if (gridLocation == destination && currentState is IdleState && !doneInteracting)
+            {
+                CompleteTask(destObj.posInGrid);
+                //doneInteracting = true;
+
+            }
+            else if (currentState is IdleState && doneInteracting)
+            {
+
+                doneInteracting = false;
+                RandomRotate();
+                SetBrain(AITasks.Roam);
+            }
 
             yield return null;
         }
@@ -227,7 +215,6 @@ public class AIController : CharacterClass
 
     private void CompleteTask(Vector2Int ObjPos)
     {
-        Debug.Log("DoingTask");
         Vector2Int moveDirection = ObjPos - gridLocation;
         if (moveDirection == fwdDirection)
         {

@@ -160,8 +160,10 @@ MonoBehaviour:
   - {fileID: 2936206309713876890, guid: 866463a62a71eee40979b3cbee26535c, type: 3}
   - {fileID: 8435337788012888245, guid: 68db2744124bea94da35727a6782fdd1, type: 3}
   - {fileID: 3328008934528824340, guid: cbfcd94a5db133b499600f4851171193, type: 3}
+  - {fileID: 8197009724742943869, guid: a4b1d3df46481d24d858aaf4867486ac, type: 3}
+  - {fileID: -6240001492395218427, guid: c76f177fa2c62154eaa7058c131eb2fc, type: 3}
   levels:
-  - {fileID: 4900000, guid: 6c0990b6063ee044894ba12940aafb31, type: 3}
+  - {fileID: 4900000, guid: 438ffe7b8dfff2c43b8748949b6b7813, type: 3}
   tileWidth: 1
   tileHeight: 1
   interactableObjs: []

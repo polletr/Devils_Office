@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 public class Tile
 {
@@ -41,10 +42,8 @@ public class PathFinder : MonoBehaviour
     }
 
 
-    public Stack<Vector2Int> GetPath(Vector2Int startPos, Vector2Int destination)
+public Stack<Vector2Int> GetPath(Vector2Int startPos, Vector2Int destination)
     {
-        Debug.Log("GettingPath");
-        //Clearing all tiles
         foreach (Tile t in tiles)
         {
             t.previousTile = null;
@@ -59,21 +58,22 @@ public class PathFinder : MonoBehaviour
 
         while (frontier.Count != 0)
         {
+
             Tile current = frontier.Dequeue();
-            
+
+
             if (current.pos == destination)
             {
-
-                while (current != startTile && current != null && GridController.Instance.gridLocations[destination.x, destination.y] == 0)
+                while (current != startTile)
                 {
                     Debug.DrawLine(
-                        new Vector3(current.pos.x, 0.5f, current.pos.y),
-                        new Vector3(current.previousTile.pos.x, 0.5f, current.previousTile.pos.y), Color.red, .2f);
-                    path.Push(current.pos);
+                    new Vector3(current.pos.x, 0.5f, current.pos.y),
+                    new Vector3(current.previousTile.pos.x, 0.5f, current.previousTile.pos.y), Color.red, .2f);
 
+                    path.Push(current.pos);
                     current = current.previousTile;
+
                 }
-                frontier.Clear();
                 return path;
             }
 
@@ -82,27 +82,16 @@ public class PathFinder : MonoBehaviour
 
         return path;
     }
+
     private void AddSurroundingTiles(Tile origin, Vector2Int destination)
     {
-        AddTile(origin, 1, 0);
-        AddTile(origin, 0, 1);
-        AddTile(origin, 0, -1);
-        AddTile(origin, -1, 0);
-        int distance = 10000;
-        foreach (Tile currentTile in surroundingTiles)
-        {
-            if (Vector2Int.Distance(currentTile.pos, destination) < distance)
-            {
-                nextTile = currentTile;
-                distance = (int)Vector2Int.Distance(currentTile.pos, destination);
-            }   
-        }
-        
-        frontier.Enqueue(nextTile);
-        surroundingTiles.Clear();
-
+        AddTile(origin, 1, 0, destination);
+        AddTile(origin, 0, 1, destination);
+        AddTile(origin, 0, -1, destination);
+        AddTile(origin, -1, 0, destination);
     }
-    private void AddTile(Tile origin, int dirX, int dirY)
+
+    private void AddTile(Tile origin, int dirX, int dirY, Vector2Int destination)
     {
         int tileX = origin.pos.x + dirX;
         int tileY = origin.pos.y + dirY;
@@ -112,16 +101,14 @@ public class PathFinder : MonoBehaviour
 
         Tile surrTile = tiles[tileX, tileY];
 
-        //If the tile has already been searched or it's not walkable
-        if (surrTile.previousTile != null || !surrTile.isWalkable)
+        if (!surrTile.isWalkable || surrTile.previousTile != null)
             return;
-
-        surrTile.previousTile = origin;
 
         Debug.DrawLine(
             new Vector3(origin.pos.x, 0.5f, origin.pos.y),
             new Vector3(surrTile.pos.x, 0.5f, surrTile.pos.y), Color.green, .2f);
 
-        surroundingTiles.Add(surrTile);
+        surrTile.previousTile = origin;
+        frontier.Enqueue(surrTile);
     }
 }
