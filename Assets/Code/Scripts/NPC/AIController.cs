@@ -5,6 +5,7 @@ using System.Threading;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.TextCore.Text;
 using Random = UnityEngine.Random;
 
 public class AIController : CharacterClass
@@ -127,7 +128,10 @@ public class AIController : CharacterClass
                 }
                 else
                 {
-                    ChangeState(new MoveState());
+                    if (GridController.Instance.CanMove(gridLocation + fwdDirection))
+                        ChangeState(new MoveState());
+                    else
+                        ChangeState(new RotateLeftState());
                 }
 
 
@@ -175,7 +179,6 @@ public class AIController : CharacterClass
                     doneInteracting = false;
                     ChangeState(new RotateLeftState());
                     SetBrain(AITasks.Roam);
-                    break;
                 }
 
 /*            }
