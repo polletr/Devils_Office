@@ -98,6 +98,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   posInGrid: {x: 0, y: 0}
   waitTime: 5
+  interactionPos: {x: 0, y: 0}
+  taskType: 0
 --- !u!1 &6095553973967109227
 GameObject:
   m_ObjectHideFlags: 0

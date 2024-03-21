@@ -9,10 +9,12 @@ public class PlayerController : CharacterClass
 {
 
     public string controlScheme;
+    public TaskManager _taskManager;
 
     public override void Awake()
     {
         base.Awake();
+        _taskManager = GetComponent<TaskManager>();
         ChangeState(new IdleState());
 
     }
@@ -36,13 +38,9 @@ public class PlayerController : CharacterClass
     {
         currentState?.HandleRotation(rotateAngle);
     }
-    public void HandleAttack()
-    {
-        ChangeState(new AttackState());
-    }
     public void HandleInteract()
     {
-        if (GridController.Instance.CanInteract(gridLocation + fwdDirection))
+        if (GridController.Instance.CanInteract(gridLocation + fwdDirection,_taskManager))   // can incteract , in the task list             
         {
             ChangeState(new InteractState());
         }

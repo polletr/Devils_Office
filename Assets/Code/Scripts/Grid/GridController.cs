@@ -1,5 +1,6 @@
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class GridController : Singleton<GridController>
@@ -117,13 +118,16 @@ public class GridController : Singleton<GridController>
         return true;
     }
 
-    public bool CanInteract(Vector2Int fwdPosition)
+    public bool CanInteract(Vector2Int fwdPosition, TaskManager task)
     {
         //Check if the object in front of us can be interected with
 
         if (CheckMapBoundary(fwdPosition) && objLocations[fwdPosition.x, fwdPosition.y].gameObject.GetComponent<InteractableObj>())
         {
-            return true;
+            if (task.taskToDo.Contains(objLocations[fwdPosition.x, fwdPosition.y].gameObject.GetComponent<InteractableObj>().taskType))
+                return true;
+            else
+                return false;
         }
         else
             return false;
