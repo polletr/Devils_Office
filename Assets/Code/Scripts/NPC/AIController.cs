@@ -22,6 +22,10 @@ public class AIController : CharacterClass
 
     private Stack<Vector2Int> path = new Stack<Vector2Int>();
 
+    [SerializeField]
+    private float roamTimerMin;
+    [SerializeField]
+    private float roamTimerMax;
 
     public override void Awake()
     {
@@ -88,13 +92,13 @@ public class AIController : CharacterClass
     public void OnThinking()
     {
         SetBrain((AITasks)Random.Range(1, Enum.GetValues(typeof(AITasks)).Length));
-        num = (num + 1) % Enum.GetValues(typeof(AITasks)).Length;
+/*        num = (num + 1) % Enum.GetValues(typeof(AITasks)).Length;
         if (num == 0)
         {
             num = 1;
         }
         SetBrain((AITasks)num);
-
+*/
         //SetBrain(AITasks.Roam);
         //SetBrain(AITasks.DoTask);
     }
@@ -110,7 +114,7 @@ public class AIController : CharacterClass
             int randomNumber = Random.Range(0, 4);
             if (currentState is IdleState)
             {
-                if (timer > Random.Range(0.2f, 0.6f))
+                if (timer > Random.Range(roamTimerMin, roamTimerMax))
                 {
                     SetBrain(AITasks.Think);
                 }
@@ -119,11 +123,7 @@ public class AIController : CharacterClass
                 {
                     RandomRotate();
                 }
-/*                else if (randomNumber == 1)
-                {
-                    ChangeState(new RotateRightState());
-                }
-*/                else
+                else
                 {
                     if (GridController.Instance.CanMove(gridLocation + fwdDirection))
                         ChangeState(new MoveState());

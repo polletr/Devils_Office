@@ -159,6 +159,8 @@ MonoBehaviour:
   fwdDirection: {x: 0, y: 0}
   gridLocation: {x: 0, y: 0}
   anim: {fileID: 0}
+  roamTimerMin: 0.5
+  roamTimerMax: 1.2
 --- !u!114 &7708716574442322096
 MonoBehaviour:
   m_ObjectHideFlags: 0
