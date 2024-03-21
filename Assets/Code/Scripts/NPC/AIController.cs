@@ -131,7 +131,7 @@ public class AIController : CharacterClass
                     if (GridController.Instance.CanMove(gridLocation + fwdDirection))
                         ChangeState(new MoveState());
                     else
-                        ChangeState(new RotateLeftState());
+                        RandomRotate();
                 }
 
 
@@ -177,7 +177,7 @@ public class AIController : CharacterClass
                     Debug.Log("FinishTask");
 
                     doneInteracting = false;
-                    ChangeState(new RotateLeftState());
+                    RandomRotate();
                     SetBrain(AITasks.Roam);
                 }
 
@@ -220,7 +220,7 @@ public class AIController : CharacterClass
             }
             else
             {
-                ChangeState(new RotateRightState());
+                RandomRotate();
             }
         }
     }
@@ -248,7 +248,7 @@ public class AIController : CharacterClass
             }
             else
             {
-                ChangeState(new RotateRightState());
+                RandomRotate();
             }
 
         }
@@ -258,6 +258,12 @@ public class AIController : CharacterClass
     {
         SetBrain(AITasks.Think);
     }
+
+    private void RandomRotate()
+    {
+        currentState?.HandleRotation((Random.Range(0, 2) * 2 - 1) * 90f);
+    }
+
 
     public enum AITasks
     {
