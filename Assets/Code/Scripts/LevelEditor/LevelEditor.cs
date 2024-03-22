@@ -22,12 +22,22 @@ public class LevelEditor : EditorWindow
     {
             Color.black,
             Color.white,
-            Color.yellow,
-            Color.green,
+            new Color(232f / 255f, 232f / 255f, 232f / 255f),
             Color.gray,
-            Color.red,
+            Color.green,
+            Color.yellow,
+            new Color(141f / 255f, 111f / 255f, 100f / 255f),
+            new Color(191f / 255f, 125f / 255f, 26f / 255f),
             new Color(254f / 255f, 153f / 255f, 0f),
             new Color(169f / 255f, 17f / 255f, 18f / 255f),
+            new Color(152f / 255f, 245f / 255f, 249f / 255f),
+            new Color(6f / 255f, 2f / 255f, 112f / 255f),
+            new Color(45f / 255f, 111f / 255f, 196f / 255f),
+            new Color(204f / 255f, 108f / 255f, 231f / 255f),
+            new Color(173f / 255f, 60f / 255f, 205f / 255f),
+            new Color(225f / 255f, 175f / 255f, 175f / 255f),
+            new Color(43f / 255f, 97f / 255f, 47f / 255f),
+
 };
     char[] orientations =
     {
@@ -42,12 +52,21 @@ public class LevelEditor : EditorWindow
     {
         "Floor",
         "Wall",
+        "Window",
+        "InvisibleWall",
         "Player",
         "NPC",
         "Coffee Machine",
         "Table",
         "Light Switch",
-        "Pitchfork Station"
+        "Pitchfork Station",
+        "Stamp",
+        "Printer",
+        "Microwave",
+        "PC",
+        "PC2",
+        "CleaningMaterial",
+        "WhiteBoard"
     };
 
     public LevelData myData;
