@@ -19,6 +19,8 @@ public class CharacterClass : BaseObject
 
     public BaseState currentState;
 
+    public GameObject characterModel;
+
     public virtual void Awake()
     {
         transform.eulerAngles = new Vector3(0f, UnityEngine.Random.Range(0,3) * 90f, 0f);

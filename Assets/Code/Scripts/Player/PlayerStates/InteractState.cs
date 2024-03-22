@@ -15,6 +15,8 @@ public class InteractState : BaseState
         interactableObj = GridController.Instance.objLocations[character.gridLocation.x + character.fwdDirection.x, character.gridLocation.y + character.fwdDirection.y].GetComponent<InteractableObj>();
         interactTimer = interactableObj.waitTime;
 
+        interactableObj.TaskStarted.Invoke();
+
         timer = 0f;
 
     }
@@ -22,11 +24,12 @@ public class InteractState : BaseState
     public override void StateUpdate()
     {
         timer += Time.deltaTime;
-        Debug.Log("Interacting with task");
         if (timer > interactTimer)
         {
 
             character.GetComponent<PlayerController>()?._taskManager.CompleteTask(interactableObj);
+            interactableObj.TaskCompleted.Invoke();
+
             //Disable UI
             character.ChangeState(new IdleState());
         }
@@ -35,6 +38,7 @@ public class InteractState : BaseState
     public override void StopInteract()
     {
         //Disable UI
+        interactableObj.TaskInterrupted.Invoke();
 
         character.ChangeState(new IdleState());
 

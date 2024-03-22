@@ -107,7 +107,7 @@ public class AIController : CharacterClass
 
         float timer = 0f;
 
-        while (currentAction == AITasks.Roam)
+        while (currentAction == AITasks.Roam && currentState is not DeathState)
         {
 
             timer += Time.deltaTime;
@@ -134,7 +134,7 @@ public class AIController : CharacterClass
 
             }
 
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(Random.Range(1f, 2f));
         }
     }
     private IEnumerator OnDoTasks()
@@ -142,14 +142,12 @@ public class AIController : CharacterClass
         InteractableObj destObj = GridController.Instance.interactableObjs[Random.Range(0, GridController.Instance.interactableObjs.Count)];
         Vector2Int destination = destObj.interactionPos;
 
-        Debug.Log(destination);
-
         float timer = 0f;
-        while (currentAction == AITasks.DoTask && (GridController.Instance.gridLocations[destination.x, destination.y] == 0 || destination == gridLocation))
+        while (currentAction == AITasks.DoTask && (GridController.Instance.gridLocations[destination.x, destination.y] == 0 || destination == gridLocation) && currentState is not DeathState)
         {
 
             timer += Time.deltaTime;
-            if (gridLocation != destination && currentState is IdleState && timer > Random.Range(0.7f, 2f))
+            if (gridLocation != destination && currentState is IdleState && timer > Random.Range(1.5f, 2.5f))
             {
                 path = pathFinder.GetPath(gridLocation, destination);
             
@@ -249,6 +247,11 @@ public class AIController : CharacterClass
     private void RandomRotate()
     {
         currentState?.HandleRotation((Random.Range(0, 2) * 2 - 1) * 90f);
+    }
+
+    public void DestroySelf()
+    {
+        Destroy(this.gameObject);
     }
 
 

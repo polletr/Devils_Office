@@ -116,6 +116,7 @@ GameObject:
   - component: {fileID: 8447384264379299950}
   - component: {fileID: 2936206309713876890}
   - component: {fileID: 7708716574442322096}
+  - component: {fileID: 4873900803217672469}
   m_Layer: 0
   m_Name: AI
   m_TagString: Untagged
@@ -133,7 +134,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3986496878197937622}
@@ -159,6 +160,7 @@ MonoBehaviour:
   fwdDirection: {x: 0, y: 0}
   gridLocation: {x: 0, y: 0}
   anim: {fileID: 0}
+  characterModel: {fileID: 0}
   roamTimerMin: 0.5
   roamTimerMax: 1.2
 --- !u!114 &7708716574442322096
@@ -173,6 +175,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0583438e394b7c24f9f92f01feab9400, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4873900803217672469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3858875796262856385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c9282e0eacfc08418f724c2784aa165, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  posInGrid: {x: 0, y: 0}
+  waitTime: 5
+  interactionPos: {x: 0, y: 0}
+  taskType: 2
+  TaskStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  TaskInterrupted:
+    m_PersistentCalls:
+      m_Calls: []
+  TaskCompleted:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2936206309713876890}
+        m_TargetAssemblyTypeName: AIController, Assembly-CSharp
+        m_MethodName: DestroySelf
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8692113259866504363
 GameObject:
   m_ObjectHideFlags: 0

@@ -52,4 +52,13 @@ public class TaskManager : MonoBehaviour
         SearchTask();
     }
 
+    public void AddExtinguishTask()
+    {
+        taskToDo.Clear();
+
+        taskToDo.Add(TaskType.ExtinguishBody);
+        Debug.Log("Task: " + TaskType.ExtinguishBody);
+
+    }
+
 }

@@ -101,6 +101,7 @@ MonoBehaviour:
   posInGrid: {x: 0, y: 0}
   waitTime: 1
   interactionPos: {x: 0, y: 0}
+  taskType: 2
 --- !u!1001 &463352728421941325
 PrefabInstance:
   m_ObjectHideFlags: 0

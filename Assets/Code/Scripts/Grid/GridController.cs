@@ -27,6 +27,10 @@ public class GridController : Singleton<GridController>
     public BaseObject[,] objLocationsStart;//all objects in the grid that dont move
     [HideInInspector]
     public List<InteractableObj> interactableObjs = new();
+    [HideInInspector]
+    public List<AIController> AIList = new();
+
+    public List<GameObject> CharacterModels = new();
 
 
     // Start is called before the first frame update
@@ -67,6 +71,8 @@ public class GridController : Singleton<GridController>
                 if (objectClone.GetComponent<CharacterClass>())
                 {
                     objectClone.GetComponent<CharacterClass>().gridLocation = new Vector2Int((int)objectClone.transform.position.x, (int)objectClone.transform.position.z);
+                    objectClone.GetComponent<CharacterClass>().characterModel = Instantiate(CharacterModels[Random.Range(0, CharacterModels.Count)], objectClone.transform);
+
                     if (objectClone.GetComponent<PlayerController>())
                     {
                         objectClone.GetComponent<PlayerController>().controlScheme = "P" + playerCount;
@@ -77,7 +83,15 @@ public class GridController : Singleton<GridController>
 
                 if (objectClone.GetComponent<InteractableObj>())
                 {
-                    interactableObjs.Add(objectClone.GetComponent<InteractableObj>());
+                    if (objectClone.GetComponent<InteractableObj>().taskType != TaskType.ExtinguishBody)
+                    {
+                        interactableObjs.Add(objectClone.GetComponent<InteractableObj>());
+                    }
+                }
+
+                if (objectClone.GetComponent<AIController>())
+                {
+                    AIList.Add(objectClone.GetComponent<AIController>());
                 }
             }
         }
@@ -110,13 +124,6 @@ public class GridController : Singleton<GridController>
         else
             return false;
     }
-    public bool CanAttack(Vector2Int fwdPosition)
-    {
-        //Check if character in front of character can be attacked
-
-
-        return true;
-    }
 
     public bool CanInteract(Vector2Int fwdPosition, TaskManager task)
     {
@@ -133,6 +140,23 @@ public class GridController : Singleton<GridController>
             return false;
 
     }
+
+    public bool CanAttack(Vector2Int fwdPosition, Vector2Int playerFwdDirection)
+    {
+        //Check if the object in front of us can be interected with
+
+        if (CheckMapBoundary(fwdPosition) && objLocations[fwdPosition.x, fwdPosition.y].gameObject.GetComponent<CharacterClass>())
+        {
+            if (objLocations[fwdPosition.x, fwdPosition.y].gameObject.GetComponent<CharacterClass>().fwdDirection == playerFwdDirection)
+                return true;
+            else
+                return false;
+        }
+        else
+            return false;
+
+    }
+
 
     public Vector3 GetGridLocation(Vector2Int gridPosition)
     {

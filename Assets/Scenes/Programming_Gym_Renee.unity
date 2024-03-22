@@ -163,10 +163,14 @@ MonoBehaviour:
   - {fileID: 8197009724742943869, guid: a4b1d3df46481d24d858aaf4867486ac, type: 3}
   - {fileID: -6240001492395218427, guid: c76f177fa2c62154eaa7058c131eb2fc, type: 3}
   levels:
-  - {fileID: 4900000, guid: 438ffe7b8dfff2c43b8748949b6b7813, type: 3}
+  - {fileID: 4900000, guid: 6c0990b6063ee044894ba12940aafb31, type: 3}
   tileWidth: 1
   tileHeight: 1
   interactableObjs: []
+  AIList: []
+  CharacterModels:
+  - {fileID: 5752953159282014391, guid: 7c7c6bccd2d07ba4f87d503e9ff813f6, type: 3}
+  - {fileID: 1422110576999563330, guid: 8e283f9aaa0565140a8e4e711519d385, type: 3}
 --- !u!4 &36387450
 Transform:
   m_ObjectHideFlags: 0
