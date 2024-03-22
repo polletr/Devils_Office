@@ -40,14 +40,7 @@ public class PlayerController : CharacterClass
     }
     public void HandleInteract()
     {
-        if (GridController.Instance.CanInteract(gridLocation + fwdDirection,_taskManager))   // can incteract , in the task list             
-        {
-            ChangeState(new InteractState());
-        }
-        else if (false)//check if can attack
-        {
-            ChangeState(new AttackState());
-        }
+        currentState?.HandleInteract();
     }
 
     public void HandleStopInteract()
@@ -62,5 +55,15 @@ public class PlayerController : CharacterClass
 
 
     #endregion
+
+    public void DestroyModel()
+    {
+        Destroy(characterModel);
+    }
+
+    public void SpawnNewModel(GameObject newModel)
+    {
+        characterModel = Instantiate(newModel, transform);
+    }
 
 }

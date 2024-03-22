@@ -47,6 +47,24 @@ public class IdleState : BaseState
 
     }
 
+    public override void HandleInteract()
+    {
+        if (GridController.Instance.CanInteract(character.gridLocation + character.fwdDirection, character.GetComponent<PlayerController>()?._taskManager))   // can incteract , in the task list             
+        {
+            character.ChangeState(new InteractState());
+        }
+        else if (GridController.Instance.CanAttack(character.gridLocation + character.fwdDirection, character.fwdDirection))//check if can attack
+        {
+            character.ChangeState(new AttackState());
+        }
+
+    }
+
+    public override void HandleDeath()
+    {
+        character.ChangeState(new DeathState());
+    }
+
 
 
 }
