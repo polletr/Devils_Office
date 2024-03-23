@@ -22,7 +22,7 @@ public class Menu : MonoBehaviour
     }
 
     //Screen Management
-    protected void DisableScreens()
+    protected virtual void DisableScreens()
     {
         _currentMenu?.SetActive(_startActive);
         _creditsMenu?.SetActive(false);
@@ -37,7 +37,7 @@ public class Menu : MonoBehaviour
 
     public void OnQuitGame()
     {
-        /*
+        
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #elif UNITY_WEBGL
@@ -45,6 +45,6 @@ public class Menu : MonoBehaviour
 #else
             Application.Quit();
 #endif
-*/    }
+    }
 
 }
