@@ -40,6 +40,7 @@ Transform:
   - {fileID: 4609434090975260824}
   - {fileID: 5666448529094134935}
   - {fileID: 5599623796348205783}
+  - {fileID: 2288792208737248333}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &4835517568901591207
@@ -100,6 +101,15 @@ MonoBehaviour:
   waitTime: 5
   interactionPos: {x: 0, y: 0}
   taskType: 0
+  TaskStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  TaskInterrupted:
+    m_PersistentCalls:
+      m_Calls: []
+  TaskCompleted:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6095553973967109227
 GameObject:
   m_ObjectHideFlags: 0
@@ -111,7 +121,6 @@ GameObject:
   - component: {fileID: 5599623796348205783}
   - component: {fileID: 6000396018883181188}
   - component: {fileID: 2487352804084429495}
-  - component: {fileID: 2323390858176605749}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -184,27 +193,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2323390858176605749
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6095553973967109227}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &338924840088027002
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -273,7 +261,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mug (3)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4240954993202247746, guid: 923e50a76ea128747bf3fd7523355cf1, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -429,7 +418,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mug (4)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4240954993202247746, guid: 923e50a76ea128747bf3fd7523355cf1, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -438,6 +428,68 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 2588621630933217385, guid: 923e50a76ea128747bf3fd7523355cf1, type: 3}
   m_PrefabInstance: {fileID: 2025316132735238385}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2249282104155139611
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4998773895212732535}
+    m_Modifications:
+    - target: {fileID: 68787969514293846, guid: 0cf6c8dee30f9aa4bb964114ed5dba5c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.584
+      objectReference: {fileID: 0}
+    - target: {fileID: 68787969514293846, guid: 0cf6c8dee30f9aa4bb964114ed5dba5c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.548
+      objectReference: {fileID: 0}
+    - target: {fileID: 68787969514293846, guid: 0cf6c8dee30f9aa4bb964114ed5dba5c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.362
+      objectReference: {fileID: 0}
+    - target: {fileID: 68787969514293846, guid: 0cf6c8dee30f9aa4bb964114ed5dba5c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.0000016761803
+      objectReference: {fileID: 0}
+    - target: {fileID: 68787969514293846, guid: 0cf6c8dee30f9aa4bb964114ed5dba5c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.0000015045896
+      objectReference: {fileID: 0}
+    - target: {fileID: 68787969514293846, guid: 0cf6c8dee30f9aa4bb964114ed5dba5c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 68787969514293846, guid: 0cf6c8dee30f9aa4bb964114ed5dba5c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.70710677
+      objectReference: {fileID: 0}
+    - target: {fileID: 68787969514293846, guid: 0cf6c8dee30f9aa4bb964114ed5dba5c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 68787969514293846, guid: 0cf6c8dee30f9aa4bb964114ed5dba5c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 68787969514293846, guid: 0cf6c8dee30f9aa4bb964114ed5dba5c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5963295823000905374, guid: 0cf6c8dee30f9aa4bb964114ed5dba5c, type: 3}
+      propertyPath: m_Name
+      value: Plane
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0cf6c8dee30f9aa4bb964114ed5dba5c, type: 3}
+--- !u!4 &2288792208737248333 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 68787969514293846, guid: 0cf6c8dee30f9aa4bb964114ed5dba5c, type: 3}
+  m_PrefabInstance: {fileID: 2249282104155139611}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3954064933410370426
 PrefabInstance:
@@ -585,7 +637,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mug
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4240954993202247746, guid: 923e50a76ea128747bf3fd7523355cf1, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -663,7 +716,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mug (5)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4240954993202247746, guid: 923e50a76ea128747bf3fd7523355cf1, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -741,7 +795,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mug (2)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4240954993202247746, guid: 923e50a76ea128747bf3fd7523355cf1, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -819,7 +874,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mug (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4240954993202247746, guid: 923e50a76ea128747bf3fd7523355cf1, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
