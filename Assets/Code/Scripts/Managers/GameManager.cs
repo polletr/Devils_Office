@@ -2,9 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
-    int timer;
+    [HideInInspector]
+    public float timer;
+
+    public int taskPoints;
+
+    public int killPoints;
 
     // Start is called before the first frame update
     void Start()
@@ -15,6 +20,6 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        timer += Time.deltaTime;
     }
 }

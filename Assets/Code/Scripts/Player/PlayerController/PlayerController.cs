@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Playables;
+using UnityEngine.UIElements;
 
 [RequireComponent(typeof(InputManager))]
 public class PlayerController : CharacterClass
@@ -10,6 +11,10 @@ public class PlayerController : CharacterClass
 
     public string controlScheme;
     public TaskManager _taskManager;
+
+    public int points;
+
+    public int killCount;
 
     public override void Awake()
     {

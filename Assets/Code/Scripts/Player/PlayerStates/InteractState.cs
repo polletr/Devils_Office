@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 public class InteractState : BaseState
 {
@@ -27,7 +28,13 @@ public class InteractState : BaseState
         if (timer > interactTimer)
         {
 
-            character.GetComponent<PlayerController>()?._taskManager.CompleteTask(interactableObj);
+            if (character.GetComponent<PlayerController>())
+            {
+                character.GetComponent<PlayerController>()._taskManager.CompleteTask(interactableObj);
+
+                character.GetComponent<PlayerController>().points += GameManager.Instance.taskPoints;
+            }
+
             interactableObj.TaskCompleted.Invoke();
 
             //Disable UI
