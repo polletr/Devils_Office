@@ -57,7 +57,7 @@ public class GridController : Singleton<GridController>
 
                 objectClone.transform.localPosition = new Vector3(i, 0, j);
                 objectClone.posInGrid = new Vector2Int(i, j);
-                if (gridRotation.ToString() != "" && objectClone.GetComponent<InteractableObj>())
+                if (gridRotation.ToString() != "" && (objectClone.GetComponent<InteractableObj>() || objectClone.GetComponent<Wall>()))
                 {
                     RotateObject(objectClone, gridRotation);
                 }
@@ -174,22 +174,37 @@ public class GridController : Singleton<GridController>
         {
             case 'R':
                 instantiatedObj.transform.eulerAngles = new Vector3(0, 90f, 0);
-                instantiatedObj.GetComponent<InteractableObj>().interactionPos = new Vector2Int(1, 0) + instantiatedObj.posInGrid;
+                if (instantiatedObj.GetComponent<InteractableObj>())
+                {
+                    instantiatedObj.GetComponent<InteractableObj>().interactionPos = new Vector2Int(1, 0) + instantiatedObj.posInGrid;
+                }
                 break;
             case 'L':
                 instantiatedObj.transform.eulerAngles = new Vector3(0, 270f, 0);
-                instantiatedObj.GetComponent<InteractableObj>().interactionPos = new Vector2Int(-1, 0) + instantiatedObj.posInGrid;
+                if (instantiatedObj.GetComponent<InteractableObj>())
+                {
+                    instantiatedObj.GetComponent<InteractableObj>().interactionPos = new Vector2Int(-1, 0) + instantiatedObj.posInGrid;
+                }
                 break;
             case 'U':
                 instantiatedObj.transform.eulerAngles = new Vector3(0, 0f, 0);
-                instantiatedObj.GetComponent<InteractableObj>().interactionPos = new Vector2Int(0, 1) + instantiatedObj.posInGrid;
+                if (instantiatedObj.GetComponent<InteractableObj>())
+                {
+                    instantiatedObj.GetComponent<InteractableObj>().interactionPos = new Vector2Int(0, 1) + instantiatedObj.posInGrid;
+                }
                 break;
             case 'D':
                 instantiatedObj.transform.eulerAngles = new Vector3(0, 180f, 1);
-                instantiatedObj.GetComponent<InteractableObj>().interactionPos = new Vector2Int(0, -1) + instantiatedObj.posInGrid;
+                if (instantiatedObj.GetComponent<InteractableObj>())
+                {
+                    instantiatedObj.GetComponent<InteractableObj>().interactionPos = new Vector2Int(0, -1) + instantiatedObj.posInGrid;
+                }
                 break;
             default:
-                instantiatedObj.GetComponent<InteractableObj>().interactionPos = new Vector2Int(0, 1) + instantiatedObj.posInGrid;
+                if (instantiatedObj.GetComponent<InteractableObj>())
+                {
+                    instantiatedObj.GetComponent<InteractableObj>().interactionPos = new Vector2Int(0, 1) + instantiatedObj.posInGrid;
+                }
                 break;
         }
 

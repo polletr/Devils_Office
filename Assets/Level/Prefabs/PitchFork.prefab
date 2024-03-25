@@ -94,6 +94,15 @@ MonoBehaviour:
   waitTime: 3
   interactionPos: {x: 0, y: 0}
   taskType: 1
+  TaskStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  TaskInterrupted:
+    m_PersistentCalls:
+      m_Calls: []
+  TaskCompleted:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &974139607410188360
 PrefabInstance:
   m_ObjectHideFlags: 0
