@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Menu : MonoBehaviour
 {
+    [SerializeField]
+    protected bool _startActive;
 
     [Header("Menu Game Objects")]
     [SerializeField]
@@ -11,8 +13,6 @@ public class Menu : MonoBehaviour
     [SerializeField]
     private GameObject _controlsMenu;
 
-    [SerializeField]
-    protected bool _startActive;
 
     protected bool isMusted;
 

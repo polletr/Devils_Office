@@ -4,11 +4,12 @@ using UnityEngine.UI;
 
 public class MainMenu : Menu
 {
-    [Header("SettingsMenu"), SerializeField]
+    [SerializeField]
     private GameObject _SettingMenu;
+    [SerializeField]
     private GameObject _PlayMenu;
 
-    [Header("Playerelection")]
+    [Header("Player Selection Buttons")]
     [SerializeField]
     private Toggle TwoPlayers;
     [SerializeField]
@@ -16,7 +17,7 @@ public class MainMenu : Menu
     [SerializeField]
     private Toggle FourPlayers;
 
-    [Header("StartGameButton")]
+    [Header("Start Game Button")]
     [SerializeField]
     private Button _startGame;
 
@@ -25,8 +26,7 @@ public class MainMenu : Menu
     private void Awake()
     {
         //play settings
-        TwoPlayers.isOn = true;
-       _startGame.interactable = true;
+       _startGame.interactable = false;
 
 
         //Ui settings
