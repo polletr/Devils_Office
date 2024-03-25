@@ -88,16 +88,17 @@ public class MainMenu : Menu
 
     private void Load2PlayerGame()
     {
-      Debug.Log("2 Player Game");
+        SceneManager.LoadScene(1);
     }
 
     private void Load3PlayerGame()
     {
-      Debug.Log("3 Player Game");
+        SceneManager.LoadScene(2);
     }
     private void Load4PlayerGame()
     {
-      Debug.Log("4 Player Game");
+        SceneManager.LoadScene(3);
+
     }
 
     #endregion

@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1654740700313610095
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2289497962086577596}
+  - component: {fileID: 648281673419722576}
+  m_Layer: 0
+  m_Name: '[GridController]'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2289497962086577596
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1654740700313610095}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &648281673419722576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1654740700313610095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac7cc73290c6f0e46a08857cb5e3226a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startLocation: {x: 0, y: 0, z: 0}
+  objectPrefabs:
+  - {fileID: -9000357098655872896, guid: 587b2a32bb8763845bf2464c9e71ef0b, type: 3}
+  - {fileID: 5089605013610614859, guid: cfa9e570c0af26f499856e7114570455, type: 3}
+  - {fileID: -6676769938149364635, guid: 8be78ede5662ae34c84ae9ddb04ba2f8, type: 3}
+  - {fileID: 2105480120167929367, guid: 6a1f1b367d3d85245a52d4e3eeda873d, type: 3}
+  - {fileID: 2956296818277282820, guid: 743f7110ed85ea9478b54490d52b6604, type: 3}
+  - {fileID: 2936206309713876890, guid: 866463a62a71eee40979b3cbee26535c, type: 3}
+  - {fileID: 8435337788012888245, guid: 68db2744124bea94da35727a6782fdd1, type: 3}
+  - {fileID: 3328008934528824340, guid: cbfcd94a5db133b499600f4851171193, type: 3}
+  - {fileID: 8197009724742943869, guid: a4b1d3df46481d24d858aaf4867486ac, type: 3}
+  - {fileID: -6240001492395218427, guid: c76f177fa2c62154eaa7058c131eb2fc, type: 3}
+  - {fileID: -1023477811321055392, guid: 3e9fbd9d536c518449e537932be8d7e6, type: 3}
+  - {fileID: 8327369543673098170, guid: 459d089abe74f7742b41164f1ed0aaae, type: 3}
+  - {fileID: 5086342218739952932, guid: 3477bf830b011e448938d4845aae9680, type: 3}
+  - {fileID: 932257680923324967, guid: 592d2f1c908cc0d42a95d9db74d487ed, type: 3}
+  - {fileID: -1336518825596068879, guid: 52593563017843643af14a17880eb8bc, type: 3}
+  - {fileID: 193777628664751572, guid: 05ee40ae79ab3a84db766f481790da75, type: 3}
+  - {fileID: 8897457722488293876, guid: a9f80ce00fc825047b970c7ef146d048, type: 3}
+  levels:
+  - {fileID: 4900000, guid: 2b958fcc98ba6444098840be7d0bc1f4, type: 3}
+  tileWidth: 1
+  tileHeight: 1
+  interactableObjs: []
+  AIList: []
+  CharacterModels:
+  - {fileID: 5752953159282014391, guid: 7c7c6bccd2d07ba4f87d503e9ff813f6, type: 3}
+  - {fileID: 1422110576999563330, guid: 8e283f9aaa0565140a8e4e711519d385, type: 3}
