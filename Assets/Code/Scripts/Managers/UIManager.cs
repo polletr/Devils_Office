@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine;
 public class UIManager : MonoBehaviour
 {
+    public GameObject playerUI;
     [SerializeField]
     private TextMeshProUGUI[] taskText;
     [SerializeField]
@@ -24,6 +25,7 @@ public class UIManager : MonoBehaviour
           switch(playerID)
             {
             case PlayerID.P0:
+                   // GameManager.Instance.
               break;
             case PlayerID.P1:
               break;

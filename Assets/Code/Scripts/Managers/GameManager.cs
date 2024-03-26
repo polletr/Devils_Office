@@ -9,6 +9,8 @@ public class GameManager : Singleton<GameManager>
    
     [SerializeField] private TextMeshProUGUI timerText;
 
+    [SerializeField]
+   public Transform[] spawnPoints;
 
     public int taskPoints;
 

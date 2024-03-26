@@ -1,6 +1,7 @@
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GridController : Singleton<GridController>
@@ -79,6 +80,18 @@ public class GridController : Singleton<GridController>
                     if (objectClone.GetComponent<PlayerController>())
                     {
                         objectClone.GetComponent<PlayerController>().controlScheme = "P" + playerCount;
+                        UIManager uIManager = objectClone.GetComponentInChildren<UIManager>();
+                        uIManager.playerUI.transform.rotation = Quaternion.Euler(0, 0, 0);
+                        uIManager.playerUI.transform.SetParent(GameManager.Instance.spawnPoints[playerCount]);
+                        RectTransform rect = uIManager.playerUI.GetComponent<RectTransform>();
+                        rect.anchoredPosition = new Vector2(0, 0);
+                        rect.anchorMin = new Vector2(0.5f, 0.5f);
+                       rect.anchorMax = new Vector2(0.5f, 0.5f);
+                        rect.pivot = new Vector2(0.5f, 0.5f);
+                            //position = new Vector3(0, 0, 0);// = Quaternion.Euler(0, 0, 0);
+
+
+                        Debug.Log("Player " + playerCount + " spawned at " + GameManager.Instance.spawnPoints[playerCount].position);
                         playerCount++;
 
                     }
