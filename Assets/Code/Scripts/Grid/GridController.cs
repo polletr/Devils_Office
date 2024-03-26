@@ -73,6 +73,9 @@ public class GridController : Singleton<GridController>
                     objectClone.GetComponent<CharacterClass>().gridLocation = new Vector2Int((int)objectClone.transform.position.x, (int)objectClone.transform.position.z);
                     objectClone.GetComponent<CharacterClass>().characterModel = Instantiate(CharacterModels[Random.Range(0, CharacterModels.Count)], objectClone.transform);
 
+                    objectClone.GetComponent<CharacterClass>().characterModel.transform.localPosition = new Vector3(0, 1.5f, 0);
+                    objectClone.GetComponent<CharacterClass>().characterModel.transform.localRotation = Quaternion.Euler(0, 180f, 0);
+                    
                     if (objectClone.GetComponent<PlayerController>())
                     {
                         objectClone.GetComponent<PlayerController>().controlScheme = "P" + playerCount;
