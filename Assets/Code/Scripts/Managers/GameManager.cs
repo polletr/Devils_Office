@@ -1,9 +1,11 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class GameManager : Singleton<GameManager>
 {
-    [HideInInspector] public float timer = 80f;
+    [SerializeField]
+    private float timer = 80f;
    
     [SerializeField] private TextMeshProUGUI timerText;
 
@@ -14,7 +16,7 @@ public class GameManager : Singleton<GameManager>
 
     private void Awake()
     {
-        timerText.gameObject.SetActive(false);
+       // timerText.gameObject.SetActive(false);
     }
 
     void Update()
@@ -30,8 +32,12 @@ public class GameManager : Singleton<GameManager>
         //int milliseconds = Mathf.FloorToInt((timer * 100F) % 100F);
         if (timerText != null && timer < 21f)
         {
-            timerText.gameObject.SetActive(true);
+           // timerText.gameObject.SetActive(true);
             timerText.text = minutes.ToString("00") + ":" + seconds.ToString("00"); // + ":" + milliseconds.ToString("00");   
+        }
+        if (timer <= 0)
+        {
+            SceneManager.LoadScene("03_LoseScreen");
         }
     }
 }
