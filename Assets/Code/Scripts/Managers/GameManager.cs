@@ -1,25 +1,37 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameManager : Singleton<GameManager>
 {
-    [HideInInspector]
-    public float timer;
+    [HideInInspector] public float timer = 80f;
+   
+    [SerializeField] private TextMeshProUGUI timerText;
+
 
     public int taskPoints;
 
     public int killPoints;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        
+        timerText.gameObject.SetActive(false);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
+        TimerCount();
+    }
+
+    private void TimerCount()
+    {
+        timer -= Time.deltaTime;
+        int minutes = Mathf.FloorToInt(timer / 60F);
+        int seconds = Mathf.FloorToInt(timer % 60F);
+        //int milliseconds = Mathf.FloorToInt((timer * 100F) % 100F);
+        if (timerText != null && timer < 21f)
+        {
+            timerText.gameObject.SetActive(true);
+            timerText.text = minutes.ToString("00") + ":" + seconds.ToString("00"); // + ":" + milliseconds.ToString("00");   
+        }
     }
 }
