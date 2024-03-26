@@ -14,14 +14,18 @@ public class AttackState : BaseState
 
         targetCharacter.currentState?.HandleDeath();
 
-        if (targetCharacter.GetComponent<AIController>())
+        if (character.GetComponent<PlayerController>().canInteract)
         {
-            character.GetComponent<PlayerController>()?._taskManager.AddExtinguishTask();
-        }
-        else if (targetCharacter.GetComponent<PlayerController>())
-        {
-            character.GetComponent<PlayerController>().points += GameManager.Instance.killPoints;
-            character.GetComponent<PlayerController>().killCount += 1;
+            if (targetCharacter.GetComponent<AIController>())
+            {
+                character.GetComponent<PlayerController>()._taskManager.AddExtinguishTask();
+                character.GetComponent<PlayerController>().canInteract = false;
+            }
+            else if (targetCharacter.GetComponent<PlayerController>())
+            {
+                character.GetComponent<PlayerController>().points += GameManager.Instance.killPoints;
+                character.GetComponent<PlayerController>().killCount += 1;
+            }
         }
 
         character.ChangeState(new IdleState());

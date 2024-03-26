@@ -147,7 +147,7 @@ public class GridController : Singleton<GridController>
 
         if (CheckMapBoundary(fwdPosition) && objLocations[fwdPosition.x, fwdPosition.y].gameObject.GetComponent<CharacterClass>())
         {
-            if (objLocations[fwdPosition.x, fwdPosition.y].gameObject.GetComponent<CharacterClass>().fwdDirection == playerFwdDirection)
+            if (objLocations[fwdPosition.x, fwdPosition.y].gameObject.GetComponent<CharacterClass>().fwdDirection == playerFwdDirection && objLocations[fwdPosition.x, fwdPosition.y].gameObject.GetComponent<CharacterClass>().currentState is IdleState)
                 return true;
             else
                 return false;

@@ -16,11 +16,15 @@ public class PlayerController : CharacterClass
 
     public int killCount;
 
+    [HideInInspector]
+    public bool canInteract;
+
     public override void Awake()
     {
         base.Awake();
         _taskManager = GetComponent<TaskManager>();
         ChangeState(new IdleState());
+        canInteract = true;
 
     }
     private void Update()

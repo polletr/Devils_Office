@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.TextCore.Text;
 
 public class TaskManager : MonoBehaviour
 {
@@ -44,12 +45,20 @@ public class TaskManager : MonoBehaviour
 
     public void CompleteTask(InteractableObj task)
     {
-        //Invoke 
-        OnTaskComplete?.Invoke();
-        Debug.Log("Task Completed: " + task.taskType);
-        taskToDo.Remove(task.taskType);
-        completedTask = task.taskType;
-        SearchTask();
+        //Invoke
+        if (!taskToDo.Contains(TaskType.ExtinguishBody) || task.taskType == TaskType.ExtinguishBody)
+        {
+            Debug.Log("Complete Task");
+            OnTaskComplete?.Invoke();
+            Debug.Log("Task Completed: " + task.taskType);
+            taskToDo.Remove(task.taskType);
+            completedTask = task.taskType;
+            SearchTask();
+        }
+        else
+        {
+            Debug.Log("Extinguish that body first");
+        }
     }
 
     public void AddExtinguishTask()
@@ -57,6 +66,7 @@ public class TaskManager : MonoBehaviour
         taskToDo.Clear();
 
         taskToDo.Add(TaskType.ExtinguishBody);
+
         Debug.Log("Task: " + TaskType.ExtinguishBody);
 
     }

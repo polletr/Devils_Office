@@ -31,6 +31,10 @@ public class InteractState : BaseState
             if (character.GetComponent<PlayerController>())
             {
                 character.GetComponent<PlayerController>()._taskManager.CompleteTask(interactableObj);
+                if (interactableObj.GetComponent<ExtinguishBody>())
+                {
+                    character.GetComponent<PlayerController>().canInteract = true;
+                }
 
                 character.GetComponent<PlayerController>().points += GameManager.Instance.taskPoints;
             }

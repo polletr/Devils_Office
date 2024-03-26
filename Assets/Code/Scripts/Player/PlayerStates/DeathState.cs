@@ -9,6 +9,7 @@ public class DeathState : BaseState
     private float respawnTimerLimit = 5f;
     public override void EnterState()
     {
+        //Debug.Log("DeathState");
         //Play Animation
 
 
