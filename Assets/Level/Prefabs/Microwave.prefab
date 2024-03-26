@@ -319,7 +319,16 @@ MonoBehaviour:
   posInGrid: {x: 0, y: 0}
   waitTime: 0
   interactionPos: {x: 0, y: 0}
-  taskType: 2
+  taskType: 6
+  TaskStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  TaskInterrupted:
+    m_PersistentCalls:
+      m_Calls: []
+  TaskCompleted:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &8196792230384090214
 GameObject:
   m_ObjectHideFlags: 0

@@ -24,5 +24,10 @@ public enum TaskType
   Coffee,
   pitchFork,
   ExtinguishBody,
+  Stamp,
+  Printer,
+  PC,
+  Microwave,
+  Telephone,
   none
 }
