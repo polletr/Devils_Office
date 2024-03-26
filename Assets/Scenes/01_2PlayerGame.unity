@@ -188,34 +188,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 648281673419722576, guid: 747bc63039002654491ae1d8279294f4, type: 3}
-      propertyPath: CharacterModels.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 648281673419722576, guid: 747bc63039002654491ae1d8279294f4, type: 3}
-      propertyPath: CharacterModels.Array.data[0]
-      value: 
-      objectReference: {fileID: 3065793061739069658, guid: 0079b2bf62ee255449f43bf95799f5cd, type: 3}
-    - target: {fileID: 648281673419722576, guid: 747bc63039002654491ae1d8279294f4, type: 3}
-      propertyPath: CharacterModels.Array.data[1]
-      value: 
-      objectReference: {fileID: 8507312375107102518, guid: 543c0614a1e818b419a43881b009644d, type: 3}
-    - target: {fileID: 648281673419722576, guid: 747bc63039002654491ae1d8279294f4, type: 3}
-      propertyPath: CharacterModels.Array.data[2]
-      value: 
-      objectReference: {fileID: 9203875613173300399, guid: 0d463b0b511d7f6479cd90c7b7f0a8ed, type: 3}
-    - target: {fileID: 648281673419722576, guid: 747bc63039002654491ae1d8279294f4, type: 3}
-      propertyPath: CharacterModels.Array.data[3]
-      value: 
-      objectReference: {fileID: 2780765963507648527, guid: 3350a163f7722f04781a0c5579acb820, type: 3}
-    - target: {fileID: 648281673419722576, guid: 747bc63039002654491ae1d8279294f4, type: 3}
-      propertyPath: CharacterModels.Array.data[4]
-      value: 
-      objectReference: {fileID: 7388105204988329033, guid: 510ccee82976289418df7a53f1b08ca2, type: 3}
-    - target: {fileID: 648281673419722576, guid: 747bc63039002654491ae1d8279294f4, type: 3}
-      propertyPath: CharacterModels.Array.data[5]
-      value: 
-      objectReference: {fileID: 8136690857358407433, guid: 46c22bd739f434c498de9c33b30edbfe, type: 3}
     - target: {fileID: 1654740700313610095, guid: 747bc63039002654491ae1d8279294f4, type: 3}
       propertyPath: m_Name
       value: '[GridController]'
