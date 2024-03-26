@@ -357,6 +357,54 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1915756930829153015, guid: b60aeb09656c714439ad8e61a3b4cf5d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.0052980804
+      objectReference: {fileID: 0}
+    - target: {fileID: -1915756930829153015, guid: b60aeb09656c714439ad8e61a3b4cf5d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.0065985974
+      objectReference: {fileID: 0}
+    - target: {fileID: -1915756930829153015, guid: b60aeb09656c714439ad8e61a3b4cf5d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.00038856268
+      objectReference: {fileID: 0}
+    - target: {fileID: -1915756930829153015, guid: b60aeb09656c714439ad8e61a3b4cf5d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 66.529
+      objectReference: {fileID: 0}
+    - target: {fileID: -1915756930829153015, guid: b60aeb09656c714439ad8e61a3b4cf5d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 10.829
+      objectReference: {fileID: 0}
+    - target: {fileID: -1915756930829153015, guid: b60aeb09656c714439ad8e61a3b4cf5d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -158.137
+      objectReference: {fileID: 0}
+    - target: {fileID: -125712404460679790, guid: b60aeb09656c714439ad8e61a3b4cf5d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.0052980804
+      objectReference: {fileID: 0}
+    - target: {fileID: -125712404460679790, guid: b60aeb09656c714439ad8e61a3b4cf5d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.0065985974
+      objectReference: {fileID: 0}
+    - target: {fileID: -125712404460679790, guid: b60aeb09656c714439ad8e61a3b4cf5d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.00038856547
+      objectReference: {fileID: 0}
+    - target: {fileID: -125712404460679790, guid: b60aeb09656c714439ad8e61a3b4cf5d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 59.812
+      objectReference: {fileID: 0}
+    - target: {fileID: -125712404460679790, guid: b60aeb09656c714439ad8e61a3b4cf5d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -8.559
+      objectReference: {fileID: 0}
+    - target: {fileID: -125712404460679790, guid: b60aeb09656c714439ad8e61a3b4cf5d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 160.677
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b60aeb09656c714439ad8e61a3b4cf5d, type: 3}
       propertyPath: m_Name
       value: DevilModel_1
