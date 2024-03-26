@@ -34,6 +34,12 @@ public class InteractState : BaseState
                 if (interactableObj.GetComponent<ExtinguishBody>())
                 {
                     character.GetComponent<PlayerController>().canInteract = true;
+                    Vector2Int oldLocation = interactableObj.GetComponent<AIController>().gridLocation;
+
+                    GridController.Instance.objLocations[oldLocation.x, oldLocation.y] = GridController.Instance.objLocationsStart[oldLocation.x, oldLocation.y];
+                    GridController.Instance.gridLocations[oldLocation.x, oldLocation.y] = 0;
+
+
                 }
 
                 character.GetComponent<PlayerController>().points += GameManager.Instance.taskPoints;

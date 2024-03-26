@@ -54,11 +54,6 @@ public class DeathState : BaseState
 
             }
         }
-        else
-        {
-            //Clear the current Task List
-            //Add Extinguish Body task to tasks
-        }
 
 
 
