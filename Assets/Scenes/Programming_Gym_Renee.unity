@@ -188,6 +188,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 648281673419722576, guid: 747bc63039002654491ae1d8279294f4, type: 3}
+      propertyPath: levels.Array.data[0]
+      value: 
+      objectReference: {fileID: 4900000, guid: a5956c72fc7336e46a316ee9685c7d28, type: 3}
     - target: {fileID: 1654740700313610095, guid: 747bc63039002654491ae1d8279294f4, type: 3}
       propertyPath: m_Name
       value: '[GridController]'
