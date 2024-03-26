@@ -10,7 +10,7 @@ public class InteractState : BaseState
     private float timer;
     public override void EnterState()
     {
-        //Play Animation
+        character.anim.SetBool("Interact", true);
         //Enable UI
 
         interactableObj = GridController.Instance.objLocations[character.gridLocation.x + character.fwdDirection.x, character.gridLocation.y + character.fwdDirection.y].GetComponent<InteractableObj>();
@@ -21,6 +21,13 @@ public class InteractState : BaseState
         timer = 0f;
 
     }
+
+    public override void ExitState()
+    {
+        character.anim.SetBool("Interact", false);
+
+    }
+
 
     public override void StateUpdate()
     {

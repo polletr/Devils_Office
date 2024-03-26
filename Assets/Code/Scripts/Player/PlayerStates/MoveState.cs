@@ -29,8 +29,7 @@ public class MoveState : BaseState
             character.gameObject.GetComponent<PathFinder>()?.SetGridFromController();
 
             canMove = true;
-            //Play Animation
-
+            character.anim.SetTrigger("Walk");
 
         }
         else

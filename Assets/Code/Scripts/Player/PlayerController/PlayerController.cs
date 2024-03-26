@@ -23,6 +23,10 @@ public class PlayerController : CharacterClass
     {
         base.Awake();
         _taskManager = GetComponent<TaskManager>();
+
+        Invoke(nameof(GetAnim), 0.5f);   // use catch event instead of invoke
+
+
         ChangeState(new IdleState());
         canInteract = true;
 
@@ -74,5 +78,12 @@ public class PlayerController : CharacterClass
     {
         characterModel = Instantiate(newModel, transform);
     }
+
+    public void GetAnim()
+    {
+        anim = GetComponentInChildren<Animator>();
+    }
+
+
 
 }

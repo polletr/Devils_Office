@@ -30,10 +30,13 @@ public class AIController : CharacterClass
     public override void Awake()
     {
         base.Awake();
+
         Invoke(nameof(StartThinking), 0.5f);   // use catch event instead of invoke
+
         ChangeState(new IdleState());
         pathFinder = GetComponent<PathFinder>();
         pathFinder.SetGridFromController();
+
 
         // GridController.Instance.objLocations[(int)transform.position.x, (int)transform.position.z] = ;
 
@@ -241,6 +244,8 @@ public class AIController : CharacterClass
 
     private void StartThinking()
     {
+        anim = GetComponentInChildren<Animator>();
+
         SetBrain(AITasks.Think);
     }
 
