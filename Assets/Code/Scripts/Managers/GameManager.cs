@@ -24,6 +24,7 @@ public class GameManager : Singleton<GameManager>
     void Update()
     {
         TimerCount();
+        RankPlayers();
     }
 
     private void TimerCount()
@@ -39,7 +40,20 @@ public class GameManager : Singleton<GameManager>
         }
         if (timer <= 0)
         {
-            SceneManager.LoadScene("03_LoseScreen");
+            EndGame();
         }
     }
+
+    private void RankPlayers()
+    {   
+
+    }
+
+    public void EndGame()
+    {
+        SceneManager.LoadScene("03_LoseScreen");
+    }
+
+
+
 }

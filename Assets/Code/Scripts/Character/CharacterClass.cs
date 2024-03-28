@@ -16,9 +16,9 @@ public class CharacterClass : BaseObject
 
     [HideInInspector]
     public Animator anim;
-
+    [HideInInspector]
     public BaseState currentState;
-
+    [HideInInspector]
     public GameObject characterModel;
 
     public virtual void Awake()

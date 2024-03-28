@@ -50,8 +50,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   posInGrid: {x: 0, y: 0}
-  moveSpeed: 2
-  rotateSpeed: 200
+  moveSpeed: 3
+  rotateSpeed: 300
   fwdDirection: {x: 0, y: 0}
   gridLocation: {x: 0, y: 0}
   anim: {fileID: 0}

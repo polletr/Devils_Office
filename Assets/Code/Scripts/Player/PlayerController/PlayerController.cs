@@ -8,13 +8,17 @@ using UnityEngine.UIElements;
 [RequireComponent(typeof(InputManager))]
 public class PlayerController : CharacterClass
 {
-
+    [HideInInspector]
     public string controlScheme;
+
+    [HideInInspector]
     public TaskManager _taskManager;
     private UIManager UIManager;
 
+    [HideInInspector]
     public int points;
 
+    [HideInInspector]
     public int killCount;
 
     [HideInInspector]
@@ -25,6 +29,8 @@ public class PlayerController : CharacterClass
         base.Awake();
         _taskManager = GetComponent<TaskManager>();
         UIManager = GetComponentInChildren<UIManager>();
+        Invoke(nameof(GetAnim), 0.5f);   // use catch event instead of invoke
+
         ChangeState(new IdleState());
         canInteract = true;
 
@@ -77,5 +83,11 @@ public class PlayerController : CharacterClass
     {
         characterModel = Instantiate(newModel, transform);
     }
+
+    public void GetAnim()
+    {
+        anim = GetComponentInChildren<Animator>();
+    }
+
 
 }
