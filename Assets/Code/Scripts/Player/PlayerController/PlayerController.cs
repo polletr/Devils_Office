@@ -85,12 +85,9 @@ public class PlayerController : CharacterClass
 
     public void SpawnNewModel(GameObject newModel)
     {
-        //characterModel = Instantiate(newModel, transform);
 
         newModel.transform.SetParent(transform, false);
-        //anim.runtimeAnimatorController = null;
-        GetAnim();
-        //anim.Rebind();
+        anim = newModel.GetComponent<Animator>();
         Debug.Log(anim.ToString());
     }
 

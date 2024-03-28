@@ -44,7 +44,7 @@ public class DeathState : BaseState
                     character.transform.rotation = AIPicked.transform.rotation;
                     character.fwdDirection = AIPicked.fwdDirection;
 
-                    //AIPicked.DestroySelf();
+                    AIPicked.DestroySelf();
 
                     character.ChangeState(new IdleState());
 

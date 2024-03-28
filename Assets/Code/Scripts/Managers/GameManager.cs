@@ -20,6 +20,9 @@ public class GameManager : Singleton<GameManager>
 
     public List<PlayerController> playersToRank = new();
 
+    [SerializeField]
+    private float extraTime;
+
     private void Awake()
     {
        // timerText.gameObject.SetActive(false);
@@ -54,13 +57,15 @@ public class GameManager : Singleton<GameManager>
     public void RankPlayers(List<PlayerController> players)
     {   
         playersToRank = players.OrderByDescending(p => p.points).ThenByDescending(p => p.killCount).ToList();
-        //Debug.Log(playersToRank[0].controlScheme.ToString());
-        //Debug.Log(playersToRank[1].controlScheme.ToString());
 
     }
 
     public void EndGame()
     {
+        if (playersToRank[0].points == playersToRank[1].points && playersToRank[0].killCount == playersToRank[1].killCount)
+        {
+            timer += extraTime;
+        }
         //Display Victory Screen and show the winner, second, etc.
     }
 
