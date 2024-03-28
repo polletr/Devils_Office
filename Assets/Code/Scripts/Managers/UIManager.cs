@@ -14,8 +14,6 @@ public class UIManager : MonoBehaviour
     [HideInInspector]
     public bool showUI;
 
-
-    private PlayerID playerID;
     // Start is called before the first frame update
     void Awake()
     {
@@ -25,23 +23,7 @@ public class UIManager : MonoBehaviour
         DisableUI(showUI);
 
 
-        if (Enum.TryParse(player.controlScheme, out PlayerID playerID))
-        {
-          switch(playerID)
-            {
-            case PlayerID.P0:
-                   // GameManager.Instance.
-              break;
-            case PlayerID.P1:
-              break;
-            case PlayerID.P2:
-              break;
-            case PlayerID.P3:
-              break;
-          }
-        }
     }
-
     private void UpdateUI()
     {
         //task
@@ -76,15 +58,22 @@ public class UIManager : MonoBehaviour
         }
     }
 
-
-    private enum PlayerID
-    {
-        P0,
-        P1,
-        P2,
-        P3
-    }
-
-
-
+    /*        if (Enum.TryParse(player.controlScheme, out PlayerID playerID))
+       {
+         switch(playerID)
+           {
+           case PlayerID.P0:
+                  // GameManager.Instance.
+             break;
+           case PlayerID.P1:
+             break;
+           case PlayerID.P2:
+             break;
+           case PlayerID.P3:
+             break;
+         }
+       }
+*/
 }
+
+
