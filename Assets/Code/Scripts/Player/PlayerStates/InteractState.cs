@@ -14,7 +14,16 @@ public class InteractState : BaseState
         //Enable UI
 
         interactableObj = GridController.Instance.objLocations[character.gridLocation.x + character.fwdDirection.x, character.gridLocation.y + character.fwdDirection.y].GetComponent<InteractableObj>();
-        interactTimer = interactableObj.waitTime;
+        
+        if (character.GetComponent<PlayerController>())
+        {
+            interactTimer = interactableObj.waitTime * character.GetComponent<PlayerController>().interactMultiplier;
+        }
+        else
+        {
+            interactTimer = interactableObj.waitTime;
+        }
+
 
         interactableObj.TaskStarted.Invoke();
 

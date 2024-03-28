@@ -46,5 +46,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timer: 80
   timerText: {fileID: 0}
+  spawnPoints: []
   taskPoints: 10
   killPoints: 20
+  playersToRank: []
+  extraTime: 0
+  interactMultLeader: 1.5
+  interactMultLast: 0.5

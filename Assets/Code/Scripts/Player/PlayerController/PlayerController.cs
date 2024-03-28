@@ -25,6 +25,9 @@ public class PlayerController : CharacterClass
     [HideInInspector]
     public bool canInteract;
 
+    [HideInInspector]
+    public float interactMultiplier = 1;
+
     public override void Awake()
     {
         base.Awake();
@@ -34,6 +37,7 @@ public class PlayerController : CharacterClass
 
         ChangeState(new IdleState());
         canInteract = true;
+        interactMultiplier = 1;
 
     }
     private void Update()

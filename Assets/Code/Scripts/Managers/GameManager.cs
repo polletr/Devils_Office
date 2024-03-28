@@ -23,6 +23,14 @@ public class GameManager : Singleton<GameManager>
     [SerializeField]
     private float extraTime;
 
+    [SerializeField]
+    private float interactMultLeader;
+    [SerializeField]
+    private float interactMultLast;
+
+
+
+
     private void Awake()
     {
        // timerText.gameObject.SetActive(false);
@@ -55,8 +63,35 @@ public class GameManager : Singleton<GameManager>
     }
 
     public void RankPlayers(List<PlayerController> players)
-    {   
+    {
         playersToRank = players.OrderByDescending(p => p.points).ThenByDescending(p => p.killCount).ToList();
+
+        int pointCheck = 0;
+        foreach (PlayerController player in players)
+        {
+            pointCheck += player.points;
+        }
+
+        if (pointCheck > 0)
+        {
+
+            for (int i = 0; i < playersToRank.Count; i++)
+            {
+                if (i == 0)
+                {
+                    playersToRank[i].interactMultiplier = interactMultLeader;
+                }
+                else if (i == playersToRank.Count - 1)
+                {
+                    playersToRank[i].interactMultiplier = interactMultLast;
+                }
+                else
+                {
+                    playersToRank[i].interactMultiplier = 1;
+                }
+            }
+        }
+
 
     }
 
