@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine;
 public class UIManager : MonoBehaviour
 {
+    public GameObject playerUI;
     [SerializeField]
     private TextMeshProUGUI[] taskText;
     [SerializeField]
@@ -10,20 +11,26 @@ public class UIManager : MonoBehaviour
 
     private TaskManager taskManager;
     private PlayerController player;
+    [HideInInspector]
+    public bool showUI;
 
-   private PlayerID playerID;
+
+    private PlayerID playerID;
     // Start is called before the first frame update
     void Awake()
     {
         taskManager = GetComponentInParent<TaskManager>();
         player = GetComponentInParent<PlayerController>();
-                                
-       
-        if(Enum.TryParse(player.controlScheme, out PlayerID playerID))
+        showUI = false;
+        DisableUI(showUI);
+
+
+        if (Enum.TryParse(player.controlScheme, out PlayerID playerID))
         {
           switch(playerID)
             {
             case PlayerID.P0:
+                   // GameManager.Instance.
               break;
             case PlayerID.P1:
               break;
@@ -58,7 +65,17 @@ public class UIManager : MonoBehaviour
     void Update()
     {
         UpdateUI();
+      
     }
+
+    public void DisableUI(bool b)
+    {
+     for(int i = 0; i < taskText.Length; i++)
+        {
+            taskText[i].gameObject.SetActive(b);
+        }
+    }
+
 
     private enum PlayerID
     {

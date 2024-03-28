@@ -56,7 +56,9 @@ public class InputManager : MonoBehaviour
             action.Player.InteractKill.performed += (val) => player.HandleInteract();
             action.Player.InteractKill.canceled += (val) => player.HandleStopInteract();
 
-            action.Player.ViewTask.performed += (val) => player.HandleViewTask();
+            action.Player.ViewTask.performed += (val) => player.HandleViewTask(true);
+            action.Player.ViewTask.canceled += (val) => player.HandleViewTask(false);
+
         }
         else if (player.controlScheme == "P1")
         {
@@ -67,7 +69,8 @@ public class InputManager : MonoBehaviour
             action.Player2.InteractKill.performed += (val) => player.HandleInteract();
             action.Player2.InteractKill.canceled += (val) => player.HandleStopInteract();
 
-            action.Player2.ViewTask.performed += (val) => player.HandleViewTask();
+            action.Player2.ViewTask.performed += (val) => player.HandleViewTask(true);
+            action.Player2.ViewTask.canceled += (val) => player.HandleViewTask(false);
         }
         else if (player.controlScheme == "P2")
         {
@@ -78,7 +81,9 @@ public class InputManager : MonoBehaviour
             action.Player3.InteractKill.performed += (val) => player.HandleInteract();
             action.Player3.InteractKill.canceled += (val) => player.HandleStopInteract();
 
-            action.Player3.ViewTask.performed += (val) => player.HandleViewTask();
+
+            action.Player3.ViewTask.performed += (val) => player.HandleViewTask(true);
+            action.Player3.ViewTask.canceled += (val) => player.HandleViewTask(false);
         }
         else if (player.controlScheme == "P3")
         {
@@ -89,7 +94,9 @@ public class InputManager : MonoBehaviour
             action.Player4.InteractKill.performed += (val) => player.HandleInteract();
             action.Player4.InteractKill.canceled += (val) => player.HandleStopInteract();
 
-            action.Player4.ViewTask.performed += (val) => player.HandleViewTask();
+
+            action.Player4.ViewTask.performed += (val) => player.HandleViewTask(true);
+            action.Player4.ViewTask.canceled += (val) => player.HandleViewTask(false);
         }
 
         else
@@ -109,7 +116,7 @@ public class InputManager : MonoBehaviour
         action.Player.InteractKill.performed += (val) => player.HandleInteract();
         action.Player.InteractKill.canceled += (val) => player.HandleStopInteract();
 
-        action.Player.ViewTask.performed += (val) => player.HandleViewTask();
+        action.Player.ViewTask.performed += (val) => player.HandleViewTask(false);
 
 
         action.Disable();

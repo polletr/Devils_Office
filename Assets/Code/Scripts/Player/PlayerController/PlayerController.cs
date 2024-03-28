@@ -11,6 +11,7 @@ public class PlayerController : CharacterClass
 
     public string controlScheme;
     public TaskManager _taskManager;
+    private UIManager UIManager;
 
     public int points;
 
@@ -23,10 +24,7 @@ public class PlayerController : CharacterClass
     {
         base.Awake();
         _taskManager = GetComponent<TaskManager>();
-
-        Invoke(nameof(GetAnim), 0.5f);   // use catch event instead of invoke
-
-
+        UIManager = GetComponentInChildren<UIManager>();
         ChangeState(new IdleState());
         canInteract = true;
 
@@ -61,9 +59,10 @@ public class PlayerController : CharacterClass
         currentState?.StopInteract();
     }
 
-    public void HandleViewTask()
+    public void HandleViewTask( bool show)
     {
-        //Define if we want the player to move or not
+        UIManager.DisableUI(show);
+
     }
 
 
@@ -78,12 +77,5 @@ public class PlayerController : CharacterClass
     {
         characterModel = Instantiate(newModel, transform);
     }
-
-    public void GetAnim()
-    {
-        anim = GetComponentInChildren<Animator>();
-    }
-
-
 
 }
