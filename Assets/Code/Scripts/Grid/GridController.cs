@@ -86,9 +86,10 @@ public class GridController : Singleton<GridController>
                         RectTransform rect = uIManager.playerUI.GetComponent<RectTransform>();
                         rect.anchoredPosition = new Vector2(0, 0);
                         rect.anchorMin = new Vector2(0.5f, 0.5f);
-                       rect.anchorMax = new Vector2(0.5f, 0.5f);
+                        rect.anchorMax = new Vector2(0.5f, 0.5f);
                         rect.pivot = new Vector2(0.5f, 0.5f);
-                            //position = new Vector3(0, 0, 0);// = Quaternion.Euler(0, 0, 0);
+                        rect.sizeDelta = new Vector2(0, 0);
+                        //position = new Vector3(0, 0, 0);// = Quaternion.Euler(0, 0, 0);
 
 
                         Debug.Log("Player " + playerCount + " spawned at " + GameManager.Instance.spawnPoints[playerCount].position);
