@@ -33,6 +33,8 @@ public class GridController : Singleton<GridController>
 
     public List<GameObject> CharacterModels = new();
 
+    private List<PlayerController> playerControllers = new();
+
 
     // Start is called before the first frame update
     void Awake()
@@ -79,6 +81,8 @@ public class GridController : Singleton<GridController>
                     
                     if (objectClone.GetComponent<PlayerController>())
                     {
+                        playerControllers.Add(objectClone.GetComponent<PlayerController>());
+
                         objectClone.GetComponent<PlayerController>().controlScheme = "P" + playerCount;
                         UIManager uIManager = objectClone.GetComponentInChildren<UIManager>();
                         uIManager.playerUI.transform.rotation = Quaternion.Euler(0, 0, 0);
@@ -113,7 +117,7 @@ public class GridController : Singleton<GridController>
             }
         }
 
-
+        GameManager.Instance.RankPlayers(playerControllers);
 
         objLocations = objLocationsStart;
 

@@ -9,7 +9,7 @@ public class AttackState : BaseState
 
     public override void EnterState()
     {
-        character.anim.SetTrigger("Attack");
+        character.anim?.SetTrigger("Attack");
         targetCharacter = GridController.Instance.objLocations[character.gridLocation.x + character.fwdDirection.x, character.gridLocation.y + character.fwdDirection.y].GetComponent<CharacterClass>();
 
         targetCharacter.currentState?.HandleDeath();

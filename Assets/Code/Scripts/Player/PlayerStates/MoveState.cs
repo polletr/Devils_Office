@@ -13,7 +13,6 @@ public class MoveState : BaseState
 
     public override void EnterState()
     {
-
         if (GridController.Instance.CanMove(character.gridLocation + character.fwdDirection))
         {
             oldLocation = character.gridLocation;
@@ -29,7 +28,7 @@ public class MoveState : BaseState
             character.gameObject.GetComponent<PathFinder>()?.SetGridFromController();
 
             canMove = true;
-            character.anim.SetTrigger("Walk");
+            character.anim?.SetTrigger("Walk");
 
         }
         else

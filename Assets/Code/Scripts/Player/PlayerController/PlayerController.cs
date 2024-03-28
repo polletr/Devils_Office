@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Playables;
+using UnityEngine.TextCore.Text;
 using UnityEngine.UIElements;
 
 [RequireComponent(typeof(InputManager))]
@@ -38,7 +39,10 @@ public class PlayerController : CharacterClass
     private void Update()
     {
         currentState?.StateUpdate();
-
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            ChangeState(new DeathState());
+        }
     }
     private void FixedUpdate()
     {
@@ -81,7 +85,13 @@ public class PlayerController : CharacterClass
 
     public void SpawnNewModel(GameObject newModel)
     {
-        characterModel = Instantiate(newModel, transform);
+        //characterModel = Instantiate(newModel, transform);
+
+        newModel.transform.SetParent(transform, false);
+        //anim.runtimeAnimatorController = null;
+        GetAnim();
+        //anim.Rebind();
+        Debug.Log(anim.ToString());
     }
 
     public void GetAnim()
