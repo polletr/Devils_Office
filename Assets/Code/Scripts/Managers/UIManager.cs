@@ -74,16 +74,21 @@ public class UIManager : MonoBehaviour
         loaderImageUI.fillAmount = indicator / maxIndicator;
     }
 
-    public void GameStats(string stats)
+    public void GameStats(PlayerController winner)
     {
         gameStats.gameObject.SetActive(true);
-        gameStats.text = stats;
-        if(stats == "Winner")
+        if (winner == player)
+        {
             gameStats.color = Color.green;
+            gameStats.text = "You Win!";
+        }
         else
+        {
             gameStats.color = Color.red;
-    }
+            gameStats.text = "You Lose!";
 
+        }
+    }
     /*        if (Enum.TryParse(player.controlScheme, out PlayerID playerID))
        {
          switch(playerID)

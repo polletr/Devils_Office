@@ -44,12 +44,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3d7f4d71a078b94a91dea15b9e0adc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: 80
+  timer: 120
   timerText: {fileID: 0}
-  spawnPoints: []
+  winScreen: {fileID: 0}
+  spawnPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   taskPoints: 10
   killPoints: 20
   playersToRank: []
-  extraTime: 0
   interactMultLeader: 1.5
   interactMultLast: 0.5
+  extraTimeCountLimit: 0

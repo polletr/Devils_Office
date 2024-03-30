@@ -41,6 +41,7 @@ public class InteractState : BaseState
                 interactTimer = interactableObj.waitTime;
             }
 
+
             interactableObj.TaskStarted.Invoke();
         }
 
