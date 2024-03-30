@@ -25,17 +25,25 @@ public class InteractState : BaseState
 
         interactableObj = GridController.Instance.objLocations[character.gridLocation.x + character.fwdDirection.x, character.gridLocation.y + character.fwdDirection.y].GetComponent<InteractableObj>();
         
-        if (playerController)
+
+        if (interactableObj.GetComponent<ExtinguishBody>() && interactableObj.GetComponent<AIController>().currentState is not DeathState)
         {
-            interactTimer = interactableObj.waitTime * playerController.interactMultiplier;
+            character.ChangeState(new IdleState());
         }
         else
         {
-            interactTimer = interactableObj.waitTime;
+            if (playerController)
+            {
+                interactTimer = interactableObj.waitTime * playerController.interactMultiplier;
+            }
+            else
+            {
+                interactTimer = interactableObj.waitTime;
+            }
+
+            interactableObj.TaskStarted.Invoke();
         }
 
-
-        interactableObj.TaskStarted.Invoke();
 
         timer = 0f;
 
