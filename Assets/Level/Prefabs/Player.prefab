@@ -58,9 +58,12 @@ MonoBehaviour:
   characterModel: {fileID: 0}
   controlScheme: 
   _taskManager: {fileID: 0}
+  _UIManager: {fileID: 0}
   points: 0
   killCount: 0
   canInteract: 0
+  interactMultiplier: 1
+  interactTimer: 0
 --- !u!114 &2796407554835070419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,7 +198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5330d732d317574ca36ecab4b9f3183, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxTasks: 3
+  maxTasks: 1
   taskToDo: 
   completedTask: 2
   taskUI: {fileID: 3975622249394097539}

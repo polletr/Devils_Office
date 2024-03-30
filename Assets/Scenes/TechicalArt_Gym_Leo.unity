@@ -171,10 +171,12 @@ MonoBehaviour:
   - {fileID: -1336518825596068879, guid: 52593563017843643af14a17880eb8bc, type: 3}
   - {fileID: 193777628664751572, guid: 05ee40ae79ab3a84db766f481790da75, type: 3}
   levels:
-  - {fileID: 4900000, guid: 2b958fcc98ba6444098840be7d0bc1f4, type: 3}
+  - {fileID: 4900000, guid: 2a17dad589533264ba8c7e8cc42e5479, type: 3}
   tileWidth: 1
   tileHeight: 1
   interactableObjs: []
+  AIList: []
+  CharacterModels: []
 --- !u!4 &36387450
 Transform:
   m_ObjectHideFlags: 0
