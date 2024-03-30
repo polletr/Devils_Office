@@ -8,6 +8,8 @@ public class InteractState : BaseState
     private float interactTimer;
     private InteractableObj interactableObj;
     private float timer;
+
+    private bool completedTask;
     public override void EnterState()
     {
         character.anim?.SetBool("Interact", true);
@@ -35,6 +37,11 @@ public class InteractState : BaseState
     {
         character.anim?.SetBool("Interact", false);
 
+        if (completedTask)
+        {
+            character.GetComponent<PlayerController>().points += GameManager.Instance.taskPoints;
+            completedTask = false;
+        }
     }
 
 
@@ -64,8 +71,8 @@ public class InteractState : BaseState
 
 
                 }
+                completedTask = true;
 
-                character.GetComponent<PlayerController>().points += GameManager.Instance.taskPoints;
             }
 
             interactableObj.TaskCompleted.Invoke();
