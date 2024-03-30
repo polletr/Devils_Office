@@ -22,7 +22,7 @@ public class InteractableObj : BaseObject
 public enum TaskType
 {
   Coffee,
-  pitchFork,
+  Pitchfork,
   ExtinguishBody,
   Stamp,
   Printer,
