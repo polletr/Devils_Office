@@ -57,4 +57,4 @@ MonoBehaviour:
   playersToRank: []
   interactMultLeader: 1.5
   interactMultLast: 0.5
-  extraTimeCountLimit: 0
+  extraTimeCountLimit: 3

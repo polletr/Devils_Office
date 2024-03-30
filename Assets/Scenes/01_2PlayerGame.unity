@@ -250,7 +250,11 @@ PrefabInstance:
     - target: {fileID: 88812441986982775, guid: 046bc1b8ee4d49b49862ffb89a022c8c, type: 3}
       propertyPath: timerText
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1990298924}
+    - target: {fileID: 88812441986982775, guid: 046bc1b8ee4d49b49862ffb89a022c8c, type: 3}
+      propertyPath: winScreen
+      value: 
+      objectReference: {fileID: 1990298923}
     - target: {fileID: 88812441986982775, guid: 046bc1b8ee4d49b49862ffb89a022c8c, type: 3}
       propertyPath: spawnPoints.Array.size
       value: 4
@@ -490,6 +494,22 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5af9976fbb29f443af290b489084997, type: 3}
+--- !u!1 &1990298923 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6747568506403769676, guid: e5af9976fbb29f443af290b489084997, type: 3}
+  m_PrefabInstance: {fileID: 1990298922}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1990298924 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1099110974786553655, guid: e5af9976fbb29f443af290b489084997, type: 3}
+  m_PrefabInstance: {fileID: 1990298922}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &1993420718 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1064441276775762320, guid: e5af9976fbb29f443af290b489084997, type: 3}
