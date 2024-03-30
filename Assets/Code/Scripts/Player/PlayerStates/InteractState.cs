@@ -54,6 +54,7 @@ public class InteractState : BaseState
             uiManager.showLoader = true;
             uiManager.LoadingBar(timer, interactTimer);
         }
+
         if (timer > interactTimer)
         {
 
@@ -64,14 +65,16 @@ public class InteractState : BaseState
                 if (interactableObj.GetComponent<ExtinguishBody>())
                 {
                     character.GetComponent<PlayerController>().canInteract = true;
-                    Vector2Int oldLocation = interactableObj.GetComponent<AIController>().gridLocation;
+                    Vector2Int objLocation = interactableObj.GetComponent<AIController>().gridLocation;
 
-                    GridController.Instance.objLocations[oldLocation.x, oldLocation.y] = GridController.Instance.objLocationsStart[oldLocation.x, oldLocation.y];
-                    GridController.Instance.gridLocations[oldLocation.x, oldLocation.y] = 0;
-
+                    GridController.Instance.objLocations[objLocation.x, objLocation.y] = GridController.Instance.objLocationsStart[objLocation.x, objLocation.y];
+                    GridController.Instance.gridLocations[objLocation.x, objLocation.y] = 0;
 
                 }
-                completedTask = true;
+                else
+                {
+                    completedTask = true;
+                }
 
             }
 
@@ -86,6 +89,18 @@ public class InteractState : BaseState
     {
         //Disable UI
         interactableObj.TaskInterrupted.Invoke();
+
+
+        if (character.GetComponent<PlayerController>())
+        {
+            Debug.Log("StopInteract");
+
+            UIManager uiManager = character.GetComponent<PlayerController>()._UIManager;
+            uiManager.showLoader = false;
+            uiManager.UnloadingBar();
+
+        }
+
 
         character.ChangeState(new IdleState());
 

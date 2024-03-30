@@ -33,8 +33,8 @@ public class UIManager : MonoBehaviour
         DisableUI(showUI);
         loaderImageUI.fillAmount = 0;
 
-
     }
+
     private void UpdateUI()
     {
         //task
@@ -73,6 +73,12 @@ public class UIManager : MonoBehaviour
     {
         loaderImageUI.fillAmount = indicator / maxIndicator;
     }
+
+    public void UnloadingBar()
+    {
+        loaderImageUI.fillAmount = 0;
+    }
+
 
     public void GameStats(string stats)
     {
