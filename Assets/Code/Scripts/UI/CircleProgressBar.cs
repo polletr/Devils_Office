@@ -6,14 +6,14 @@ using UnityEngine.Events;
 
 public class CircleProgressBar : MonoBehaviour
 {
-    [SerializeField] private float indicatorTimer = 1f;
+    [SerializeField] private float indicatorTimer = 0f;
     [SerializeField] private float maxIndicatorTimer = 1f;
 
     [SerializeField] private Image indicatorImageUI;
 
     [SerializeField] private KeyCode selectedKey = KeyCode.Mouse0;
 
-    [SerializeField] private UnityEvent onIndicator = null;
+    [SerializeField] private UnityEvent onIndicator;
 
     private bool shouldUpdate = false;
 
@@ -29,7 +29,7 @@ public class CircleProgressBar : MonoBehaviour
       if(Input.GetKey(selectedKey))
         {
             shouldUpdate = false;
-       indicatorTimer -= Time.deltaTime;
+       indicatorTimer += Time.deltaTime;
             indicatorImageUI.enabled = true;
             indicatorImageUI.fillAmount = indicatorTimer;
 
@@ -46,7 +46,7 @@ public class CircleProgressBar : MonoBehaviour
         {
             if(shouldUpdate)
             {
-                indicatorTimer += Time.deltaTime;
+                indicatorTimer -= Time.deltaTime;
                 indicatorImageUI.fillAmount = indicatorTimer;
                 if(indicatorTimer >= maxIndicatorTimer)
                 {
@@ -59,8 +59,8 @@ public class CircleProgressBar : MonoBehaviour
         }
 
       if(Input.GetKeyUp(selectedKey))
-        {
+      {
             shouldUpdate = true;
-        }
+      }
     }
 }

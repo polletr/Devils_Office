@@ -41,12 +41,19 @@ public class InteractState : BaseState
     public override void StateUpdate()
     {
         timer += Time.deltaTime;
+        if(character.GetComponent<PlayerController>())
+        {
+            UIManager uiManager = character.GetComponent<PlayerController>()._UIManager;
+            uiManager.showLoader = true;
+            uiManager.LoadingBar(timer, interactTimer);
+        }
         if (timer > interactTimer)
         {
 
             if (character.GetComponent<PlayerController>())
             {
                 character.GetComponent<PlayerController>()._taskManager.CompleteTask(interactableObj);
+                character.GetComponent<PlayerController>()._UIManager.showLoader = false;
                 if (interactableObj.GetComponent<ExtinguishBody>())
                 {
                     character.GetComponent<PlayerController>().canInteract = true;

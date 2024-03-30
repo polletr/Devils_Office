@@ -1,10 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.Playables;
-using UnityEngine.TextCore.Text;
-using UnityEngine.UIElements;
 
 [RequireComponent(typeof(InputManager))]
 public class PlayerController : CharacterClass
@@ -14,7 +8,9 @@ public class PlayerController : CharacterClass
 
     [HideInInspector]
     public TaskManager _taskManager;
-    private UIManager UIManager;
+
+    [HideInInspector]
+    public UIManager _UIManager;
 
     [HideInInspector]
     public int points;
@@ -28,11 +24,16 @@ public class PlayerController : CharacterClass
     [HideInInspector]
     public float interactMultiplier = 1;
 
-    public override void Awake()
+    [HideInInspector]
+    public float interactTimer;
+   
+
+
+public override void Awake()
     {
         base.Awake();
         _taskManager = GetComponent<TaskManager>();
-        UIManager = GetComponentInChildren<UIManager>();
+        _UIManager = GetComponentInChildren<UIManager>();
         Invoke(nameof(GetAnim), 0.5f);   // use catch event instead of invoke
 
         ChangeState(new IdleState());
@@ -73,9 +74,9 @@ public class PlayerController : CharacterClass
         currentState?.StopInteract();
     }
 
-    public void HandleViewTask( bool show)
+    public void HandleViewTask(bool show)
     {
-        UIManager.DisableUI(show);
+        _UIManager.DisableUI(show);
 
     }
 

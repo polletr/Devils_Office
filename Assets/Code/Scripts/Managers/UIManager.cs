@@ -1,6 +1,7 @@
-using System;
 using TMPro;
+using Unity.Loading;
 using UnityEngine;
+using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     public GameObject playerUI;
@@ -8,11 +9,16 @@ public class UIManager : MonoBehaviour
     private TextMeshProUGUI[] taskText;
     [SerializeField]
     private TextMeshProUGUI pointsText;
+    [SerializeField]
+    private Image loaderImageUI;
+
 
     private TaskManager taskManager;
     private PlayerController player;
     [HideInInspector]
     public bool showUI;
+    [HideInInspector]
+    public bool showLoader;
 
     // Start is called before the first frame update
     void Awake()
@@ -20,7 +26,9 @@ public class UIManager : MonoBehaviour
         taskManager = GetComponentInParent<TaskManager>();
         player = GetComponentInParent<PlayerController>();
         showUI = false;
+        showLoader = false;
         DisableUI(showUI);
+        loaderImageUI.fillAmount = 0;
 
 
     }
@@ -39,23 +47,28 @@ public class UIManager : MonoBehaviour
                 taskText[i].text = "";
             }
         }
-
-
+        //loader
+        loaderImageUI?.gameObject.SetActive(showLoader);
         //points
         pointsText.text = "Points: " + player.points.ToString();
     }
     void Update()
     {
         UpdateUI();
-      
+
     }
 
     public void DisableUI(bool b)
     {
-     for(int i = 0; i < taskText.Length; i++)
+        for (int i = 0; i < taskText.Length; i++)
         {
             taskText[i].gameObject.SetActive(b);
         }
+    }
+
+    public void LoadingBar(float indicator, float maxIndicator)
+    {
+        loaderImageUI.fillAmount = indicator / maxIndicator;
     }
 
     /*        if (Enum.TryParse(player.controlScheme, out PlayerID playerID))
