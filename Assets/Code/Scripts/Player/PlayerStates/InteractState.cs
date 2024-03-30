@@ -10,16 +10,24 @@ public class InteractState : BaseState
     private float timer;
 
     private bool completedTask;
+
+    private PlayerController playerController;
+
     public override void EnterState()
     {
         character.anim?.SetBool("Interact", true);
         //Enable UI
 
-        interactableObj = GridController.Instance.objLocations[character.gridLocation.x + character.fwdDirection.x, character.gridLocation.y + character.fwdDirection.y].GetComponent<InteractableObj>();
-        
         if (character.GetComponent<PlayerController>())
         {
-            interactTimer = interactableObj.waitTime * character.GetComponent<PlayerController>().interactMultiplier;
+            playerController = character.GetComponent<PlayerController>();
+        }
+
+        interactableObj = GridController.Instance.objLocations[character.gridLocation.x + character.fwdDirection.x, character.gridLocation.y + character.fwdDirection.y].GetComponent<InteractableObj>();
+        
+        if (playerController)
+        {
+            interactTimer = interactableObj.waitTime * playerController.interactMultiplier;
         }
         else
         {
@@ -39,18 +47,27 @@ public class InteractState : BaseState
 
         if (completedTask)
         {
-            character.GetComponent<PlayerController>().points += GameManager.Instance.taskPoints;
+            playerController.points += GameManager.Instance.taskPoints;
             completedTask = false;
         }
+
+        if (character.GetComponent<PlayerController>())
+        {
+
+            UIManager uiManager = playerController._UIManager;
+            uiManager.showLoader = false;
+
+        }
+
     }
 
 
     public override void StateUpdate()
     {
         timer += Time.deltaTime;
-        if(character.GetComponent<PlayerController>())
+        if(playerController)
         {
-            UIManager uiManager = character.GetComponent<PlayerController>()._UIManager;
+            UIManager uiManager = playerController._UIManager;
             uiManager.showLoader = true;
             uiManager.LoadingBar(timer, interactTimer);
         }
@@ -58,13 +75,13 @@ public class InteractState : BaseState
         if (timer > interactTimer)
         {
 
-            if (character.GetComponent<PlayerController>())
+            if (playerController)
             {
-                character.GetComponent<PlayerController>()._taskManager.CompleteTask(interactableObj);
-                character.GetComponent<PlayerController>()._UIManager.showLoader = false;
+                playerController._taskManager.CompleteTask(interactableObj);
+                playerController._UIManager.showLoader = false;
                 if (interactableObj.GetComponent<ExtinguishBody>())
                 {
-                    character.GetComponent<PlayerController>().canInteract = true;
+                    playerController.canInteract = true;
                     Vector2Int objLocation = interactableObj.GetComponent<AIController>().gridLocation;
 
                     GridController.Instance.objLocations[objLocation.x, objLocation.y] = GridController.Instance.objLocationsStart[objLocation.x, objLocation.y];
@@ -91,15 +108,6 @@ public class InteractState : BaseState
         interactableObj.TaskInterrupted.Invoke();
 
 
-        if (character.GetComponent<PlayerController>())
-        {
-            Debug.Log("StopInteract");
-
-            UIManager uiManager = character.GetComponent<PlayerController>()._UIManager;
-            uiManager.showLoader = false;
-            uiManager.UnloadingBar();
-
-        }
 
 
         character.ChangeState(new IdleState());

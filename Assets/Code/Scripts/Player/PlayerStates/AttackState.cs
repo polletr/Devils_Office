@@ -7,24 +7,34 @@ public class AttackState : BaseState
 {
     private CharacterClass targetCharacter;
 
+    private PlayerController playerController;
+
+
     public override void EnterState()
     {
+
+        if (character.GetComponent<PlayerController>())
+        {
+            playerController = character.GetComponent<PlayerController>();
+        }
+
+
         character.anim?.SetTrigger("Attack");
         targetCharacter = GridController.Instance.objLocations[character.gridLocation.x + character.fwdDirection.x, character.gridLocation.y + character.fwdDirection.y].GetComponent<CharacterClass>();
 
         targetCharacter.currentState?.HandleDeath();
 
-        if (character.GetComponent<PlayerController>().canInteract)
+        if (playerController.canInteract)
         {
             if (targetCharacter.GetComponent<AIController>())
             {
-                character.GetComponent<PlayerController>()._taskManager.AddExtinguishTask();
-                character.GetComponent<PlayerController>().canInteract = false;
+                playerController._taskManager.AddExtinguishTask();
+                playerController.canInteract = false;
             }
             else if (targetCharacter.GetComponent<PlayerController>())
             {
-                character.GetComponent<PlayerController>().points += GameManager.Instance.killPoints;
-                character.GetComponent<PlayerController>().killCount += 1;
+                playerController.points += GameManager.Instance.killPoints;
+                playerController.killCount += 1;
             }
         }
 

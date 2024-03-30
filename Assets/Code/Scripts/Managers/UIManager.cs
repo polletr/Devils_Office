@@ -74,12 +74,6 @@ public class UIManager : MonoBehaviour
         loaderImageUI.fillAmount = indicator / maxIndicator;
     }
 
-    public void UnloadingBar()
-    {
-        loaderImageUI.fillAmount = 0;
-    }
-
-
     public void GameStats(string stats)
     {
         gameStats.gameObject.SetActive(true);
