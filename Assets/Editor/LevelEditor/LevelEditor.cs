@@ -37,6 +37,7 @@ public class LevelEditor : EditorWindow
             new Color(173f / 255f, 60f / 255f, 205f / 255f),
             new Color(225f / 255f, 175f / 255f, 175f / 255f),
             new Color(43f / 255f, 97f / 255f, 47f / 255f),
+            new Color(235f / 255f, 52f / 255f, 192f / 255f),
 
 };
     char[] orientations =
@@ -66,7 +67,8 @@ public class LevelEditor : EditorWindow
         "PC",
         "PC2",
         "CleaningMaterial",
-        "WhiteBoard"
+        "WhiteBoard",
+        "Phone"
     };
 
     public LevelData myData;

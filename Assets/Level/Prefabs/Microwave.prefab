@@ -1290,7 +1290,7 @@ MonoBehaviour:
   posInGrid: {x: 0, y: 0}
   waitTime: 3
   interactionPos: {x: 0, y: 0}
-  taskType: 2
+  taskType: 6
   TaskStarted:
     m_PersistentCalls:
       m_Calls: []
@@ -1869,11 +1869,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 68787969514293846, guid: 0cf6c8dee30f9aa4bb964114ed5dba5c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.24
+      value: 0.657
       objectReference: {fileID: 0}
     - target: {fileID: 68787969514293846, guid: 0cf6c8dee30f9aa4bb964114ed5dba5c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.02
+      value: 0.45
       objectReference: {fileID: 0}
     - target: {fileID: 68787969514293846, guid: 0cf6c8dee30f9aa4bb964114ed5dba5c, type: 3}
       propertyPath: m_LocalRotation.w
