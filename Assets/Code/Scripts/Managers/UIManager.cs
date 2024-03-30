@@ -11,6 +11,8 @@ public class UIManager : MonoBehaviour
     private TextMeshProUGUI pointsText;
     [SerializeField]
     private Image loaderImageUI;
+    [SerializeField]
+    private TextMeshProUGUI gameStats;
 
 
     private TaskManager taskManager;
@@ -27,6 +29,7 @@ public class UIManager : MonoBehaviour
         player = GetComponentInParent<PlayerController>();
         showUI = false;
         showLoader = false;
+        gameStats.gameObject.SetActive(false);
         DisableUI(showUI);
         loaderImageUI.fillAmount = 0;
 
@@ -48,7 +51,7 @@ public class UIManager : MonoBehaviour
             }
         }
         //loader
-        loaderImageUI?.gameObject.SetActive(showLoader);
+        loaderImageUI.gameObject.SetActive(showLoader);
         //points
         pointsText.text = "Points: " + player.points.ToString();
     }
@@ -69,6 +72,16 @@ public class UIManager : MonoBehaviour
     public void LoadingBar(float indicator, float maxIndicator)
     {
         loaderImageUI.fillAmount = indicator / maxIndicator;
+    }
+
+    public void GameStats(string stats)
+    {
+        gameStats.gameObject.SetActive(true);
+        gameStats.text = stats;
+        if(stats == "Winner")
+            gameStats.color = Color.green;
+        else
+            gameStats.color = Color.red;
     }
 
     /*        if (Enum.TryParse(player.controlScheme, out PlayerID playerID))

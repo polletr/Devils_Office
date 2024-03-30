@@ -10,6 +10,7 @@ public class GameManager : Singleton<GameManager>
     private float timer = 80f;
    
     [SerializeField] private TextMeshProUGUI timerText;
+    [SerializeField] private TextMeshProUGUI gameStatsText;
 
     [SerializeField]
     public Transform[] spawnPoints;
@@ -34,6 +35,7 @@ public class GameManager : Singleton<GameManager>
     private void Awake()
     {
        // timerText.gameObject.SetActive(false);
+      // gameStatsText.gameObject.SetActive(false);
     }
 
     void Update()
@@ -80,6 +82,7 @@ public class GameManager : Singleton<GameManager>
                 if (i == 0)
                 {
                     playersToRank[i].interactMultiplier = interactMultLeader;
+
                 }
                 else if (i == playersToRank.Count - 1)
                 {
