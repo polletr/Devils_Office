@@ -10,24 +10,40 @@ public class InteractState : BaseState
     private float timer;
 
     private bool completedTask;
+
+    private PlayerController playerController;
+
     public override void EnterState()
     {
         character.anim?.SetBool("Interact", true);
         //Enable UI
 
-        interactableObj = GridController.Instance.objLocations[character.gridLocation.x + character.fwdDirection.x, character.gridLocation.y + character.fwdDirection.y].GetComponent<InteractableObj>();
-        
         if (character.GetComponent<PlayerController>())
         {
-            interactTimer = interactableObj.waitTime * character.GetComponent<PlayerController>().interactMultiplier;
+            playerController = character.GetComponent<PlayerController>();
+        }
+
+        interactableObj = GridController.Instance.objLocations[character.gridLocation.x + character.fwdDirection.x, character.gridLocation.y + character.fwdDirection.y].GetComponent<InteractableObj>();
+        
+
+        if (interactableObj.GetComponent<ExtinguishBody>() && interactableObj.GetComponent<AIController>().currentState is not DeathState)
+        {
+            character.ChangeState(new IdleState());
         }
         else
         {
-            interactTimer = interactableObj.waitTime;
+            if (playerController)
+            {
+                interactTimer = interactableObj.waitTime * playerController.interactMultiplier;
+            }
+            else
+            {
+                interactTimer = interactableObj.waitTime;
+            }
+
+            interactableObj.TaskStarted.Invoke();
         }
 
-
-        interactableObj.TaskStarted.Invoke();
 
         timer = 0f;
 
@@ -39,39 +55,51 @@ public class InteractState : BaseState
 
         if (completedTask)
         {
-            character.GetComponent<PlayerController>().points += GameManager.Instance.taskPoints;
+            playerController.points += GameManager.Instance.taskPoints;
             completedTask = false;
         }
+
+        if (character.GetComponent<PlayerController>())
+        {
+
+            UIManager uiManager = playerController._UIManager;
+            uiManager.showLoader = false;
+
+        }
+
     }
 
 
     public override void StateUpdate()
     {
         timer += Time.deltaTime;
-        if(character.GetComponent<PlayerController>())
+        if(playerController)
         {
-            UIManager uiManager = character.GetComponent<PlayerController>()._UIManager;
+            UIManager uiManager = playerController._UIManager;
             uiManager.showLoader = true;
             uiManager.LoadingBar(timer, interactTimer);
         }
+
         if (timer > interactTimer)
         {
 
-            if (character.GetComponent<PlayerController>())
+            if (playerController)
             {
-                character.GetComponent<PlayerController>()._taskManager.CompleteTask(interactableObj);
-                character.GetComponent<PlayerController>()._UIManager.showLoader = false;
+                playerController._taskManager.CompleteTask(interactableObj);
+                playerController._UIManager.showLoader = false;
                 if (interactableObj.GetComponent<ExtinguishBody>())
                 {
-                    character.GetComponent<PlayerController>().canInteract = true;
-                    Vector2Int oldLocation = interactableObj.GetComponent<AIController>().gridLocation;
+                    playerController.canInteract = true;
+                    Vector2Int objLocation = interactableObj.GetComponent<AIController>().gridLocation;
 
-                    GridController.Instance.objLocations[oldLocation.x, oldLocation.y] = GridController.Instance.objLocationsStart[oldLocation.x, oldLocation.y];
-                    GridController.Instance.gridLocations[oldLocation.x, oldLocation.y] = 0;
-
+                    GridController.Instance.objLocations[objLocation.x, objLocation.y] = GridController.Instance.objLocationsStart[objLocation.x, objLocation.y];
+                    GridController.Instance.gridLocations[objLocation.x, objLocation.y] = 0;
 
                 }
-                completedTask = true;
+                else
+                {
+                    completedTask = true;
+                }
 
             }
 
@@ -86,6 +114,9 @@ public class InteractState : BaseState
     {
         //Disable UI
         interactableObj.TaskInterrupted.Invoke();
+
+
+
 
         character.ChangeState(new IdleState());
 

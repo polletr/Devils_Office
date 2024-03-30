@@ -33,8 +33,8 @@ public class UIManager : MonoBehaviour
         DisableUI(showUI);
         loaderImageUI.fillAmount = 0;
 
-
     }
+
     private void UpdateUI()
     {
         //task

@@ -7,10 +7,16 @@ public class DeathState : BaseState
 {
     private float respawnTimer;
     private float respawnTimerLimit = 5f;
+
+    private PlayerController playerController;
     public override void EnterState()
     {
         //Debug.Log("DeathState");
         //Play Animation
+        if (character.GetComponent<PlayerController>())
+        {
+            playerController = character.GetComponent<PlayerController>();
+        }
 
 
     }
@@ -18,7 +24,7 @@ public class DeathState : BaseState
     public override void StateUpdate()
     {
         respawnTimer += Time.deltaTime;
-        if (character.GetComponent<PlayerController>())
+        if (playerController)
         {
             if (respawnTimer > respawnTimerLimit)
             {
@@ -28,9 +34,9 @@ public class DeathState : BaseState
                 
                 if (AIPicked.currentState is IdleState)
                 {
-                    character.GetComponent<PlayerController>().DestroyModel();
+                    playerController.DestroyModel();
 
-                    character.GetComponent<PlayerController>().SpawnNewModel(AIPicked.characterModel);
+                    playerController.SpawnNewModel(AIPicked.characterModel);
 
                     Vector2Int oldLocation = character.gridLocation;
 

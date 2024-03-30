@@ -44,11 +44,11 @@ public override void Awake()
     private void Update()
     {
         currentState?.StateUpdate();
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+/*        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             ChangeState(new DeathState());
         }
-    }
+*/    }
     private void FixedUpdate()
     {
         currentState?.StateFixedUpdate();
