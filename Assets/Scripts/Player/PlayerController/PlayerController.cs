@@ -88,6 +88,7 @@ public override void Awake()
     {
 
         newModel.transform.SetParent(transform, false);
+        characterModel = newModel;
         anim = newModel.GetComponent<Animator>();
         Debug.Log(anim.ToString());
     }
