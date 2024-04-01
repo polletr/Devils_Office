@@ -25,13 +25,21 @@ public class GameManager : Singleton<GameManager>
     private float extraTime;
 
     [SerializeField]
-    private float interactMultLeader;
+    private float interactMultMax;
     [SerializeField]
-    private float interactMultLast;
+    private float interactMultMin;
+
+    [SerializeField]
+    private int pointsThreshold;
+
+    [SerializeField]
+    private float diffPerThreshold;
 
     private int extraTimerCount;
     [SerializeField]
     private float extraTimeCountLimit;
+
+
 
 
     private void Awake()
@@ -76,7 +84,7 @@ public class GameManager : Singleton<GameManager>
     {
         playersToRank = players.OrderByDescending(p => p.points).ThenByDescending(p => p.killCount).ToList();
 
-        bool pointCheck = false;
+/*        bool pointCheck = false;
 
         for (int i = 0; i < playersToRank.Count - 1; i++)
         {
@@ -90,8 +98,8 @@ public class GameManager : Singleton<GameManager>
                 break;
             }
         }
-
-        if (pointCheck)
+*/
+/*        if (pointCheck)
         {
             for (int i = 0; i < playersToRank.Count; i++)
             {
@@ -110,7 +118,7 @@ public class GameManager : Singleton<GameManager>
                 }
             }
 
-            for (int i = 0; i < playersToRank.Count - 1; i++)
+*//*            for (int i = 0; i < playersToRank.Count - 1; i++)
             {
                 if (playersToRank[i].points == playersToRank[i + 1].points && playersToRank[i].interactMultiplier != 1)
                 {
@@ -125,18 +133,28 @@ public class GameManager : Singleton<GameManager>
                 }
 
             }
-
-
-        }
-        else
-        {
+*/
             for (int i = 0; i < playersToRank.Count; i++)
             {
-                playersToRank[i].interactMultiplier = 1;
+                int pointDifference = playersToRank[i].points - playersToRank[playersToRank.Count - 1].points;
+                int diffThreshold = Mathf.Max(pointDifference - pointsThreshold, 0);
+
+                playersToRank[i].interactMultiplier = Mathf.Min(interactMultMin + diffThreshold/ pointsThreshold * diffPerThreshold, interactMultMax);
+
+                
             }
 
-        }
 
+        /*        }
+                else
+                {
+                    for (int i = 0; i < playersToRank.Count; i++)
+                    {
+                        playersToRank[i].interactMultiplier = 1;
+                    }
+
+                }
+        */
 
 
     }

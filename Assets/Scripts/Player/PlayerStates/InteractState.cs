@@ -35,6 +35,8 @@ public class InteractState : BaseState
             if (playerController)
             {
                 interactTimer = interactableObj.waitTime * playerController.interactMultiplier;
+                Debug.Log(interactTimer);
+
             }
             else
             {

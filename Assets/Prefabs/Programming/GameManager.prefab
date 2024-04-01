@@ -55,6 +55,8 @@ MonoBehaviour:
   taskPoints: 10
   killPoints: 20
   playersToRank: []
-  interactMultLeader: 1.5
-  interactMultLast: 0.5
+  interactMultMax: 2
+  interactMultMin: 1
+  pointsThreshold: 10
+  diffPerThreshold: 0.1
   extraTimeCountLimit: 3
