@@ -76,7 +76,7 @@ public class DeathState : BaseState
             {
                 GridController.Instance.playerControllers.Remove(playerController);
                 character.ChangeState(new PermaDeathState());
-                //Close Eyes
+                character.GetComponent<PlayerController>()._UIManager.StartCoroutine("Blink", true);
 
                 Debug.Log(GridController.Instance.playerControllers.Count);
             }
@@ -87,5 +87,11 @@ public class DeathState : BaseState
 
 
     }
+
+    public override void StopInteract()
+    {
+
+    }
+
 
 }

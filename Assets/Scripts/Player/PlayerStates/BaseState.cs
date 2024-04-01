@@ -18,6 +18,10 @@ using UnityEngine;
         public virtual void HandleRotation(float rotateAngle) { }
         public virtual void HandleInteract() { }
         public virtual void HandleDeath() { }
-        public virtual void StopInteract() { }
+        public virtual void StopInteract() 
+        {
+            character.GetComponent<PlayerController>()._UIManager.StartCoroutine("Blink", false);
 
-    }
+        }
+
+}

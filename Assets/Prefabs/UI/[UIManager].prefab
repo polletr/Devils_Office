@@ -997,7 +997,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1225,6 +1225,8 @@ MonoBehaviour:
   pointsText: {fileID: 7533062144402182804}
   loaderImageUI: {fileID: 2550220580512815259}
   gameStats: {fileID: 3592289995801382276}
+  playerEye: {fileID: 8345346466522784141}
+  blinkDuration: 0.5
   showUI: 0
   showLoader: 0
 --- !u!222 &3535106283081183886

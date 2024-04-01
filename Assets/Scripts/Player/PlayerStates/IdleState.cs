@@ -6,7 +6,6 @@ public class IdleState : BaseState
 {
     public override void EnterState()
     {
-        //Play animation
         base.EnterState();
     }
 
@@ -61,10 +60,16 @@ public class IdleState : BaseState
         }
         else
         {
-            //Close Eyes
+            character.GetComponent<PlayerController>()._UIManager.StartCoroutine("Blink", true);
         }
 
     }
+
+    public override void StopInteract()
+    {
+        base.StopInteract();
+    }
+
 
     public override void HandleDeath()
     {

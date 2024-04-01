@@ -97,7 +97,8 @@ public class UIManager : MonoBehaviour
 
     public IEnumerator Blink(bool closeEye)
     {
-        float targetAlpha = closeEye ? 0f : 1f; 
+        Debug.Log("Blink");
+        float targetAlpha = closeEye ? 1f : 0f; 
         float elapsedTime = 0f; 
 
         while (elapsedTime < blinkDuration)

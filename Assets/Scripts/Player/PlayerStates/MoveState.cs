@@ -72,5 +72,11 @@ public class MoveState : BaseState
         base.StateUpdate();
     }
 
+    public override void StopInteract()
+    {
+        base.StopInteract();
+    }
+
+
 
 }

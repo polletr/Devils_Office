@@ -70,4 +70,10 @@ public class RotateRightState : BaseState
         }
     }
 
+    public override void StopInteract()
+    {
+        base.StopInteract();
+    }
+
+
 }

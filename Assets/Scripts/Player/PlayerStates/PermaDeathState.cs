@@ -10,5 +10,10 @@ public class PermaDeathState : BaseState
         character.anim.SetBool("Dead", true);
 
     }
+    public override void StopInteract()
+    {
+
+    }
+
 
 }
