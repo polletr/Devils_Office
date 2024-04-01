@@ -1,28 +1,17 @@
-using UnityEngine;
-using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class WinMenu : Menu
 {
-    public UnityEvent OnWin;
-    private void Awake()
+    protected override void Awake() { }
+
+    public void OnRestartGame()
     {
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-        _startActive = true;
-        AudioManager.Instance.PlayMusic(AudioManager.Instance._audioClip.WinBGMusic);
-    }
-    private void Start()
-    {
-        OnWin?.Invoke();
+        SceneManager.LoadScene(1);
     }
 
-    public void OnLoadWinLevel()
+    public void OnBackToMenu()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("02_WinScreen");
-    }
-    public void OnLoadMainMenu()
-    {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("00_MainMenu");
+        SceneManager.LoadScene(0);
     }
 
 }

@@ -37,6 +37,9 @@ public class GameManager : Singleton<GameManager>
     private void Awake()
     {
         timerText.gameObject.SetActive(false);
+        Time.timeScale = 1f;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         winScreen.SetActive(false);
         extraTimerCount = 0;
         extraTime = timer / 2f;
@@ -152,8 +155,8 @@ public class GameManager : Singleton<GameManager>
                 {
                     playersToRank[i]._UIManager.GameStats(null);
                 }
-                Time.timeScale = 0;
-                winScreen.SetActive(true);
+
+                EndGameUI();
             }
             else
             {
@@ -176,10 +179,17 @@ public class GameManager : Singleton<GameManager>
             playersToRank[i]._UIManager.GameStats(winner);
         }
 
-        Time.timeScale = 0;
+
+        EndGameUI();
+
+    }
+
+    private void EndGameUI()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        Time.timeScale = 0f;
         winScreen.SetActive(true);
-
-
     }
 
 
