@@ -59,6 +59,10 @@ public class IdleState : BaseState
             Debug.Log("Attack!");
             character.ChangeState(new AttackState());
         }
+        else
+        {
+            //Close Eyes
+        }
 
     }
 

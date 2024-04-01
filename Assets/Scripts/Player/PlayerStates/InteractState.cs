@@ -122,7 +122,8 @@ public class InteractState : BaseState
 
     public override void HandleDeath()
     {
-        Debug.Log("Call Death");
+        interactableObj.TaskInterrupted.Invoke();
+
         character.ChangeState(new DeathState());
     }
 
