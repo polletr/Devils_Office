@@ -11,15 +11,20 @@ public class DeathState : BaseState
     private PlayerController playerController;
     public override void EnterState()
     {
-        //Debug.Log("DeathState");
-        //Play Animation
+        character.anim.SetBool("Dead", true);
         if (character.GetComponent<PlayerController>())
         {
             playerController = character.GetComponent<PlayerController>();
         }
 
+    }
+
+    public override void ExitState()
+    {
+        character.anim.SetBool("Dead", false);
 
     }
+
 
     public override void StateUpdate()
     {

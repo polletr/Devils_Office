@@ -116,11 +116,15 @@ public class InteractState : BaseState
         //Disable UI
         interactableObj.TaskInterrupted.Invoke();
 
-
-
-
         character.ChangeState(new IdleState());
 
     }
+
+    public override void HandleDeath()
+    {
+        Debug.Log("Call Death");
+        character.ChangeState(new DeathState());
+    }
+
 
 }
