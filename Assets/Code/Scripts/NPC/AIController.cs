@@ -256,6 +256,7 @@ public class AIController : CharacterClass
 
     public void DestroySelf()
     {
+        GridController.Instance.AIList.Remove(this);
         Destroy(this.gameObject);
     }
 

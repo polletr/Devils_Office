@@ -141,12 +141,12 @@ public class GameManager : Singleton<GameManager>
 
     }
 
-    public void EndGame()
+    private void EndGame()
     {
-        if (playersToRank[0].points == playersToRank[1].points && playersToRank[0].killCount == playersToRank[1].killCount)
+        if (playersToRank[0].points == playersToRank[1].points && playersToRank[0].killCount == playersToRank[1].killCount) //Tie Scenario
         {
             extraTimerCount++;
-            if (extraTimerCount > extraTimeCountLimit)
+            if (extraTimerCount > extraTimeCountLimit) //Everybody loses Scenario
             {
                 for (int i = 0; i < playersToRank.Count; i++)
                 {
@@ -163,16 +163,25 @@ public class GameManager : Singleton<GameManager>
         }
         else
         {
-            for (int i = 0; i < playersToRank.Count; i++)
-            {
-                playersToRank[i]._UIManager.GameStats(playersToRank[0]);
-            }
-            Time.timeScale = 0;
-            winScreen.SetActive(true);
 
+            SetWinner(playersToRank[0]);//Winner with points
             //Display Victory Screen and show the winner, second, etc.
         }
     }
+
+    public void SetWinner(PlayerController winner)
+    {
+        for (int i = 0; i < playersToRank.Count; i++) //Someone wins
+        {
+            playersToRank[i]._UIManager.GameStats(winner);
+        }
+
+        Time.timeScale = 0;
+        winScreen.SetActive(true);
+
+
+    }
+
 
 
 

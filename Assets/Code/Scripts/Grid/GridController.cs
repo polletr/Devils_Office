@@ -33,7 +33,8 @@ public class GridController : Singleton<GridController>
 
     public List<GameObject> CharacterModels = new();
 
-    private List<PlayerController> playerControllers = new();
+    [HideInInspector]
+    public List<PlayerController> playerControllers = new();
 
 
     // Start is called before the first frame update
@@ -46,6 +47,8 @@ public class GridController : Singleton<GridController>
         int gridSizeX = gridLocations.GetLength(0);
         int gridSizeY = gridLocations.GetLength(1);
         objLocationsStart = new BaseObject[gridSizeX, gridSizeY];
+        objLocations = new BaseObject[gridSizeX, gridSizeY];
+
 
         playerCount = 0;
 
@@ -64,15 +67,15 @@ public class GridController : Singleton<GridController>
                 {
                     RotateObject(objectClone, gridRotation);
                 }
-                else if (objectClone.GetComponent<InteractableObj>())
-                {
-                    Debug.Log(objectClone.GetComponent<InteractableObj>().interactionPos);
-                }
 
                 objLocationsStart[i, j] = objectClone;
+                objLocations[i, j] = objectClone;
+
 
                 if (objectClone.GetComponent<CharacterClass>())
                 {
+                    objLocationsStart[i, j] = objectPrefabs[0];
+
                     objectClone.GetComponent<CharacterClass>().gridLocation = new Vector2Int((int)objectClone.transform.position.x, (int)objectClone.transform.position.z);
                     objectClone.GetComponent<CharacterClass>().characterModel = Instantiate(CharacterModels[Random.Range(0, CharacterModels.Count)], objectClone.transform);
 
@@ -118,7 +121,6 @@ public class GridController : Singleton<GridController>
 
         GameManager.Instance.RankPlayers(playerControllers);
 
-        objLocations = objLocationsStart;
 
     }
 

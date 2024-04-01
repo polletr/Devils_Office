@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ public class DeathState : BaseState
     private float respawnTimerLimit = 5f;
 
     private PlayerController playerController;
+
     public override void EnterState()
     {
         character.anim.SetBool("Dead", true);
@@ -31,40 +33,56 @@ public class DeathState : BaseState
         respawnTimer += Time.deltaTime;
         if (playerController)
         {
-            if (respawnTimer > respawnTimerLimit)
+            if (GridController.Instance.AIList.Any())
             {
-                //Respawn
-                AIController AIPicked =  GridController.Instance.AIList[Random.Range(0, GridController.Instance.AIList.Count)].GetComponent<AIController>();
-
-                
-                if (AIPicked.currentState is IdleState)
+                if (respawnTimer > respawnTimerLimit)
                 {
-                    playerController.DestroyModel();
+                    //Respawn
+                    AIController AIPicked = GridController.Instance.AIList[Random.Range(0, GridController.Instance.AIList.Count)]?.GetComponent<AIController>();
 
-                    playerController.SpawnNewModel(AIPicked.characterModel);
+                    if (AIPicked.currentState is IdleState)
+                    {
+                        playerController.DestroyModel();
 
-                    Vector2Int oldLocation = character.gridLocation;
+                        playerController.SpawnNewModel(AIPicked.characterModel);
 
-                    GridController.Instance.objLocations[oldLocation.x, oldLocation.y] = GridController.Instance.objLocationsStart[oldLocation.x, oldLocation.y];
-                    GridController.Instance.gridLocations[oldLocation.x, oldLocation.y] = 0;
+                        Vector2Int oldLocation = character.gridLocation;
+                        Vector2Int newLocation = AIPicked.gridLocation;
 
-                    character.transform.position = AIPicked.transform.position;
-                    character.gridLocation = AIPicked.gridLocation;
-                    character.posInGrid = AIPicked.posInGrid;
 
-                    character.transform.rotation = AIPicked.transform.rotation;
-                    character.fwdDirection = AIPicked.fwdDirection;
+                        GridController.Instance.objLocations[oldLocation.x, oldLocation.y] = GridController.Instance.objLocationsStart[oldLocation.x, oldLocation.y];
+                        GridController.Instance.gridLocations[oldLocation.x, oldLocation.y] = 0;
 
-                    AIPicked.DestroySelf();
+                        GridController.Instance.objLocations[newLocation.x, newLocation.y] = character;
 
-                    character.ChangeState(new IdleState());
+
+                        character.transform.position = AIPicked.transform.position;
+                        character.gridLocation = AIPicked.gridLocation;
+                        character.posInGrid = AIPicked.posInGrid;
+
+                        character.transform.rotation = AIPicked.transform.rotation;
+                        character.fwdDirection = AIPicked.fwdDirection;
+
+                        AIPicked.DestroySelf();
+
+                        character.ChangeState(new IdleState());
+
+                    }
 
                 }
 
-
-
             }
+            else
+            {
+                GridController.Instance.playerControllers.Remove(playerController);
+                character.ChangeState(new PermaDeathState());
+                //Close Eyes
+
+                Debug.Log(GridController.Instance.playerControllers.Count);
+            }
+
         }
+        
 
 
 
