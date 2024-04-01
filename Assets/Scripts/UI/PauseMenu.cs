@@ -3,8 +3,8 @@ using UnityEngine;
 public class PauseMenu : Menu
 {
     private bool _isPaused;
-    [SerializeField] private GameObject _SettingsMenu;
-    private void Awake()
+    [SerializeField] private GameObject _settingsMenu;
+    protected override void Awake()
     {
         AudioManager.Instance.PlayMusic(AudioManager.Instance._audioClip.BGMusic);
         _startActive = false;
@@ -36,7 +36,7 @@ public class PauseMenu : Menu
 
         Time.timeScale = _isPaused ? 0 : 1;
         DisableScreens();
-        _SettingsMenu.SetActive(false);
+        _settingsMenu.SetActive(false);
         _currentMenu.SetActive(_isPaused);
     }
 

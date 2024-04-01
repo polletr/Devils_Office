@@ -16,7 +16,7 @@ public class Menu : MonoBehaviour
 
     protected bool isMusted;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         DisableScreens();
     }

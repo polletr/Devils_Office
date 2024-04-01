@@ -23,7 +23,7 @@ public class MainMenu : Menu
 
     int playerCount = 2;
 
-    private void Awake()
+    protected override void Awake()
     {
         //play settings
        _startGame.interactable = false;
