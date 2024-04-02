@@ -86,7 +86,11 @@ public class GridController : Singleton<GridController>
                     {
                         playerControllers.Add(objectClone.GetComponent<PlayerController>());
 
-                        objectClone.GetComponent<PlayerController>().controlScheme = "P" + playerCount;
+                        objectClone.GetComponent<PlayerController>().controlScheme = "P" + 0;// playerCount;
+                        objectClone.GetComponent<InputManager>().playerNumber = playerCount;
+
+                        objectClone.GetComponent<InputManager>().enabled = true;
+
                         UIManager uIManager = objectClone.GetComponentInChildren<UIManager>();
                         uIManager.playerUI.transform.rotation = Quaternion.Euler(0, 0, 0);
                         uIManager.playerUI.transform.SetParent(GameManager.Instance.spawnPoints[playerCount]);

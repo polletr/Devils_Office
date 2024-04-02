@@ -132,6 +132,114 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             ]
         },
         {
+            ""name"": ""Keyboard"",
+            ""id"": ""70656ec6-a85e-46dc-8744-8cef02c61e52"",
+            ""actions"": [
+                {
+                    ""name"": ""Move"",
+                    ""type"": ""Button"",
+                    ""id"": ""1d88ab02-5e2f-4e0c-afeb-4181e50f0252"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""TurnLeft"",
+                    ""type"": ""Button"",
+                    ""id"": ""b11cc8e3-79bc-4665-bb6b-61058b7a6f14"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""TurnRight"",
+                    ""type"": ""Button"",
+                    ""id"": ""7291229e-e8c4-45e6-87f9-501392516120"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""InteractKill"",
+                    ""type"": ""Button"",
+                    ""id"": ""f770f880-15d3-44f7-8dac-001d8f9e1932"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ViewTask"",
+                    ""type"": ""Button"",
+                    ""id"": ""e4c52e2d-3bb7-41f1-b58c-91acba981fe0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""4d4b9515-9e2f-43c3-bace-6e7d6278113a"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""P0"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""039a8e14-593a-407f-8a0b-0d7c510a0cd6"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""P0"",
+                    ""action"": ""TurnLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""736f5da4-c4f7-4954-aa08-f4ef12c0d067"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""P0"",
+                    ""action"": ""TurnRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""559bc7bb-e5de-4f37-8233-11387a611eea"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""P0"",
+                    ""action"": ""InteractKill"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""45ea6b40-28b8-4018-82ad-2086ec9018fe"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""P0"",
+                    ""action"": ""ViewTask"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
             ""name"": ""Player2"",
             ""id"": ""267293a6-c2fd-4da7-b683-31b1ba07e349"",
             ""actions"": [
@@ -217,11 +325,22 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""b174ee6d-c463-4a58-b4ab-115b8f898b25"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""P0"",
+                    ""action"": ""TurnRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""911ada2e-2f97-449a-b7b5-083bd841f89f"",
                     ""path"": ""<Keyboard>/rightShift"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""P1"",
+                    ""groups"": ""P1;P0"",
                     ""action"": ""InteractKill"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -454,30 +573,126 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""GamePad"",
+            ""id"": ""9fc08146-8b67-4bd5-987d-cefa523bb1df"",
+            ""actions"": [
+                {
+                    ""name"": ""ViewTask"",
+                    ""type"": ""Button"",
+                    ""id"": ""5470c5d2-2952-4118-a1ad-0e118f14d5ef"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""InteractKill"",
+                    ""type"": ""Button"",
+                    ""id"": ""d86e540f-4390-466f-989b-cf6010a1721f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""TurnRight"",
+                    ""type"": ""Button"",
+                    ""id"": ""a5b27a64-172b-47d9-9c83-bff38cc0cd62"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""TurnLeft"",
+                    ""type"": ""Button"",
+                    ""id"": ""ba676f94-468e-4ada-8c27-cb12b8bf27ec"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Move"",
+                    ""type"": ""Button"",
+                    ""id"": ""5d1c9604-ae46-4f54-ade2-5c943420cf43"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""ace95530-13af-4ae4-a2dd-52a02e64bf64"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""P0;P3"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5cf05db6-68dc-4f8f-aa11-ca40dfd16ea2"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""P3;P0"",
+                    ""action"": ""TurnLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a716f7a3-1d64-4c6b-b6eb-c67cc424390f"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""P3;P0"",
+                    ""action"": ""TurnRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c8e9c866-0fe0-44ae-ac20-2a1ec47d67aa"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""P3;P0"",
+                    ""action"": ""InteractKill"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e93e838e-29e5-4051-8c7c-3525a5bc0167"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""P3;P0"",
+                    ""action"": ""ViewTask"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
         {
             ""name"": ""P0"",
             ""bindingGroup"": ""P0"",
-            ""devices"": [
-                {
-                    ""devicePath"": ""<Keyboard>"",
-                    ""isOptional"": false,
-                    ""isOR"": false
-                }
-            ]
+            ""devices"": []
         },
         {
             ""name"": ""P1"",
             ""bindingGroup"": ""P1"",
-            ""devices"": [
-                {
-                    ""devicePath"": ""<Keyboard>"",
-                    ""isOptional"": false,
-                    ""isOR"": false
-                }
-            ]
+            ""devices"": []
         },
         {
             ""name"": ""P2"",
@@ -498,6 +713,13 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_Player_TurnRight = m_Player.FindAction("TurnRight", throwIfNotFound: true);
         m_Player_InteractKill = m_Player.FindAction("InteractKill", throwIfNotFound: true);
         m_Player_ViewTask = m_Player.FindAction("ViewTask", throwIfNotFound: true);
+        // Keyboard
+        m_Keyboard = asset.FindActionMap("Keyboard", throwIfNotFound: true);
+        m_Keyboard_Move = m_Keyboard.FindAction("Move", throwIfNotFound: true);
+        m_Keyboard_TurnLeft = m_Keyboard.FindAction("TurnLeft", throwIfNotFound: true);
+        m_Keyboard_TurnRight = m_Keyboard.FindAction("TurnRight", throwIfNotFound: true);
+        m_Keyboard_InteractKill = m_Keyboard.FindAction("InteractKill", throwIfNotFound: true);
+        m_Keyboard_ViewTask = m_Keyboard.FindAction("ViewTask", throwIfNotFound: true);
         // Player2
         m_Player2 = asset.FindActionMap("Player2", throwIfNotFound: true);
         m_Player2_ViewTask = m_Player2.FindAction("ViewTask", throwIfNotFound: true);
@@ -519,6 +741,13 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_Player4_TurnRight = m_Player4.FindAction("TurnRight", throwIfNotFound: true);
         m_Player4_TurnLeft = m_Player4.FindAction("TurnLeft", throwIfNotFound: true);
         m_Player4_Move = m_Player4.FindAction("Move", throwIfNotFound: true);
+        // GamePad
+        m_GamePad = asset.FindActionMap("GamePad", throwIfNotFound: true);
+        m_GamePad_ViewTask = m_GamePad.FindAction("ViewTask", throwIfNotFound: true);
+        m_GamePad_InteractKill = m_GamePad.FindAction("InteractKill", throwIfNotFound: true);
+        m_GamePad_TurnRight = m_GamePad.FindAction("TurnRight", throwIfNotFound: true);
+        m_GamePad_TurnLeft = m_GamePad.FindAction("TurnLeft", throwIfNotFound: true);
+        m_GamePad_Move = m_GamePad.FindAction("Move", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -654,6 +883,84 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         }
     }
     public PlayerActions @Player => new PlayerActions(this);
+
+    // Keyboard
+    private readonly InputActionMap m_Keyboard;
+    private List<IKeyboardActions> m_KeyboardActionsCallbackInterfaces = new List<IKeyboardActions>();
+    private readonly InputAction m_Keyboard_Move;
+    private readonly InputAction m_Keyboard_TurnLeft;
+    private readonly InputAction m_Keyboard_TurnRight;
+    private readonly InputAction m_Keyboard_InteractKill;
+    private readonly InputAction m_Keyboard_ViewTask;
+    public struct KeyboardActions
+    {
+        private @PlayerInput m_Wrapper;
+        public KeyboardActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Move => m_Wrapper.m_Keyboard_Move;
+        public InputAction @TurnLeft => m_Wrapper.m_Keyboard_TurnLeft;
+        public InputAction @TurnRight => m_Wrapper.m_Keyboard_TurnRight;
+        public InputAction @InteractKill => m_Wrapper.m_Keyboard_InteractKill;
+        public InputAction @ViewTask => m_Wrapper.m_Keyboard_ViewTask;
+        public InputActionMap Get() { return m_Wrapper.m_Keyboard; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(KeyboardActions set) { return set.Get(); }
+        public void AddCallbacks(IKeyboardActions instance)
+        {
+            if (instance == null || m_Wrapper.m_KeyboardActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_KeyboardActionsCallbackInterfaces.Add(instance);
+            @Move.started += instance.OnMove;
+            @Move.performed += instance.OnMove;
+            @Move.canceled += instance.OnMove;
+            @TurnLeft.started += instance.OnTurnLeft;
+            @TurnLeft.performed += instance.OnTurnLeft;
+            @TurnLeft.canceled += instance.OnTurnLeft;
+            @TurnRight.started += instance.OnTurnRight;
+            @TurnRight.performed += instance.OnTurnRight;
+            @TurnRight.canceled += instance.OnTurnRight;
+            @InteractKill.started += instance.OnInteractKill;
+            @InteractKill.performed += instance.OnInteractKill;
+            @InteractKill.canceled += instance.OnInteractKill;
+            @ViewTask.started += instance.OnViewTask;
+            @ViewTask.performed += instance.OnViewTask;
+            @ViewTask.canceled += instance.OnViewTask;
+        }
+
+        private void UnregisterCallbacks(IKeyboardActions instance)
+        {
+            @Move.started -= instance.OnMove;
+            @Move.performed -= instance.OnMove;
+            @Move.canceled -= instance.OnMove;
+            @TurnLeft.started -= instance.OnTurnLeft;
+            @TurnLeft.performed -= instance.OnTurnLeft;
+            @TurnLeft.canceled -= instance.OnTurnLeft;
+            @TurnRight.started -= instance.OnTurnRight;
+            @TurnRight.performed -= instance.OnTurnRight;
+            @TurnRight.canceled -= instance.OnTurnRight;
+            @InteractKill.started -= instance.OnInteractKill;
+            @InteractKill.performed -= instance.OnInteractKill;
+            @InteractKill.canceled -= instance.OnInteractKill;
+            @ViewTask.started -= instance.OnViewTask;
+            @ViewTask.performed -= instance.OnViewTask;
+            @ViewTask.canceled -= instance.OnViewTask;
+        }
+
+        public void RemoveCallbacks(IKeyboardActions instance)
+        {
+            if (m_Wrapper.m_KeyboardActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IKeyboardActions instance)
+        {
+            foreach (var item in m_Wrapper.m_KeyboardActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_KeyboardActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public KeyboardActions @Keyboard => new KeyboardActions(this);
 
     // Player2
     private readonly InputActionMap m_Player2;
@@ -888,6 +1195,84 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         }
     }
     public Player4Actions @Player4 => new Player4Actions(this);
+
+    // GamePad
+    private readonly InputActionMap m_GamePad;
+    private List<IGamePadActions> m_GamePadActionsCallbackInterfaces = new List<IGamePadActions>();
+    private readonly InputAction m_GamePad_ViewTask;
+    private readonly InputAction m_GamePad_InteractKill;
+    private readonly InputAction m_GamePad_TurnRight;
+    private readonly InputAction m_GamePad_TurnLeft;
+    private readonly InputAction m_GamePad_Move;
+    public struct GamePadActions
+    {
+        private @PlayerInput m_Wrapper;
+        public GamePadActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @ViewTask => m_Wrapper.m_GamePad_ViewTask;
+        public InputAction @InteractKill => m_Wrapper.m_GamePad_InteractKill;
+        public InputAction @TurnRight => m_Wrapper.m_GamePad_TurnRight;
+        public InputAction @TurnLeft => m_Wrapper.m_GamePad_TurnLeft;
+        public InputAction @Move => m_Wrapper.m_GamePad_Move;
+        public InputActionMap Get() { return m_Wrapper.m_GamePad; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(GamePadActions set) { return set.Get(); }
+        public void AddCallbacks(IGamePadActions instance)
+        {
+            if (instance == null || m_Wrapper.m_GamePadActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_GamePadActionsCallbackInterfaces.Add(instance);
+            @ViewTask.started += instance.OnViewTask;
+            @ViewTask.performed += instance.OnViewTask;
+            @ViewTask.canceled += instance.OnViewTask;
+            @InteractKill.started += instance.OnInteractKill;
+            @InteractKill.performed += instance.OnInteractKill;
+            @InteractKill.canceled += instance.OnInteractKill;
+            @TurnRight.started += instance.OnTurnRight;
+            @TurnRight.performed += instance.OnTurnRight;
+            @TurnRight.canceled += instance.OnTurnRight;
+            @TurnLeft.started += instance.OnTurnLeft;
+            @TurnLeft.performed += instance.OnTurnLeft;
+            @TurnLeft.canceled += instance.OnTurnLeft;
+            @Move.started += instance.OnMove;
+            @Move.performed += instance.OnMove;
+            @Move.canceled += instance.OnMove;
+        }
+
+        private void UnregisterCallbacks(IGamePadActions instance)
+        {
+            @ViewTask.started -= instance.OnViewTask;
+            @ViewTask.performed -= instance.OnViewTask;
+            @ViewTask.canceled -= instance.OnViewTask;
+            @InteractKill.started -= instance.OnInteractKill;
+            @InteractKill.performed -= instance.OnInteractKill;
+            @InteractKill.canceled -= instance.OnInteractKill;
+            @TurnRight.started -= instance.OnTurnRight;
+            @TurnRight.performed -= instance.OnTurnRight;
+            @TurnRight.canceled -= instance.OnTurnRight;
+            @TurnLeft.started -= instance.OnTurnLeft;
+            @TurnLeft.performed -= instance.OnTurnLeft;
+            @TurnLeft.canceled -= instance.OnTurnLeft;
+            @Move.started -= instance.OnMove;
+            @Move.performed -= instance.OnMove;
+            @Move.canceled -= instance.OnMove;
+        }
+
+        public void RemoveCallbacks(IGamePadActions instance)
+        {
+            if (m_Wrapper.m_GamePadActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IGamePadActions instance)
+        {
+            foreach (var item in m_Wrapper.m_GamePadActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_GamePadActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public GamePadActions @GamePad => new GamePadActions(this);
     private int m_P0SchemeIndex = -1;
     public InputControlScheme P0Scheme
     {
@@ -932,6 +1317,14 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnInteractKill(InputAction.CallbackContext context);
         void OnViewTask(InputAction.CallbackContext context);
     }
+    public interface IKeyboardActions
+    {
+        void OnMove(InputAction.CallbackContext context);
+        void OnTurnLeft(InputAction.CallbackContext context);
+        void OnTurnRight(InputAction.CallbackContext context);
+        void OnInteractKill(InputAction.CallbackContext context);
+        void OnViewTask(InputAction.CallbackContext context);
+    }
     public interface IPlayer2Actions
     {
         void OnViewTask(InputAction.CallbackContext context);
@@ -949,6 +1342,14 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
     }
     public interface IPlayer4Actions
+    {
+        void OnViewTask(InputAction.CallbackContext context);
+        void OnInteractKill(InputAction.CallbackContext context);
+        void OnTurnRight(InputAction.CallbackContext context);
+        void OnTurnLeft(InputAction.CallbackContext context);
+        void OnMove(InputAction.CallbackContext context);
+    }
+    public interface IGamePadActions
     {
         void OnViewTask(InputAction.CallbackContext context);
         void OnInteractKill(InputAction.CallbackContext context);

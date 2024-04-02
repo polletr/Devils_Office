@@ -110,6 +110,114 @@
             ]
         },
         {
+            "name": "Keyboard",
+            "id": "70656ec6-a85e-46dc-8744-8cef02c61e52",
+            "actions": [
+                {
+                    "name": "Move",
+                    "type": "Button",
+                    "id": "1d88ab02-5e2f-4e0c-afeb-4181e50f0252",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "TurnLeft",
+                    "type": "Button",
+                    "id": "b11cc8e3-79bc-4665-bb6b-61058b7a6f14",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "TurnRight",
+                    "type": "Button",
+                    "id": "7291229e-e8c4-45e6-87f9-501392516120",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "InteractKill",
+                    "type": "Button",
+                    "id": "f770f880-15d3-44f7-8dac-001d8f9e1932",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ViewTask",
+                    "type": "Button",
+                    "id": "e4c52e2d-3bb7-41f1-b58c-91acba981fe0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "4d4b9515-9e2f-43c3-bace-6e7d6278113a",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "P0",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "039a8e14-593a-407f-8a0b-0d7c510a0cd6",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "P0",
+                    "action": "TurnLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "736f5da4-c4f7-4954-aa08-f4ef12c0d067",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "P0",
+                    "action": "TurnRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "559bc7bb-e5de-4f37-8233-11387a611eea",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "P0",
+                    "action": "InteractKill",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "45ea6b40-28b8-4018-82ad-2086ec9018fe",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "P0",
+                    "action": "ViewTask",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
             "name": "Player2",
             "id": "267293a6-c2fd-4da7-b683-31b1ba07e349",
             "actions": [
@@ -195,11 +303,22 @@
                 },
                 {
                     "name": "",
+                    "id": "b174ee6d-c463-4a58-b4ab-115b8f898b25",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "P0",
+                    "action": "TurnRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "911ada2e-2f97-449a-b7b5-083bd841f89f",
                     "path": "<Keyboard>/rightShift",
                     "interactions": "",
                     "processors": "",
-                    "groups": "P1",
+                    "groups": "P1;P0",
                     "action": "InteractKill",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -432,30 +551,126 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "GamePad",
+            "id": "9fc08146-8b67-4bd5-987d-cefa523bb1df",
+            "actions": [
+                {
+                    "name": "ViewTask",
+                    "type": "Button",
+                    "id": "5470c5d2-2952-4118-a1ad-0e118f14d5ef",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "InteractKill",
+                    "type": "Button",
+                    "id": "d86e540f-4390-466f-989b-cf6010a1721f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "TurnRight",
+                    "type": "Button",
+                    "id": "a5b27a64-172b-47d9-9c83-bff38cc0cd62",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "TurnLeft",
+                    "type": "Button",
+                    "id": "ba676f94-468e-4ada-8c27-cb12b8bf27ec",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Move",
+                    "type": "Button",
+                    "id": "5d1c9604-ae46-4f54-ade2-5c943420cf43",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "ace95530-13af-4ae4-a2dd-52a02e64bf64",
+                    "path": "<Gamepad>/dpad/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "P0;P3",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5cf05db6-68dc-4f8f-aa11-ca40dfd16ea2",
+                    "path": "<Gamepad>/dpad/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "P3;P0",
+                    "action": "TurnLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a716f7a3-1d64-4c6b-b6eb-c67cc424390f",
+                    "path": "<Gamepad>/dpad/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "P3;P0",
+                    "action": "TurnRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c8e9c866-0fe0-44ae-ac20-2a1ec47d67aa",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "P3;P0",
+                    "action": "InteractKill",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e93e838e-29e5-4051-8c7c-3525a5bc0167",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "P3;P0",
+                    "action": "ViewTask",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [
         {
             "name": "P0",
             "bindingGroup": "P0",
-            "devices": [
-                {
-                    "devicePath": "<Keyboard>",
-                    "isOptional": false,
-                    "isOR": false
-                }
-            ]
+            "devices": []
         },
         {
             "name": "P1",
             "bindingGroup": "P1",
-            "devices": [
-                {
-                    "devicePath": "<Keyboard>",
-                    "isOptional": false,
-                    "isOR": false
-                }
-            ]
+            "devices": []
         },
         {
             "name": "P2",
