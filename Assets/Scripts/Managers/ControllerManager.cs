@@ -1,16 +1,21 @@
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Layouts;
 using UnityEngine.UI;
 
 public class ControllerManager : Singleton<ControllerManager>
 {
 
+    public List<Image> smallControlsImages = new();
     public List<Image> controlsImages = new();
+
     public Image currentControl;
     public Image controlDescription;
 
-    public List<InputDevice> inputDevices =  new();
+    public List<InputDevice> inputDevices = new();
+    private Dictionary<int, Image> inputSmallImages = new();
+    private Dictionary<int, Image> inputImages = new();
+    private Dictionary<int, InputDevice> inputDevice = new();
+
 
     private void Awake()
     {
@@ -19,17 +24,18 @@ public class ControllerManager : Singleton<ControllerManager>
         {
             if (device is Keyboard keyboard)
             {
-                inputDevices.Add(device);
-                inputDevices.Add(device);
+                inputSmallImages.Add(, controlsImages[0]);
+
+
+
+
+                playerControls.Add(device, controlsImages[1]);
             }
             else if (device is Gamepad)
             {
-                inputDevices.Add(device);
+                playerControls.Add(device, controlsImages[2]);
             }
         }
-
-
-
     }
     // Start is called before the first frame update
     void Start()
