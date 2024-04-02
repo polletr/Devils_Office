@@ -4,52 +4,46 @@ using UnityEngine;
 [CreateAssetMenu]
 public class AudioClipContainer : ScriptableObject
 {
-  // public List<AudioPair> audioPairs;   // Might add later
+    // public List<AudioPair> audioPairs;   // Might add later
     [Header("BGMusic")]
 
     public AudioClip MainMenu;
     public AudioClip BGMusic;
     public AudioClip WinBGMusic;
-    //public AudioClip CaveBGMusic;
 
-    /*//Might add later 
-    public AudioClip Cave;
-    public AudioClip DeepCave;
-    public AudioClip Grassland;*/
+    [Header("TaskSFX")]
 
-    [Header("WorldSFX")]
+    public AudioClip TaskComplete;
 
-    public AudioClip CollectedPickup;
-    public AudioClip TeleportOut;
-    public AudioClip TeleportIn;
-    public AudioClip Teleport;
-    public AudioClip BreakingWall;
-
-    public AudioClip PlantGrowing;
-    public AudioClip PlantWatering;
+    /*
+        public AudioClip cleaning;
+        public AudioClip coffee;
+        public AudioClip lightSwitch;
+        public AudioClip microwave;
+        public AudioClip pc;
+        public AudioClip phone;
+        public AudioClip printer;
+        public AudioClip pitchFork;
+        public AudioClip stamp;
+        public AudioClip whiteBoard;
+        public AudioClip extinguishBody;
+    */
 
 
 
     [Header("PlayerSFX")]
 
-    public AudioClip Jump;
-    public AudioClip Death;
-    public AudioClip Glide;
-    public AudioClip Drown;
-    public AudioClip Hit;
+    public AudioClip kill;
+    public AudioClip closeEyes;
+    public AudioClip walk;
+    public AudioClip turn;
 
-    public AudioClip WaterSplash;
-    public AudioClip IcePunch;
-    public AudioClip WindStun;
+    [Header("UISFX")]
+    public AudioClip timer;
+    public AudioClip buttonClick;
+    public AudioClip gameOver;
 
-    [Header("EnemySFX")]
-
-    public AudioClip EnemyDeath;
-    public AudioClip EnemyStun;
-    public AudioClip EnemyAttack;
-    public AudioClip EnemyShoot;
-    public AudioClip FireEstinguish;
-    public AudioClip FireBurning;
+    
 }
 
 //code f0or using modular audio container with types    

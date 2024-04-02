@@ -21,7 +21,7 @@ public class AudioManager : Singleton<AudioManager>
     [Header("Audio Clip Container")]
      public AudioClipContainer _audioClip;
 
-    public Dictionary<AudioType, AudioClip> AudioClips = new();
+    //public Dictionary<AudioType, AudioClip> AudioClips = new();
 
     private void Awake()
     {

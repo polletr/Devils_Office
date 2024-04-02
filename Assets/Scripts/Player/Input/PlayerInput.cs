@@ -293,10 +293,10 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""c0fd57d5-aab1-434d-9818-b937af003dec"",
-                    ""path"": ""<Keyboard>/upArrow"",
+                    ""path"": ""<Gamepad>/dpad/up"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""P1"",
+                    ""groups"": ""P2"",
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -304,10 +304,10 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""8cc62e1d-7430-4a8d-a44b-17895b98b132"",
-                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""path"": ""<Gamepad>/dpad/left"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""P1"",
+                    ""groups"": ""P2"",
                     ""action"": ""TurnLeft"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -315,10 +315,10 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""914fb91a-a9e4-4d7c-8c3f-469d29eb428f"",
-                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""path"": ""<Gamepad>/dpad/right"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""P1"",
+                    ""groups"": ""P2"",
                     ""action"": ""TurnRight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -326,10 +326,10 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""37ca3deb-0c79-4181-b1e5-81b213ed973f"",
-                    ""path"": ""<Keyboard>/rightShift"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""P1"",
+                    ""groups"": ""P2"",
                     ""action"": ""InteractKill"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -337,10 +337,10 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""2a5d10ab-963f-4ad8-8a7d-e4f54611c953"",
-                    ""path"": ""<Keyboard>/backslash"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""P1"",
+                    ""groups"": ""P2"",
                     ""action"": ""ViewTask"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -349,12 +349,12 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         },
         {
             ""name"": ""Player4"",
-            ""id"": ""3c299eae-eabd-45d0-aa2d-a8f5f7b24fd1"",
+            ""id"": ""05a043fe-f40b-4ae1-804c-c0bbdd4cd980"",
             ""actions"": [
                 {
                     ""name"": ""ViewTask"",
                     ""type"": ""Button"",
-                    ""id"": ""a5ef94f1-b139-4f04-8e2f-790c666a2f72"",
+                    ""id"": ""85174b87-d5e4-43b3-b083-e9d3f8bef166"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -363,7 +363,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""InteractKill"",
                     ""type"": ""Button"",
-                    ""id"": ""f2edb428-41e8-4d4d-9857-b23444df4c08"",
+                    ""id"": ""3477d1e4-5ed3-4cdf-af76-cf0e146b68dd"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -372,7 +372,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""TurnRight"",
                     ""type"": ""Button"",
-                    ""id"": ""15a6fd36-1b38-4b7f-87b8-959f127388c4"",
+                    ""id"": ""4342f3cb-4dce-4770-8d14-5433d652c7d8"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -381,7 +381,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""TurnLeft"",
                     ""type"": ""Button"",
-                    ""id"": ""78118871-9896-4c00-820a-1dcee1e44b7d"",
+                    ""id"": ""174318e0-b48c-4989-ac9a-ffbd193f1ff5"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -390,7 +390,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""Move"",
                     ""type"": ""Button"",
-                    ""id"": ""c2985d9f-3d90-435d-a008-9f5e96ad77f5"",
+                    ""id"": ""07f40c96-e794-4508-9267-ae262fd0322c"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -400,55 +400,55 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""b4fbac07-0c07-4e3c-96e2-65421a95d51a"",
-                    ""path"": ""<Keyboard>/upArrow"",
+                    ""id"": ""a5dde48e-e124-497d-97aa-3b48c98d154b"",
+                    ""path"": ""<Gamepad>/dpad/up"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""P1"",
+                    ""groups"": ""P3"",
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""99e47f21-82e7-4bf7-a535-88244d996317"",
-                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""id"": ""952d8b5c-6d60-4ee7-bb1e-4f38738a9db5"",
+                    ""path"": ""<Gamepad>/dpad/left"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""P1"",
+                    ""groups"": ""P3"",
                     ""action"": ""TurnLeft"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""2c4e92f8-6b6a-418a-b909-37b2e1f25ed2"",
-                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""id"": ""9e5eac41-c155-44d9-8cfb-c15994ee1c2a"",
+                    ""path"": ""<Gamepad>/dpad/right"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""P1"",
+                    ""groups"": ""P3"",
                     ""action"": ""TurnRight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""60ff7320-d463-4d2f-a86d-05b0c84bf54d"",
-                    ""path"": ""<Keyboard>/rightShift"",
+                    ""id"": ""e22dae0b-f7ea-4f5b-9dd7-01f395bf4f4d"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""P1"",
+                    ""groups"": ""P3"",
                     ""action"": ""InteractKill"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""fb47637b-f4b4-4b85-863c-909e74fffe91"",
-                    ""path"": ""<Keyboard>/backslash"",
+                    ""id"": ""bcc44270-7a7f-426a-bffd-fc948407fce9"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""P1"",
+                    ""groups"": ""P3"",
                     ""action"": ""ViewTask"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -478,6 +478,16 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""isOR"": false
                 }
             ]
+        },
+        {
+            ""name"": ""P2"",
+            ""bindingGroup"": ""P2"",
+            ""devices"": []
+        },
+        {
+            ""name"": ""P3"",
+            ""bindingGroup"": ""P3"",
+            ""devices"": []
         }
     ]
 }");
@@ -894,6 +904,24 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         {
             if (m_P1SchemeIndex == -1) m_P1SchemeIndex = asset.FindControlSchemeIndex("P1");
             return asset.controlSchemes[m_P1SchemeIndex];
+        }
+    }
+    private int m_P2SchemeIndex = -1;
+    public InputControlScheme P2Scheme
+    {
+        get
+        {
+            if (m_P2SchemeIndex == -1) m_P2SchemeIndex = asset.FindControlSchemeIndex("P2");
+            return asset.controlSchemes[m_P2SchemeIndex];
+        }
+    }
+    private int m_P3SchemeIndex = -1;
+    public InputControlScheme P3Scheme
+    {
+        get
+        {
+            if (m_P3SchemeIndex == -1) m_P3SchemeIndex = asset.FindControlSchemeIndex("P3");
+            return asset.controlSchemes[m_P3SchemeIndex];
         }
     }
     public interface IPlayerActions
