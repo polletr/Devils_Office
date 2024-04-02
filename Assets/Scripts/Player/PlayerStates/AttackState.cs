@@ -31,6 +31,7 @@ public class AttackState : BaseState
         if (targetCharacter.currentState is not DeathState)
         {
             targetCharacter.currentState?.HandleDeath();
+
             targetKilled = true;
         }
 
@@ -61,7 +62,7 @@ public class AttackState : BaseState
             {
                 if (targetCharacter.GetComponent<AIController>())
                 {
-                    playerController._taskManager.AddExtinguishTask();
+                    playerController._taskManager.AddExtinguishTask(targetCharacter.GetComponent<InteractableObj>());
                     playerController.canInteract = false;
                     targetKilled = false;
                 }

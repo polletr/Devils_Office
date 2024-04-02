@@ -5,6 +5,10 @@ using UnityEngine.Events;
 
 public class ExtinguishBody : InteractableObj
 {
+    void Start()
+    {
+        visualIndicator.SetActive(false);
+    }
 
 
 }

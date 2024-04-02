@@ -40,7 +40,9 @@ public class TaskManager : MonoBehaviour
             if (!taskToDo.Contains(taskObj.taskType) && taskObj.taskType != completedTask) //make sure they don't get the same task in the list or they're 
             {
                 taskToDo.Add(taskObj.taskType);
+
                 playerCamera.cullingMask ^= 1 << taskObj.visualIndicator.layer;
+
             }
             Debug.Log("Task: " + taskObj.taskType);
         }
@@ -53,12 +55,14 @@ public class TaskManager : MonoBehaviour
         //Invoke
         if (!taskToDo.Contains(TaskType.ExtinguishBody) || task.taskType == TaskType.ExtinguishBody)
         {
+            if (task != null)
+            playerCamera.cullingMask ^= 1 << task.visualIndicator.layer;
+
             Debug.Log("Complete Task");
-            OnTaskComplete?.Invoke();
             Debug.Log("Task Completed: " + task.taskType);
             taskToDo.Remove(task.taskType);
             completedTask = task.taskType;
-            playerCamera.cullingMask ^= 1 << task.visualIndicator.layer;
+            OnTaskComplete?.Invoke();
 
             SearchTask();
         }
@@ -68,11 +72,13 @@ public class TaskManager : MonoBehaviour
         }
     }
 
-    public void AddExtinguishTask()
+    public void AddExtinguishTask(InteractableObj AI)
     {
         taskToDo.Clear();
 
         taskToDo.Add(TaskType.ExtinguishBody);
+        AI.visualIndicator.SetActive(true);
+        playerCamera.cullingMask ^= 1 << AI.visualIndicator.layer;
 
         Debug.Log("Task: " + TaskType.ExtinguishBody);
 
