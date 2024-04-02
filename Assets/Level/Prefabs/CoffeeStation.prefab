@@ -103,6 +103,7 @@ MonoBehaviour:
   waitTime: 3
   interactionPos: {x: 0, y: 0}
   taskType: 0
+  visualIndicator: {fileID: 5617941316941203589}
   TaskStarted:
     m_PersistentCalls:
       m_Calls: []
@@ -421,6 +422,11 @@ PrefabInstance:
 --- !u!4 &2288792208737248333 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 68787969514293846, guid: 0cf6c8dee30f9aa4bb964114ed5dba5c, type: 3}
+  m_PrefabInstance: {fileID: 2249282104155139611}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5617941316941203589 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5963295823000905374, guid: 0cf6c8dee30f9aa4bb964114ed5dba5c, type: 3}
   m_PrefabInstance: {fileID: 2249282104155139611}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2451130999270245170

@@ -17,6 +17,9 @@ public class TaskManager : MonoBehaviour
     [Header("Events")]
     public UnityEvent OnTaskComplete;
 
+    [SerializeField]
+    private Camera playerCamera;
+
 
     private void Start()
     {
@@ -35,7 +38,10 @@ public class TaskManager : MonoBehaviour
             InteractableObj taskObj = GridController.Instance.interactableObjs[Random.Range(0, GridController.Instance.interactableObjs.Count)];//get random task object
 
             if (!taskToDo.Contains(taskObj.taskType) && taskObj.taskType != completedTask) //make sure they don't get the same task in the list or they're 
+            {
                 taskToDo.Add(taskObj.taskType);
+                playerCamera.cullingMask ^= 1 << taskObj.visualIndicator.layer;
+            }
             Debug.Log("Task: " + taskObj.taskType);
         }
 
@@ -52,6 +58,8 @@ public class TaskManager : MonoBehaviour
             Debug.Log("Task Completed: " + task.taskType);
             taskToDo.Remove(task.taskType);
             completedTask = task.taskType;
+            playerCamera.cullingMask ^= 1 << task.visualIndicator.layer;
+
             SearchTask();
         }
         else
