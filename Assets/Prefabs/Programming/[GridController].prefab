@@ -63,6 +63,7 @@ MonoBehaviour:
   - {fileID: -1336518825596068879, guid: 52593563017843643af14a17880eb8bc, type: 3}
   - {fileID: 193777628664751572, guid: 05ee40ae79ab3a84db766f481790da75, type: 3}
   - {fileID: 8897457722488293876, guid: a9f80ce00fc825047b970c7ef146d048, type: 3}
+  - {fileID: 8608170755397459346, guid: c6ba845067817904681637494000b582, type: 3}
   levels:
   - {fileID: 4900000, guid: 2b958fcc98ba6444098840be7d0bc1f4, type: 3}
   tileWidth: 1
@@ -76,3 +77,4 @@ MonoBehaviour:
   - {fileID: 2780765963507648527, guid: 3350a163f7722f04781a0c5579acb820, type: 3}
   - {fileID: 7388105204988329033, guid: 510ccee82976289418df7a53f1b08ca2, type: 3}
   - {fileID: 8136690857358407433, guid: 46c22bd739f434c498de9c33b30edbfe, type: 3}
+  playerControllers: []

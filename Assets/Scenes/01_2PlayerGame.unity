@@ -421,14 +421,6 @@ PrefabInstance:
       propertyPath: levels.Array.data[0]
       value: 
       objectReference: {fileID: 4900000, guid: 2a17dad589533264ba8c7e8cc42e5479, type: 3}
-    - target: {fileID: 648281673419722576, guid: 747bc63039002654491ae1d8279294f4, type: 3}
-      propertyPath: objectPrefabs.Array.size
-      value: 18
-      objectReference: {fileID: 0}
-    - target: {fileID: 648281673419722576, guid: 747bc63039002654491ae1d8279294f4, type: 3}
-      propertyPath: objectPrefabs.Array.data[17]
-      value: 
-      objectReference: {fileID: 8608170755397459346, guid: c6ba845067817904681637494000b582, type: 3}
     - target: {fileID: 1654740700313610095, guid: 747bc63039002654491ae1d8279294f4, type: 3}
       propertyPath: m_Name
       value: '[GridController]'

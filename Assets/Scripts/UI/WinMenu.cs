@@ -6,7 +6,7 @@ public class WinMenu : Menu
 
     public void OnRestartGame()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void OnBackToMenu()

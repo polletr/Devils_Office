@@ -89,7 +89,7 @@ public class InputManager : MonoBehaviour
         {
             action.Player4.Move.performed += (val) => player.HandleMove();
             action.Player4.TurnRight.performed += (val) => player.HandleRotate(90);
-            action.Player.TurnLeft.performed += (val) => player.HandleRotate(-90);
+            action.Player4.TurnLeft.performed += (val) => player.HandleRotate(-90);
 
             action.Player4.InteractKill.performed += (val) => player.HandleInteract();
             action.Player4.InteractKill.canceled += (val) => player.HandleStopInteract();
