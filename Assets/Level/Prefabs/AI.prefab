@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   posInGrid: {x: 0, y: 0}
-  waitTime: 5
+  waitTime: 7
   interactionPos: {x: 0, y: 0}
   taskType: 2
   visualIndicator: {fileID: 0}

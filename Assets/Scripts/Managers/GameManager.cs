@@ -44,8 +44,9 @@ public class GameManager : Singleton<GameManager>
 
     private void Awake()
     {
+
         timerText.gameObject.SetActive(false);
-        Time.timeScale = 1f;
+        Time.timeScale = 0f;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         winScreen.SetActive(false);

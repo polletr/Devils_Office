@@ -64,6 +64,7 @@ MonoBehaviour:
   canInteract: 0
   interactMultiplier: 1
   interactTimer: 0
+  RespawnTimelimit: 15
 --- !u!114 &2796407554835070419
 MonoBehaviour:
   m_ObjectHideFlags: 0

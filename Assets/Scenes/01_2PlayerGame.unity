@@ -150,10 +150,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1990298923}
     - target: {fileID: 88812441986982775, guid: 046bc1b8ee4d49b49862ffb89a022c8c, type: 3}
-      propertyPath: spawnPoints.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 88812441986982775, guid: 046bc1b8ee4d49b49862ffb89a022c8c, type: 3}
       propertyPath: spawnPoints.Array.data[0]
       value: 
       objectReference: {fileID: 1380932624}

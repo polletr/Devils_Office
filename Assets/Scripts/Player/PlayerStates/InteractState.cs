@@ -113,14 +113,14 @@ public class InteractState : BaseState
         }
     }
 
-    public override void StopInteract()
+   /* public override void StopInteract()
     {
         //Disable UI
         interactableObj.TaskInterrupted.Invoke();
 
         character.ChangeState(new IdleState());
 
-    }
+    }*/
 
     public override void HandleDeath()
     {

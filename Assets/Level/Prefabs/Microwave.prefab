@@ -1078,9 +1078,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   posInGrid: {x: 0, y: 0}
-  waitTime: 3
+  waitTime: 4
   interactionPos: {x: 0, y: 0}
   taskType: 6
+  visualIndicator: {fileID: 0}
   TaskStarted:
     m_PersistentCalls:
       m_Calls: []

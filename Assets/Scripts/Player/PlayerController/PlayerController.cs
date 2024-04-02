@@ -26,8 +26,10 @@ public class PlayerController : CharacterClass
 
     [HideInInspector]
     public float interactTimer;
-   
 
+     public float RespawnTimelimit = 7f;
+
+    bool move;
 
 public override void Awake()
     {
@@ -48,12 +50,14 @@ public override void Awake()
     private void FixedUpdate()
     {
         currentState?.StateFixedUpdate();
+        if (move)
+            currentState?.HandleMovement();
     }
 
     #region character Actions
-    public void HandleMove()
+    public void HandleMove(bool m)
     {
-        currentState?.HandleMovement();
+        move = m;
     }
 
     public void HandleRotate(float rotateAngle)

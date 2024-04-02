@@ -53,10 +53,10 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   taskPoints: 10
-  killPoints: 20
+  killPoints: 30
   playersToRank: []
-  interactMultMax: 2
-  interactMultMin: 1
+  interactMultMax: 3
+  interactMultMin: 0.7
   pointsThreshold: 10
-  diffPerThreshold: 0.1
+  diffPerThreshold: 0.5
   extraTimeCountLimit: 3

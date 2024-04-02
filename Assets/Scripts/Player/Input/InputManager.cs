@@ -51,7 +51,8 @@ public class InputManager : MonoBehaviour
         action = new PlayerInput();
         if(playerNumber == 0)
         {
-            action.Player.Move.performed += (val) => { if (val.control.device == InputSystem.devices[playerNumber]) player.HandleMove(); };
+            action.Player.Move.performed += (val) => { if (val.control.device == InputSystem.devices[playerNumber]) player.HandleMove(true); };
+            action.Player.Move.canceled += (val) => { if (val.control.device == InputSystem.devices[playerNumber]) player.HandleMove(false); };
             action.Player.TurnRight.performed += (val) => { if (val.control.device == InputSystem.devices[playerNumber]) player.HandleRotate(90); };
             action.Player.TurnLeft.performed += (val) => { if (val.control.device == InputSystem.devices[playerNumber]) player.HandleRotate(-90); };
             action.Player.InteractKill.performed += (val) => { if (val.control.device == InputSystem.devices[playerNumber]) player.HandleInteract(); };
@@ -61,7 +62,8 @@ public class InputManager : MonoBehaviour
         }
         else if (playerNumber == 1)
         {
-            action.Player2.Move.performed += (val) => { if (val.control.device == InputSystem.devices[0]) player.HandleMove(); };
+            action.Player2.Move.performed += (val) => { if (val.control.device == InputSystem.devices[0]) player.HandleMove(true); };
+            action.Player2.Move.canceled += (val) => { if (val.control.device == InputSystem.devices[0]) player.HandleMove(false); };
             action.Player2.TurnRight.performed += (val) => { if (val.control.device == InputSystem.devices[0]) player.HandleRotate(90); };
             action.Player2.TurnLeft.performed += (val) => { if (val.control.device == InputSystem.devices[0]) player.HandleRotate(-90); };
             action.Player2.InteractKill.performed += (val) => { if (val.control.device == InputSystem.devices[0]) player.HandleInteract(); };
@@ -71,7 +73,8 @@ public class InputManager : MonoBehaviour
         }
         else
         {
-            action.GamePad.Move.performed += (val) => { if (val.control.device == InputSystem.devices[playerNumber]) player.HandleMove(); };
+            action.GamePad.Move.performed += (val) => { if (val.control.device == InputSystem.devices[playerNumber]) player.HandleMove(true); };
+            action.GamePad.Move.canceled += (val) => { if (val.control.device == InputSystem.devices[playerNumber]) player.HandleMove(false); };
             action.GamePad.TurnRight.performed += (val) => { if (val.control.device == InputSystem.devices[playerNumber]) player.HandleRotate(90); };
             action.GamePad.TurnLeft.performed += (val) => { if (val.control.device == InputSystem.devices[playerNumber]) player.HandleRotate(-90); };
             action.GamePad.InteractKill.performed += (val) => { if (val.control.device == InputSystem.devices[playerNumber]) player.HandleInteract(); };
@@ -94,7 +97,7 @@ public class InputManager : MonoBehaviour
         SeanFix();
         action.Enable();
         return;
-        if (player.controlScheme == "P0")
+       /* if (player.controlScheme == "P0")
         {
             action.Player.Move.performed += (val) => player.HandleMove();
             action.Player.TurnRight.performed += (val) => player.HandleRotate(90);
@@ -151,12 +154,14 @@ public class InputManager : MonoBehaviour
             Invoke("WaitTimer", 0.1f);
         }
 
-      
+      */
     }
 
     private void OnDisable()
     {
-        action.Player.Move.performed -= (val) => player.HandleMove();
+        action.Player.Move.performed -= (val) => player.HandleMove(false);
+        action.Player.Move.canceled -= (val) => player.HandleMove(false);
+
         action.Player.TurnRight.performed -= (val) => player.HandleRotate(90);
         action.Player.TurnLeft.performed -= (val) => player.HandleRotate(-90);
 

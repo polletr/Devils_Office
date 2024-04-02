@@ -1,14 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class MoveState : BaseState
 {
     Vector3 nextLocation;
     Vector2Int oldLocation;
     bool canMove;
-
+    float timer;
 
 
     public override void EnterState()
@@ -61,7 +58,8 @@ public class MoveState : BaseState
 
                 character.transform.position = nextLocation;
 
-                character.ChangeState(new IdleState());
+                if (timer > 0.5f)
+                    character.ChangeState(new IdleState());
             }
 
         }
@@ -70,6 +68,8 @@ public class MoveState : BaseState
     public override void StateUpdate()
     {
         base.StateUpdate();
+        timer += Time.deltaTime;
+
     }
 
     public override void StopInteract()

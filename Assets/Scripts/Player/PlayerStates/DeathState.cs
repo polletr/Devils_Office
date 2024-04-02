@@ -7,7 +7,6 @@ using UnityEngine;
 public class DeathState : BaseState
 {
     private float respawnTimer;
-    private float respawnTimerLimit = 5f;
 
     private PlayerController playerController;
 
@@ -35,7 +34,7 @@ public class DeathState : BaseState
         {
             if (GridController.Instance.AIList.Any())
             {
-                if (respawnTimer > respawnTimerLimit)
+                if (respawnTimer > playerController.RespawnTimelimit)
                 {
                     //Respawn
                     AIController AIPicked = GridController.Instance.AIList[Random.Range(0, GridController.Instance.AIList.Count)]?.GetComponent<AIController>();
