@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -58,8 +59,6 @@ public class TaskManager : MonoBehaviour
             if (task != null)
             playerCamera.cullingMask ^= 1 << task.visualIndicator.layer;
 
-            Debug.Log("Complete Task");
-            Debug.Log("Task Completed: " + task.taskType);
             taskToDo.Remove(task.taskType);
             completedTask = task.taskType;
             OnTaskComplete?.Invoke();
@@ -68,19 +67,27 @@ public class TaskManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("Extinguish that body first");
+            Debug.Log("Extinguish body first");
         }
     }
 
     public void AddExtinguishTask(InteractableObj AI)
     {
+        foreach(InteractableObj task in GridController.Instance.interactableObjs)
+        {
+            if (taskToDo.Contains(task.taskType))
+            {
+                playerCamera.cullingMask ^= 1 << task.visualIndicator.layer;
+                break;
+            }
+        }
+
         taskToDo.Clear();
 
         taskToDo.Add(TaskType.ExtinguishBody);
         AI.visualIndicator.SetActive(true);
         playerCamera.cullingMask ^= 1 << AI.visualIndicator.layer;
 
-        Debug.Log("Task: " + TaskType.ExtinguishBody);
 
     }
 

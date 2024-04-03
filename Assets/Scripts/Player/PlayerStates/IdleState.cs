@@ -53,7 +53,7 @@ public class IdleState : BaseState
             Debug.Log("Interact");
             character.ChangeState(new InteractState());
         }
-        else if (GridController.Instance.CanAttack(character.gridLocation + character.fwdDirection, character.fwdDirection))//check if can attack
+        else if (GridController.Instance.CanAttack(character.gridLocation + character.fwdDirection, character.fwdDirection) && !character.GetComponent<PlayerController>()._taskManager.taskToDo.Contains(TaskType.ExtinguishBody))//check if can attack
         {
             Debug.Log("Attack!");
             character.ChangeState(new AttackState());
