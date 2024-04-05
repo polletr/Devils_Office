@@ -46,7 +46,7 @@ public class GameManager : Singleton<GameManager>
     {
 
         timerText.gameObject.SetActive(false);
-        Time.timeScale = 0f;
+        Time.timeScale = 1f;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         winScreen.SetActive(false);

@@ -76,55 +76,55 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""2283ad0a-7280-4072-8935-e7eff1fe1c7f"",
+                    ""id"": ""685b74ac-7a6d-4ab3-bfb1-434945b84127"",
                     ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""P0"",
+                    ""groups"": """",
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""abddaf06-9990-48d3-81ad-d8f9a2359e6c"",
+                    ""id"": ""242ddc7f-e33c-4530-8817-6af537b9cca1"",
                     ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""P0"",
+                    ""groups"": """",
                     ""action"": ""TurnLeft"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""f9860433-4165-4844-ae10-4d9394e88c20"",
+                    ""id"": ""16abbcd8-c54e-40df-aebb-d6b85b31f951"",
                     ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""P0"",
+                    ""groups"": """",
                     ""action"": ""TurnRight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""ded08dad-dc9e-42b6-9627-840ccc314f66"",
+                    ""id"": ""cbc22d65-6996-4d55-9e20-79486d75d625"",
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""P0"",
+                    ""groups"": """",
                     ""action"": ""InteractKill"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""f1b25ac3-3985-4d77-bcdc-3693435813aa"",
+                    ""id"": ""240e61e5-09d0-426f-9703-f443bd6b440c"",
                     ""path"": ""<Keyboard>/tab"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""P0"",
+                    ""groups"": """",
                     ""action"": ""ViewTask"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -184,67 +184,56 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""70dde6b7-07b4-4f10-afe3-1584c8e98489"",
-                    ""path"": ""<Keyboard>/upArrow"",
+                    ""id"": ""1825f0ad-10f4-4683-960e-efe2be6e1487"",
+                    ""path"": ""<Keyboard>/backslash"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""P1"",
-                    ""action"": ""Move"",
+                    ""groups"": """",
+                    ""action"": ""ViewTask"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""8848c71f-ea1b-41b6-b878-366ba2710f8d"",
-                    ""path"": ""<Keyboard>/leftArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""P1"",
-                    ""action"": ""TurnLeft"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""9c185f94-1e80-443b-b16e-6e4825bbe2ca"",
-                    ""path"": ""<Keyboard>/rightArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""P1"",
-                    ""action"": ""TurnRight"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""b174ee6d-c463-4a58-b4ab-115b8f898b25"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""P0"",
-                    ""action"": ""TurnRight"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""911ada2e-2f97-449a-b7b5-083bd841f89f"",
+                    ""id"": ""dfb7525a-0bb9-4f21-a671-1e96ce021b0c"",
                     ""path"": ""<Keyboard>/rightShift"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""P1;P0"",
+                    ""groups"": """",
                     ""action"": ""InteractKill"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""efe784f0-de80-424a-8189-b6807a5e6389"",
-                    ""path"": ""<Keyboard>/backslash"",
+                    ""id"": ""28f7d7c2-1e63-4ad7-8e4e-872044bd907c"",
+                    ""path"": ""<Keyboard>/rightArrow"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""P1"",
-                    ""action"": ""ViewTask"",
+                    ""groups"": """",
+                    ""action"": ""TurnRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3ee8162e-287f-4606-a725-46b2d400355f"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TurnLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1a4651a6-49fb-4aa8-91b6-cf2ff68cdb15"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -303,84 +292,63 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""ace95530-13af-4ae4-a2dd-52a02e64bf64"",
-                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""id"": ""119a9971-ad9f-4a27-a0e3-d728e8890aa7"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""P0;P3"",
-                    ""action"": ""Move"",
+                    ""groups"": """",
+                    ""action"": ""ViewTask"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""5cf05db6-68dc-4f8f-aa11-ca40dfd16ea2"",
-                    ""path"": ""<Gamepad>/dpad/left"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""P3;P0"",
-                    ""action"": ""TurnLeft"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""a716f7a3-1d64-4c6b-b6eb-c67cc424390f"",
-                    ""path"": ""<Gamepad>/dpad/right"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""P3;P0"",
-                    ""action"": ""TurnRight"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""c8e9c866-0fe0-44ae-ac20-2a1ec47d67aa"",
+                    ""id"": ""d918d12d-f2e2-4025-bdc7-354ca9b1e8f1"",
                     ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""P3;P0"",
+                    ""groups"": """",
                     ""action"": ""InteractKill"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""e93e838e-29e5-4051-8c7c-3525a5bc0167"",
-                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""id"": ""c54020a7-fe4f-4e0f-b60f-a38d280a7330"",
+                    ""path"": ""<Gamepad>/dpad/right"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""P3;P0"",
-                    ""action"": ""ViewTask"",
+                    ""groups"": """",
+                    ""action"": ""TurnRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""92ab2ce1-ce0d-4bb1-849b-1655a7fcde79"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TurnLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""81750083-d8fb-47f9-890c-de1a6f9275fa"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
             ]
         }
     ],
-    ""controlSchemes"": [
-        {
-            ""name"": ""P0"",
-            ""bindingGroup"": ""P0"",
-            ""devices"": []
-        },
-        {
-            ""name"": ""P1"",
-            ""bindingGroup"": ""P1"",
-            ""devices"": []
-        },
-        {
-            ""name"": ""P2"",
-            ""bindingGroup"": ""P2"",
-            ""devices"": []
-        },
-        {
-            ""name"": ""P3"",
-            ""bindingGroup"": ""P3"",
-            ""devices"": []
-        }
-    ]
+    ""controlSchemes"": []
 }");
         // KeyboardLeft
         m_KeyboardLeft = asset.FindActionMap("KeyboardLeft", throwIfNotFound: true);
@@ -694,42 +662,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         }
     }
     public GamePadActions @GamePad => new GamePadActions(this);
-    private int m_P0SchemeIndex = -1;
-    public InputControlScheme P0Scheme
-    {
-        get
-        {
-            if (m_P0SchemeIndex == -1) m_P0SchemeIndex = asset.FindControlSchemeIndex("P0");
-            return asset.controlSchemes[m_P0SchemeIndex];
-        }
-    }
-    private int m_P1SchemeIndex = -1;
-    public InputControlScheme P1Scheme
-    {
-        get
-        {
-            if (m_P1SchemeIndex == -1) m_P1SchemeIndex = asset.FindControlSchemeIndex("P1");
-            return asset.controlSchemes[m_P1SchemeIndex];
-        }
-    }
-    private int m_P2SchemeIndex = -1;
-    public InputControlScheme P2Scheme
-    {
-        get
-        {
-            if (m_P2SchemeIndex == -1) m_P2SchemeIndex = asset.FindControlSchemeIndex("P2");
-            return asset.controlSchemes[m_P2SchemeIndex];
-        }
-    }
-    private int m_P3SchemeIndex = -1;
-    public InputControlScheme P3Scheme
-    {
-        get
-        {
-            if (m_P3SchemeIndex == -1) m_P3SchemeIndex = asset.FindControlSchemeIndex("P3");
-            return asset.controlSchemes[m_P3SchemeIndex];
-        }
-    }
     public interface IKeyboardLeftActions
     {
         void OnMove(InputAction.CallbackContext context);

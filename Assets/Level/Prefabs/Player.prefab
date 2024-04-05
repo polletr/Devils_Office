@@ -72,7 +72,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3858875796262856385}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bf2d9e420e4240a478cf0734e065063b, type: 3}
   m_Name: 
@@ -184,8 +184,8 @@ MonoBehaviour:
     m_ActionId: 13e2db7d-9cb2-4c73-b780-a2a3d988fc16
     m_ActionName: Player/ViewTask[/Keyboard/tab,/Keyboard/backslash]
   m_NeverAutoSwitchControlSchemes: 1
-  m_DefaultControlScheme: P0
-  m_DefaultActionMap: Player
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: KeyboardLeft
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 672750463686308600}
 --- !u!114 &6202735508239751962
