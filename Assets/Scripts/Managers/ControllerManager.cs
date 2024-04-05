@@ -26,7 +26,7 @@ public class ControllerManager : Singleton<ControllerManager>
         private Dictionary<int, Sprite> inputImages = new();
         private Dictionary<int, InputDevice> inputDevice = new();
     */
-    private int gamepadIndex;
+    //private int gamepadIndex;
 
     private int activationGamepadIndex;
 
@@ -50,7 +50,7 @@ public class ControllerManager : Singleton<ControllerManager>
             Controls.sprite = missingControllerImage;
         }
 
-        CheckDevices();
+        //CheckDevices();
     }
 
     private void Update()
@@ -156,6 +156,14 @@ public class ControllerManager : Singleton<ControllerManager>
 
 
     }
+
+    private void OnDisable()
+    {
+        action.Disable();
+
+
+    }
+
 
 
 }
