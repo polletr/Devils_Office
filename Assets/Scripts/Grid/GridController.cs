@@ -14,7 +14,9 @@ public class GridController : Singleton<GridController>
 
     private LevelData levelData;
 
-    public TextAsset[] levels;
+    public TextAsset[] twoPlayerLevels;
+    public TextAsset[] threePlayerLevels;
+    public TextAsset[] fourPlayerLevels;
 
     //int[,] gridLocations = new int[10, 10];
     [SerializeField]
@@ -136,8 +138,22 @@ public class GridController : Singleton<GridController>
 
     private void LoadLevel()
     {
-        string myDataString = levels[UnityEngine.Random.Range(0, levels.Length)].text;
-        levelData = JsonConvert.DeserializeObject<LevelData>(myDataString);
+
+        if (ControllerManager.Instance.playerDevice.Count == 2)
+        {
+            string myDataString = twoPlayerLevels[UnityEngine.Random.Range(0, twoPlayerLevels.Length)].text;
+            levelData = JsonConvert.DeserializeObject<LevelData>(myDataString);
+        }
+        else if (ControllerManager.Instance.playerDevice.Count == 3)
+        {
+            string myDataString = threePlayerLevels[UnityEngine.Random.Range(0, threePlayerLevels.Length)].text;
+            levelData = JsonConvert.DeserializeObject<LevelData>(myDataString);
+        }
+        else if (ControllerManager.Instance.playerDevice.Count == 4)
+        {
+            string myDataString = fourPlayerLevels[UnityEngine.Random.Range(0, fourPlayerLevels.Length)].text;
+            levelData = JsonConvert.DeserializeObject<LevelData>(myDataString);
+        }
 
     }
 

@@ -21,7 +21,7 @@ public class ControllerManager : Singleton<ControllerManager>
     public Image[] UIControlDescription;
 
     public Image[] UIReadyCheck;
-
+    public GameObject blackScreen;
     /*    private Dictionary<int, Sprite> inputIcon = new();
         private Dictionary<int, Sprite> inputImages = new();
         private Dictionary<int, InputDevice> inputDevice = new();
@@ -36,9 +36,11 @@ public class ControllerManager : Singleton<ControllerManager>
     private Dictionary<int, bool> playerReady = new();
 
 
+
+
     private bool playEnabled;
 
-    private int i = 0;
+    private int player = 0;
 
     public UnityEvent StartGame;
 
@@ -47,15 +49,14 @@ public class ControllerManager : Singleton<ControllerManager>
         foreach (Image Controls in UIControlDescription)
         {
             if (missingControllerImage != null)
-            Controls.sprite = missingControllerImage;
+                Controls.sprite = missingControllerImage;
         }
-
         //CheckDevices();
     }
 
     private void Update()
     {
-        if (UIControlDescription.Length == playerReady.Count)
+        if (playerReady.Count >= 2)
         {
             if (playerReady.ContainsValue(false))
             {
@@ -75,71 +76,75 @@ public class ControllerManager : Singleton<ControllerManager>
 
     private void ActivateController(int index)
     {
-        if (UIControlDescription.Length > i)
+        if (!playerDevice.ContainsValue(index))
         {
-            if (!playerDevice.ContainsValue(index))
-            {
-                playerDevice.Add(i, index);
-                playerReady.Add(index, false);
+            playerDevice.Add(player, index);
+            playerReady.Add(index, false);
 
-                UIControlDescription[i].sprite = controlsImages[Mathf.Min(index, 2)];
+            UIControlDescription[player].sprite = controlsImages[Mathf.Min(index, 2)];
 
-                i++;
-            }
+            player++;
         }
         else
         {
             playerReady[index] = true;
+            foreach (int key in playerDevice.Keys)
+            {
+                if (playerDevice[key] == index)
+                {
+                    UIReadyCheck[key].gameObject.SetActive(true);
+                }
+            }
         }
-
 
     }
 
 
     private void CheckDevices()
     {
-/*        gamepadIndex = 0;
-        activationGamepadIndex = 0;
-        var devices = InputSystem.devices;
-        foreach (var device in devices)
-        {
-            if (device is Keyboard keyboard)
-            {
-                inputIcon.Add(0, controlsIcons[0]);
-                inputIcon.Add(1, controlsIcons[1]);
-                inputImages.Add(0, controlsImages[0]);
-                inputImages.Add(1, controlsImages[1]);
+        /*        gamepadIndex = 0;
+                activationGamepadIndex = 0;
+                var devices = InputSystem.devices;
+                foreach (var device in devices)
+                {
+                    if (device is Keyboard keyboard)
+                    {
+                        inputIcon.Add(0, controlsIcons[0]);
+                        inputIcon.Add(1, controlsIcons[1]);
+                        inputImages.Add(0, controlsImages[0]);
+                        inputImages.Add(1, controlsImages[1]);
 
-                inputDevice.Add(0, device);
-                inputDevice.Add(1, device);
+                        inputDevice.Add(0, device);
+                        inputDevice.Add(1, device);
 
-            }
-            else if (device is Gamepad gamepad)
-            {
-                inputIcon.Add(2 + gamepadIndex, controlsIcons[2]);
-                inputImages.Add(2 + gamepadIndex, controlsImages[2]);
-                inputDevice.Add(2 + gamepadIndex, device);
-                gamepadIndex++;
+                    }
+                    else if (device is Gamepad gamepad)
+                    {
+                        inputIcon.Add(2 + gamepadIndex, controlsIcons[2]);
+                        inputImages.Add(2 + gamepadIndex, controlsImages[2]);
+                        inputDevice.Add(2 + gamepadIndex, device);
+                        gamepadIndex++;
 
 
-            }
-        }
+                    }
+                }
 
-        for (int i = 0; i < UIPlayerControl.Length; i++)
-        {
-            if (inputDevice.Count >= i)
-            {
-                UIPlayerControl[i].sprite = inputImages[i];
-                UIControlDescription[i].sprite = inputIcon[i];
-            }
-            else
-            {
-                UIPlayerControl[i].sprite = missingControllerImage;
-                UIControlDescription[i].sprite = missingControllerIcon;
-            }
+                for (int i = 0; i < UIPlayerControl.Length; i++)
+                {
+                    if (inputDevice.Count >= i)
+                    {
+                        UIPlayerControl[i].sprite = inputImages[i];
+                        UIControlDescription[i].sprite = inputIcon[i];
+                    }
+                    else
+                    {
+                        UIPlayerControl[i].sprite = missingControllerImage;
+                        UIControlDescription[i].sprite = missingControllerIcon;
+                    }
 
-        }
-*/    }
+                }
+        */
+    }
 
 
     private void OnEnable()
@@ -164,6 +169,15 @@ public class ControllerManager : Singleton<ControllerManager>
 
     }
 
-
+    public void BlackScreen()
+    {
+        blackScreen.SetActive(true);
+        Invoke("DisableBlackScreen", 0.1f);
+      
+    }
+    public void DisableBlackScreen()
+    {
+        blackScreen.SetActive(false);
+    }
 
 }
