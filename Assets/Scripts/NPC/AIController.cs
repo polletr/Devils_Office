@@ -17,8 +17,6 @@ public class AIController : CharacterClass
     private PathFinder pathFinder;
 
     bool _iskilled;
-    int num = 0;
-
 
     private Stack<Vector2Int> path = new Stack<Vector2Int>();
 
