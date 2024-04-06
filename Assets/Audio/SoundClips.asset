@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89a381da3bc5c6b459a249f037644a04, type: 3}
+  m_Name: SoundClips
+  m_EditorClassIdentifier: 
+  inDoorSteps: {fileID: 8300000, guid: 8f19069e77fef3144ad81087140486cc, type: 3}
+  stab: {fileID: 8300000, guid: 37d9b05c6fc7bc748a65477fd386ffca, type: 3}
+  welcomeToHell: {fileID: 8300000, guid: d46d44b65177c404eab9de1a468b3d2b, type: 3}
+  deathIsJustTheBeggining: {fileID: 8300000, guid: 8645fea96411f2940a944e1e06ac4a9d, type: 3}
+  meetingPostponined: {fileID: 8300000, guid: f0c0cf62061021b46b743228cc3b3583, type: 3}
+  fire: {fileID: 8300000, guid: 3a003e2e02f06274fa649ad12a9dc121, type: 3}
+  someoneHasDies: {fileID: 8300000, guid: dc0e76ff8ef881443ba8d17076a69439, type: 3}
+  TheDevilsoffice: {fileID: 8300000, guid: 8867635097842754c864525cdf2ad87b, type: 3}
+  TheWorkdayEndSoon: {fileID: 8300000, guid: 0308680d0bb43fa47aac771eb92bc44a, type: 3}
+  officeBackground: {fileID: 8300000, guid: 956d1410c622f4e4a91930bff821f1f8, type: 3}
+  printerWorking: {fileID: 8300000, guid: 6be6870ac397a0c49a6ff01f84b9240f, type: 3}
+  Horriblejob: {fileID: 8300000, guid: 404f02cbfba74fa45be7729adde7b2df, type: 3}
+  YourCoworkers: {fileID: 8300000, guid: 440c0465af38c6844b75b5583586bc73, type: 3}
+  CountDown: {fileID: 8300000, guid: 68d04360bf3f3a1489a68f10e6ab03bb, type: 3}
+  DailyScrumMeeting: {fileID: 8300000, guid: 7144d4515d8adbd498c600dccc0c074a, type: 3}
+  ClosingTime: {fileID: 8300000, guid: da6bce629b6b76840b6b150aa4491d17, type: 3}
+  weAreMarket: {fileID: 8300000, guid: 1d6f2ae105fab144d8f2183e3ca91d7f, type: 3}
+  huamnResouces: {fileID: 8300000, guid: 52a720270b496f84a82fef7868f99435, type: 3}
+  ourQ4: {fileID: 8300000, guid: c675ba0c82ef1424a92f0165676891aa, type: 3}
+  hellsotherpeople: {fileID: 8300000, guid: 41c82b37478438c4caf13ce5074b300b, type: 3}
+  playerOneIsBeing: {fileID: 8300000, guid: 05f5799b3c39bfc4f87ab5e27a1cfe0c, type: 3}

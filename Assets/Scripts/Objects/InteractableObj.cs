@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.Events;
-
+[RequireComponent(typeof(AudioSource))]
 public class InteractableObj : BaseObject
 {
 
@@ -11,9 +8,11 @@ public class InteractableObj : BaseObject
     public Vector2Int interactionPos;
     public TaskType taskType = TaskType.none;
 
+    public AudioSource taskSpeaker;
+
     [HideInInspector]
     public GameObject visualIndicator;
-    
+
     public UnityEvent TaskStarted;
 
     public UnityEvent TaskInterrupted;
@@ -22,6 +21,7 @@ public class InteractableObj : BaseObject
     void Awake()
     {
         visualIndicator = GetComponentInChildren<UVScroller_C>()?.gameObject;
+        taskSpeaker = GetComponent<AudioSource>();
     }
 
 
@@ -30,13 +30,13 @@ public class InteractableObj : BaseObject
 
 public enum TaskType
 {
-  Coffee,
-  Pitchfork,
-  ExtinguishBody,
-  Stamp,
-  Printer,
-  PC,
-  Microwave,
-  Telephone,
-  none
+    Coffee,
+    Pitchfork,
+    ExtinguishBody,
+    Stamp,
+    Printer,
+    PC,
+    Microwave,
+    Telephone,
+    none
 }

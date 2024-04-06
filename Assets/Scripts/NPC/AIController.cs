@@ -1,11 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.TextCore.Text;
 using Random = UnityEngine.Random;
 
 public class AIController : CharacterClass
@@ -93,13 +89,13 @@ public class AIController : CharacterClass
     public void OnThinking()
     {
         SetBrain((AITasks)Random.Range(1, Enum.GetValues(typeof(AITasks)).Length));
-/*        num = (num + 1) % Enum.GetValues(typeof(AITasks)).Length;
-        if (num == 0)
-        {
-            num = 1;
-        }
-        SetBrain((AITasks)num);
-*/
+        /*        num = (num + 1) % Enum.GetValues(typeof(AITasks)).Length;
+                if (num == 0)
+                {
+                    num = 1;
+                }
+                SetBrain((AITasks)num);
+        */
         //SetBrain(AITasks.Roam);
         //SetBrain(AITasks.DoTask);
     }
@@ -151,7 +147,7 @@ public class AIController : CharacterClass
             if (gridLocation != destination && currentState is IdleState && timer > Random.Range(1.5f, 2.5f))
             {
                 path = pathFinder.GetPath(gridLocation, destination);
-            
+
                 if (path.Count > 0)
                 {
                     Vector2Int nextDestination = path.Pop();
@@ -262,8 +258,8 @@ public class AIController : CharacterClass
     public enum AITasks
     {
         Think,
-        Roam ,
-        DoTask 
+        Roam,
+        DoTask
     }
 
 

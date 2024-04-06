@@ -4,12 +4,13 @@ using TMPro;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
+using UnityEngine.TextCore.Text;
 
 public class GameManager : Singleton<GameManager>
 {
     [SerializeField]
     private float timer = 80f;
-   
+
     [SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private GameObject winScreen;
 
@@ -39,12 +40,9 @@ public class GameManager : Singleton<GameManager>
     [SerializeField]
     private float extraTimeCountLimit;
 
-
-
-
     private void Awake()
     {
-
+        AudioManager.Instance.PlayMusic(AudioManager.Instance._audioClip.officeBackground);
         timerText.gameObject.SetActive(false);
         Time.timeScale = 1f;
         Cursor.lockState = CursorLockMode.Locked;
@@ -75,8 +73,23 @@ public class GameManager : Singleton<GameManager>
             if (timerText != null && timer <= extraTime)
             {
                 timerText.gameObject.SetActive(true);
-                timerText.text = minutes.ToString("00") + ":" + seconds.ToString("00"); // + ":" + milliseconds.ToString("00");   
+                timerText.text = minutes.ToString("00") + ":" + seconds.ToString("00"); // + ":" + milliseconds.ToString("00");
+                if (timer == 60f)
+                {
+                    AudioManager.Instance.PlayUI(AudioManager.Instance._audioClip.DailyScrumMeeting);
+                }
+                else if (timer == 30f)
+                {
+                    AudioManager.Instance.PlayUI(AudioManager.Instance._audioClip.TheWorkdayEndSoon);
+                }
+                else if (timer == 10f)
+                {
+                    AudioManager.Instance.PlayCountDown();
+                }
+               
             }
+
+
         }
         else
         {
@@ -88,65 +101,65 @@ public class GameManager : Singleton<GameManager>
     {
         playersToRank = players.OrderByDescending(p => p.points).ThenByDescending(p => p.killCount).ToList();
 
-/*        bool pointCheck = false;
+        /*        bool pointCheck = false;
 
-        for (int i = 0; i < playersToRank.Count - 1; i++)
-        {
-            if (playersToRank[i].points == playersToRank[i + 1].points)
-            {
-                pointCheck = false;
-            }
-            else
-            {
-                pointCheck = true;
-                break;
-            }
-        }
-*/
-/*        if (pointCheck)
-        {
-            for (int i = 0; i < playersToRank.Count; i++)
-            {
-                if (i == 0)
+                for (int i = 0; i < playersToRank.Count - 1; i++)
                 {
-                    playersToRank[i].interactMultiplier = interactMultLeader;
-
-                }
-                else if (i == playersToRank.Count - 1)
-                {
-                    playersToRank[i].interactMultiplier = interactMultLast;
-                }
-                else
-                {
-                    playersToRank[i].interactMultiplier = 1;
-                }
-            }
-
-*//*            for (int i = 0; i < playersToRank.Count - 1; i++)
-            {
-                if (playersToRank[i].points == playersToRank[i + 1].points && playersToRank[i].interactMultiplier != 1)
-                {
-                    playersToRank[i + 1].interactMultiplier = playersToRank[i].interactMultiplier;
-                }
-                else if (playersToRank[i].points == playersToRank[i + 1].points && playersToRank[i].interactMultiplier == 1)
-                {
-                    if (playersToRank[i].points == playersToRank[playersToRank.Count - 1].points)
+                    if (playersToRank[i].points == playersToRank[i + 1].points)
                     {
-                        playersToRank[i].interactMultiplier = playersToRank[playersToRank.Count - 1].interactMultiplier;
+                        pointCheck = false;
+                    }
+                    else
+                    {
+                        pointCheck = true;
+                        break;
                     }
                 }
+        */
+        /*        if (pointCheck)
+                {
+                    for (int i = 0; i < playersToRank.Count; i++)
+                    {
+                        if (i == 0)
+                        {
+                            playersToRank[i].interactMultiplier = interactMultLeader;
 
-            }
-*/
-            for (int i = 0; i < playersToRank.Count; i++)
-            {
-                int pointDifference = playersToRank[i].points - playersToRank[playersToRank.Count - 1].points;
-                int diffThreshold = Mathf.Max(pointDifference - pointsThreshold, 0);
+                        }
+                        else if (i == playersToRank.Count - 1)
+                        {
+                            playersToRank[i].interactMultiplier = interactMultLast;
+                        }
+                        else
+                        {
+                            playersToRank[i].interactMultiplier = 1;
+                        }
+                    }
 
-                playersToRank[i].interactMultiplier = Mathf.Min(interactMultMin + diffThreshold/ pointsThreshold * diffPerThreshold, interactMultMax);
+        *//*            for (int i = 0; i < playersToRank.Count - 1; i++)
+                    {
+                        if (playersToRank[i].points == playersToRank[i + 1].points && playersToRank[i].interactMultiplier != 1)
+                        {
+                            playersToRank[i + 1].interactMultiplier = playersToRank[i].interactMultiplier;
+                        }
+                        else if (playersToRank[i].points == playersToRank[i + 1].points && playersToRank[i].interactMultiplier == 1)
+                        {
+                            if (playersToRank[i].points == playersToRank[playersToRank.Count - 1].points)
+                            {
+                                playersToRank[i].interactMultiplier = playersToRank[playersToRank.Count - 1].interactMultiplier;
+                            }
+                        }
 
-                
-            }
+                    }
+        */
+        for (int i = 0; i < playersToRank.Count; i++)
+        {
+            int pointDifference = playersToRank[i].points - playersToRank[playersToRank.Count - 1].points;
+            int diffThreshold = Mathf.Max(pointDifference - pointsThreshold, 0);
+
+            playersToRank[i].interactMultiplier = Mathf.Min(interactMultMin + diffThreshold / pointsThreshold * diffPerThreshold, interactMultMax);
+
+
+        }
 
 
         /*        }
@@ -165,6 +178,7 @@ public class GameManager : Singleton<GameManager>
 
     private void EndGame()
     {
+
         if (playersToRank[0].points == playersToRank[1].points && playersToRank[0].killCount == playersToRank[1].killCount) //Tie Scenario
         {
             extraTimerCount++;
@@ -174,6 +188,7 @@ public class GameManager : Singleton<GameManager>
                 {
                     playersToRank[i]._UIManager.GameStats(null);
                 }
+                AudioManager.Instance.PlayUI(AudioManager.Instance._audioClip.meetingPostponined);
 
                 EndGameUI();
             }
@@ -185,7 +200,7 @@ public class GameManager : Singleton<GameManager>
         }
         else
         {
-
+          AudioManager.Instance.PlayUI(AudioManager.Instance._audioClip.ClosingTime);
             SetWinner(playersToRank[0]);//Winner with points
             //Display Victory Screen and show the winner, second, etc.
         }

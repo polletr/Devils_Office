@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.TextCore.Text;
 
 public class InteractState : BaseState
 {
@@ -24,7 +21,7 @@ public class InteractState : BaseState
         }
 
         interactableObj = GridController.Instance.objLocations[character.gridLocation.x + character.fwdDirection.x, character.gridLocation.y + character.fwdDirection.y].GetComponent<InteractableObj>();
-        
+
 
         if (interactableObj.GetComponent<ExtinguishBody>() && interactableObj.GetComponent<AIController>().currentState is not DeathState)
         {
@@ -42,7 +39,6 @@ public class InteractState : BaseState
             {
                 interactTimer = interactableObj.waitTime;
             }
-
 
             interactableObj.TaskStarted.Invoke();
         }
@@ -76,7 +72,7 @@ public class InteractState : BaseState
     public override void StateUpdate()
     {
         timer += Time.deltaTime;
-        if(playerController)
+        if (playerController)
         {
             UIManager uiManager = playerController._UIManager;
             uiManager.showLoader = true;
@@ -94,6 +90,8 @@ public class InteractState : BaseState
                 {
                     playerController.canInteract = true;
                     Vector2Int objLocation = interactableObj.GetComponent<AIController>().gridLocation;
+                    character.characterSpeaker.loop = true;
+                    AudioManager.Instance.Play(AudioManager.Instance._audioClip.fire, character.characterSpeaker);
 
                     GridController.Instance.objLocations[objLocation.x, objLocation.y] = GridController.Instance.objLocationsStart[objLocation.x, objLocation.y];
                     GridController.Instance.gridLocations[objLocation.x, objLocation.y] = 0;
@@ -101,6 +99,8 @@ public class InteractState : BaseState
                 }
                 else
                 {
+                    character.characterSpeaker.loop = false;
+                    AudioManager.Instance.Play(AudioManager.Instance._audioClip.TheDevilsoffice, character.characterSpeaker);
                     completedTask = true;
                 }
 
@@ -113,14 +113,14 @@ public class InteractState : BaseState
         }
     }
 
-   /* public override void StopInteract()
-    {
-        //Disable UI
-        interactableObj.TaskInterrupted.Invoke();
+    /* public override void StopInteract()
+     {
+         //Disable UI
+         interactableObj.TaskInterrupted.Invoke();
 
-        character.ChangeState(new IdleState());
+         character.ChangeState(new IdleState());
 
-    }*/
+     }*/
 
     public override void HandleDeath()
     {

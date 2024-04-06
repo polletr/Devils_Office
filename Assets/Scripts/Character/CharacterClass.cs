@@ -21,9 +21,11 @@ public class CharacterClass : BaseObject
     [HideInInspector]
     public GameObject characterModel;
 
+    public AudioSource characterSpeaker;
+
     public virtual void Awake()
     {
-
+        characterSpeaker = GetComponent<AudioSource>();
         transform.eulerAngles = new Vector3(0f, UnityEngine.Random.Range(0,3) * 90f, 0f);
         ChangeDirection();
     }

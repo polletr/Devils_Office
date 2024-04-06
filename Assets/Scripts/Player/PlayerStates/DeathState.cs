@@ -12,6 +12,7 @@ public class DeathState : BaseState
 
     public override void EnterState()
     {
+        AudioManager.Instance.PlayUI(AudioManager.Instance._audioClip.someoneHasDies);
         character.anim.SetBool("Dead", true);
         if (character.GetComponent<PlayerController>())
         {
@@ -34,6 +35,7 @@ public class DeathState : BaseState
         respawnTimer += Time.deltaTime;
         if (playerController)
         {
+            AudioManager.Instance.Play(AudioManager.Instance._audioClip.deathIsJustTheBeggining, character.characterSpeaker);
             if (GridController.Instance.AIList.Any())
             {
                 if (respawnTimer > playerController.RespawnTimelimit)

@@ -62,6 +62,11 @@ public class UIManager : MonoBehaviour
         loaderImageUI.gameObject.SetActive(showLoader);
         //points
         pointsText.text = "Points: " + player.points.ToString();
+
+        if(player.points >= 100)
+        { 
+         AudioManager.Instance.PlayUI(AudioManager.Instance._audioClip.playerOneIsBeing);
+        }
     }
     void Update()
     {

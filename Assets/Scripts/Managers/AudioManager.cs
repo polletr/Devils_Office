@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -10,33 +9,21 @@ public class AudioManager : Singleton<AudioManager>
     [SerializeField]
     private AudioSource SFXSpeaker;
     [SerializeField]
-    private AudioSource PlayerSpeaker;
-    [SerializeField]
-    private AudioSource EnemySpeaker;
+    private AudioSource UISpeaker;
 
     [Header("Audio Mixer")]
     [SerializeField, Tooltip("Audio Mixer form the Assets folder")]
     private AudioMixer _MasterAudioMixer;
 
     [Header("Audio Clip Container")]
-     public AudioClipContainer _audioClip;
+    public AudioClipContainer _audioClip;
 
-    //public Dictionary<AudioType, AudioClip> AudioClips = new();
-
-    private void Awake()
-    {
-        MusicSpeaker.loop = true;
-       /* foreach (AudioPair pair in _audioClip.audioPairs)
-        {
-            AudioClips.Add(pair.Key, pair.Value);
-        }*/
-    }
-    public void PlayWorldSFX(AudioClip clip)
+    public void Play(AudioClip clip, AudioSource speaker)
     {
         if (clip != null)
         {
-            SFXSpeaker.clip = clip;
-             SFXSpeaker.Play();
+            speaker.clip = clip;
+            speaker.Play();
         }
         else Debug.LogWarning("Audio Clip is null");
     }
@@ -44,29 +31,37 @@ public class AudioManager : Singleton<AudioManager>
     {
         if (clip != null)
         {
+            MusicSpeaker.loop = true;
             MusicSpeaker.clip = clip;
             MusicSpeaker.Play();
         }
-        //else Debug.LogError("Audio Clip is null");
+        else Debug.LogWarning("Audio Clip is null");
     }
-
-    public void PlayPlayerSFX(AudioClip clip)
+    public void PlaySFX(AudioClip clip)
     {
         if (clip != null)
         {
-            PlayerSpeaker.clip = clip;
-            PlayerSpeaker.Play();
+            SFXSpeaker.clip = clip;
+            SFXSpeaker.Play();
         }
-        //else Debug.LogError("Audio Clip is null");
+        else Debug.LogWarning("Audio Clip is null");
     }
-    public void PlayEnemySFX(AudioClip clip)
+    public void PlayUI(AudioClip clip)
     {
         if (clip != null)
         {
-            EnemySpeaker.clip = clip;
-            EnemySpeaker.Play();
+            UISpeaker.clip = clip;
+            UISpeaker.Play();
         }
-        //else Debug.LogError("Audio Clip is null");
+        else Debug.LogWarning("Audio Clip is null");
     }
-
+    public void PlayCountDown()
+    {
+        if (_audioClip.CountDown != null)
+        {
+            UISpeaker.clip = _audioClip.CountDown;
+            UISpeaker.Play();
+        }
+        else Debug.LogWarning("Audio Clip is null");
+    }
 }

@@ -26,6 +26,7 @@ public class MoveState : BaseState
 
             canMove = true;
             character.anim?.SetTrigger("Walk");
+            AudioManager.Instance.Play(AudioManager.Instance._audioClip.inDoorSteps, character.characterSpeaker);
 
         }
         else

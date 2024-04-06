@@ -31,7 +31,7 @@ public class AttackState : BaseState
         if (targetCharacter.currentState is not DeathState)
         {
             targetCharacter.currentState?.HandleDeath();
-
+            AudioManager.Instance.Play(AudioManager.Instance._audioClip.stab, character.characterSpeaker);
             targetKilled = true;
         }
 
@@ -62,6 +62,7 @@ public class AttackState : BaseState
             {
                 if (targetCharacter.GetComponent<AIController>())
                 {
+                    AudioManager.Instance.Play(AudioManager.Instance._audioClip.Horriblejob, character.characterSpeaker);
                     playerController._taskManager.AddExtinguishTask(targetCharacter.GetComponent<InteractableObj>());
                     playerController.canInteract = false;
                     targetKilled = false;

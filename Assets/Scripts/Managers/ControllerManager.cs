@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using System.Threading;
+using UnityEngine.TextCore.Text;
 
 public class ControllerManager : Singleton<ControllerManager>
 {
@@ -57,6 +58,8 @@ public class ControllerManager : Singleton<ControllerManager>
 
     private void Awake()
     {
+        AudioManager.Instance.PlayUI(AudioManager.Instance._audioClip.welcomeToHell);
+
         foreach (Image Controls in UIControlDescription)
         {
             if (missingControllerImage != null)

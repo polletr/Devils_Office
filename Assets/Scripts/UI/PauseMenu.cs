@@ -6,7 +6,7 @@ public class PauseMenu : Menu
     [SerializeField] private GameObject _settingsMenu;
     protected override void Awake()
     {
-        AudioManager.Instance.PlayMusic(AudioManager.Instance._audioClip.BGMusic);
+       // AudioManager.Instance.PlayMusic(AudioManager.Instance._audioClip.);
         _startActive = false;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
