@@ -10,7 +10,7 @@ public class WallFrames : BaseObject
     List<GameObject> images = new List<GameObject>();
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         
         foreach (var frame in frames)
@@ -25,9 +25,4 @@ public class WallFrames : BaseObject
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
