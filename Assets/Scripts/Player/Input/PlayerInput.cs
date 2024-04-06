@@ -245,48 +245,48 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             ""actions"": [
                 {
                     ""name"": ""ViewTask"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""5470c5d2-2952-4118-a1ad-0e118f14d5ef"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 },
                 {
                     ""name"": ""InteractKill"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""d86e540f-4390-466f-989b-cf6010a1721f"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 },
                 {
                     ""name"": ""TurnRight"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""a5b27a64-172b-47d9-9c83-bff38cc0cd62"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": ""Dpad"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 },
                 {
                     ""name"": ""TurnLeft"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""ba676f94-468e-4ada-8c27-cb12b8bf27ec"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": ""Dpad"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 },
                 {
                     ""name"": ""Move"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""5d1c9604-ae46-4f54-ade2-5c943420cf43"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": ""Dpad"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -315,7 +315,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""c54020a7-fe4f-4e0f-b60f-a38d280a7330"",
-                    ""path"": ""<Gamepad>/leftStick/right"",
+                    ""path"": ""<Gamepad>/dpad"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -326,7 +326,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""92ab2ce1-ce0d-4bb1-849b-1655a7fcde79"",
-                    ""path"": ""<Gamepad>/leftStick/left"",
+                    ""path"": ""<Gamepad>/dpad"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -337,7 +337,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""81750083-d8fb-47f9-890c-de1a6f9275fa"",
-                    ""path"": ""<Gamepad>/leftStick/up"",
+                    ""path"": ""<Gamepad>/dpad"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
