@@ -99,18 +99,6 @@ public class InputManager : MonoBehaviour
         return;
     }
 
-/*    private void OnInput(PlayerInput playerInput, int pNumber )
-    {
-        action.playerInput.Move.performed += (val) => { if (val.control.device == InputSystem.devices[pNumber]) player.HandleMove(true); };
-        action.GamePad.Move.canceled += (val) => { if (val.control.device == InputSystem.devices[pNumber]) player.HandleMove(false); };
-        action.GamePad.TurnRight.performed += (val) => { if (val.control.device == InputSystem.devices[pNumber]) player.HandleRotate(90); };
-        action.GamePad.TurnLeft.performed += (val) => { if (val.control.device == InputSystem.devices[pNumber]) player.HandleRotate(-90); };
-        action.GamePad.InteractKill.performed += (val) => { if (val.control.device == InputSystem.devices[pNumber]) player.HandleInteract(); };
-        action.GamePad.InteractKill.canceled += (val) => { if (val.control.device == InputSystem.devices[pNumber]) player.HandleStopInteract(); };
-        action.GamePad.ViewTask.performed += (val) => { if (val.control.device == InputSystem.devices[pNumber]) player.HandleViewTask(true); };
-        action.GamePad.ViewTask.canceled += (val) => { if (val.control.device == InputSystem.devices[pNumber +]) player.HandleViewTask(false); };
-    }
-*/
     private void OnDisable()
     {
        
