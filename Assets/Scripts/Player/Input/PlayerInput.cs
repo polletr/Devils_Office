@@ -245,7 +245,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             ""actions"": [
                 {
                     ""name"": ""ViewTask"",
-                    ""type"": ""Value"",
+                    ""type"": ""Button"",
                     ""id"": ""5470c5d2-2952-4118-a1ad-0e118f14d5ef"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -254,7 +254,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""InteractKill"",
-                    ""type"": ""Value"",
+                    ""type"": ""Button"",
                     ""id"": ""d86e540f-4390-466f-989b-cf6010a1721f"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -263,27 +263,27 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""TurnRight"",
-                    ""type"": ""Value"",
+                    ""type"": ""Button"",
                     ""id"": ""a5b27a64-172b-47d9-9c83-bff38cc0cd62"",
-                    ""expectedControlType"": ""Dpad"",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
                 },
                 {
                     ""name"": ""TurnLeft"",
-                    ""type"": ""Value"",
+                    ""type"": ""Button"",
                     ""id"": ""ba676f94-468e-4ada-8c27-cb12b8bf27ec"",
-                    ""expectedControlType"": ""Dpad"",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
                 },
                 {
                     ""name"": ""Move"",
-                    ""type"": ""Value"",
+                    ""type"": ""Button"",
                     ""id"": ""5d1c9604-ae46-4f54-ade2-5c943420cf43"",
-                    ""expectedControlType"": ""Dpad"",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
