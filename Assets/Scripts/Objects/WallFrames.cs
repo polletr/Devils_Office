@@ -10,14 +10,14 @@ public class WallFrames : BaseObject
     List<GameObject> images = new List<GameObject>();
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         
         foreach (var frame in frames)
         {
             int randomCheck = Random.Range(0, 10);
 
-            if (randomCheck >= 8)
+            if (randomCheck >= 8 && images.Count > 0)
             {
                 int random = Random.Range(0, images.Count);
                 Instantiate(images[random], frame.transform);
@@ -25,9 +25,4 @@ public class WallFrames : BaseObject
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
