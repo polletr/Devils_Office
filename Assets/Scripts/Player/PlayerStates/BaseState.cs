@@ -17,6 +17,8 @@ using UnityEngine;
         public virtual void HandleMovement() { }
         public virtual void HandleRotation(float rotateAngle) { }
         public virtual void HandleInteract() { }
+        public virtual void HandleAttack() { }
+
         public virtual void HandleDeath() { }
         public virtual void StopInteract() 
         {

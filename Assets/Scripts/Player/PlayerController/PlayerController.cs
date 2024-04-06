@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 [RequireComponent(typeof(InputManager))]
 public class PlayerController : CharacterClass
@@ -66,18 +67,28 @@ public override void Awake()
     }
     public void HandleInteract()
     {
-        currentState?.HandleInteract();
+        if (GridController.Instance.CanInteract(gridLocation + fwdDirection, _taskManager))   // can incteract , in the task list             
+        {
+            Debug.Log("Interact");
+            currentState?.HandleInteract();
+        }
+        else if (GridController.Instance.CanAttack(gridLocation + fwdDirection, fwdDirection) && !_taskManager.taskToDo.Contains(TaskType.ExtinguishBody))//check if can attack
+        {
+            Debug.Log("Attack!");
+            currentState?.HandleAttack();
+        }
+        else
+        {
+            _UIManager.StartCoroutine("Blink", true);
+        }
     }
-
     public void HandleStopInteract()
     {
         currentState?.StopInteract();
     }
-
     public void HandleViewTask(bool show)
     {
         _UIManager.DisableUI(show);
-
     }
 
 
@@ -87,7 +98,6 @@ public override void Awake()
     {
         Destroy(characterModel);
     }
-
     public void SpawnNewModel(GameObject newModel)
     {
 

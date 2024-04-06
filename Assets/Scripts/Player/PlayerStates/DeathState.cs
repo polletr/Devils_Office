@@ -16,6 +16,8 @@ public class DeathState : BaseState
         if (character.GetComponent<PlayerController>())
         {
             playerController = character.GetComponent<PlayerController>();
+            playerController._UIManager.StartCoroutine("Blink", true);
+
         }
 
     }
@@ -63,6 +65,7 @@ public class DeathState : BaseState
                         character.fwdDirection = AIPicked.fwdDirection;
 
                         AIPicked.DestroySelf();
+                        character.GetComponent<PlayerController>()._UIManager.StartCoroutine("Blink", false);
 
                         character.ChangeState(new IdleState());
 
@@ -75,7 +78,6 @@ public class DeathState : BaseState
             {
                 GridController.Instance.playerControllers.Remove(playerController);
                 character.ChangeState(new PermaDeathState());
-                character.GetComponent<PlayerController>()._UIManager.StartCoroutine("Blink", true);
 
                 Debug.Log(GridController.Instance.playerControllers.Count);
             }

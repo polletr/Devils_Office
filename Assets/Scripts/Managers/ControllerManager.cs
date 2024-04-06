@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using System.Threading;
 
 public class ControllerManager : Singleton<ControllerManager>
 {
@@ -42,6 +43,17 @@ public class ControllerManager : Singleton<ControllerManager>
     private int player = 0;
 
     public UnityEvent StartGame;
+    public UnityEvent ShowStory;
+
+    float timer = 0f;
+
+    bool holdToSkip = false;
+
+    [SerializeField]
+    float storyTimer = 30f;
+
+    [SerializeField]
+    private Image loaderImageUI;
 
     private void Awake()
     {
@@ -69,9 +81,33 @@ public class ControllerManager : Singleton<ControllerManager>
 
         if (playEnabled)
         {
-            StartGame.Invoke();
+            ShowStory.Invoke();
+
+            if (!holdToSkip)
+            {
+                timer += Time.deltaTime;
+            }
+            else
+            {
+                timer += 5f * Time.deltaTime;
+            }
+
+            LoadingBar(timer, storyTimer);
+
+            if (timer > storyTimer)
+            {
+                StartGame.Invoke();
+            }
+            Debug.Log(timer);
         }
+
     }
+
+    public void LoadingBar(float indicator, float maxIndicator)
+    {
+        loaderImageUI.fillAmount = indicator / maxIndicator;
+    }
+
 
     private void ActivateController(int index)
     {
@@ -84,7 +120,7 @@ public class ControllerManager : Singleton<ControllerManager>
 
             player++;
         }
-        else
+        else if (playerDevice.ContainsValue(index) && !playEnabled)
         {
             playerReady[index] = true;
             foreach (int key in playerDevice.Keys)
@@ -95,6 +131,17 @@ public class ControllerManager : Singleton<ControllerManager>
                 }
             }
         }
+        else
+        {
+            holdToSkip = true;
+        }
+
+    }
+
+    private void CancelSkip()
+    {
+        if (holdToSkip)
+            holdToSkip = false;
 
     }
 
@@ -113,7 +160,6 @@ public class ControllerManager : Singleton<ControllerManager>
 
             }
         }
-
         
     }
 
@@ -122,10 +168,14 @@ public class ControllerManager : Singleton<ControllerManager>
     {
         action = new PlayerInput();
         action.KeyboardLeft.Move.performed += (val) => ActivateController(0);
-        action.KeyboardRight.Move.performed += (val) => ActivateController(1);
+        action.KeyboardLeft.Move.canceled += (val) => CancelSkip();
 
+        action.KeyboardRight.Move.performed += (val) => ActivateController(1);
+        action.KeyboardRight.Move.canceled += (val) => CancelSkip();
 
         action.GamePad.Move.performed += (val) => ActivateController(inputDevice[val.control.device]);
+        action.GamePad.Move.canceled += (val) => CancelSkip();
+
         action.Enable();
         return;
 

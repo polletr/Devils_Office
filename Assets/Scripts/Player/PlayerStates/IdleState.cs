@@ -48,22 +48,14 @@ public class IdleState : BaseState
 
     public override void HandleInteract()
     {
-        if (GridController.Instance.CanInteract(character.gridLocation + character.fwdDirection, character.GetComponent<PlayerController>()?._taskManager))   // can incteract , in the task list             
-        {
-            Debug.Log("Interact");
-            character.ChangeState(new InteractState());
-        }
-        else if (GridController.Instance.CanAttack(character.gridLocation + character.fwdDirection, character.fwdDirection) && !character.GetComponent<PlayerController>()._taskManager.taskToDo.Contains(TaskType.ExtinguishBody))//check if can attack
-        {
-            Debug.Log("Attack!");
-            character.ChangeState(new AttackState());
-        }
-        else
-        {
-            character.GetComponent<PlayerController>()._UIManager.StartCoroutine("Blink", true);
-        }
-
+        character.ChangeState(new InteractState());
     }
+
+    public override void HandleAttack()
+    {
+        character.ChangeState(new AttackState());
+    }
+
 
     public override void StopInteract()
     {

@@ -27,6 +27,9 @@ public class UIManager : MonoBehaviour
     [HideInInspector]
     public bool showLoader;
 
+    [SerializeField]
+    private GameObject dieText;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -108,25 +111,14 @@ public class UIManager : MonoBehaviour
             yield return null;
         }
         playerEye.alpha = targetAlpha;
+
+        if (player.currentState is DeathState)
+        {
+            dieText.gameObject.SetActive(closeEye);
+        }
     }
 
 
-    /*        if (Enum.TryParse(player.controlScheme, out PlayerID playerID))
-       {
-         switch(playerID)
-           {
-           case PlayerID.P0:
-                  // GameManager.Instance.
-             break;
-           case PlayerID.P1:
-             break;
-           case PlayerID.P2:
-             break;
-           case PlayerID.P3:
-             break;
-         }
-       }
-*/
 }
 
 
