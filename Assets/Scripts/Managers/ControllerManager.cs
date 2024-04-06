@@ -51,6 +51,9 @@ public class ControllerManager : Singleton<ControllerManager>
     bool holdToSkip = false;
 
     [SerializeField]
+    float skipMultiplier = 5f;
+
+    [SerializeField]
     float storyTimer = 30f;
 
     [SerializeField]
@@ -92,7 +95,7 @@ public class ControllerManager : Singleton<ControllerManager>
             }
             else
             {
-                timer += 5f * Time.deltaTime;
+                timer += skipMultiplier * Time.deltaTime;
             }
 
             LoadingBar(timer, storyTimer);
@@ -101,7 +104,6 @@ public class ControllerManager : Singleton<ControllerManager>
             {
                 StartGame.Invoke();
             }
-            Debug.Log(timer);
         }
 
     }
