@@ -752,6 +752,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1255622358549891506, guid: e5af9976fbb29f443af290b489084997, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 635.0796
+      objectReference: {fileID: 0}
+    - target: {fileID: 1255622358549891506, guid: e5af9976fbb29f443af290b489084997, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 366.3921
+      objectReference: {fileID: 0}
     - target: {fileID: 1318980582397788508, guid: e5af9976fbb29f443af290b489084997, type: 3}
       propertyPath: m_Name
       value: Text
@@ -776,6 +784,26 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: b65a6b3f64845a846b5f82a19701ca9a, type: 3}
+    - target: {fileID: 5806905522632073256, guid: e5af9976fbb29f443af290b489084997, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5974192359476485584, guid: e5af9976fbb29f443af290b489084997, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 635.0796
+      objectReference: {fileID: 0}
+    - target: {fileID: 5974192359476485584, guid: e5af9976fbb29f443af290b489084997, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 366.3921
+      objectReference: {fileID: 0}
+    - target: {fileID: 8839602863237897121, guid: e5af9976fbb29f443af290b489084997, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 635.0796
+      objectReference: {fileID: 0}
+    - target: {fileID: 8839602863237897121, guid: e5af9976fbb29f443af290b489084997, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 366.3921
+      objectReference: {fileID: 0}
     - target: {fileID: 8861877395381045356, guid: e5af9976fbb29f443af290b489084997, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1032,7 +1060,7 @@ PrefabInstance:
       objectReference: {fileID: 1787653020}
     - target: {fileID: 3980316506224215772, guid: 3a23b66e4b8d56d43b364b42d8ed2c3e, type: 3}
       propertyPath: StartGame.m_PersistentCalls.m_Calls.Array.size
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3980316506224215772, guid: 3a23b66e4b8d56d43b364b42d8ed2c3e, type: 3}
       propertyPath: StartGame.m_PersistentCalls.m_Calls.Array.data[2].m_Mode

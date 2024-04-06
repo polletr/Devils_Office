@@ -38,7 +38,6 @@ public class GridController : Singleton<GridController>
     [HideInInspector]
     public List<PlayerController> playerControllers = new();
 
-
     // Start is called before the first frame update
     void Awake()
     {
@@ -127,7 +126,7 @@ public class GridController : Singleton<GridController>
         }
 
         GameManager.Instance.RankPlayers(playerControllers);
-
+        ControllerManager.Instance.gameObject.SetActive(false);
 
     }
 

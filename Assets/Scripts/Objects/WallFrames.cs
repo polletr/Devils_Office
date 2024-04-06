@@ -17,7 +17,7 @@ public class WallFrames : BaseObject
         {
             int randomCheck = Random.Range(0, 10);
 
-            if (randomCheck >= 8)
+            if (randomCheck >= 8 && images.Count > 0)
             {
                 int random = Random.Range(0, images.Count);
                 Instantiate(images[random], frame.transform);
