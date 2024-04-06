@@ -279,6 +279,91 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3335960173605253863, guid: e5af9976fbb29f443af290b489084997, type: 3}
   m_PrefabInstance: {fileID: 1990298922}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &752798960
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8448651053613719308, guid: 04a3b69f717074043ad0f71657ebb7ee, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8448651053613719309, guid: 04a3b69f717074043ad0f71657ebb7ee, type: 3}
+      propertyPath: m_Name
+      value: Floating Embers
+      objectReference: {fileID: 0}
+    - target: {fileID: 8448651053613719310, guid: 04a3b69f717074043ad0f71657ebb7ee, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8448651053613719310, guid: 04a3b69f717074043ad0f71657ebb7ee, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8448651053613719310, guid: 04a3b69f717074043ad0f71657ebb7ee, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8448651053613719310, guid: 04a3b69f717074043ad0f71657ebb7ee, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 8448651053613719310, guid: 04a3b69f717074043ad0f71657ebb7ee, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 8448651053613719310, guid: 04a3b69f717074043ad0f71657ebb7ee, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8448651053613719310, guid: 04a3b69f717074043ad0f71657ebb7ee, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8448651053613719310, guid: 04a3b69f717074043ad0f71657ebb7ee, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 8448651053613719310, guid: 04a3b69f717074043ad0f71657ebb7ee, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8448651053613719310, guid: 04a3b69f717074043ad0f71657ebb7ee, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8448651053613719310, guid: 04a3b69f717074043ad0f71657ebb7ee, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8448651053613719311, guid: 04a3b69f717074043ad0f71657ebb7ee, type: 3}
+      propertyPath: simulationSpeed
+      value: 0.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 8448651053613719311, guid: 04a3b69f717074043ad0f71657ebb7ee, type: 3}
+      propertyPath: ShapeModule.m_Scale.x
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8448651053613719311, guid: 04a3b69f717074043ad0f71657ebb7ee, type: 3}
+      propertyPath: ShapeModule.m_Scale.y
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8448651053613719311, guid: 04a3b69f717074043ad0f71657ebb7ee, type: 3}
+      propertyPath: ShapeModule.m_Scale.z
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8448651053613719311, guid: 04a3b69f717074043ad0f71657ebb7ee, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 200
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 04a3b69f717074043ad0f71657ebb7ee, type: 3}
 --- !u!1 &755155593 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7833264530861864531, guid: 3a23b66e4b8d56d43b364b42d8ed2c3e, type: 3}
@@ -1331,3 +1416,4 @@ SceneRoots:
   - {fileID: 1990298922}
   - {fileID: 6357447363567538026}
   - {fileID: 740500880}
+  - {fileID: 752798960}
