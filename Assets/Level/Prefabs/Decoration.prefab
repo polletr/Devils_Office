@@ -97,4 +97,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   posInGrid: {x: 0, y: 0}
-  objects: []
+  objects:
+  - {fileID: 3136150772587623606, guid: a7105f3c907085844bcf93fa17fa65e2, type: 3}
+  - {fileID: 4718861570897231844, guid: 82ad6e53ce5b4a9459a061f8a8ae1942, type: 3}
+  - {fileID: 6622859858139510963, guid: 4bfcd3de400e33b4aa9ef6510b8eb145, type: 3}
+  - {fileID: 6799041585806400226, guid: ef6e45181d42806419cf8ff0bb201c1a, type: 3}

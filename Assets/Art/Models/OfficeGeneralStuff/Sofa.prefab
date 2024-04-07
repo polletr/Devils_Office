@@ -12,6 +12,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sofa
       objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: ad168f78fcb2d214c978f0f537eba8ca, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.73173
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: ad168f78fcb2d214c978f0f537eba8ca, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: ad168f78fcb2d214c978f0f537eba8ca, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.73173
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: ad168f78fcb2d214c978f0f537eba8ca, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.509
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: ad168f78fcb2d214c978f0f537eba8ca, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.73173
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: ad168f78fcb2d214c978f0f537eba8ca, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.128
+      objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: ad168f78fcb2d214c978f0f537eba8ca, type: 3}
       propertyPath: m_RootOrder
       value: 17
@@ -54,31 +78,23 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 100006, guid: ad168f78fcb2d214c978f0f537eba8ca, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1457948729663635889}
+      addedObject: {fileID: -217386607393966101}
   m_SourcePrefab: {fileID: 100100000, guid: ad168f78fcb2d214c978f0f537eba8ca, type: 3}
 --- !u!1 &533432010249996397 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100006, guid: ad168f78fcb2d214c978f0f537eba8ca, type: 3}
   m_PrefabInstance: {fileID: 533432010250096331}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &1457948729663635889
-BoxCollider:
+--- !u!114 &-217386607393966101
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 533432010249996397}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.6659608, y: 1.0572852, z: 1}
-  m_Center: {x: -0.004353285, y: 0.54351646, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73fcbba1262b43745a25de3a0d74b300, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  posInGrid: {x: 0, y: 0}
