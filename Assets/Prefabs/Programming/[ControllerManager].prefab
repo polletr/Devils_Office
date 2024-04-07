@@ -45,9 +45,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controlsImages:
-  - {fileID: 21300000, guid: 605d6f996aaad1d4489940226cf39130, type: 3}
-  - {fileID: 21300000, guid: e31f18bc77be76e4fb27ea5452e3008e, type: 3}
-  - {fileID: 21300000, guid: c5b7fd592744aa645860c5645374f5be, type: 3}
+  - {fileID: 21300000, guid: 6e0ba26bf6aa03841bb400113ab5f6fb, type: 3}
+  - {fileID: 21300000, guid: b97e44fc8ad48974faa55e732199ae4c, type: 3}
+  - {fileID: 21300000, guid: eb2e8bf3fc9f5ac40988bd5fae4b060b, type: 3}
   missingControllerImage: {fileID: 0}
   controlSelection: {fileID: 0}
   UIControlDescription:
@@ -163,4 +163,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  skipMultiplier: 8
   storyTimer: 20
+  loaderImageUI: {fileID: 0}

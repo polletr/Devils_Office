@@ -30,8 +30,6 @@ public class ControllerManager : Singleton<ControllerManager>
     */
     private int gamepadIndex;
 
-    private int activationGamepadIndex;
-
     [HideInInspector]
     public Dictionary<int, int> playerDevice = new();
 
@@ -49,6 +47,9 @@ public class ControllerManager : Singleton<ControllerManager>
     float timer = 0f;
 
     bool holdToSkip = false;
+
+    [SerializeField]
+    float skipMultiplier = 5f;
 
     [SerializeField]
     float storyTimer = 30f;
@@ -92,7 +93,7 @@ public class ControllerManager : Singleton<ControllerManager>
             }
             else
             {
-                timer += 5f * Time.deltaTime;
+                timer += skipMultiplier * Time.deltaTime;
             }
 
             LoadingBar(timer, storyTimer);
@@ -101,7 +102,6 @@ public class ControllerManager : Singleton<ControllerManager>
             {
                 StartGame.Invoke();
             }
-            Debug.Log(timer);
         }
 
     }
@@ -119,6 +119,7 @@ public class ControllerManager : Singleton<ControllerManager>
             playerDevice.Add(player, index);
             playerReady.Add(index, false);
 
+            Debug.Log(playerDevice[player]);
             UIControlDescription[player].sprite = controlsImages[Mathf.Min(index, 2)];
 
             player++;
@@ -152,7 +153,6 @@ public class ControllerManager : Singleton<ControllerManager>
     private void CheckDevices()
     {
         gamepadIndex = 0;
-        activationGamepadIndex = 0;
         var devices = InputSystem.devices;
         foreach (var device in devices)
         {
@@ -160,7 +160,6 @@ public class ControllerManager : Singleton<ControllerManager>
             {
                 inputDevice.Add(device, 2 + gamepadIndex);
                 gamepadIndex++;
-
             }
         }
         

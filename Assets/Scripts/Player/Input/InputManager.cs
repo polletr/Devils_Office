@@ -46,7 +46,7 @@ public class InputManager : MonoBehaviour
             }
         }*/
     }
-    private void SeanFix()
+    private void HandleInput()
     {
         action = new PlayerInput();
         if(playerNumber == 0)
@@ -73,14 +73,14 @@ public class InputManager : MonoBehaviour
         }
         else
         {
-            action.GamePad.Move.performed += (val) => { if (val.control.device == InputSystem.devices[playerNumber + 1]) player.HandleMove(true); };
-            action.GamePad.Move.canceled += (val) => { if (val.control.device == InputSystem.devices[playerNumber + 1]) player.HandleMove(false); };
-            action.GamePad.TurnRight.performed += (val) => { if (val.control.device == InputSystem.devices[playerNumber + 1]) player.HandleRotate(90); };
-            action.GamePad.TurnLeft.performed += (val) => { if (val.control.device == InputSystem.devices[playerNumber + 1]) player.HandleRotate(-90); };
-            action.GamePad.InteractKill.performed += (val) => { if (val.control.device == InputSystem.devices[playerNumber + 1]) player.HandleInteract(); };
-            action.GamePad.InteractKill.canceled += (val) => { if (val.control.device == InputSystem.devices[playerNumber + 1]) player.HandleStopInteract(); };
-            action.GamePad.ViewTask.performed += (val) => { if (val.control.device == InputSystem.devices[playerNumber + 1]) player.HandleViewTask(true); };
-            action.GamePad.ViewTask.canceled += (val) => { if (val.control.device == InputSystem.devices[playerNumber + 1]) player.HandleViewTask(false); };
+            action.GamePad.Move.performed += (val) => { if (val.control.device == InputSystem.devices[playerNumber]) player.HandleMove(true); };
+            action.GamePad.Move.canceled += (val) => { if (val.control.device == InputSystem.devices[playerNumber]) player.HandleMove(false); };
+            action.GamePad.TurnRight.performed += (val) => { if (val.control.device == InputSystem.devices[playerNumber]) player.HandleRotate(90); };
+            action.GamePad.TurnLeft.performed += (val) => { if (val.control.device == InputSystem.devices[playerNumber]) player.HandleRotate(-90); };
+            action.GamePad.InteractKill.performed += (val) => { if (val.control.device == InputSystem.devices[playerNumber]) player.HandleInteract(); };
+            action.GamePad.InteractKill.canceled += (val) => { if (val.control.device == InputSystem.devices[playerNumber]) player.HandleStopInteract(); };
+            action.GamePad.ViewTask.performed += (val) => { if (val.control.device == InputSystem.devices[playerNumber]) player.HandleViewTask(true); };
+            action.GamePad.ViewTask.canceled += (val) => { if (val.control.device == InputSystem.devices[playerNumber]) player.HandleViewTask(false); };
         }
 
 
@@ -94,7 +94,7 @@ public class InputManager : MonoBehaviour
             Debug.Log(item.description);
             
         }
-        SeanFix();
+        HandleInput();
         action.Enable();
         return;
     }
