@@ -1023,6 +1023,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1783669307}
     - target: {fileID: 3980316506224215772, guid: 3a23b66e4b8d56d43b364b42d8ed2c3e, type: 3}
+      propertyPath: controlsImages.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 3c25a7e58da4a0140848637385c891af, type: 3}
+    - target: {fileID: 3980316506224215772, guid: 3a23b66e4b8d56d43b364b42d8ed2c3e, type: 3}
+      propertyPath: controlsImages.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 7e5ce4ca2850ac1428bde537acbc1020, type: 3}
+    - target: {fileID: 3980316506224215772, guid: 3a23b66e4b8d56d43b364b42d8ed2c3e, type: 3}
+      propertyPath: controlsImages.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 6534feb034fc9f640b082b4db5a180f7, type: 3}
+    - target: {fileID: 3980316506224215772, guid: 3a23b66e4b8d56d43b364b42d8ed2c3e, type: 3}
       propertyPath: UIControlDescription.Array.data[0]
       value: 
       objectReference: {fileID: 971277364}
