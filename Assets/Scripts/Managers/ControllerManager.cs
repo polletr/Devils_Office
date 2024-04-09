@@ -38,8 +38,8 @@ public class ControllerManager : Singleton<ControllerManager>
     public Dictionary<int, int> playerDevice = new();
 
     private Dictionary<int, bool> playerReady = new();
-    private Dictionary<InputDevice, int> inputDevice = new();
-
+    public Dictionary<InputDevice, int> inputDevice = new();
+    public Dictionary<int, InputDevice> playableDevices = new();
 
     private bool playEnabled;
 
@@ -196,13 +196,13 @@ public class ControllerManager : Singleton<ControllerManager>
     private void OnEnable()
     {
         action = new PlayerInput();
-        action.KeyboardLeft.Move.performed += (val) => ActivateController(0);
+        action.KeyboardLeft.Move.performed += (val) => { ActivateController(0); playableDevices.Add(1, val.control.device); };
         action.KeyboardLeft.Move.canceled += (val) => CancelSkip();
 
-        action.KeyboardRight.Move.performed += (val) => ActivateController(1);
+        action.KeyboardRight.Move.performed += (val) => { ActivateController(1); playableDevices.Add(1, val.control.device); };
         action.KeyboardRight.Move.canceled += (val) => CancelSkip();
 
-        action.GamePad.Move.performed += (val) => ActivateController(inputDevice[val.control.device]);
+        action.GamePad.Move.performed += (val) => {ActivateController(inputDevice[val.control.device]); playableDevices.Add(inputDevice[val.control.device], val.control.device); };
         action.GamePad.Move.canceled += (val) => CancelSkip();
 
         action.Enable();
