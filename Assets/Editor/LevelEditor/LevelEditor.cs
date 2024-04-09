@@ -55,7 +55,7 @@ public class LevelEditor : EditorWindow
     {
         "Floor",
         "Wall",
-        "Window",
+        "Wallframe",
         "InvisibleWall",
         "Player",
         "NPC",

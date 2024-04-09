@@ -916,6 +916,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 648281673419722576, guid: 747bc63039002654491ae1d8279294f4, type: 3}
+      propertyPath: objectPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 8017222979205320363, guid: c280df7ec9ef2c04ca917e61c7233045, type: 3}
+    - target: {fileID: 648281673419722576, guid: 747bc63039002654491ae1d8279294f4, type: 3}
       propertyPath: threePlayerLevels.Array.size
       value: 1
       objectReference: {fileID: 0}
