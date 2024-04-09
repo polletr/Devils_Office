@@ -40,6 +40,7 @@ public class LevelEditor : EditorWindow
             new Color(235f / 255f, 52f / 255f, 192f / 255f),
             Color.magenta,
             new Color(246f / 255f, 126f / 255f, 22f / 255f),
+            Color.magenta,
 
 };
     char[] orientations =
@@ -72,7 +73,8 @@ public class LevelEditor : EditorWindow
         "WhiteBoard",
         "Phone",
         "Sofa",
-        "Decoration"
+        "Decoration",
+        "Shelf"
     };
 
     public LevelData myData;
