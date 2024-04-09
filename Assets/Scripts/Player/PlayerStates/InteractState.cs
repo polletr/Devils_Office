@@ -51,6 +51,7 @@ public class InteractState : BaseState
     public override void ExitState()
     {
         character.anim?.SetBool("Interact", false);
+        interactableObj = null;
 
         if (completedTask)
         {
@@ -86,27 +87,31 @@ public class InteractState : BaseState
             {
                 playerController._taskManager.CompleteTask(interactableObj);
                 playerController._UIManager.showLoader = false;
-                if (interactableObj.GetComponent<ExtinguishBody>())
+                if (interactableObj != null)
                 {
-                    playerController.canInteract = true;
-                    Vector2Int objLocation = interactableObj.GetComponent<AIController>().gridLocation;
-                    character.characterSpeaker.loop = true;
-                    AudioManager.Instance.Play(AudioManager.Instance._audioClip.fire, character.characterSpeaker);
+                    if (interactableObj.GetComponent<ExtinguishBody>())
+                    {
+                        playerController.canInteract = true;
+                        Vector2Int objLocation = interactableObj.GetComponent<AIController>().gridLocation;
+                        character.characterSpeaker.loop = true;
+                        AudioManager.Instance.Play(AudioManager.Instance._audioClip.fire, character.characterSpeaker);
 
-                    GridController.Instance.objLocations[objLocation.x, objLocation.y] = GridController.Instance.objLocationsStart[objLocation.x, objLocation.y];
-                    GridController.Instance.gridLocations[objLocation.x, objLocation.y] = 0;
+                        GridController.Instance.objLocations[objLocation.x, objLocation.y] = GridController.Instance.objLocationsStart[objLocation.x, objLocation.y];
+                        GridController.Instance.gridLocations[objLocation.x, objLocation.y] = 0;
 
-                }
-                else
-                {
-                    character.characterSpeaker.loop = false;
-                    AudioManager.Instance.Play(AudioManager.Instance._audioClip.TheDevilsoffice, character.characterSpeaker);
-                    completedTask = true;
+                    }
+                    else
+                    {
+                        character.characterSpeaker.loop = false;
+                        AudioManager.Instance.Play(AudioManager.Instance._audioClip.TheDevilsoffice, character.characterSpeaker);
+                        completedTask = true;
+                    }
                 }
 
             }
 
             interactableObj.TaskCompleted.Invoke();
+            timer = 0f;
 
             //Disable UI
             character.ChangeState(new IdleState());

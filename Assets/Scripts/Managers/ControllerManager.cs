@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 using System.Threading;
 using UnityEngine.TextCore.Text;
+using TMPro;
 
 public class ControllerManager : Singleton<ControllerManager>
 {
@@ -30,6 +31,9 @@ public class ControllerManager : Singleton<ControllerManager>
     */
     private int gamepadIndex;
 
+    [SerializeField]
+    private TextMeshProUGUI readyTimerText;
+
     [HideInInspector]
     public Dictionary<int, int> playerDevice = new();
 
@@ -45,6 +49,7 @@ public class ControllerManager : Singleton<ControllerManager>
     public UnityEvent ShowStory;
 
     float timer = 0f;
+    private float readytimer = 4f;
 
     bool holdToSkip = false;
 
@@ -67,6 +72,7 @@ public class ControllerManager : Singleton<ControllerManager>
                 Controls.sprite = missingControllerImage;
         }
         CheckDevices();
+        readyTimerText.gameObject.SetActive(false);
     }
 
     private void Update()
@@ -85,28 +91,49 @@ public class ControllerManager : Singleton<ControllerManager>
 
         if (playEnabled)
         {
-            ShowStory.Invoke();
-
-            if (!holdToSkip)
+            //Enable UI timer
+            readyTimerText.gameObject.SetActive(true);
+           int t = (int)readytimer;
+            readyTimerText.text = t.ToString();
+            readytimer -= Time.deltaTime;
+            if (readytimer <= 0f)
             {
-                timer += Time.deltaTime;
+                readyTimerText.gameObject.SetActive(false);
+                Ready(); 
             }
-            else
-            {
-                timer += skipMultiplier * Time.deltaTime;
-            }
-
-            LoadingBar(timer, storyTimer);
-
-            if (timer > storyTimer)
-            {
-                StartGame.Invoke();
-            }
+         
         }
+        else
+        {
+            //Disable Timer UI
+            readyTimerText.gameObject.SetActive(false);
+            readytimer = 4f;
+        }
+        
 
     }
 
-    public void LoadingBar(float indicator, float maxIndicator)
+    private void Ready()
+    {
+        ShowStory.Invoke();
+
+        if (!holdToSkip)
+        {
+            timer += Time.deltaTime;
+        }
+        else
+        {
+            timer += skipMultiplier * Time.deltaTime;
+        }
+
+        LoadingBar(timer, storyTimer);
+
+        if (timer > storyTimer)
+        {
+            StartGame.Invoke();
+        }
+    }
+    private void LoadingBar(float indicator, float maxIndicator)
     {
         loaderImageUI.fillAmount = indicator / maxIndicator;
     }

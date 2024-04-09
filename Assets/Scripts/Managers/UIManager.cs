@@ -121,6 +121,10 @@ public class UIManager : MonoBehaviour
         {
             dieText.gameObject.SetActive(closeEye);
         }
+        else
+        {
+            dieText.gameObject.SetActive(false);
+        }
     }
 
 

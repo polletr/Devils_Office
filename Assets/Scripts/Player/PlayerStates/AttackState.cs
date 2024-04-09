@@ -24,25 +24,47 @@ public class AttackState : BaseState
             playerController = character.GetComponent<PlayerController>();
         }
 
+        killWinner = false;
 
         character.anim?.SetTrigger("Attack");
         targetCharacter = GridController.Instance.objLocations[character.gridLocation.x + character.fwdDirection.x, character.gridLocation.y + character.fwdDirection.y].GetComponent<CharacterClass>();
 
-        if (targetCharacter.currentState is not DeathState)
+        if (targetCharacter.currentState is IdleState || targetCharacter.currentState is InteractState)
         {
             targetCharacter.currentState?.HandleDeath();
             AudioManager.Instance.Play(AudioManager.Instance._audioClip.stab, character.characterSpeaker);
-            targetKilled = true;
+            //targetKilled = true;
+
+            if (targetCharacter.GetComponent<AIController>())
+            {
+                AudioManager.Instance.Play(AudioManager.Instance._audioClip.Horriblejob, character.characterSpeaker);
+                playerController._taskManager.AddExtinguishTask(targetCharacter.GetComponent<InteractableObj>());
+                playerController.canInteract = false;
+                //targetKilled = false;
+            }
+            else if (targetCharacter.GetComponent<PlayerController>())
+            {
+                if (GridController.Instance.AIList.Any() || GridController.Instance.playerControllers.Count > 2)
+                {
+                    playerController.points += GameManager.Instance.killPoints;
+                    playerController.killCount += 1;
+                    //targetKilled = false;
+                }
+                else
+                {
+                    killWinner = true;
+                }
+            }
+
         }
 
-        timer = 0f;
-
-        killWinner = false;
 
     }
 
     public override void ExitState()
     {
+        timer = 0f;
+
         if (killWinner)
         {
             Debug.Log("WinnerCalled");
@@ -60,26 +82,8 @@ public class AttackState : BaseState
         {
             if (targetKilled)
             {
-                if (targetCharacter.GetComponent<AIController>())
-                {
-                    AudioManager.Instance.Play(AudioManager.Instance._audioClip.Horriblejob, character.characterSpeaker);
-                    playerController._taskManager.AddExtinguishTask(targetCharacter.GetComponent<InteractableObj>());
-                    playerController.canInteract = false;
-                    targetKilled = false;
-                }
-                else if (targetCharacter.GetComponent<PlayerController>())
-                {
-                    if (GridController.Instance.AIList.Any() || GridController.Instance.playerControllers.Count > 2)
-                    {
-                        playerController.points += GameManager.Instance.killPoints;
-                        playerController.killCount += 1;
-                        targetKilled = false;
-                    }
-                    else
-                    {
-                        killWinner = true;
-                    }
-                }
+
+
             }
 
         }
@@ -88,6 +92,7 @@ public class AttackState : BaseState
         float clipLength = character.anim.GetCurrentAnimatorClipInfo(0)[0].clip.length;
         if (timer >= clipLength)
         {
+            timer = 0f;
             character.ChangeState(new IdleState());
         }
 
