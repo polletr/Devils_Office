@@ -58,7 +58,6 @@ public override void Awake()
     #region character Actions
     public void HandleMove(bool m)
     {
-        Debug.Log(m);
         move = m;
     }
 

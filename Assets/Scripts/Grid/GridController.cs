@@ -89,8 +89,7 @@ public class GridController : Singleton<GridController>
 
                         objectClone.GetComponent<PlayerController>().controlScheme = "P" + 0;// playerCount;
                         Debug.Log(ControllerManager.Instance.playerDevice[playerCount]);
-                        int playerIndex = ControllerManager.Instance.playerDevice[playerCount];
-                        objectClone.GetComponent<InputManager>().playerDevice = ControllerManager.Instance.playableDevices[playerIndex];
+                        objectClone.GetComponent<InputManager>().playerNumber = ControllerManager.Instance.playerDevice[playerCount];
                         //objectClone.GetComponent<InputManager>().playerNumber = playerCount;
                         objectClone.GetComponent<InputManager>().enabled = true;
 
@@ -105,7 +104,7 @@ public class GridController : Singleton<GridController>
                             //position = new Vector3(0, 0, 0);// = Quaternion.Euler(0, 0, 0);
 
 
-                        //Debug.Log("Player " + objectClone.GetComponent<InputManager>().playerNumber + " spawned at " + GameManager.Instance.spawnPoints[playerCount].position);
+                        Debug.Log("Player " + objectClone.GetComponent<InputManager>().playerNumber + " spawned at " + GameManager.Instance.spawnPoints[playerCount].position);
                         playerCount++;
 
                     }
