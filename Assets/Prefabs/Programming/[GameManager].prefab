@@ -44,7 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3d7f4d71a078b94a91dea15b9e0adc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: 180
+  timerLevel2P: 180
+  timerLevel3P: 240
+  timerLevel4P: 360
   timerText: {fileID: 0}
   winScreen: {fileID: 0}
   spawnPoints:
