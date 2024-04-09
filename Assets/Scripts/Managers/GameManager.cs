@@ -2,11 +2,18 @@ using UnityEngine;
 using TMPro;
 using System.Collections.Generic;
 using System.Linq;
+using Newtonsoft.Json;
 
 public class GameManager : Singleton<GameManager>
 {
     [SerializeField]
-    private float timer = 80f;
+    private float timerLevel2P = 180f;
+    [SerializeField]
+    private float timerLevel3P = 180f;
+    [SerializeField]
+    private float timerLevel4P = 180f;
+
+    private float timer;
 
     [SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private GameObject winScreen;
@@ -39,6 +46,19 @@ public class GameManager : Singleton<GameManager>
 
     private void Awake()
     {
+        if (ControllerManager.Instance.playerDevice.Count == 2)
+        {
+            timer = timerLevel2P;
+        }
+        else if (ControllerManager.Instance.playerDevice.Count == 3)
+        {
+            timer = timerLevel3P;
+        }
+        else if (ControllerManager.Instance.playerDevice.Count == 4)
+        {
+            timer = timerLevel4P;
+        }
+
         AudioManager.Instance.PlayMusic(AudioManager.Instance._audioClip.officeBackground);
         timerText.gameObject.SetActive(false);
         Time.timeScale = 1f;
@@ -60,6 +80,7 @@ public class GameManager : Singleton<GameManager>
 
     private void TimerCount()
     {
+
         if (timer > 0.1f)
         {
             timer -= Time.deltaTime;
