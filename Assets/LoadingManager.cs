@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
@@ -65,7 +66,7 @@ public class LoadingManager : MonoBehaviour
         }
         else if (timer > storyTimer && pages.Count == nPages)
         {
-            //Load Game Scene
+            SceneManager.LoadScene(2);
         }
 
     }
