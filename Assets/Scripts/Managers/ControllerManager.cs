@@ -10,7 +10,7 @@ using TMPro;
 
 public class ControllerManager : Singleton<ControllerManager>
 {
-    PlayerInput action;
+    InputControls action;
 
     //public List<Sprite> controlsIcons = new();
     public List<Sprite> controlsImages = new();
@@ -39,7 +39,7 @@ public class ControllerManager : Singleton<ControllerManager>
 
     private Dictionary<int, bool> playerReady = new();
     private Dictionary<InputDevice, int> inputDevice = new();
-
+    public Dictionary<int, InputDevice> devices = new();
 
     private bool playEnabled;
 
@@ -139,12 +139,13 @@ public class ControllerManager : Singleton<ControllerManager>
     }
 
 
-    private void ActivateController(int index)
+    private void ActivateController(int index, InputDevice device)
     {
         if (!playerDevice.ContainsValue(index))
         {
             playerDevice.Add(player, index);
             playerReady.Add(index, false);
+            devices.Add(index, device);
 
             Debug.Log(playerDevice[player]);
             UIControlDescription[player].sprite = controlsImages[Mathf.Min(index, 2)];
@@ -195,14 +196,15 @@ public class ControllerManager : Singleton<ControllerManager>
 
     private void OnEnable()
     {
-        action = new PlayerInput();
-        action.KeyboardLeft.Move.performed += (val) => ActivateController(0);
+
+        action = new InputControls();
+        action.KeyboardLeft.Move.performed += (val) => ActivateController(0, val.control.device);
         action.KeyboardLeft.Move.canceled += (val) => CancelSkip();
 
-        action.KeyboardRight.Move.performed += (val) => ActivateController(1);
+        action.KeyboardRight.Move.performed += (val) => ActivateController(1, val.control.device);
         action.KeyboardRight.Move.canceled += (val) => CancelSkip();
 
-        action.GamePad.Move.performed += (val) => ActivateController(inputDevice[val.control.device]);
+        action.GamePad.Move.performed += (val) => ActivateController(inputDevice[val.control.device], val.control.device);
         action.GamePad.Move.canceled += (val) => CancelSkip();
 
         action.Enable();
@@ -214,8 +216,8 @@ public class ControllerManager : Singleton<ControllerManager>
 
     private void OnDisable()
     {
-        action.Disable();
-
+/*        action.Disable();
+*/
 
     }
 

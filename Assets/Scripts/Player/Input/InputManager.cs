@@ -5,13 +5,16 @@ using UnityEngine.InputSystem;
 public class InputManager : MonoBehaviour
 {
 
-    PlayerInput action;
+    InputControls action;
     PlayerController player { get; set; }
     Vector2 _rotate;
     [SerializeField]
     public int playerNumber;
     [SerializeField]
     InputDevice playerInputDevice;
+
+    private PlayerInput _playerInput;
+
     public Vector2 Rotate
     {
         get
@@ -27,7 +30,8 @@ public class InputManager : MonoBehaviour
     void Awake()
     {
         player = GetComponent<PlayerController>();
-        
+        _playerInput = GetComponent<PlayerInput>();
+
     }
 
     private void Update()
@@ -47,39 +51,54 @@ public class InputManager : MonoBehaviour
     }
     private void HandleInput()
     {
-        action = new PlayerInput();
-        if(playerNumber == 0)
+        action = new InputControls();
+
+        if (playerNumber == 0)
         {
-            action.KeyboardLeft.Move.performed += (val) => { if (val.control.device == InputSystem.devices[playerNumber]) player.HandleMove(true); };
-            action.KeyboardLeft.Move.canceled += (val) => { if (val.control.device == InputSystem.devices[playerNumber]) player.HandleMove(false); };
-            action.KeyboardLeft.TurnRight.performed += (val) => { if (val.control.device == InputSystem.devices[playerNumber]) player.HandleRotate(90); };
-            action.KeyboardLeft.TurnLeft.performed += (val) => { if (val.control.device == InputSystem.devices[playerNumber]) player.HandleRotate(-90); };
-            action.KeyboardLeft.InteractKill.performed += (val) => { if (val.control.device == InputSystem.devices[playerNumber]) player.HandleInteract(); };
-            action.KeyboardLeft.InteractKill.canceled += (val) => { if (val.control.device == InputSystem.devices[playerNumber]) player.HandleStopInteract(); };
-            action.KeyboardLeft.ViewTask.performed += (val) => { if (val.control.device == InputSystem.devices[playerNumber]) player.HandleViewTask(true); };
-            action.KeyboardLeft.ViewTask.canceled += (val) => { if (val.control.device == InputSystem.devices[playerNumber]) player.HandleViewTask(false); };
+            _playerInput.defaultActionMap = "KeyboardLeft";
+            _playerInput.SwitchCurrentControlScheme("KBLeft", Keyboard.current);
+            action.devices = new[] { ControllerManager.Instance.devices[0] };
+
+            action.KeyboardLeft.Move.performed += (val) => { player.HandleMove(true); Debug.Log("Move"); };
+            action.KeyboardLeft.Move.canceled += (val) => { player.HandleMove(false); };
+            action.KeyboardLeft.TurnRight.performed += (val) => { player.HandleRotate(90); };
+            action.KeyboardLeft.TurnLeft.performed += (val) => { player.HandleRotate(-90); };
+            action.KeyboardLeft.InteractKill.performed += (val) => { player.HandleInteract(); };
+            action.KeyboardLeft.InteractKill.canceled += (val) => { player.HandleStopInteract(); };
+            action.KeyboardLeft.ViewTask.performed += (val) => { player.HandleViewTask(true); };
+            action.KeyboardLeft.ViewTask.canceled += (val) => { player.HandleViewTask(false); };
+            
         }
         else if (playerNumber == 1)
         {
-            action.KeyboardRight.Move.performed += (val) => { if (val.control.device == InputSystem.devices[0]) player.HandleMove(true); };
-            action.KeyboardRight.Move.canceled += (val) => { if (val.control.device == InputSystem.devices[0]) player.HandleMove(false); };
-            action.KeyboardRight.TurnRight.performed += (val) => { if (val.control.device == InputSystem.devices[0]) player.HandleRotate(90); };
-            action.KeyboardRight.TurnLeft.performed += (val) => { if (val.control.device == InputSystem.devices[0]) player.HandleRotate(-90); };
-            action.KeyboardRight.InteractKill.performed += (val) => { if (val.control.device == InputSystem.devices[0]) player.HandleInteract(); };
-            action.KeyboardRight.InteractKill.canceled += (val) => { if (val.control.device == InputSystem.devices[0]) player.HandleStopInteract(); };
-            action.KeyboardRight.ViewTask.performed += (val) => { if (val.control.device == InputSystem.devices[0]) player.HandleViewTask(true); };
-            action.KeyboardRight.ViewTask.canceled += (val) => { if (val.control.device == InputSystem.devices[0]) player.HandleViewTask(false); };
+            _playerInput.defaultActionMap = "KeyboardRight";
+            _playerInput.SwitchCurrentControlScheme("KBRight", Keyboard.current);
+            action.devices = new[] { ControllerManager.Instance.devices[0] };
+
+            action.KeyboardRight.Move.performed += (val) => { player.HandleMove(true); Debug.Log("Move"); };
+            action.KeyboardRight.Move.canceled += (val) => { player.HandleMove(false); };
+            action.KeyboardRight.TurnRight.performed += (val) => { player.HandleRotate(90); };
+            action.KeyboardRight.TurnLeft.performed += (val) => { player.HandleRotate(-90); };
+            action.KeyboardRight.InteractKill.performed += (val) => { player.HandleInteract(); };
+            action.KeyboardRight.InteractKill.canceled += (val) => { player.HandleStopInteract(); };
+            action.KeyboardRight.ViewTask.performed += (val) => { player.HandleViewTask(true); };
+            action.KeyboardRight.ViewTask.canceled += (val) => { player.HandleViewTask(false); };
+            
         }
         else
         {
-            action.GamePad.Move.performed += (val) => { if (val.control.device == InputSystem.devices[playerNumber]) player.HandleMove(true); };
-            action.GamePad.Move.canceled += (val) => { if (val.control.device == InputSystem.devices[playerNumber]) player.HandleMove(false); };
-            action.GamePad.TurnRight.performed += (val) => { if (val.control.device == InputSystem.devices[playerNumber]) player.HandleRotate(90); };
-            action.GamePad.TurnLeft.performed += (val) => { if (val.control.device == InputSystem.devices[playerNumber]) player.HandleRotate(-90); };
-            action.GamePad.InteractKill.performed += (val) => { if (val.control.device == InputSystem.devices[playerNumber]) player.HandleInteract(); };
-            action.GamePad.InteractKill.canceled += (val) => { if (val.control.device == InputSystem.devices[playerNumber]) player.HandleStopInteract(); };
-            action.GamePad.ViewTask.performed += (val) => { if (val.control.device == InputSystem.devices[playerNumber]) player.HandleViewTask(true); };
-            action.GamePad.ViewTask.canceled += (val) => { if (val.control.device == InputSystem.devices[playerNumber]) player.HandleViewTask(false); };
+            _playerInput.defaultActionMap = "GamePad";
+            _playerInput.SwitchCurrentControlScheme("GamePad", Gamepad.current);
+            action.devices = new[] { ControllerManager.Instance.devices[playerNumber] };
+
+            action.GamePad.Move.performed += (val) => { player.HandleMove(true); Debug.Log("Move"); };
+            action.GamePad.Move.canceled += (val) => { player.HandleMove(false); };
+            action.GamePad.TurnRight.performed += (val) => { player.HandleRotate(90); };
+            action.GamePad.TurnLeft.performed += (val) => { player.HandleRotate(-90); };
+            action.GamePad.InteractKill.performed += (val) => { player.HandleInteract(); };
+            action.GamePad.InteractKill.canceled += (val) => {  player.HandleStopInteract(); };
+            action.GamePad.ViewTask.performed += (val) => { player.HandleViewTask(true); };
+            action.GamePad.ViewTask.canceled += (val) => { player.HandleViewTask(false); };
         }
 
 
@@ -91,7 +110,7 @@ public class InputManager : MonoBehaviour
         foreach (var item in devices)
         {
             Debug.Log(item.description);
-            
+
         }
         HandleInput();
         action.Enable();
