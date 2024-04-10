@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -10,8 +11,7 @@ public class InputManager : MonoBehaviour
     Vector2 _rotate;
     [SerializeField]
     public int playerNumber;
-    [SerializeField]
-    InputDevice playerInputDevice;
+
     public Vector2 Rotate
     {
         get
@@ -27,8 +27,7 @@ public class InputManager : MonoBehaviour
     void Awake()
     {
         player = GetComponent<PlayerController>();
-        
-        
+
     }
 
     private void Update()
@@ -51,7 +50,7 @@ public class InputManager : MonoBehaviour
         action = new PlayerInput();
         if(playerNumber == 0)
         {
-            action.KeyboardLeft.Move.performed += (val) => { if (val.control.device == InputSystem.devices[playerNumber]) player.HandleMove(true); };
+            action.KeyboardLeft.Move.performed += (val) => { if (val.control.device == InputSystem.devices[playerNumber]) player.HandleMove(true); Debug.Log("Actual Control:" + val.control.device); Debug.Log(InputSystem.devices[playerNumber]); };
             action.KeyboardLeft.Move.canceled += (val) => { if (val.control.device == InputSystem.devices[playerNumber]) player.HandleMove(false); };
             action.KeyboardLeft.TurnRight.performed += (val) => { if (val.control.device == InputSystem.devices[playerNumber]) player.HandleRotate(90); };
             action.KeyboardLeft.TurnLeft.performed += (val) => { if (val.control.device == InputSystem.devices[playerNumber]) player.HandleRotate(-90); };
@@ -62,7 +61,7 @@ public class InputManager : MonoBehaviour
         }
         else if (playerNumber == 1)
         {
-            action.KeyboardRight.Move.performed += (val) => { if (val.control.device == InputSystem.devices[0]) player.HandleMove(true); };
+            action.KeyboardRight.Move.performed += (val) => { if (val.control.device == InputSystem.devices[0]) player.HandleMove(true); Debug.Log("Actual Control:" + val.control.device); Debug.Log(InputSystem.devices[playerNumber]); };
             action.KeyboardRight.Move.canceled += (val) => { if (val.control.device == InputSystem.devices[0]) player.HandleMove(false); };
             action.KeyboardRight.TurnRight.performed += (val) => { if (val.control.device == InputSystem.devices[0]) player.HandleRotate(90); };
             action.KeyboardRight.TurnLeft.performed += (val) => { if (val.control.device == InputSystem.devices[0]) player.HandleRotate(-90); };
@@ -73,7 +72,7 @@ public class InputManager : MonoBehaviour
         }
         else
         {
-            action.GamePad.Move.performed += (val) => { if (val.control.device == InputSystem.devices[playerNumber]) player.HandleMove(true); };
+            action.GamePad.Move.performed += (val) => { if (val.control.device == InputSystem.devices[playerNumber]) player.HandleMove(true); Debug.Log("Actual Control:" + val.control.device); Debug.Log("Device Check:" + InputSystem.devices[playerNumber]); };
             action.GamePad.Move.canceled += (val) => { if (val.control.device == InputSystem.devices[playerNumber]) player.HandleMove(false); };
             action.GamePad.TurnRight.performed += (val) => { if (val.control.device == InputSystem.devices[playerNumber]) player.HandleRotate(90); };
             action.GamePad.TurnLeft.performed += (val) => { if (val.control.device == InputSystem.devices[playerNumber]) player.HandleRotate(-90); };
@@ -92,7 +91,7 @@ public class InputManager : MonoBehaviour
         foreach (var item in devices)
         {
             Debug.Log(item.description);
-            
+
         }
         HandleInput();
         action.Enable();
