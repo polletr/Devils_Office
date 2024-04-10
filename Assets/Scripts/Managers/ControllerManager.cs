@@ -48,23 +48,10 @@ public class ControllerManager : Singleton<ControllerManager>
     public UnityEvent StartGame;
     public UnityEvent ShowStory;
 
-    float timer = 0f;
     private float readytimer = 4f;
-
-    bool holdToSkip = false;
-
-    [SerializeField]
-    float skipMultiplier = 5f;
-
-    [SerializeField]
-    float storyTimer = 30f;
-
-    [SerializeField]
-    private Image loaderImageUI;
 
     private void Awake()
     {
-        AudioManager.Instance.PlayUI(AudioManager.Instance._audioClip.welcomeToHell);
 
         foreach (Image Controls in UIControlDescription)
         {
@@ -93,7 +80,7 @@ public class ControllerManager : Singleton<ControllerManager>
         {
             //Enable UI timer
             readyTimerText.gameObject.SetActive(true);
-           int t = (int)readytimer;
+            int t = (int)readytimer;
             readyTimerText.text = t.ToString();
             readytimer -= Time.deltaTime;
             if (readytimer <= 0f)
@@ -117,25 +104,6 @@ public class ControllerManager : Singleton<ControllerManager>
     {
         ShowStory.Invoke();
 
-        if (!holdToSkip)
-        {
-            timer += Time.deltaTime;
-        }
-        else
-        {
-            timer += skipMultiplier * Time.deltaTime;
-        }
-
-        LoadingBar(timer, storyTimer);
-
-        if (timer > storyTimer)
-        {
-            StartGame.Invoke();
-        }
-    }
-    private void LoadingBar(float indicator, float maxIndicator)
-    {
-        loaderImageUI.fillAmount = indicator / maxIndicator;
     }
 
 
@@ -162,19 +130,9 @@ public class ControllerManager : Singleton<ControllerManager>
                 }
             }
         }
-        else
-        {
-            holdToSkip = true;
-        }
 
     }
 
-    private void CancelSkip()
-    {
-        if (holdToSkip)
-            holdToSkip = false;
-
-    }
 
 
     private void CheckDevices()
@@ -197,13 +155,10 @@ public class ControllerManager : Singleton<ControllerManager>
     {
         action = new PlayerInput();
         action.KeyboardLeft.Move.performed += (val) => ActivateController(0);
-        action.KeyboardLeft.Move.canceled += (val) => CancelSkip();
 
         action.KeyboardRight.Move.performed += (val) => ActivateController(1);
-        action.KeyboardRight.Move.canceled += (val) => CancelSkip();
 
         action.GamePad.Move.performed += (val) => ActivateController(inputDevice[val.control.device]);
-        action.GamePad.Move.canceled += (val) => CancelSkip();
 
         action.Enable();
         return;
