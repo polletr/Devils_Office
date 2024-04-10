@@ -28,7 +28,6 @@ public class InputManager : MonoBehaviour
     {
         player = GetComponent<PlayerController>();
         
-        
     }
 
     private void Update()
