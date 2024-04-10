@@ -9,6 +9,8 @@ public class AudioManager : Singleton<AudioManager>
     [SerializeField]
     private AudioSource SFXSpeaker;
     [SerializeField]
+    private AudioSource ExtraSpeaker;
+    [SerializeField]
     private AudioSource UISpeaker;
 
     [Header("Audio Mixer")]
@@ -59,9 +61,24 @@ public class AudioManager : Singleton<AudioManager>
     {
         if (_audioClip.CountDown != null)
         {
-            UISpeaker.clip = _audioClip.CountDown;
-            UISpeaker.Play();
+            SFXSpeaker.clip = _audioClip.CountDown;
+            SFXSpeaker.Play();
         }
         else Debug.LogWarning("Audio Clip is null");
+    }
+    public void PlayRandomSfx(AudioClip a)
+    {
+        if (a != null)
+        {
+            ExtraSpeaker.PlayOneShot(a);
+        }
+        else Debug.LogWarning("Audio Clip is null");
+    }
+    public void StopAllSounds()
+    {
+        MusicSpeaker.Stop();
+        SFXSpeaker.Stop();
+        UISpeaker.Stop();
+        ExtraSpeaker.Stop();
     }
 }

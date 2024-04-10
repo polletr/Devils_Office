@@ -51,8 +51,7 @@ public class AudioClipContainer : ScriptableObject
     public AudioClip ourQ4;
     public AudioClip hellsotherpeople;
     public AudioClip playerOneIsBeing;
-
-
+    public AudioClip FinishScreen;
 }
 
 //code f0or using modular audio container with types    

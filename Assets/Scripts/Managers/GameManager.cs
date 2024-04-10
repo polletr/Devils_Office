@@ -12,7 +12,7 @@ public class GameManager : Singleton<GameManager>
     private float timerLevel3P = 180f;
     [SerializeField]
     private float timerLevel4P = 180f;
-
+    [SerializeField]
     private float timer;
 
     [SerializeField] private TextMeshProUGUI timerText;
@@ -92,22 +92,13 @@ public class GameManager : Singleton<GameManager>
             {
                 timerText.gameObject.SetActive(true);
                 timerText.text = minutes.ToString("00") + ":" + seconds.ToString("00"); // + ":" + milliseconds.ToString("00");
-                if (timer == 60f)
-                {
-                    AudioManager.Instance.PlayUI(AudioManager.Instance._audioClip.DailyScrumMeeting);
-                }
-                else if (timer == 30f)
-                {
+                if (Mathf.Abs(timer - 60f) <= 0.1f)
                     AudioManager.Instance.PlayUI(AudioManager.Instance._audioClip.TheWorkdayEndSoon);
-                }
-                else if (timer == 10f)
-                {
+                if (Mathf.Abs(timer - 30f) <= 0.1f)
+                    AudioManager.Instance.PlayUI(AudioManager.Instance._audioClip.TheWorkdayEndSoon);
+                if (Mathf.Abs(timer - 11f) <= 0.1f)
                     AudioManager.Instance.PlayCountDown();
-                }
-               
             }
-
-
         }
         else
         {
@@ -206,19 +197,24 @@ public class GameManager : Singleton<GameManager>
                 {
                     playersToRank[i]._UIManager.GameStats(null);
                 }
-                AudioManager.Instance.PlayUI(AudioManager.Instance._audioClip.meetingPostponined);
-
                 EndGameUI();
+                AudioManager.Instance.StopAllSounds();
+                AudioManager.Instance.PlayMusic(AudioManager.Instance._audioClip.FinishScreen);
+
             }
             else
             {
+                AudioManager.Instance.PlayUI(AudioManager.Instance._audioClip.meetingPostponined);
                 timer += extraTime;
             }
 
         }
         else
         {
-          AudioManager.Instance.PlayUI(AudioManager.Instance._audioClip.ClosingTime);
+            AudioManager.Instance.PlayUI(AudioManager.Instance._audioClip.ClosingTime);
+            AudioManager.Instance.StopAllSounds();
+            AudioManager.Instance.PlayMusic(AudioManager.Instance._audioClip.FinishScreen);
+
             SetWinner(playersToRank[0]);//Winner with points
             //Display Victory Screen and show the winner, second, etc.
         }

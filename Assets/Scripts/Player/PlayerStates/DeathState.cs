@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class DeathState : BaseState
@@ -12,7 +9,7 @@ public class DeathState : BaseState
 
     public override void EnterState()
     {
-        AudioManager.Instance.PlayUI(AudioManager.Instance._audioClip.someoneHasDies);
+       
         character.anim.SetBool("Dead", true);
         if (character.GetComponent<PlayerController>())
         {
@@ -85,7 +82,11 @@ public class DeathState : BaseState
             }
 
         }
-        
+        else
+        {
+            AudioManager.Instance.Play(AudioManager.Instance._audioClip.someoneHasDies,character.characterSpeaker);
+        }
+
 
 
 

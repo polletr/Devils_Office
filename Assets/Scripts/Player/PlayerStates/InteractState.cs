@@ -93,8 +93,7 @@ public class InteractState : BaseState
                     {
                         playerController.canInteract = true;
                         Vector2Int objLocation = interactableObj.GetComponent<AIController>().gridLocation;
-                        character.characterSpeaker.loop = true;
-                        AudioManager.Instance.Play(AudioManager.Instance._audioClip.fire, character.characterSpeaker);
+                       
 
                         GridController.Instance.objLocations[objLocation.x, objLocation.y] = GridController.Instance.objLocationsStart[objLocation.x, objLocation.y];
                         GridController.Instance.gridLocations[objLocation.x, objLocation.y] = 0;

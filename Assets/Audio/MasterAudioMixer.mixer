@@ -13,6 +13,7 @@ AudioMixerGroupController:
   - {fileID: -8926133285495943058}
   - {fileID: -3794124471186943938}
   - {fileID: 9011294481050259778}
+  - {fileID: 1763782105995251126}
   m_Volume: 5f1ea152c764c914f8bb645a72700e25
   m_Pitch: 2d964e145197d2c418bc7e333eeb4a32
   m_Send: 00000000000000000000000000000000
@@ -200,7 +201,6 @@ AudioMixerGroupController:
   m_Children:
   - {fileID: -7055095257868641658}
   - {fileID: -9024387411771306912}
-  - {fileID: 1763782105995251126}
   m_Volume: b960deb836e0cd64d8dda7a591707394
   m_Pitch: a302475ef4aaae845b6545cad4e9690d
   m_Send: 00000000000000000000000000000000
@@ -275,7 +275,7 @@ AudioMixerGroupController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: RandomAudio
+  m_Name: extra
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: ad099848f673db947ab2f86ed41b96e5
   m_Children: []
