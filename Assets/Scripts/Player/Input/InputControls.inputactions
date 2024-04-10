@@ -1,5 +1,5 @@
 {
-    "name": "PlayerInput",
+    "name": "InputControls",
     "maps": [
         {
             "name": "KeyboardLeft",
@@ -58,7 +58,7 @@
                     "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "KBLeft",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -69,7 +69,7 @@
                     "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "KBLeft",
                     "action": "TurnLeft",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -80,7 +80,7 @@
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "KBLeft",
                     "action": "TurnRight",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -91,7 +91,7 @@
                     "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "KBLeft",
                     "action": "InteractKill",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -102,7 +102,7 @@
                     "path": "<Keyboard>/tab",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "KBLeft",
                     "action": "ViewTask",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -166,7 +166,7 @@
                     "path": "<Keyboard>/backslash",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "KBRight",
                     "action": "ViewTask",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -177,7 +177,7 @@
                     "path": "<Keyboard>/rightShift",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "KBRight",
                     "action": "InteractKill",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -188,7 +188,7 @@
                     "path": "<Keyboard>/rightArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "KBRight",
                     "action": "TurnRight",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -199,7 +199,7 @@
                     "path": "<Keyboard>/leftArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "KBRight",
                     "action": "TurnLeft",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -210,7 +210,7 @@
                     "path": "<Keyboard>/upArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "KBRight",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -274,7 +274,7 @@
                     "path": "<Gamepad>/leftShoulder",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "GamePad",
                     "action": "ViewTask",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -285,7 +285,7 @@
                     "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "GamePad",
                     "action": "InteractKill",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -296,7 +296,7 @@
                     "path": "<Gamepad>/dpad/right",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "GamePad",
                     "action": "TurnRight",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -307,7 +307,7 @@
                     "path": "<Gamepad>/leftStick/right",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "GamePad",
                     "action": "TurnRight",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -318,7 +318,7 @@
                     "path": "<Gamepad>/dpad/left",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "GamePad",
                     "action": "TurnLeft",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -329,7 +329,7 @@
                     "path": "<Gamepad>/leftStick/left",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "GamePad",
                     "action": "TurnLeft",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -340,7 +340,7 @@
                     "path": "<Gamepad>/dpad/up",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "GamePad",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -351,7 +351,7 @@
                     "path": "<Gamepad>/leftStick/up",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "GamePad",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -359,5 +359,21 @@
             ]
         }
     ],
-    "controlSchemes": []
+    "controlSchemes": [
+        {
+            "name": "KBLeft",
+            "bindingGroup": "KBLeft",
+            "devices": []
+        },
+        {
+            "name": "KBRight",
+            "bindingGroup": "KBRight",
+            "devices": []
+        },
+        {
+            "name": "GamePad",
+            "bindingGroup": "GamePad",
+            "devices": []
+        }
+    ]
 }

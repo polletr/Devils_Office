@@ -10,7 +10,7 @@ using TMPro;
 
 public class ControllerManager : Singleton<ControllerManager>
 {
-    PlayerInput action;
+    InputControls action;
 
     //public List<Sprite> controlsIcons = new();
     public List<Sprite> controlsImages = new();
@@ -39,7 +39,7 @@ public class ControllerManager : Singleton<ControllerManager>
 
     private Dictionary<int, bool> playerReady = new();
     private Dictionary<InputDevice, int> inputDevice = new();
-
+    public Dictionary<int, InputDevice> devices = new();
 
     private bool playEnabled;
 
@@ -48,10 +48,23 @@ public class ControllerManager : Singleton<ControllerManager>
     public UnityEvent StartGame;
     public UnityEvent ShowStory;
 
+    float timer = 0f;
     private float readytimer = 4f;
+
+    bool holdToSkip = false;
+
+    [SerializeField]
+    float skipMultiplier = 5f;
+
+    [SerializeField]
+    float storyTimer = 30f;
+
+    [SerializeField]
+    private Image loaderImageUI;
 
     private void Awake()
     {
+        AudioManager.Instance.PlayUI(AudioManager.Instance._audioClip.welcomeToHell);
 
         foreach (Image Controls in UIControlDescription)
         {
@@ -80,7 +93,7 @@ public class ControllerManager : Singleton<ControllerManager>
         {
             //Enable UI timer
             readyTimerText.gameObject.SetActive(true);
-            int t = (int)readytimer;
+           int t = (int)readytimer;
             readyTimerText.text = t.ToString();
             readytimer -= Time.deltaTime;
             if (readytimer <= 0f)
@@ -104,15 +117,35 @@ public class ControllerManager : Singleton<ControllerManager>
     {
         ShowStory.Invoke();
 
+        if (!holdToSkip)
+        {
+            timer += Time.deltaTime;
+        }
+        else
+        {
+            timer += skipMultiplier * Time.deltaTime;
+        }
+
+        LoadingBar(timer, storyTimer);
+
+        if (timer > storyTimer)
+        {
+            StartGame.Invoke();
+        }
+    }
+    private void LoadingBar(float indicator, float maxIndicator)
+    {
+        loaderImageUI.fillAmount = indicator / maxIndicator;
     }
 
 
-    private void ActivateController(int index)
+    private void ActivateController(int index, InputDevice device)
     {
         if (!playerDevice.ContainsValue(index))
         {
             playerDevice.Add(player, index);
             playerReady.Add(index, false);
+            devices.Add(index, device);
 
             Debug.Log(playerDevice[player]);
             UIControlDescription[player].sprite = controlsImages[Mathf.Min(index, 2)];
@@ -130,9 +163,19 @@ public class ControllerManager : Singleton<ControllerManager>
                 }
             }
         }
+        else
+        {
+            holdToSkip = true;
+        }
 
     }
 
+    private void CancelSkip()
+    {
+        if (holdToSkip)
+            holdToSkip = false;
+
+    }
 
 
     private void CheckDevices()
@@ -153,12 +196,16 @@ public class ControllerManager : Singleton<ControllerManager>
 
     private void OnEnable()
     {
-        action = new PlayerInput();
-        action.KeyboardLeft.Move.performed += (val) => ActivateController(0);
 
-        action.KeyboardRight.Move.performed += (val) => ActivateController(1);
+        action = new InputControls();
+        action.KeyboardLeft.Move.performed += (val) => ActivateController(0, val.control.device);
+        action.KeyboardLeft.Move.canceled += (val) => CancelSkip();
 
-        action.GamePad.Move.performed += (val) => ActivateController(inputDevice[val.control.device]);
+        action.KeyboardRight.Move.performed += (val) => ActivateController(1, val.control.device);
+        action.KeyboardRight.Move.canceled += (val) => CancelSkip();
+
+        action.GamePad.Move.performed += (val) => ActivateController(inputDevice[val.control.device], val.control.device);
+        action.GamePad.Move.canceled += (val) => CancelSkip();
 
         action.Enable();
         return;
@@ -169,8 +216,8 @@ public class ControllerManager : Singleton<ControllerManager>
 
     private void OnDisable()
     {
-        action.Disable();
-
+/*        action.Disable();
+*/
 
     }
 
