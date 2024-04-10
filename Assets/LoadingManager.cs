@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -9,6 +10,8 @@ using UnityEngine.UI;
 
 public class LoadingManager : MonoBehaviour
 {
+    InputControls action;
+
 
     [SerializeField]
     private Image loaderImageUI;
@@ -26,7 +29,6 @@ public class LoadingManager : MonoBehaviour
 
     int nPages;
 
-
     private void Awake()
     {
         //AudioManager.Instance.PlayUI(AudioManager.Instance._audioClip.welcomeToHell);
@@ -35,14 +37,6 @@ public class LoadingManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
-        {
-            holdToSkip = true;
-        }
-        else
-        {
-            holdToSkip = false;
-        }
 
         LoadingBar(timer, storyTimer);
 
@@ -56,24 +50,49 @@ public class LoadingManager : MonoBehaviour
         }
 
 
-        if (timer > storyTimer && pages.Count > nPages)
+        if (timer > storyTimer && pages.Count - 1 > nPages)
         {
+            Debug.Log(pages.Count);
             //Next UI
             pages[nPages].SetActive(false);
             pages[nPages + 1].SetActive(true);
             nPages++;
             timer = 0f;
         }
-        else if (timer > storyTimer && pages.Count == nPages)
+        else if (timer > storyTimer && pages.Count - 1 == nPages)
         {
             SceneManager.LoadScene(2);
         }
 
     }
 
+    private void Skip(bool skip)
+    {
+        holdToSkip = skip;
+    }
+
+
     private void LoadingBar(float indicator, float maxIndicator)
     {
         loaderImageUI.fillAmount = indicator / maxIndicator;
+    }
+
+    private void OnEnable()
+    {
+
+        action = new InputControls();
+        action.KeyboardLeft.Move.performed += (val) => Skip(true);
+        action.KeyboardLeft.Move.canceled += (val) => Skip(false);
+
+        action.KeyboardRight.Move.performed += (val) => Skip(true);
+        action.KeyboardRight.Move.canceled += (val) => Skip(false);
+
+        action.GamePad.Move.performed += (val) => Skip(true);
+        action.GamePad.Move.canceled += (val) => Skip(false);
+
+        action.Enable();
+        return;
+
     }
 
 

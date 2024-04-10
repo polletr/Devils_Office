@@ -46,21 +46,8 @@ public class ControllerManager : Singleton<ControllerManager>
     private int player = 0;
 
     public UnityEvent StartGame;
-    public UnityEvent ShowStory;
 
-    float timer = 0f;
     private float readytimer = 4f;
-
-    bool holdToSkip = false;
-
-    [SerializeField]
-    float skipMultiplier = 5f;
-
-    [SerializeField]
-    float storyTimer = 30f;
-
-    [SerializeField]
-    private Image loaderImageUI;
 
     private void Awake()
     {
@@ -115,29 +102,8 @@ public class ControllerManager : Singleton<ControllerManager>
 
     private void Ready()
     {
-        ShowStory.Invoke();
-
-        if (!holdToSkip)
-        {
-            timer += Time.deltaTime;
-        }
-        else
-        {
-            timer += skipMultiplier * Time.deltaTime;
-        }
-
-        LoadingBar(timer, storyTimer);
-
-        if (timer > storyTimer)
-        {
-            StartGame.Invoke();
-        }
+        StartGame.Invoke();
     }
-    private void LoadingBar(float indicator, float maxIndicator)
-    {
-        loaderImageUI.fillAmount = indicator / maxIndicator;
-    }
-
 
     private void ActivateController(int index, InputDevice device)
     {
@@ -163,17 +129,6 @@ public class ControllerManager : Singleton<ControllerManager>
                 }
             }
         }
-        else
-        {
-            holdToSkip = true;
-        }
-
-    }
-
-    private void CancelSkip()
-    {
-        if (holdToSkip)
-            holdToSkip = false;
 
     }
 
@@ -199,18 +154,13 @@ public class ControllerManager : Singleton<ControllerManager>
 
         action = new InputControls();
         action.KeyboardLeft.Move.performed += (val) => ActivateController(0, val.control.device);
-        action.KeyboardLeft.Move.canceled += (val) => CancelSkip();
 
         action.KeyboardRight.Move.performed += (val) => ActivateController(1, val.control.device);
-        action.KeyboardRight.Move.canceled += (val) => CancelSkip();
 
         action.GamePad.Move.performed += (val) => ActivateController(inputDevice[val.control.device], val.control.device);
-        action.GamePad.Move.canceled += (val) => CancelSkip();
 
         action.Enable();
         return;
-
-
 
     }
 
