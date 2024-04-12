@@ -12,6 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89a381da3bc5c6b459a249f037644a04, type: 3}
   m_Name: SoundClips
   m_EditorClassIdentifier: 
+  coffee: {fileID: 8300000, guid: e6a8731ac6c475143b2a71300bf93363, type: 3}
+  lightSwitch: {fileID: 8300000, guid: 71d9592076cedc44ebbae81e98d65d2e, type: 3}
+  microwave: {fileID: 8300000, guid: 00fe7cf880a5ed44baa08dc33c4d87b3, type: 3}
+  printer: {fileID: 8300000, guid: 6be6870ac397a0c49a6ff01f84b9240f, type: 3}
+  pitchFork: {fileID: 8300000, guid: 594be3d37f4a27f4f9cf4a73608d4ee1, type: 3}
   inDoorSteps: {fileID: 8300000, guid: 8f19069e77fef3144ad81087140486cc, type: 3}
   stab: {fileID: 8300000, guid: 37d9b05c6fc7bc748a65477fd386ffca, type: 3}
   welcomeToHell: {fileID: 8300000, guid: d46d44b65177c404eab9de1a468b3d2b, type: 3}

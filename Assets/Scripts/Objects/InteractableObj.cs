@@ -8,6 +8,7 @@ public class InteractableObj : BaseObject
     public Vector2Int interactionPos;
     public TaskType taskType = TaskType.none;
 
+    public AudioClip taskClip;
     public AudioSource taskSpeaker;
 
     [HideInInspector]

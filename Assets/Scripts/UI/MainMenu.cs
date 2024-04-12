@@ -13,7 +13,10 @@ public class MainMenu : Menu
         AudioManager.Instance.PlayMusic(AudioManager.Instance._audioClip.FinishScreen);
     }
 
-    public void OnToggleSettingMenu() => _SettingMenu.SetActive(!_SettingMenu.activeSelf);
+    public void OnToggleSettingMenu()
+    {
+        _SettingMenu.SetActive(!_SettingMenu.activeSelf);
+    }
 
     protected override void DisableScreens()
     {

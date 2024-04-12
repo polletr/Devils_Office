@@ -173,6 +173,8 @@ MonoBehaviour:
   waitTime: 7
   interactionPos: {x: 0, y: 0}
   taskType: 2
+  taskClip: {fileID: 0}
+  taskSpeaker: {fileID: 3628420413689637196}
   visualIndicator: {fileID: 0}
   TaskStarted:
     m_PersistentCalls:

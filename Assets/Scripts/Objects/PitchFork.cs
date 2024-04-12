@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class PitchFork : InteractableObj
 {
-
+    void Start() => taskClip = AudioManager.Instance._audioClip.pitchFork;
 }

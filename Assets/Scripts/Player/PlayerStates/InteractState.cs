@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class InteractState : BaseState
@@ -78,7 +79,16 @@ public class InteractState : BaseState
             UIManager uiManager = playerController._UIManager;
             uiManager.showLoader = true;
             uiManager.LoadingBar(timer, interactTimer);
-        }
+            if (interactableObj.GetComponent<InteractableObj>())
+            {
+                if(interactableObj != null)
+                {
+                    interactableObj.taskSpeaker.clip = interactableObj.taskClip;
+                    interactableObj.taskSpeaker.Play();
+                }
+            }
+                
+         }
 
         if (timer > interactTimer)
         {
@@ -115,6 +125,11 @@ public class InteractState : BaseState
             //Disable UI
             character.ChangeState(new IdleState());
         }
+    }
+
+    private bool TryGetComponent(out ExtinguishBody interactableObj)
+    {
+        throw new NotImplementedException();
     }
 
     /* public override void StopInteract()

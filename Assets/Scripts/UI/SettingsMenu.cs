@@ -13,40 +13,45 @@ public class SettingsMenu : Menu
     [SerializeField] private Slider MusicSlider;
     [SerializeField] private Slider SFXSlider;
 
-
-    private void Start()
-    {
-        SetUpVolumeValues();
-        ListenForVolumeChange();
-    }
-
     private void SetUpVolumeValues()
     {
         MasterSlider.value = PlayerPrefs.GetFloat("MasterVolume", 1f);
         MusicSlider.value = PlayerPrefs.GetFloat("MusicVolume", 0.75f);
         SFXSlider.value = PlayerPrefs.GetFloat("SFXVolume", 0.75f);
     }
-    private void ListenForVolumeChange()
+    private void OnEnable()
     {
+        SetUpVolumeValues();
+
         MasterSlider.onValueChanged.AddListener(delegate { SetMasterVolume(); });
         MusicSlider.onValueChanged.AddListener(delegate { SetMusicVolume(); });
         SFXSlider.onValueChanged.AddListener(delegate { SetSFXVolume(); });
     }
 
+    private void OnDisable()
+    {
+        MasterSlider.onValueChanged.RemoveAllListeners();
+        MusicSlider.onValueChanged.RemoveAllListeners();
+        SFXSlider.onValueChanged.RemoveAllListeners();
+    }
+
     private void SetMasterVolume()
     {
-        _MasterAudioMixer.SetFloat("Master", Mathf.Log10(MasterSlider.value) * 20);
-        PlayerPrefs.SetFloat("MasterVolume", MasterSlider.value);
+        if (!isMusted)
+            _MasterAudioMixer.SetFloat("Master", Mathf.Log10(MasterSlider.value) * 20);
+            PlayerPrefs.SetFloat("MasterVolume", MasterSlider.value);
     }
     private void SetMusicVolume()
     {
-        _MasterAudioMixer.SetFloat("MusicVolume", Mathf.Log10(MusicSlider.value) * 20);
-        PlayerPrefs.SetFloat("MusicVolume", MusicSlider.value);
+        if (!isMusted)
+            _MasterAudioMixer.SetFloat("MusicVolume", Mathf.Log10(MusicSlider.value) * 20);
+            PlayerPrefs.SetFloat("MusicVolume", MusicSlider.value);
     }
     private void SetSFXVolume()
     {
-        _MasterAudioMixer.SetFloat("SFXVolume", Mathf.Log10(SFXSlider.value) * 20);
-        PlayerPrefs.SetFloat("SFXVolume", SFXSlider.value);
+        if(!isMusted)
+            _MasterAudioMixer.SetFloat("SFXVolume", Mathf.Log10(SFXSlider.value) * 20);
+            PlayerPrefs.SetFloat("SFXVolume", SFXSlider.value);
     }
 
     public void OnToggleMute()

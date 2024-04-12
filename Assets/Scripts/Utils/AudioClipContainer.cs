@@ -2,34 +2,26 @@ using UnityEngine;
 [CreateAssetMenu]
 public class AudioClipContainer : ScriptableObject
 {
-  /*  // public List<AudioPair> audioPairs;   // Might add later
-    [Header("BGMusic")]
+    /*  // public List<AudioPair> audioPairs;   // Might add later
+      [Header("BGMusic")]
 
-    public AudioClip MainMenu;
-    public AudioClip BGMusic;
-    public AudioClip WinBGMusic;
-    public AudioClip closingTime;
-    public AudioClip meetingCall;
-    public AudioClip meetingExtended;
+      public AudioClip MainMenu;
+      public AudioClip BGMusic;
+      public AudioClip WinBGMusic;
+      public AudioClip closingTime;
+      public AudioClip meetingCall;
+      public AudioClip meetingExtended;
 
-    [Header("TaskSFX")]
+      [Header("TaskSFX")]
 
-    public AudioClip TaskComplete;
-*/
-    /*
-        public AudioClip cleaning;
-        public AudioClip coffee;
-        public AudioClip lightSwitch;
-        public AudioClip microwave;
-        public AudioClip pc;
-        public AudioClip phone;
-        public AudioClip printer;
-        public AudioClip pitchFork;
-        public AudioClip stamp;
-        public AudioClip whiteBoard;
-        public AudioClip extinguishBody;
-    */
+      public AudioClip TaskComplete;
+  */
 
+    public AudioClip coffee;
+    public AudioClip lightSwitch;
+    public AudioClip microwave;
+    public AudioClip printer;
+    public AudioClip pitchFork;
     public AudioClip inDoorSteps;
     public AudioClip stab;
     public AudioClip welcomeToHell;

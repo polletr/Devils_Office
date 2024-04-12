@@ -95,7 +95,7 @@ public class GameManager : Singleton<GameManager>
                 if (Mathf.Abs(timer - 60f) <= 0.1f)
                     AudioManager.Instance.PlayUI(AudioManager.Instance._audioClip.TheWorkdayEndSoon);
                 if (Mathf.Abs(timer - 30f) <= 0.1f)
-                    AudioManager.Instance.PlayUI(AudioManager.Instance._audioClip.TheWorkdayEndSoon);
+                    AudioManager.Instance.PlayUI(AudioManager.Instance._audioClip.YourCoworkers);
                 if (Mathf.Abs(timer - 11f) <= 0.1f)
                     AudioManager.Instance.PlayCountDown();
             }
@@ -198,8 +198,6 @@ public class GameManager : Singleton<GameManager>
                     playersToRank[i]._UIManager.GameStats(null);
                 }
                 EndGameUI();
-                AudioManager.Instance.StopAllSounds();
-                AudioManager.Instance.PlayMusic(AudioManager.Instance._audioClip.FinishScreen);
 
             }
             else
@@ -212,8 +210,6 @@ public class GameManager : Singleton<GameManager>
         else
         {
             AudioManager.Instance.PlayUI(AudioManager.Instance._audioClip.ClosingTime);
-            AudioManager.Instance.StopAllSounds();
-            AudioManager.Instance.PlayMusic(AudioManager.Instance._audioClip.FinishScreen);
 
             SetWinner(playersToRank[0]);//Winner with points
             //Display Victory Screen and show the winner, second, etc.
