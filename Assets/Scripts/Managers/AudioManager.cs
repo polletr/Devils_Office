@@ -20,6 +20,16 @@ public class AudioManager : Singleton<AudioManager>
     [Header("Audio Clip Container")]
     public AudioClipContainer _audioClip;
 
+    public void PlayDeath(AudioClip[] clips,AudioSource speaker)
+    {
+        if (clips.Length > 0)
+        {
+            speaker.clip = clips[Random.Range(0, clips.Length)];
+            speaker.Play();
+        }
+        else Debug.LogWarning("Audio Clip is null");
+    }
+
     public void Play(AudioClip clip, AudioSource speaker)
     {
         if (clip != null)

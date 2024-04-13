@@ -6,9 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="75fa33e8-05bc-4bb8-b5fc-528039a47dec" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Devils_Office/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Devils_Office/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/Input/InputManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/Input/InputManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,6 +103,7 @@
       <workItem from="1712624973720" duration="535000" />
       <workItem from="1712702229086" duration="3062000" />
       <workItem from="1712706721401" duration="299000" />
+      <workItem from="1712956305079" duration="7000" />
     </task>
     <servers />
   </component>

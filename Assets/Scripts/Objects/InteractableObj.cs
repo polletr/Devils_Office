@@ -19,12 +19,11 @@ public class InteractableObj : BaseObject
     public UnityEvent TaskInterrupted;
 
     public UnityEvent TaskCompleted;
-    void Awake()
+    protected virtual void Awake()
     {
         visualIndicator = GetComponentInChildren<UVScroller_C>()?.gameObject;
         taskSpeaker = GetComponent<AudioSource>();
     }
-
 
 }
 

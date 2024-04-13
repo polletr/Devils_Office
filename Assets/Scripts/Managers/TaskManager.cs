@@ -45,6 +45,8 @@ public class TaskManager : MonoBehaviour
                 playerCamera.cullingMask ^= 1 << taskObj.visualIndicator.layer;
 
             }
+            if(GetComponent<PlayerController>())
+            AudioManager.Instance.PlayUI(AudioManager.Instance._audioClip.NewTask);
             Debug.Log("Task: " + taskObj.taskType);
         }
 
@@ -62,6 +64,7 @@ public class TaskManager : MonoBehaviour
             taskToDo.Remove(task.taskType);
             completedTask = task.taskType;
             OnTaskComplete?.Invoke();
+            AudioManager.Instance.PlayUI(AudioManager.Instance._audioClip.TaskDone);
 
             SearchTask();
         }

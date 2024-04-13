@@ -24,6 +24,8 @@ public class AudioClipContainer : ScriptableObject
     public AudioClip pitchFork;
     public AudioClip inDoorSteps;
     public AudioClip stab;
+
+
     public AudioClip welcomeToHell;
     public AudioClip deathIsJustTheBeggining;
     public AudioClip meetingPostponined;
@@ -44,6 +46,15 @@ public class AudioClipContainer : ScriptableObject
     public AudioClip hellsotherpeople;
     public AudioClip playerOneIsBeing;
     public AudioClip FinishScreen;
+    public AudioClip officeStamp;
+    public AudioClip TelephoneDial;
+    public AudioClip TaskDone;
+    public AudioClip NewTask;
+    public AudioClip BGMusic;
+    public AudioClip ComputerTask;
+
+    public AudioClip[] PlayerKilled;
+    public AudioClip[] NPCKilled;
 }
 
 //code f0or using modular audio container with types    

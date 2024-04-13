@@ -1,3 +1,4 @@
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class WinMenu : Menu
@@ -12,6 +13,7 @@ public class WinMenu : Menu
     public void OnRestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Time.timeScale = 1f;
     }
 
     public void OnBackToMenu()

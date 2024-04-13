@@ -15,8 +15,13 @@ public class DeathState : BaseState
         {
             playerController = character.GetComponent<PlayerController>();
             playerController._UIManager.StartCoroutine("Blink", true);
-
+            AudioManager.Instance.PlayDeath(AudioManager.Instance._audioClip.PlayerKilled, character.characterSpeaker);
+        }   
+        else if(character.GetComponent<AIController>())
+        {
+            AudioManager.Instance.PlayDeath(AudioManager.Instance._audioClip.NPCKilled, character.characterSpeaker);
         }
+
 
     }
 
@@ -32,7 +37,6 @@ public class DeathState : BaseState
         respawnTimer += Time.deltaTime;
         if (playerController)
         {
-            AudioManager.Instance.Play(AudioManager.Instance._audioClip.deathIsJustTheBeggining, character.characterSpeaker);
             if (GridController.Instance.AIList.Any())
             {
                 if (respawnTimer > playerController.RespawnTimelimit)
@@ -82,14 +86,6 @@ public class DeathState : BaseState
             }
 
         }
-        else
-        {
-            AudioManager.Instance.Play(AudioManager.Instance._audioClip.someoneHasDies,character.characterSpeaker);
-        }
-
-
-
-
     }
 
     public override void StopInteract()

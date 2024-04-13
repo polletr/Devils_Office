@@ -28,6 +28,7 @@ public class GameManager : Singleton<GameManager>
     public List<PlayerController> playersToRank = new();
 
     private float extraTime;
+    private float initialTimer;
 
     [SerializeField]
     private float interactMultMax;
@@ -43,20 +44,25 @@ public class GameManager : Singleton<GameManager>
     private int extraTimerCount;
     [SerializeField]
     private float extraTimeCountLimit;
-
+    bool playSound = false;
     private void Awake()
     {
         if (ControllerManager.Instance.playerDevice.Count == 2)
         {
             timer = timerLevel2P;
+            initialTimer = timerLevel2P;
         }
         else if (ControllerManager.Instance.playerDevice.Count == 3)
         {
             timer = timerLevel3P;
+            initialTimer = timerLevel3P;
+
         }
         else if (ControllerManager.Instance.playerDevice.Count == 4)
         {
             timer = timerLevel4P;
+            initialTimer = timerLevel4P;
+
         }
 
         AudioManager.Instance.PlayMusic(AudioManager.Instance._audioClip.officeBackground);
@@ -92,13 +98,17 @@ public class GameManager : Singleton<GameManager>
             {
                 timerText.gameObject.SetActive(true);
                 timerText.text = minutes.ToString("00") + ":" + seconds.ToString("00"); // + ":" + milliseconds.ToString("00");
-                if (Mathf.Abs(timer - 60f) <= 0.1f)
-                    AudioManager.Instance.PlayUI(AudioManager.Instance._audioClip.TheWorkdayEndSoon);
-                if (Mathf.Abs(timer - 30f) <= 0.1f)
-                    AudioManager.Instance.PlayUI(AudioManager.Instance._audioClip.YourCoworkers);
-                if (Mathf.Abs(timer - 11f) <= 0.1f)
-                    AudioManager.Instance.PlayCountDown();
             }
+            if (Mathf.Abs(timer - 60f) <= 0.1f)
+                AudioManager.Instance.PlayUI(AudioManager.Instance._audioClip.DailyScrumMeeting);
+            if (Mathf.Abs(timer - 30f) <= 0.1f)
+                AudioManager.Instance.PlayUI(AudioManager.Instance._audioClip.TheWorkdayEndSoon);
+            if (Mathf.Abs(timer - 11f) <= 0.1f)
+                AudioManager.Instance.PlayCountDown();
+
+            if (Mathf.Abs(timer - (initialTimer - 20f)) <= 0.1f)
+                AudioManager.Instance.PlayUI(AudioManager.Instance._audioClip.hellsotherpeople);
+
         }
         else
         {

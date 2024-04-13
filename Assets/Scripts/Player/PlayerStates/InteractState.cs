@@ -8,6 +8,7 @@ public class InteractState : BaseState
     private float timer;
 
     private bool completedTask;
+    private bool playTaskSound;
 
     private PlayerController playerController;
 
@@ -34,7 +35,9 @@ public class InteractState : BaseState
             {
                 interactTimer = interactableObj.waitTime * playerController.interactMultiplier;
                 Debug.Log(interactTimer);
-
+                    interactableObj.taskSpeaker.clip = interactableObj.taskClip;
+                    interactableObj.taskSpeaker.loop = true;
+                    interactableObj.taskSpeaker.Play();
             }
             else
             {
@@ -53,6 +56,7 @@ public class InteractState : BaseState
     {
         character.anim?.SetBool("Interact", false);
         interactableObj = null;
+
 
         if (completedTask)
         {
@@ -79,15 +83,7 @@ public class InteractState : BaseState
             UIManager uiManager = playerController._UIManager;
             uiManager.showLoader = true;
             uiManager.LoadingBar(timer, interactTimer);
-            if (interactableObj.GetComponent<InteractableObj>())
-            {
-                if(interactableObj != null)
-                {
-                    interactableObj.taskSpeaker.clip = interactableObj.taskClip;
-                    interactableObj.taskSpeaker.Play();
-                }
-            }
-                
+           
          }
 
         if (timer > interactTimer)
@@ -112,24 +108,22 @@ public class InteractState : BaseState
                     else
                     {
                         character.characterSpeaker.loop = false;
-                        AudioManager.Instance.Play(AudioManager.Instance._audioClip.TheDevilsoffice, character.characterSpeaker);
                         completedTask = true;
                     }
                 }
 
             }
-
+            interactableObj.taskSpeaker.Stop();
+            if (interactableObj.GetComponent<ExtinguishBody>())
+            {
+                AudioManager.Instance.PlayUI(AudioManager.Instance._audioClip.TheDevilsoffice);
+            }
             interactableObj.TaskCompleted.Invoke();
             timer = 0f;
 
             //Disable UI
             character.ChangeState(new IdleState());
         }
-    }
-
-    private bool TryGetComponent(out ExtinguishBody interactableObj)
-    {
-        throw new NotImplementedException();
     }
 
     /* public override void StopInteract()
