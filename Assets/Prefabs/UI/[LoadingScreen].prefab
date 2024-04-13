@@ -513,7 +513,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 594eac3e6c89cb74f92c9791033418e6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4d2e8f02b76fd814bb16f3b8cb3c791a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -779,6 +779,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2167977496042355355}
     m_Modifications:
+    - target: {fileID: 3432564184745696009, guid: 16f70c7f82ab2a648b3d22ab270d8c8f, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 3432564184745696009, guid: 16f70c7f82ab2a648b3d22ab270d8c8f, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 4337102787358575726, guid: 16f70c7f82ab2a648b3d22ab270d8c8f, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 4337102787358575726, guid: 16f70c7f82ab2a648b3d22ab270d8c8f, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 6070886481754471344, guid: 16f70c7f82ab2a648b3d22ab270d8c8f, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -863,6 +879,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: '[Story]2'
       objectReference: {fileID: 0}
+    - target: {fileID: 7928787441783274474, guid: 16f70c7f82ab2a648b3d22ab270d8c8f, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 7928787441783274474, guid: 16f70c7f82ab2a648b3d22ab270d8c8f, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 1190856770468096878, guid: 16f70c7f82ab2a648b3d22ab270d8c8f, type: 3}
