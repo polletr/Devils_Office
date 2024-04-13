@@ -64,7 +64,7 @@ public class GridController : Singleton<GridController>
 
                 objectClone.transform.localPosition = new Vector3(i, 0, j);
                 objectClone.posInGrid = new Vector2Int(i, j);
-                if (gridRotation.ToString() != "" && (objectClone.GetComponent<InteractableObj>() || objectClone.GetComponent<Wall>()))
+                if (gridRotation.ToString() != "" && (objectClone.GetComponent<InteractableObj>() || objectClone.GetComponent<Wall>() || objectClone.GetComponent<Decoration>()))
                 {
                     RotateObject(objectClone, gridRotation);
                 }
