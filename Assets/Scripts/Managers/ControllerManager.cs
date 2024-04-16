@@ -115,6 +115,7 @@ public class ControllerManager : Singleton<ControllerManager>
 
             Debug.Log(playerDevice[player]);
             UIControlDescription[player].sprite = controlsImages[Mathf.Min(index, 2)];
+            UIControlDescription[player].gameObject.SetActive(true);
 
             player++;
         }

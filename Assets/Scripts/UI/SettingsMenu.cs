@@ -12,6 +12,10 @@ public class SettingsMenu : Menu
     [SerializeField] private Slider MasterSlider;
     [SerializeField] private Slider MusicSlider;
     [SerializeField] private Slider SFXSlider;
+    protected override void Awake()
+    {
+        
+    }
 
     private void SetUpVolumeValues()
     {

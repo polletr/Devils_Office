@@ -12,6 +12,8 @@ public class Menu : MonoBehaviour
     private GameObject _creditsMenu;
     [SerializeField]
     private GameObject _controlsMenu;
+    [SerializeField]
+    private GameObject _settingMenu;
 
 
     protected bool isMusted;
@@ -27,6 +29,8 @@ public class Menu : MonoBehaviour
         _currentMenu?.SetActive(_startActive);
         _creditsMenu?.SetActive(false);
         _controlsMenu?.SetActive(false);
+        //if (_settingMenu
+        _settingMenu?.SetActive(false);
     }
 
     //Menu Management
@@ -34,6 +38,7 @@ public class Menu : MonoBehaviour
     public void OnToggleCurrentMenu() => _currentMenu.SetActive(!_currentMenu.activeSelf);
     public void OnToggleCredits() => _creditsMenu.SetActive(!_creditsMenu.activeSelf);
     public void OnToggleControls() => _controlsMenu.SetActive(!_controlsMenu.activeSelf);
+    public void OnToggleSettings() => _settingMenu.SetActive(!_settingMenu.activeSelf);
 
     public void OnQuitGame()
     {

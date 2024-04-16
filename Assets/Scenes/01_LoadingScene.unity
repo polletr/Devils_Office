@@ -584,6 +584,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7112491065365970806, guid: 28d052885cc4f82489fb3d5f79d00a2e, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7112491065365970806, guid: 28d052885cc4f82489fb3d5f79d00a2e, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7112491065365970806, guid: 28d052885cc4f82489fb3d5f79d00a2e, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7806379128634040155, guid: 28d052885cc4f82489fb3d5f79d00a2e, type: 3}
       propertyPath: m_Name
       value: '[SecondPage]'

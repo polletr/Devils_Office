@@ -13,7 +13,9 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private Image loaderImageUI;
     [SerializeField]
-    private TextMeshProUGUI gameStats;
+    private TextMeshProUGUI gameStats;  
+    [SerializeField]
+    private GameObject gameStatsBox;
     [SerializeField]
     private CanvasGroup playerEye;
     [SerializeField]
@@ -37,7 +39,7 @@ public class UIManager : MonoBehaviour
         player = GetComponentInParent<PlayerController>();
         showUI = false;
         showLoader = false;
-        gameStats.gameObject.SetActive(false);
+        gameStatsBox.SetActive(false);
         DisableUI(showUI);
         loaderImageUI.fillAmount = 0;
 
@@ -89,7 +91,7 @@ public class UIManager : MonoBehaviour
 
     public void GameStats(PlayerController winner)
     {
-        gameStats.gameObject.SetActive(true);
+        gameStatsBox.SetActive(true);
         if (winner == player)
         {
             gameStats.color = Color.green;
