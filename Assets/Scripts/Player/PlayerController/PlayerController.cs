@@ -98,6 +98,7 @@ public override void Awake()
         _UIManager.DisableUI(show);
         if (show)
         {
+
             _UIMiniMap.ShowMiniMap(this);
         }
         else

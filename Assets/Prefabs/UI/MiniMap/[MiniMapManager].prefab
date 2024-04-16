@@ -30,11 +30,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 8240667409683757882}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0.25, y: 0.7}
+  m_AnchorMax: {x: 0.25, y: 0.7}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!1 &7321257557652338700
 GameObject:
   m_ObjectHideFlags: 0
@@ -85,8 +85,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundSprite: {fileID: 4976185635418484749, guid: 1358e36cfa469524abb15397b4480782, type: 3}
-  wallColor: {r: 1, g: 1, b: 1, a: 0.74509805}
-  playerColor: {r: 0.15423203, g: 1, b: 0, a: 0.74509805}
-  taskColor: {r: 0.9827944, g: 1, b: 0, a: 0.74509805}
-  blankColor: {r: 0, g: 0, b: 0, a: 0}
   miniMapSpawn: {fileID: 3998673110288051640}
+  wallColor: {r: 1, g: 1, b: 1, a: 0.8627451}
+  playerColor: {r: 0.15423203, g: 1, b: 0, a: 0.8627451}
+  taskColor: {r: 0.9827944, g: 1, b: 0, a: 0.8627451}
+  blankColor: {r: 0, g: 0, b: 0, a: 0}
