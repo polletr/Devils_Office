@@ -4,11 +4,14 @@ using UnityEngine.UI;
 public class MiniMap : MonoBehaviour
 {
     [SerializeField]
-    private Image tile;
+    private GameObject _tile;
+    [SerializeField]
+    private GameObject _playerTile;
 
 
-    private void Start()
+    private void GridAwake()
     {
 
     }
+
 }
