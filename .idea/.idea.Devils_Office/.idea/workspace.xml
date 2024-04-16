@@ -13,6 +13,8 @@
       <change beforePath="$PROJECT_DIR$/Assets/Art/Fonts/darild fonts/LiberationSans SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Fonts/darild fonts/LiberationSans SDF.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Art/Fonts/darild fonts/TYPIST SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Fonts/darild fonts/TYPIST SDF.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Audio/MasterAudioMixer.mixer" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Audio/MasterAudioMixer.mixer" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Level/Levels/SavedTXT/3Players.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Level/Levels/SavedTXT/3Players.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Level/Levels/SavedTXT/4Players.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Level/Levels/SavedTXT/4Players.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/[UIManager].prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/[UIManager].prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/ControllerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/ControllerManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/UIManager.cs" afterDir="false" />
@@ -119,7 +121,7 @@
       <workItem from="1712706721401" duration="299000" />
       <workItem from="1712956305079" duration="7000" />
       <workItem from="1713237542908" duration="848000" />
-      <workItem from="1713279007585" duration="3172000" />
+      <workItem from="1713279007585" duration="3952000" />
     </task>
     <servers />
   </component>

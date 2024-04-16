@@ -202,7 +202,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5330d732d317574ca36ecab4b9f3183, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxTasks: 1
+  maxTasks: 2
   taskToDo: 
   completedTask: 2
   taskUI: {fileID: 3975622249394097539}
