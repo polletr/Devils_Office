@@ -12,6 +12,9 @@ public class PlayerController : CharacterClass
 
     [HideInInspector]
     public UIManager _UIManager;
+    [SerializeField]
+    private MiniMap _UIMiniMap;
+
 
     [HideInInspector]
     public int points;
@@ -32,6 +35,8 @@ public class PlayerController : CharacterClass
 
     bool move;
 
+
+
 public override void Awake()
     {
         base.Awake();
@@ -42,6 +47,8 @@ public override void Awake()
         ChangeState(new IdleState());
         canInteract = true;
         interactMultiplier = 1;
+
+        _UIMiniMap = GetComponentInChildren<MiniMap>();
 
     }
     private void Update()
@@ -89,6 +96,14 @@ public override void Awake()
     public void HandleViewTask(bool show)
     {
         _UIManager.DisableUI(show);
+        if (show)
+        {
+            _UIMiniMap.ShowMiniMap(this);
+        }
+        else
+        {
+            _UIMiniMap.ClearMiniMap();
+        }
     }
 
 

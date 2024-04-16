@@ -1,8 +1,9 @@
 using Newtonsoft.Json;
 using System.Collections.Generic;
-using System.Linq;
+using System;
 using Unity.VisualScripting;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class GridController : Singleton<GridController>
 {
@@ -38,9 +39,11 @@ public class GridController : Singleton<GridController>
     [HideInInspector]
     public List<PlayerController> playerControllers = new();
 
+    public Action GridAwakeEvent;
     // Start is called before the first frame update
     void Awake()
     {
+
         LoadLevel();
         gridLocations = levelData.grid;
         gridRotations = levelData.directions;
@@ -128,6 +131,7 @@ public class GridController : Singleton<GridController>
         GameManager.Instance.RankPlayers(playerControllers);
         ControllerManager.Instance.gameObject.SetActive(false);
 
+        GridAwakeEvent?.Invoke();
     }
 
     public int[,] GetGridData()
