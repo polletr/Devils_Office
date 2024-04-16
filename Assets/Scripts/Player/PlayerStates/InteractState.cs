@@ -137,8 +137,8 @@ public class InteractState : BaseState
 
     public override void HandleDeath()
     {
+        interactableObj.taskSpeaker.Stop();
         interactableObj.TaskInterrupted.Invoke();
-
         character.ChangeState(new DeathState());
     }
 
