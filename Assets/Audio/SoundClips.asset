@@ -45,6 +45,7 @@ MonoBehaviour:
   NewTask: {fileID: 8300000, guid: 8398d278bab165c4f9b0aa0fbecbb1b0, type: 3}
   BGMusic: {fileID: 8300000, guid: 67c6a63611a6aa142a448534d04226ca, type: 3}
   ComputerTask: {fileID: 8300000, guid: 301163da2c10bbf419d6e3dc6068a1c1, type: 3}
+  ButtonClick: {fileID: 8300000, guid: c29fa1b3fec2c3a489f212a8094cc1f0, type: 3}
   PlayerKilled:
   - {fileID: 8300000, guid: 8645fea96411f2940a944e1e06ac4a9d, type: 3}
   - {fileID: 8300000, guid: dc0e76ff8ef881443ba8d17076a69439, type: 3}
