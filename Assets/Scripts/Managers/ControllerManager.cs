@@ -51,6 +51,7 @@ public class ControllerManager : Singleton<ControllerManager>
 
     private void Awake()
     {
+        Time.timeScale = 1f;
         AudioManager.Instance.PlayUI(AudioManager.Instance._audioClip.welcomeToHell);
 
         foreach (Image Controls in UIControlDescription)

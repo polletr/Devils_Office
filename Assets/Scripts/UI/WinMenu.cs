@@ -12,8 +12,9 @@ public class WinMenu : Menu
 
     public void OnRestartGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+       
     }
 
     public void OnBackToMenu()
