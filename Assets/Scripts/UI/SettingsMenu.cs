@@ -62,6 +62,8 @@ public class SettingsMenu : Menu
     {
         isMusted = !isMusted;
         _MasterAudioMixer.SetFloat("Master", isMusted ? Mathf.Log10(MasterSlider.minValue) * 20 : Mathf.Log10(MasterSlider.maxValue) * 20);
+        AudioManager.Instance.PlayUI(AudioManager.Instance._audioClip.ButtonClick);
+
 
     }
 

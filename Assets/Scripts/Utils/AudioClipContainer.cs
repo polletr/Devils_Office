@@ -52,6 +52,8 @@ public class AudioClipContainer : ScriptableObject
     public AudioClip NewTask;
     public AudioClip BGMusic;
     public AudioClip ComputerTask;
+    public AudioClip ButtonClick;
+
 
     public AudioClip[] PlayerKilled;
     public AudioClip[] NPCKilled;

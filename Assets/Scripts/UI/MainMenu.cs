@@ -19,6 +19,7 @@ public class MainMenu : Menu
 
     public void StartGame()
     {
+        AudioManager.Instance.PlayUI(AudioManager.Instance._audioClip.ButtonClick);
         SceneManager.LoadScene(1);
     }
 

@@ -35,10 +35,28 @@ public class Menu : MonoBehaviour
 
     //Menu Management
 
-    public void OnToggleCurrentMenu() => _currentMenu.SetActive(!_currentMenu.activeSelf);
-    public void OnToggleCredits() => _creditsMenu.SetActive(!_creditsMenu.activeSelf);
-    public void OnToggleControls() => _controlsMenu.SetActive(!_controlsMenu.activeSelf);
-    public void OnToggleSettings() => _settingMenu.SetActive(!_settingMenu.activeSelf);
+    public void OnToggleCurrentMenu()
+    {
+        _currentMenu.SetActive(!_currentMenu.activeSelf);
+        AudioManager.Instance.PlayUI(AudioManager.Instance._audioClip.ButtonClick);
+    }
+    public void OnToggleCredits()
+    {
+        _creditsMenu.SetActive(!_creditsMenu.activeSelf);
+        AudioManager.Instance.PlayUI(AudioManager.Instance._audioClip.ButtonClick); 
+    }
+
+    public void OnToggleControls()
+    {
+        _controlsMenu.SetActive(!_controlsMenu.activeSelf);
+        AudioManager.Instance.PlayUI(AudioManager.Instance._audioClip.ButtonClick);
+    }
+
+    public void OnToggleSettings()
+    {
+        _settingMenu.SetActive(!_settingMenu.activeSelf);
+        AudioManager.Instance.PlayUI(AudioManager.Instance._audioClip.ButtonClick);
+    }
 
     public void OnQuitGame()
     {
