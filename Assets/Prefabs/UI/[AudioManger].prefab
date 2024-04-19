@@ -181,6 +181,7 @@ MonoBehaviour:
   SFXSpeaker: {fileID: 2512578101158120668}
   ExtraSpeaker: {fileID: 7505189820859862756}
   UISpeaker: {fileID: 7828039911891618114}
+  BGSpeaker: {fileID: 5972834700430267257}
   _MasterAudioMixer: {fileID: 24100000, guid: ff4cdf72379e9cc45a40012621b7936b, type: 2}
   _audioClip: {fileID: 11400000, guid: 021d8fb0805a0ad479b9bea4682cbd3f, type: 2}
 --- !u!1 &1414611924270108147

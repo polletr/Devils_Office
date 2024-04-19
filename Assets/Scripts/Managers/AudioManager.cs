@@ -12,6 +12,8 @@ public class AudioManager : Singleton<AudioManager>
     private AudioSource ExtraSpeaker;
     [SerializeField]
     private AudioSource UISpeaker;
+    [SerializeField]
+    private AudioSource BGSpeaker;
 
     [Header("Audio Mixer")]
     [SerializeField, Tooltip("Audio Mixer form the Assets folder")]
@@ -86,9 +88,15 @@ public class AudioManager : Singleton<AudioManager>
     }
     public void StopAllSounds()
     {
+        BGSpeaker.Stop();
         MusicSpeaker.Stop();
         SFXSpeaker.Stop();
         UISpeaker.Stop();
         ExtraSpeaker.Stop();
+        foreach (var taskObj in FindObjectsOfType<InteractableObj>())
+        {
+            taskObj.taskSpeaker.Stop();
+        }
+
     }
 }
