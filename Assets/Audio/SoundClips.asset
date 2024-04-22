@@ -19,24 +19,24 @@ MonoBehaviour:
   pitchFork: {fileID: 8300000, guid: 594be3d37f4a27f4f9cf4a73608d4ee1, type: 3}
   inDoorSteps: {fileID: 8300000, guid: 8f19069e77fef3144ad81087140486cc, type: 3}
   stab: {fileID: 8300000, guid: 37d9b05c6fc7bc748a65477fd386ffca, type: 3}
-  welcomeToHell: {fileID: 8300000, guid: d46d44b65177c404eab9de1a468b3d2b, type: 3}
-  deathIsJustTheBeggining: {fileID: 8300000, guid: 8645fea96411f2940a944e1e06ac4a9d, type: 3}
-  meetingPostponined: {fileID: 8300000, guid: f0c0cf62061021b46b743228cc3b3583, type: 3}
+  welcomeToHell: {fileID: 8300000, guid: f1e179a1a0a80e442b784c1866a3d9af, type: 3}
+  deathIsJustTheBeggining: {fileID: 8300000, guid: 00913a1e1a1e7af43ba6ee881c03ccff, type: 3}
+  meetingPostponined: {fileID: 8300000, guid: 311abe54939e4fc48922f2c7ee90d087, type: 3}
   fire: {fileID: 8300000, guid: 6d4e74417f7025d4ba66623a1dd739d1, type: 3}
-  someoneHasDies: {fileID: 8300000, guid: dc0e76ff8ef881443ba8d17076a69439, type: 3}
-  TheDevilsoffice: {fileID: 8300000, guid: 8867635097842754c864525cdf2ad87b, type: 3}
-  TheWorkdayEndSoon: {fileID: 8300000, guid: 0308680d0bb43fa47aac771eb92bc44a, type: 3}
+  someoneHasDies: {fileID: 8300000, guid: b0993c7b553e1fd458225476e3859fb5, type: 3}
+  TheDevilsoffice: {fileID: 8300000, guid: 0614a5f07cf6c2347b05802102095015, type: 3}
+  TheWorkdayEndSoon: {fileID: 8300000, guid: cfb121993de38f04dadadc7c1c69b53b, type: 3}
   officeBackground: {fileID: 8300000, guid: 956d1410c622f4e4a91930bff821f1f8, type: 3}
   printerWorking: {fileID: 8300000, guid: 6be6870ac397a0c49a6ff01f84b9240f, type: 3}
-  Horriblejob: {fileID: 8300000, guid: 404f02cbfba74fa45be7729adde7b2df, type: 3}
+  Horriblejob: {fileID: 8300000, guid: 3d5b582410573644792847463f8a61a3, type: 3}
   YourCoworkers: {fileID: 8300000, guid: 440c0465af38c6844b75b5583586bc73, type: 3}
-  CountDown: {fileID: 8300000, guid: ea3dda5417b094b4fbae1277d1f28995, type: 3}
-  DailyScrumMeeting: {fileID: 8300000, guid: 7144d4515d8adbd498c600dccc0c074a, type: 3}
+  CountDown: {fileID: 8300000, guid: 8a6a0797e03953149a8ce9bc2b46346d, type: 3}
+  DailyScrumMeeting: {fileID: 8300000, guid: 2881e0b711019f1409fd0335d881d439, type: 3}
   ClosingTime: {fileID: 8300000, guid: da6bce629b6b76840b6b150aa4491d17, type: 3}
   weAreMarket: {fileID: 8300000, guid: 1d6f2ae105fab144d8f2183e3ca91d7f, type: 3}
-  huamnResouces: {fileID: 8300000, guid: 52a720270b496f84a82fef7868f99435, type: 3}
-  ourQ4: {fileID: 8300000, guid: c675ba0c82ef1424a92f0165676891aa, type: 3}
-  hellsotherpeople: {fileID: 8300000, guid: 41c82b37478438c4caf13ce5074b300b, type: 3}
+  huamnResouces: {fileID: 8300000, guid: 0ed84eb862174c14883d3dedfef1afd2, type: 3}
+  ourQ4: {fileID: 8300000, guid: 268266e1645733a4aa01b9096b6d6b91, type: 3}
+  hellsotherpeople: {fileID: 8300000, guid: 076812dae5bd45f42b69d7779eaa63ed, type: 3}
   playerOneIsBeing: {fileID: 8300000, guid: 05f5799b3c39bfc4f87ab5e27a1cfe0c, type: 3}
   FinishScreen: {fileID: 8300000, guid: 53e0ddb4a79214b4b89517a73185d637, type: 3}
   officeStamp: {fileID: 8300000, guid: 461fc4c95b06b3d40ade97381c4689b6, type: 3}
@@ -47,8 +47,8 @@ MonoBehaviour:
   ComputerTask: {fileID: 8300000, guid: 301163da2c10bbf419d6e3dc6068a1c1, type: 3}
   ButtonClick: {fileID: 8300000, guid: c29fa1b3fec2c3a489f212a8094cc1f0, type: 3}
   PlayerKilled:
-  - {fileID: 8300000, guid: 8645fea96411f2940a944e1e06ac4a9d, type: 3}
-  - {fileID: 8300000, guid: dc0e76ff8ef881443ba8d17076a69439, type: 3}
+  - {fileID: 8300000, guid: 00913a1e1a1e7af43ba6ee881c03ccff, type: 3}
+  - {fileID: 8300000, guid: b0993c7b553e1fd458225476e3859fb5, type: 3}
   NPCKilled:
-  - {fileID: 8300000, guid: 52a720270b496f84a82fef7868f99435, type: 3}
-  - {fileID: 8300000, guid: 404f02cbfba74fa45be7729adde7b2df, type: 3}
+  - {fileID: 8300000, guid: 0ed84eb862174c14883d3dedfef1afd2, type: 3}
+  - {fileID: 8300000, guid: 3d5b582410573644792847463f8a61a3, type: 3}
